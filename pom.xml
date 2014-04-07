@@ -14,11 +14,6 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.codehaus.mojo</groupId>
-			<artifactId>tomcat-maven-plugin</artifactId>
-			<version>1.1</version>
-		</dependency>
 	</dependencies>
 	<build>
 		<finalName>collageJam</finalName>
