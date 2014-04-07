@@ -8,7 +8,17 @@
 </head>
 <body>
 main setting
+<<<<<<< HEAD
 merge testing
 edit page
 </body>
 </html>
+=======
+<<<<<<< HEAD
+=======
+merge testing
+edit page
+>>>>>>> refs/heads/joohwee
+</body>
+</html>
+>>>>>>> refs/heads/master
