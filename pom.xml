@@ -14,6 +14,22 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>commons-jelly</groupId>
+			<artifactId>commons-jelly</artifactId>
+			<version>20040902.070806</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>3.0-alpha-1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>maven</groupId>
+			<artifactId>maven-eclipse-plugin</artifactId>
+			<version>1.12</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>collageJam</finalName>
