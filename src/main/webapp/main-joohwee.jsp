@@ -7,11 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-main setting
-<<<<<<< HEAD
-=======
-merge testing
-edit page
->>>>>>> refs/heads/joohwee
+
+kjh main page
+
+
 </body>
 </html>
