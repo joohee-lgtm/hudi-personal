@@ -1,6 +1,7 @@
 package test;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,5 +13,9 @@ public class LoginServlet extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
 		out.println("user name: " + username);
+		
+		User u = new User();
+		Connection c = u.connect();
+		//u.close(c);
 	}
 }
