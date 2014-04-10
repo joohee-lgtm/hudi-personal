@@ -6,11 +6,11 @@
 	<display-name>Archetype Created Web Application</display-name>
 	<servlet>
 		<servlet-name>Chapter1 Servlet</servlet-name>
-		<servlet-class>Ch1Servlet</servlet-class>
+		<servlet-class>headFirst.Ch1Servlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>Ch3 Beer</servlet-name>
-		<servlet-class>BeerSelect</servlet-class>
+		<servlet-class>headFirst.BeerSelect</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
