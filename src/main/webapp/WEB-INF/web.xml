@@ -1,7 +1,24 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+    http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+	<display-name>Archetype Created Web Application</display-name>
+	<servlet>
+		<servlet-name>Chapter1 Servlet</servlet-name>
+		<servlet-class>Ch1Servlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Ch3 Beer</servlet-name>
+		<servlet-class>BeerSelect</servlet-class>
+	</servlet>
 
-<web-app>
-  <display-name>Archetype Created Web Application</display-name>
+	<servlet-mapping>
+		<servlet-name>Chapter1 Servlet</servlet-name>
+		<url-pattern>/Serv1</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Ch3 Beer</servlet-name>
+		<url-pattern> /SelectBeer.do </url-pattern>
+	</servlet-mapping>
 </web-app>
