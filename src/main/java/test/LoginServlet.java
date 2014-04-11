@@ -10,6 +10,7 @@ import java.sql.Statement;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class LoginServlet extends HttpServlet{
 	private Connection conn;
@@ -19,7 +20,8 @@ public class LoginServlet extends HttpServlet{
 	{	
 		PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
-		out.println("user name: " + username);
+		String password = request.getParameter("password");
+		HttpSession session = request.getSession();
 
 		String url = "jdbc:mysql://localhost:3306/collagejam";
 		try {
@@ -48,7 +50,7 @@ public class LoginServlet extends HttpServlet{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String sql = "select * from user";
+		String sql = "select * from user where username='" + username + "' and password='" + password + "'";
 		ResultSet rs = null;
 
 		try {
@@ -59,17 +61,21 @@ public class LoginServlet extends HttpServlet{
 		}
 		
 		try {
-			while(rs.next()) {
+			if(rs.next()) {
+				session.setAttribute("username", username);
 				String id = rs.getString("username");
 				String pw = rs.getString("password");
-				System.out.printf("username: %s  password: %s\n", id, pw);
-			}
+				out.println("Welcome " + username);
+			} else {
+		        out.println("Invalid password <a href='index.jsp'>try again</a>");
+		    }
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
 		try {
+			rs.close();
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
