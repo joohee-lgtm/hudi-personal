@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +18,7 @@ public class LoginServlet extends HttpServlet{
 	private Connection conn;
 	private Statement stmt;
 
-	public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException
+	public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
 	{	
 		PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
@@ -38,10 +40,10 @@ public class LoginServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		if(conn != null) {
-			out.println("connected to db");
+			System.err.println("connected to db");
 		}
 		else {
-			out.println("failed to connect to db");
+			System.err.println("failed to connect to db");
 		}
 		
 		try {
@@ -65,9 +67,10 @@ public class LoginServlet extends HttpServlet{
 				session.setAttribute("username", username);
 				String id = rs.getString("username");
 				String pw = rs.getString("password");
-				out.println("Welcome " + username);
+				System.out.println("Welcome, " + username);
+				request.setAttribute("USERNAME", username);
 			} else {
-		        out.println("Invalid password <a href='index.jsp'>try again</a>");
+		        System.out.println("Invalid password. Try again.");
 		    }
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
@@ -82,6 +85,9 @@ public class LoginServlet extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		out.println("closed connection to db");
+		System.err.println("connection closed");
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
+		dispatcher.forward(request, response);
 	}
 }

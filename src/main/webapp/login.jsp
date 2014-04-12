@@ -9,7 +9,7 @@
 <body>
 	<form method="post" action="login.do">
 	username <input type="text" name="username"><br>
-	password <input type="text" name="password">
+	password <input type="password" name="password">
 	<input type="submit" value="submit">
 	</form>
 	
