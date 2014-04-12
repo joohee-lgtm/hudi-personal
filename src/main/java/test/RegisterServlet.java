@@ -1,4 +1,5 @@
 package test;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -14,18 +15,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class LoginServlet extends HttpServlet{
+public class RegisterServlet extends HttpServlet{
+
 	private Connection conn;
 	private Statement stmt;
+	private int rowNum = 0;
+	
+	public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException 
+	{
 
-	public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-	{	
+		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		HttpSession session = request.getSession();
-
 		String url = "jdbc:mysql://localhost:3306/collagejam";
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
@@ -40,54 +44,46 @@ public class LoginServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		if(conn != null) {
-			System.err.println("connected to db");
+			out.println("connected to db");
 		}
 		else {
-			System.err.println("failed to connect to db");
+			out.println("failed to connect to db");
 		}
-		
 		try {
 			stmt = conn.createStatement();
-		} catch (SQLException e1) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			e.printStackTrace();
 		}
-		String sql = "select * from user where username='" + username + "' and password='" + password + "'";
-		ResultSet rs = null;
+		String sql = String.format("insert into user " + "(username, password) values ('%s', '%s');", username, password);
+		try {
+			rowNum  = stmt.executeUpdate(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(rowNum < 1)
+			try {
+				throw new Exception("Couldn't insert data into database");
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
-		try {
-			rs = stmt.executeQuery(sql);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		session.setAttribute("username", username);
 		
 		try {
-			if(rs.next()) {
-				session.setAttribute("username", username);
-				String id = rs.getString("username");
-				String pw = rs.getString("password");
-				System.out.println("Welcome, " + username);
-				request.setAttribute("USERNAME", username);
-			} else {
-		        System.out.println("Invalid password. Try again.");
-		    }
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		try {
-			rs.close();
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.err.println("connection closed");
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
+		request.setAttribute("USERNAME", username);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("signupResult.jsp");
 		dispatcher.forward(request, response);
 	}
+
 }
