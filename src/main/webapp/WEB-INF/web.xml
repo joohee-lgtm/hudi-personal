@@ -12,6 +12,22 @@
 		<servlet-name>Ch3 Beer</servlet-name>
 		<servlet-class>headFirst.BeerSelect</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>CodeReturn</servlet-name>
+		<servlet-class>headFirst.CodeReturn</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>BeerParamTests</servlet-name>
+		<servlet-class>headFirst.TestInitParams</servlet-class>
+		<init-param>
+			<param-name>adminEmail</param-name>
+			<param-value>woonohyo@nhnnext.org</param-value>
+		</init-param>
+		<init-param>
+			<param-name>mainEmail</param-name>
+			<param-value>wonhyo.yi@gmail.com</param-value>
+		</init-param>
+	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>Chapter1 Servlet</servlet-name>
@@ -20,5 +36,13 @@
 	<servlet-mapping>
 		<servlet-name>Ch3 Beer</servlet-name>
 		<url-pattern> /SelectBeer.do </url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>CodeReturn</servlet-name>
+		<url-pattern>/codeReturn</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BeerParamTests</servlet-name>
+		<url-pattern>/Tester.do</url-pattern>
 	</servlet-mapping>
 </web-app>

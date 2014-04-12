@@ -4,12 +4,18 @@
 	<form method="POST" action="SelectBeer.do">
 		Select beer characteristics
 		<p>
-			Color: <Select name:"color" size="1">
+			Color: <select name="color" size="1">
 				<option value="light">light</option>
 				<option value="amber">amber</option>
 				<option value="brown">brown</option>
 				<option value="dark">dark</option>
-			</Select><br> <br>
+			</select><br>
+			BODY:
+			<select name="body" size="1">
+			<option>light
+			<option>medium
+			<option>heavy
+			</select>
 		<center>
 			<input type="SUBMIT">
 		</center>
