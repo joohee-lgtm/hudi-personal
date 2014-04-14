@@ -72,7 +72,7 @@
 		</div>
 	</section>
 	<footer id="footer">
-		푸터
+		footer
 	</footer>
 	<script type="text/javascript" src="./script/main.js"/></script>
 </body>
