@@ -19,15 +19,8 @@
 	<servlet>
 		<servlet-name>BeerParamTests</servlet-name>
 		<servlet-class>headFirst.TestInitParams</servlet-class>
-		<init-param>
-			<param-name>adminEmail</param-name>
-			<param-value>woonohyo@nhnnext.org</param-value>
-		</init-param>
-		<init-param>
-			<param-name>mainEmail</param-name>
-			<param-value>wonhyo.yi@gmail.com</param-value>
-		</init-param>
 	</servlet>
+	
 
 	<servlet-mapping>
 		<servlet-name>Chapter1 Servlet</servlet-name>
@@ -45,4 +38,25 @@
 		<servlet-name>BeerParamTests</servlet-name>
 		<url-pattern>/Tester.do</url-pattern>
 	</servlet-mapping>
+	
+	<context-param>
+		<param-name>adminEmail</param-name>
+		<param-value>woonohyo@nhnnext.org</param-value>
+	</context-param>
+	
+	<servlet>
+		<servlet-name>ListenerTester</servlet-name>
+		<servlet-class>headFirst.ListenerTester</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListenerTester</servlet-name>
+		<url-pattern>/ListenTest.do</url-pattern>
+	</servlet-mapping>
+	<context-param>
+		<param-name>breed</param-name>
+		<param-value> Great Dane</param-value>
+	</context-param>
+	<listener>
+		<listener-class>headFirst.MyServletContextListener</listener-class>
+	</listener>
 </web-app>
