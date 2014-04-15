@@ -29,6 +29,10 @@
     		</video>
 		</div>
 		<div id="intro">
+			<!-- text 태그??? 
+			여기에 접속해서 당신의 URL을 한번 입력해볼래요? 
+			http://validator.w3.org/
+			--> 
 			<text id="title">Your moments, your story.</text>
 			<text id="subtitle">Create, explore and share photo & video collections in beautiful and creative ways</text>
 			<a href="http://google.com">
@@ -42,6 +46,8 @@
 		<div id="aboutApp">
 			<text>Share your story with our creative applications</text>
 			<section>
+			   <!-- id는 html페이지 중에 한군데에서만 사용해야 하고요. querySelector로 찾을때도 첫번째 것만 찾아져요. 이런경우는 class를 사용하는게 맞겠네요 --> 
+			   <!-- 전반적으로 ID를 너무 많이 남용했어요 id를 써야 할 곳은 페이지의 레이아웃 바깥쪽 DIV정도 일 듯 합니다. --> 
 				<div id = "appbox"></div><!--
 				--><div id = "appbox"></div><!--
 				--><div id = "appbox"></div><!--
@@ -74,6 +80,7 @@
 	<footer id="footer">
 		footer
 	</footer>
+	<!-- javascript 는 하단에 배치하는 거 좋아요 -->
 	<script type="text/javascript" src="./script/main.js"/></script>
 </body>
 </html>

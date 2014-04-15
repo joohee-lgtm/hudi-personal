@@ -23,6 +23,14 @@
 /* 브라우저 별로 다른 default css값을 초기화 */
 /* System Name, CSS Version_Creater_Date */
 /* Common */
+
+/* 아래 것이 의미하는 것이 무엇인지 이해하고 사용하세요. 
+ * 이게 뭘 적용한 건지 모르면 원하는 스타일이 적용안되서 고생할 수 있어요.
+ * 
+ * reset부분은 다른 파일의 css에서도 사용할 수 있는 공통부분이죠? 이건 별도 파일로 분리해두는 게 좋아요. 나중에 css파일을 하나로 합쳐서 배포 할 수 잇게 하는 좋은 도구가 있어요.
+ * 그러니 개발단계에서 분리해 두세요.
+*/
+
 body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0}
 body,input,textarea,select,button,table{font-family:'돋움','Dotum','AppleGothic','sans-serif','Coda','Nanum Gothic','Exo';font-size:1em}
 img,fieldset{border:0}
@@ -82,6 +90,15 @@ body {
 	padding-top : 100px;
 	padding-bottom : 100px;
 }
+/* ID선택자는 페이지에 하나여야 합니다. 
+따라서 아래 코드는 그냥 
+#title {
+	
+}
+하면 되는것이죠.
+그런데 주희의 html에서는 id를 여러개 사용해서 이렇게 #intro > #title로 표시할 수밖에 없게 된거군요.
+페이지에 하나의 id만 사용하세요
+*/
 
 #intro > #title {
 	font-size:50px; 
@@ -110,7 +127,7 @@ body {
 	color : #FFFFFF;
 	font-family: 'Exo';
 	background-color: #00FFFB;
-	padding : 10px 0px 10px 0px;
+	padding : 10px 0px 10px 0px;  /* 참고로 이건 10px 0px 이라고 쓴 것과 같아요 */
 }
 
 #intro > a > span > div{
@@ -128,7 +145,7 @@ body {
 	color : white;
 }
 
-#intro > span > a > u {
+#intro > span > a > u { /* U ?? 뭐지?? */
 	color : white;
 }
 
@@ -161,9 +178,11 @@ body {
 		margin : 0px 20px 40px 20px;
 		background-color : #FFFFFF;
 		border-radius: 10px;
-		box-shadow : 0px 5px 8px #B3B3B3;
+		box-shadow : 0px 5px 8px #B3B3B3;  /* Browser지원범위 확인 필요 */
 	}
 }
+
+/* media query는 이해하고 사용할 것 */
 
 @media screen and (max-width:1200px) and (min-width:800px){
 	#aboutApp > section {
@@ -291,6 +310,8 @@ body {
 	display : inline-block;
 	position : absolute;
 }
+
+/* CSS Selector 의 어떤 문법을 잘 사용하면 아래 것은 하나로 처리 할 수 있지 않을까? */
 
 #featured > section > .jar1{
 	height : 100px;
