@@ -47,137 +47,184 @@ body {
 	padding : 5px 10px 5px 10px;
 }
 
+@media screen and (max-width:860px){
+	#header :nth-child(1) {
+		display : block;
+		text-align: center;
+		line-height : 50px;
+		font-family : "Exo";
+		color : #8CFFCF;
+		padding-left : 3px;
+		padding-right : 3px;
+		text-shadow: 0px 0px 1px #004226;
+	}
+	#header :not(:nth-child(1)){
+		display : none;
+	}
 
-#header > #homebt {
-	line-height : 50px;
-	height : 50px;
-	float : left;
-	font-family : "Exo";
-	color : #8CFFCF;
-	border-radius: 2px;
-	padding-left : 3px;
-	padding-right : 3px;
-	text-shadow: 0px 0px 1px #004226;
+}
+@media screen and (min-width:860px){
+	#header > :nth-child(1) {
+		line-height : 50px;
+		height : 50px;
+		float : left;
+		font-family : "Exo";
+		color : #8CFFCF;
+		padding-left : 3px;
+		padding-right : 3px;
+		text-shadow: 0px 0px 1px #004226;
+	}
+
+	#header > :nth-child(2) {
+		line-height : 50px;
+		float : left;
+		display : inline-block;
+		font-family : "Exo";
+	}
+
+	#header > :nth-child(4) {
+		float : right;
+		font-family : "Exo";
+		border : none;
+		color : #FFFFFF;
+		background-color : #00FFFB;
+		width : 100px;
+		font-size: 20px;
+		border-radius: 5px;
+		line-height : 30px;
+		margin-right : 10px;
+		margin-top:10px;
+		text-align: center;
+	}
+
+	#header > form {
+		float : right;
+		display : inline-block;
+		margin-right : 20px;
+	}
+
+	#header > form > .txtbox {
+		width : 140px;
+		border : none;
+		font-size : 20px;
+	}
+
+	#header > form > input[type="text"]{
+		margin-right : 3px;
+	}
+
+	#header > form > input[type="submit"]{
+		font-family : "Exo";
+		border : none;
+		color : #FFFFFF;
+		background-color : #00FFFB;
+		width : 100px;
+		font-size: 20px;
+		border-radius: 5px;
+		line-height : 30px;
+		margin-top:10px;
+		text-align: center;
+	}
 }
 
-#header > #myjambt {
-	line-height : 50px;
-	float : left;
-	display : inline-block;
-	font-family : "Exo";
+@media screen and (min-width:860px){
+	#bgvideo {
+		z-index : -1;
+		position : absolute;
+		top:60px;
+		left : 0px;
+		width : 100%;
+	}
 }
 
-#header > #createbt {
-	float : right;
-	font-family : "Exo";
-	border : none;
-	color : #FFFFFF;
-	background-color : #00FFFB;
-	width : 100px;
-	font-size: 20px;
-	border-radius: 5px;
-	line-height : 30px;
-	margin-right : 10px;
-	margin-top:10px;
-	text-align: center;
+@media screen and (max-width:860px){
+	#bgvideo {
+		z-index : -1;
+		position : absolute;
+		top:60px;
+		left : 0px;
+		min-width : 860px;
+	}
 }
 
-#header > form {
-	float : right;
-	display : inline-block;
-	margin-right : 20px;
+@media screen and (min-width:860px){
+	#intro{
+		font-family : 'Nanum Gothic';
+		color : white;
+		width : 100%;
+		margin-top : 60px;
+		padding-top : 100px;
+		padding-bottom : 100px;
+	}
 }
 
-#header > form > .txtbox {
-	width : 140px;
-	border : none;
-	font-size : 20px;
+@media screen and (max-width:860px){
+	#intro{
+		font-family : 'Nanum Gothic';
+		color : white;
+		width : 100%;
+		margin-top : 60px;
+		padding-top : 20px;
+		padding-bottom : 20px;
+	}
 }
 
-#header > form > input[type="text"]{
-	margin-right : 3px;
-}
-
-#header > form > input[type="submit"]{
-	font-family : "Exo";
-	border : none;
-	color : #FFFFFF;
-	background-color : #00FFFB;
-	width : 100px;
-	font-size: 20px;
-	border-radius: 5px;
-	line-height : 30px;
-	margin-top:10px;
-	text-align: center;
-}
-
-#bgvideo {
-	z-index : -1;
-	position : absolute;
-	top:60px;
-	left : 0px;
-	width : 100%;
-}
-
-#bgvideo > .bgcontent{
-	width : 100%;
-}
-
-#intro{
-	font-family : 'Nanum Gothic';
-	color : white;
-	width : 100%;
-	margin-top : 60px;
-	padding-top : 100px;
-	padding-bottom : 100px;
-}
-
-#intro > #title {
+#intro > :nth-child(1) {
 	font-size:50px; 
 	display : block;
 	text-align : center;
 	padding-bottom : 20px;
 }
 
-#intro > #subtitle {
+#intro > :nth-child(2) {
 	max-width : 700px;
 	font-size : 25px; 
 	display : block;
+	margin : auto;
 	text-align : center;
 	margin : auto;
 	padding-bottom : 50px;
-
 }
 
-#intro > a > span {
+#intro > a {
 	margin : auto;
-	display: block;
-	font-size : 40px;
-	width : 300px;
-	border-radius: 5px;
 	text-align : center;
-	color : #FFFFFF;
+	width : 300px;
+	display : block;
+	font-size : 40px;
+	padding : 15px 10px 15px 10px;
 	font-family: 'Exo';
-	background-color: #00FFFB;
-	padding : 10px 0px 10px 0px;
+	border-radius:5px;
+	background-color : #00FFFB;
+	color : white;
 }
 
-#intro > a > span > div{
-	margin : 7px 0px 0px 20px;
+#intro > a > div {
 	float : left;
+	margin : 7px 0px 0px 20px;
 	width: 40px;
 	height : 40px;
 	background : url(http://d2xx6zcy9l0x7e.cloudfront.net/1397381123/images/sprites/slidesong-homepage.png) no-repeat -80px -177px;
 }
 
-#intro > span {
+/*
+#intro > a > span :before {
+	margin : 7px 0px 0px 20px;
+	width: 40px;
+	height : 40px;
+	background : url(http://d2xx6zcy9l0x7e.cloudfront.net/1397381123/images/sprites/slidesong-homepage.png) no-repeat -80px -177px;
+}
+*/
+
+
+#intro > :nth-child(4) {
 	margin-top : 30px;
 	display :block;
 	text-align : center;
 	color : white;
 }
 
-#intro > span > a > u {
+#intro > :nth-child(4) > a{
 	color : white;
 }
 
@@ -188,7 +235,7 @@ body {
 	padding-bottom : 150px;
 }
 
-#aboutApp > text {
+#aboutApp > span {
 	font-family : 'Nanum Gothic';
 	font-size : 40px;
 	display : block;
@@ -203,7 +250,7 @@ body {
 	max-width : 1200px;
 	}
 
-	#aboutApp > section > #appbox {
+	#aboutApp > section > .appbox {
 		display :inline-block;
 		width : 360px;
 		height : 240px;
@@ -220,7 +267,7 @@ body {
 	max-width : 800px;
 	}
 
-	#aboutApp > section > #appbox {
+	#aboutApp > section > .appbox {
 	display :inline-block;
 	width : 360px;
 	height : 240px;
@@ -237,7 +284,7 @@ body {
 	max-width : 400px;
 	}
 
-	#aboutApp > section > #appbox {
+	#aboutApp > section > .appbox {
 	display :inline-block;
 	width : 320px;
 	height : 200px;
