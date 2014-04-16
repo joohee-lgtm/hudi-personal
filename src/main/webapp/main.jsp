@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,22 +6,19 @@
 </head>
 <body>
 	<header id="header">
-		<span id="homebt"> CollageJam </span>
-		<span id="myjambt" > myJamJars </span>
-		<button> create </button>
-		<span id="singIn">Sign In</span>
+		<a id="homebt"> CollageJam </a>
+		<a id="myjambt" > myJamJars </a>
 		<form>
-			<input type="text">
-			<input type="password">
-			<button> login </button>
+			<input type="text" class="txtbox"/><!--
+			--><input type="password" class="txtbox"/>
+			<input type="submit" value="login"></input>
 		</form>
-		<div id ="singbox">
-		</div>
+		<a id="createbt">create</a>
 	</header>
 	<section id="contents">
 		<!--콜라쥬잼 소개 페이지-->
 		<div id="bgvideo">
-			<video autoplay loop muted poster="https://www.themusicbed.com/video/posters/home-the-music-bed.jpg" id="bgcontent">
+			<video autoplay loop muted poster="https://www.themusicbed.com/video/posters/home-the-music-bed.jpg" id="bgcontent" width="100%">
    				<source src="https://www.themusicbed.com/video/home-the-music-bed.mp4" type="video/mp4">
     			<source src="https://www.themusicbed.com/video/home-the-music-bed.webm" type="video/webm">
     		</video>

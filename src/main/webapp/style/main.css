@@ -37,48 +37,97 @@ body {
 
 #header{
 	position : fixed;
+	font-size : 30px;
 	top:0;
 	left : 0;
 	width : 100%;
 	height : 50px;
 	background-color: #474747;
 	color : white;
+	padding : 5px 10px 5px 10px;
 }
 
-#header > span {
-	display : inline-block;
+
+#header > #homebt {
+	line-height : 50px;
+	height : 50px;
+	float : left;
+	font-family : "Exo";
+	color : #8CFFCF;
+	border-radius: 2px;
+	padding-left : 3px;
+	padding-right : 3px;
+	text-shadow: 0px 0px 1px #004226;
 }
 
-#header > button {
+#header > #myjambt {
+	line-height : 50px;
+	float : left;
 	display : inline-block;
+	font-family : "Exo";
+}
+
+#header > #createbt {
+	float : right;
+	font-family : "Exo";
+	border : none;
+	color : #FFFFFF;
+	background-color : #00FFFB;
+	width : 100px;
+	font-size: 20px;
+	border-radius: 5px;
+	line-height : 30px;
+	margin-right : 10px;
+	margin-top:10px;
+	text-align: center;
 }
 
 #header > form {
+	float : right;
 	display : inline-block;
+	margin-right : 20px;
 }
 
-#header > #signbox {
-	background-color: red;
+#header > form > .txtbox {
+	width : 140px;
+	border : none;
+	font-size : 20px;
+}
+
+#header > form > input[type="text"]{
+	margin-right : 3px;
+}
+
+#header > form > input[type="submit"]{
+	font-family : "Exo";
+	border : none;
+	color : #FFFFFF;
+	background-color : #00FFFB;
+	width : 100px;
+	font-size: 20px;
+	border-radius: 5px;
+	line-height : 30px;
+	margin-top:10px;
+	text-align: center;
 }
 
 #bgvideo {
 	z-index : -1;
 	position : absolute;
-	top:50px;
+	top:60px;
 	left : 0px;
 	width : 100%;
 }
 
 #bgvideo > .bgcontent{
-	display : block;
-	width : 100px;
+	width : 100%;
 }
 
 #intro{
 	font-family : 'Nanum Gothic';
 	color : white;
 	width : 100%;
-	margin-top : 50px;
+	margin-top : 60px;
 	padding-top : 100px;
 	padding-bottom : 100px;
 }
@@ -92,7 +141,7 @@ body {
 
 #intro > #subtitle {
 	max-width : 700px;
-	font-size:25px; 
+	font-size : 25px; 
 	display : block;
 	text-align : center;
 	margin : auto;
