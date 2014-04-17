@@ -20,8 +20,6 @@
 		<servlet-name>BeerParamTests</servlet-name>
 		<servlet-class>headFirst.TestInitParams</servlet-class>
 	</servlet>
-	
-
 	<servlet-mapping>
 		<servlet-name>Chapter1 Servlet</servlet-name>
 		<url-pattern>/Serv1</url-pattern>
@@ -38,12 +36,12 @@
 		<servlet-name>BeerParamTests</servlet-name>
 		<url-pattern>/Tester.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<context-param>
 		<param-name>adminEmail</param-name>
 		<param-value>woonohyo@nhnnext.org</param-value>
 	</context-param>
-	
+
 	<servlet>
 		<servlet-name>ListenerTester</servlet-name>
 		<servlet-class>headFirst.ListenerTester</servlet-class>
@@ -52,6 +50,7 @@
 		<servlet-name>ListenerTester</servlet-name>
 		<url-pattern>/ListenTest.do</url-pattern>
 	</servlet-mapping>
+
 	<context-param>
 		<param-name>breed</param-name>
 		<param-value> Great Dane</param-value>
@@ -59,4 +58,17 @@
 	<listener>
 		<listener-class>headFirst.MyServletContextListener</listener-class>
 	</listener>
+
+	<servlet>
+		<servlet-name>MyTestInit</servlet-name>
+		<jsp-file>/Testinit.jsp</jsp-file>
+		<init-param>
+			<param-name>email</param-name>
+			<param-value>woonohyo@nhnnext.org</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MyTestInit</servlet-name>
+		<url-pattern>/TestInit.jsp</url-pattern>
+	</servlet-mapping>
 </web-app>
