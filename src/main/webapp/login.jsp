@@ -3,6 +3,7 @@
 <!DOCTYPE>
 <html>
 <head>
+<!-- 페이지의 인코딩은 utf-8 을 사용하는 게 일반적입니다 -->
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Insert title here</title>
 </head>
