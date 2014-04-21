@@ -35,5 +35,6 @@ public class BeerSelect extends HttpServlet {
 		
 		InputStream input = req.getInputStream();
 		out.println("<br>input: " + input);
+		
 	}
 }
