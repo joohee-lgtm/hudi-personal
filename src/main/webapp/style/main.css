@@ -35,78 +35,87 @@ body {
 	margin : 0px;
 }
 
+
+/* header 공통 */
 #header{
 	position : fixed;
-	font-size : 30px;
 	top:0;
 	left : 0;
 	width : 100%;
 	height : 50px;
 	background-color: #474747;
-	color : white;
 	padding : 5px 10px 5px 10px;
+	font-family : "Exo";
+	color : #FFFFFF;
 }
 
+#header > a:nth-child(1){
+	font-size : 30px;
+	color : #8CFFCF;
+	text-shadow: 0px 0px 1px #004226;
+	line-height : 50px;
+}
+
+/* 창이 860보다 작아질 때 header */
 @media screen and (max-width:860px){
-	#header :nth-child(1) {
+	#header > a:nth-child(1) {
 		display : block;
 		text-align: center;
-		line-height : 50px;
-		font-family : "Exo";
-		color : #8CFFCF;
-		padding-left : 3px;
-		padding-right : 3px;
-		text-shadow: 0px 0px 1px #004226;
 	}
-	#header :not(:nth-child(1)){
+
+	#header > a:not(:nth-child(1)){
 		display : none;
 	}
 
+	#header > form{
+		display : none;
+	}
 }
+
+/* 창이 860보다 커질 때 header */
 @media screen and (min-width:860px){
-	#header > :nth-child(1) {
-		line-height : 50px;
-		height : 50px;
+	#header > a:nth-child(1) {
 		float : left;
-		font-family : "Exo";
-		color : #8CFFCF;
-		padding-left : 3px;
 		padding-right : 3px;
-		text-shadow: 0px 0px 1px #004226;
 	}
 
-	#header > :nth-child(2) {
-		line-height : 50px;
+	#header > a:nth-child(2) {
 		float : left;
-		display : inline-block;
-		font-family : "Exo";
+		font-size : 30px;
+		color : white;
+		line-height : 50px;
 	}
 
-	#header > :nth-child(4) {
+	/*
+		#header > a:nth-child(3) - x
+		#header > a:nth-child(4) - o
+		header의 child 중에서 3번째 a를 지칭하는 것이 아니라, 
+		header의 child 중에서 4번째는 a라고 알려주는 것
+	*/
+	#header > a:nth-child(4) {
 		float : right;
-		font-family : "Exo";
-		border : none;
-		color : #FFFFFF;
-		background-color : #00FFFB;
 		width : 100px;
-		font-size: 20px;
-		border-radius: 5px;
-		line-height : 30px;
 		margin-right : 10px;
-		margin-top:10px;
+		margin-top : 10px;
+		border : none;
+		border-radius: 5px;
+		font-size: 25px;		
 		text-align: center;
+		background-color : #020A02;
+		line-height : 30px;
 	}
 
 	#header > form {
 		float : right;
-		display : inline-block;
 		margin-right : 20px;
+		margin-top:10px;
+		font-size : 22px;
 	}
 
 	#header > form > .txtbox {
-		width : 140px;
+		width : 150px;
 		border : none;
-		font-size : 20px;
+		padding-left : 3px;
 	}
 
 	#header > form > input[type="text"]{
@@ -114,304 +123,381 @@ body {
 	}
 
 	#header > form > input[type="submit"]{
-		font-family : "Exo";
+		height : 30px;
 		border : none;
-		color : #FFFFFF;
-		background-color : #00FFFB;
-		width : 100px;
-		font-size: 20px;
 		border-radius: 5px;
-		line-height : 30px;
-		margin-top:10px;
+		background-color : #020A02;
+		color : #FFFFFF;
 		text-align: center;
+		font-family : "Exo";
+		padding-left : 5px;
+		padding-right : 5px;
 	}
 }
 
-@media screen and (min-width:860px){
-	#bgvideo {
-		z-index : -1;
-		position : absolute;
-		top:60px;
-		left : 0px;
+
+/* 배경 비디오 */
+#bgvideo {
+	z-index : -1;
+	position : absolute;
+	top:60px;
+	left : 0px;
+}
+
+@media screen and (max-width : 1400px){
+	#bgvideo{
+		width : 1400px;
+	}
+
+	#bgvideo > video {
+		width : 1400px;
+	}
+}
+
+@media screen and (min-width : 1400px){
+	#bgvideo{
+		width : 100%;
+	}
+
+	#bgvideo > video{
 		width : 100%;
 	}
 }
 
-@media screen and (max-width:860px){
-	#bgvideo {
-		z-index : -1;
-		position : absolute;
-		top:60px;
-		left : 0px;
-		min-width : 860px;
+/* 인트로 부분 시작 */
+#intro {
+	margin-top : 60px;
+	height : 540px;
+	width : 100%;
+	font-family : 'Nanum Gothic';
+	color : #FFFFFF;
+}
+
+/* Your moments, your story. */
+#intro > span:nth-child(1) {
+	display : block;
+	text-align : center;
+}
+
+@media screen and (min-width : 860px){
+	#intro > span:nth-child(1) {
+		font-size:50px; 
+		padding-bottom : 20px;
+		padding-top : 80px;
 	}
 }
 
-@media screen and (min-width:860px){
-	#intro{
-		font-family : 'Nanum Gothic';
-		color : white;
-		width : 100%;
-		margin-top : 60px;
-		padding-top : 100px;
-		padding-bottom : 100px;
+@media screen and (max-width : 860px){
+	#intro > span:nth-child(1) {
+		font-size : 40px;
+		padding-bottom : 15px;
+		padding-top : 150px;
 	}
 }
 
-@media screen and (max-width:860px){
-	#intro{
-		font-family : 'Nanum Gothic';
-		color : white;
-		width : 100%;
-		margin-top : 60px;
-		padding-top : 20px;
+/* Create, explore ~ ways */
+#intro > span:nth-child(2) { 
+	display : block;
+	margin : auto;
+	text-align : center;
+	margin : auto;
+}
+
+@media screen and (min-width : 860px){
+	#intro > span:nth-child(2) {
+		max-width : 700px;
+		font-size : 25px;
+		padding-bottom : 50px;
+	}
+}
+
+@media screen and (max-width : 860px){
+	#intro > span:nth-child(2){
+		max-width : 400px;
+		font-size : 20px; 
 		padding-bottom : 20px;
 	}
 }
 
-#intro > :nth-child(1) {
-	font-size:50px; 
-	display : block;
-	text-align : center;
-	padding-bottom : 20px;
-}
-
-#intro > :nth-child(2) {
-	max-width : 700px;
-	font-size : 25px; 
-	display : block;
-	margin : auto;
-	text-align : center;
-	margin : auto;
-	padding-bottom : 50px;
-}
-
+/* facebook create button * sign up with email*/
 #intro > a {
+	display : block;
 	margin : auto;
 	text-align : center;
-	width : 300px;
-	display : block;
-	font-size : 40px;
-	padding : 15px 10px 15px 10px;
 	font-family: 'Exo';
 	border-radius:5px;
 	background-color : #00FFFB;
 	color : white;
 }
 
-#intro > a > div {
-	float : left;
-	margin : 7px 0px 0px 20px;
-	width: 40px;
-	height : 40px;
-	background : url(http://d2xx6zcy9l0x7e.cloudfront.net/1397381123/images/sprites/slidesong-homepage.png) no-repeat -80px -177px;
-}
-
-/*
-#intro > a > span :before {
-	margin : 7px 0px 0px 20px;
-	width: 40px;
-	height : 40px;
-	background : url(http://d2xx6zcy9l0x7e.cloudfront.net/1397381123/images/sprites/slidesong-homepage.png) no-repeat -80px -177px;
-}
-*/
-
-
-#intro > :nth-child(4) {
-	margin-top : 30px;
+#intro > span:nth-child(4) {
 	display :block;
 	text-align : center;
 	color : white;
 }
 
-#intro > :nth-child(4) > a{
+#intro > span:nth-child(4) > a{
 	color : white;
 }
 
+@media screen and (min-width : 860px){
+	#intro > a {
+		width : 300px;
+		font-size : 40px;
+		padding : 15px 10px 15px 10px;
+	}
+
+	#intro > a > div {
+		width: 40px;
+		height : 40px;
+		float : left;
+		margin : 7px 0px 0px 20px;
+		background : url(http://d2xx6zcy9l0x7e.cloudfront.net/1397381123/images/sprites/slidesong-homepage.png) no-repeat -80px -177px;
+	}
+
+	#intro > span:nth-child(4) {
+		margin-top : 30px;
+	}
+}
+
+@media screen and (max-width : 860px){
+	#intro > a {
+		width : 180px;
+		font-size : 30px;
+		padding : 5px 0px 5px 0px;
+	}
+
+	#intro > a > div {
+		display : none;
+	}
+
+	#intro > span:nth-child(4) {
+		margin-top : 10px;
+	}
+}
+/* 인트로 부분 끝 */
+		/*
+		#intro > a > span :before {
+			margin : 7px 0px 0px 20px;
+			width: 40px;
+			height : 40px;
+			background : url(http://d2xx6zcy9l0x7e.cloudfront.net/1397381123/images/sprites/slidesong-homepage.png) no-repeat -80px -177px;
+		}
+		*/
+
+
+
+/* 앱 소개 부분 시작 */
 #aboutApp{
-	background-color: #F0F0F0;
 	width : 100%;
 	padding-top : 100px;
 	padding-bottom : 150px;
+	background-color: #E9F2F0;
 }
 
 #aboutApp > span {
-	font-family : 'Nanum Gothic';
-	font-size : 40px;
 	display : block;
 	text-align : center;
-	margin : 0px 20px 100px 20px;
+	font-family : 'Nanum Gothic';
+	font-size : 40px;
+	padding : 0px 20px 100px 20px;
 }
 
-@media screen and (min-width:1200px){
-
-	#aboutApp > section {
+#aboutApp > div {
 	margin : auto;
-	max-width : 1200px;
-	}
-
-	#aboutApp > section > .appbox {
-		display :inline-block;
-		width : 360px;
-		height : 240px;
-		margin : 0px 20px 40px 20px;
-		background-color : #FFFFFF;
-		border-radius: 10px;
-		box-shadow : 0px 5px 8px #B3B3B3;
-	}
 }
 
-@media screen and (max-width:1200px) and (min-width:800px){
-	#aboutApp > section {
-	margin : auto;
-	max-width : 800px;
-	}
-
-	#aboutApp > section > .appbox {
+#aboutApp > div > .appbox {
 	display :inline-block;
+	margin : 15px 20px;
+	background-color : #FFFFFF;
+	border-radius: 10px;
+	box-shadow : 0px 5px 8px #B3B3B3;
 	width : 360px;
 	height : 240px;
-	margin : 0px 20px 40px 20px;
-	background-color : #FFFFFF;
-	border-radius: 10px;
-	box-shadow : 0px 5px 8px #B3B3B3;
+}
+
+
+/* 창의 크기가 1200 보다 클 때 3xn*/
+@media screen and (min-width:1200px){
+	#aboutApp > div {
+		max-width : 1200px;
 	}
 }
 
+/* 창의 크기가 1200 보다 작고, 800보다 클 때 2xn*/
+@media screen and (max-width:1200px) and (min-width:800px){
+	#aboutApp > div {
+		max-width : 800px;
+	}
+}
+
+/* 창의 크기가 800 보다 작을 때 1xn*/
 @media screen and (max-width:800px){
-	#aboutApp > section {
-	margin : auto;
-	max-width : 400px;
-	}
-
-	#aboutApp > section > .appbox {
-	display :inline-block;
-	width : 320px;
-	height : 200px;
-	margin : 0px 40px 20px 40px;
-	background-color : #FFFFFF;
-	border-radius: 10px;
-	box-shadow : 0px 5px 8px #B3B3B3;
+	#aboutApp > div {
+		max-width : 400px;
 	}
 }
+/* 앱 소개 끝 */
 
+
+/* 실시간 전체 시청 수 시작 */
 #countTotalView{
-	background: url(https://farm3.staticflickr.com/2883/9162883727_345c1a9ff1_o.jpg);
-	/*background-repeat: no-repeat;*/
-    background-size: cover;
-
 	width : 100%;
+	background : url(https://farm3.staticflickr.com/2883/9162883727_345c1a9ff1_o.jpg);
+    background-size : cover;
+   	font-family: 'Exo';
 	padding : 100px 0px 100px 0px;
 }
 
-#countTotalView > .countView {
-	font-family: 'Exo';
-	color : #FFFFFF;
-	text-align: center;
+#countTotalView > span {
 	display : block;
-	margin-top : 30px;
-	margin-bottom : 30px;
+	text-align: center;
+	color : #FFFFFF;
+	padding : 30px 0px;
 }
 
-#countTotalView > .num {
+#countTotalView > span:nth-child(1) {
 	font-size : 100px;
 }
 
 #countTotalView > div {
 	display : block;
-	margin : 30px auto;
+	margin : auto;
 	width : 110px;
 	height: 110px;
 	background : url(http://d2xx6zcy9l0x7e.cloudfront.net/1397381123/images/sprites/slidesong-homepage.png) no-repeat 0 -67px;
 }
 
-#countTotalView > .comment {
+#countTotalView > span:nth-child(3) {
 	font-size : 35px;
 }
 
-#countTotalView > .asfeatured {
+#countTotalView > span:nth-child(4) {
 	font-size : 20px;
 	font-family: 'Nanum Gothic';
-	color : #FFFFFF;
-	text-align: center;
-	display : block;
-	margin-top : 30px;
-	margin-bottom : 30px;
-
 }
 
-#countTotalView > .asfeatured > div{
+#countTotalView > span:nth-child(4) > div{
 	display : inline-block;
-	margin-left : 3px;
 	width : 100px;
 	height : 25px;
+	margin-left : 3px;
 	background: url(http://nhnnext.org/img/bi/next_bi.png);
 	background-size: 100px;
-	background-color:rgba(0, 0, 0, 0.5)
 }
+/* 실시간 전체 시청 수 끝 */
 
 
+/* 인기 비디오 보여주기 시작 */
 #featured{
 	width : 100%;
-	border : 1px solid;
-	padding-top : 100px;
-	padding-bottom : 50px;
+	height : 800px;
+	padding : 100px 0px;
 }
 
 #featured > span {
-	margin : auto;
-	margin-bottom : 50px;
 	display : block;
+	margin : auto;
+	margin-bottom : 100px;
+	width : 400px;
 	font-size : 60px;
-	width : 300px;
-	border-radius: 10px;
 	text-align : center;
-	color : #FFFFFF;
+	border-radius: 10px;
 	font-family: 'Exo';
+	color : #FFFFFF;
 	background-color: #00FFFB;
 }
 
-#featured > #jargrid {
-	margin : auto;
-	max-width : 1080px;
+#featured > div:nth-child(2) {
+	z-index : -10;
 	position : relative;
+	margin : auto;
+	max-width : 1200px;
 	border : 1px solid;
 }
 
-#featured > section > .jamjar {
-	margin : 0px 20px 40px 20px;
+#featured > div > .jamjar {
+	z-index : -10;
+	position : absolute;
+	top : 0px;
+	left : 0px;
+	margin : 15px 20px;
+	width : 360px;
 	background-color : #FFFFFF;
 	border-radius: 10px;
 	box-shadow : 0px 5px 8px #B3B3B3;
-	width : 320px;
-	display : inline-block;
-	position : absolute;
 }
 
-#featured > section > .jar1{
+#featured > div > .jar1{
 	height : 100px;
 }
 
-#featured > section > .jar2{
+#featured > div > .jar2{
 	height : 200px;
 }
 
-#featured > section > .jar3{
+#featured > div > .jar3{
 	height : 80px;
 }
 
-#featured > section > .jar4{
+#featured > div > .jar4{
 	height : 300px;
 }
 
-#featured > section > .jar5{
+#featured > div > .jar5{
 	height : 150px;
 }
 
-#featured > section > .jar6{
+#featured > div > .jar6{
 	height : 100px;
 }
 
-#featured > section > .jar7{
+#featured > div > .jar7{
 	height : 170px;
+}
+
+#featured > div > .jar8{
+	height : 100px;
+}
+
+#featured > div > .jar9{
+	height : 200px;
+}
+
+#featured > div > .jar10{
+	height : 80px;
+}
+
+#featured > div > .jar11{
+	height : 300px;
+}
+
+#featured > div > .jar12{
+	height : 150px;
+}
+
+#featured > div > .jar13{
+	height : 100px;
+}
+
+#featured > div > .jar14{
+	height : 170px;
+}
+
+#featured > div > .jar15{
+	height : 300px;
+}
+
+#featured > div > .jar16{
+	height : 150px;
+}
+
+#featured > div > .jar17{
+	height : 100px;
+}
+
+#footer {
+	border : 1px solid;
+	height : 200px;
 }
