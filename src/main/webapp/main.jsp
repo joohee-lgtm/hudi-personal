@@ -3,6 +3,7 @@
 <!DOCTYPE>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="./style/common.css"/>
 	<link rel="stylesheet" type="text/css" href="./style/main.css"/>
 	<meta charset="utf-8">
 </head>
