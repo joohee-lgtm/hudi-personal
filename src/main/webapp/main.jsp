@@ -84,6 +84,7 @@
 				--><div class="jamjar jar16">16</div><!--
 				--><div class="jamjar jar17">17</div>
 			</div>
+			<span>Start</span>
 		</section>
 	</section>
 
