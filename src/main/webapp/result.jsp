@@ -1,4 +1,4 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -10,15 +10,28 @@
 <body>
 <div id="wrap">
 	<!--결과가 나타날 부분-->
-	<section id="preview">
-		<div>
-			<img src="http://prodlnecdataa.blob.core.windows.net/www-lnnewyork-com/no-image.gif"></div>
-		<div>
-			<img src="http://prodlnecdataa.blob.core.windows.net/www-lnnewyork-com/no-image.gif"></div>
-		<div>
-			<img src="http://prodlnecdataa.blob.core.windows.net/www-lnnewyork-com/no-image.gif"></div>
-		<div>
-			<img src="http://prodlnecdataa.blob.core.windows.net/www-lnnewyork-com/no-image.gif"></div>
+	<section>
+		<div id="setting">
+			<form>
+				<input type="text" value="title">
+				<textarea>tag</textarea>
+				<input type="submit"/>
+			</form>
+			<input type = "text">
+			<input type = "button" value="play">
+		</div>
+		<div id="slide">
+			<div>
+				<img src="./images/nophoto.jpg"></div>
+			<div>
+				<img src="./images/nophoto.jpg"></div>
+			<div>
+				<img src="./images/nophoto.jpg"></div>
+			<div>
+				<img src="./images/nophoto.jpg"></div>
+		</div>
+	</section>
+	<section id="temparea">
 	</section>
 </div>
 	<script type="text/javascript" src="./script/result.js"/></script>
