@@ -18,7 +18,8 @@
 				<input type="submit"/>
 			</form>
 			<input type = "text">
-			<input type = "button" value="play">
+			<button type="button">play</button>
+			<button type="button">stop</button>
 		</div>
 		<div id="slide">
 			<div>
@@ -30,7 +31,13 @@
 			<div>
 				<img src="./images/nophoto.jpg"></div>
 		</div>
-	</section>
+
+
+<!-- <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/146843791&amp;auto_play=true&amp;hide_related=false&amp;start=100&amp;visual=true"></iframe>
+ -->
+
+
+</section>
 	<section id="temparea">
 	</section>
 </div>

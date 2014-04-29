@@ -41,7 +41,7 @@ var slide = document.getElementById("slide").children;
 var temparea = document.getElementById("temparea");
 var selected = getSection(slide, 0, 0);
 
-for( var i=0 ; i<imgArray.length ; i++ ){
+for( var i=1 ; i<imgArray.length ; i++ ){
 	var img = new Image();
 	img.src = imgArray[i];
 	temparea.appendChild(img);
@@ -53,41 +53,57 @@ firstimg.onload = function(){
 	selected.removeChild(selected.children[0]);
 	selected.appendChild(firstimg);
 	selected.children[0].width = "400";
-}
+};
 
 
 window.onload = function(){
 
 	var count = 0;
-	var max = temparea.children.length;
 	var intervalId = null;
 
 	var time;
-	var getTimeBt = document.getElementById("setting").children[2];
+	var playBt = document.getElementById("setting").children[2];
+	var stopBt = document.getElementById("setting").children[3];
+
+	console.log(stopBt);
+	stopBt.onclick = function(){
+		console.log("stop");
+		clearInterval(intervalId);
+		var remain = count%(temparea.children.length+1);
+		for(var i=0; i<8-remain ; i++){
+			temparea.appendChild(selected.children[0]);
+			selected.appendChild(temparea.children[0]);
+		}
+		count = 0;
+	};
 
 	for (var i=0; i<temparea.children.length ; i++){
 		temparea.children[i].width = "400";
 	}
 
-	getTimeBt.onclick = function(){
+	playBt.onclick = function(){
 		time = document.getElementById("setting").children[1].value;
 		function setSlide(){
+			console.log(count);
 			temparea.appendChild(selected.children[0]);
 			selected.appendChild(temparea.children[0]);
-			
-			// interval count
 			count++;
-			if(count == max){
-				count = 0;
-				clearInterval(intervalId);
-			}
 		}
-		intervalId = setInterval(setSlide, time);
-		temparea.appendChild(selected.children[0]);
-		selected.appendChild(temparea.children[0]);
-	}
+		if (count == 0){
+			intervalId = setInterval(setSlide, time);
+		} else {
+			clearInterval(intervalId);
+			var remain = count%(temparea.children.length+1);
+			for(var i=0; i<8-remain ; i++){
+				temparea.appendChild(selected.children[0]);
+				selected.appendChild(temparea.children[0]);
+			}
+			count = 0;
+			intervalId = setInterval(setSlide, time);
+		}
+	};
 
-}
+};
 
 
 // intervalId = setInterval(intervalIncrement, 2000);
