@@ -52,7 +52,7 @@ firstimg.src = imgArray[0];
 firstimg.onload = function(){
 	selected.removeChild(selected.children[0]);
 	selected.appendChild(firstimg);
-	selected.children[0].width = "400";
+	selected.children[0].height = "300";
 };
 
 
@@ -62,10 +62,8 @@ window.onload = function(){
 	var intervalId = null;
 
 	var time;
-	var playBt = document.getElementById("setting").children[2];
-	var stopBt = document.getElementById("setting").children[3];
-
-	console.log(stopBt);
+	var playBt = document.getElementById('setting').getElementsByTagName('Button')[0];
+	var stopBt = document.getElementById('setting').getElementsByTagName('Button')[1];
 	stopBt.onclick = function(){
 		console.log("stop");
 		clearInterval(intervalId);
@@ -82,7 +80,7 @@ window.onload = function(){
 	}
 
 	playBt.onclick = function(){
-		time = document.getElementById("setting").children[1].value;
+		time = document.getElementById("setting").children[1].children[0].value;
 		function setSlide(){
 			console.log(count);
 			temparea.appendChild(selected.children[0]);
@@ -90,7 +88,7 @@ window.onload = function(){
 			count++;
 		}
 		if (count == 0){
-			intervalId = setInterval(setSlide, time);
+			intervalId = setInterval(setSlide, time*10);
 		} else {
 			clearInterval(intervalId);
 			var remain = count%(temparea.children.length+1);
@@ -99,7 +97,7 @@ window.onload = function(){
 				selected.appendChild(temparea.children[0]);
 			}
 			count = 0;
-			intervalId = setInterval(setSlide, time);
+			intervalId = setInterval(setSlide, time*10);
 		}
 	};
 

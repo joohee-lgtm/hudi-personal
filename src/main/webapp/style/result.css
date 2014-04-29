@@ -1,22 +1,55 @@
+
 #wrap{
 	border : 1px solid;
+	font-family: 'Nanum Gothic';
 }
 
 #wrap section{
 	width : 100%;
 }
 
+#setting {
+	width :100%;
+}
+
+#setting > form:nth-child(1){
+	display: block;
+	text-align: center;
+	margin : 10px auto;
+	line-height: 0px;
+}
+
+#setting > form:nth-child(1) > input,textarea{
+	font-family: 'Nanum Gothic';
+}
+
+#setting > form:nth-child(1) > input[type="text"]{
+	width : 200px;
+	height : 30px;
+}
+
+
+#setting > form:nth-child(1) > input,textarea{
+	display : inline-block;
+	font-family: 'Nanum Gothic';
+}
+
+#setting > div:nth-child(2){
+	text-align: center;
+	margin : 10px auto;
+}
+
 #slide {
 	width : 800px;
 	height : 600px;
-	margin : auto;
+	margin : 20px auto;
+	box-shadow: 1px 1px 5px #888888;
 }
 
 #slide div{
 	width : 400px;
 	height : 300px;
 	float : left;
-	background-color: yellow;
 }
 
 #slide div img {
@@ -24,7 +57,8 @@
 	margin : auto;
 }
 
-
 #temparea img{
+	width : 0px;
 	display: block;
+
 }
