@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +19,7 @@
 		<a href="./create.jsp">create</a>
 	</header>
 	<section id="contents">
-		<!--챙쩍��챘��쩌챙짜짭챙��쩌 챙����챗째�� 챠����챙��쨈챙짠��-->
+		<!--梨�姨�占쏙옙梨�占쏙옙姨�梨�吏�吏�梨�占쏙옙姨� 梨�占쏙옙占쏙옙梨�吏몌옙占� 梨�占쏙옙占쏙옙梨�占쏙옙夷�梨�吏�占쏙옙-->
 		<section id="bgvideo">
 			<video autoplay loop muted poster="https://www.themusicbed.com/video/posters/home-the-music-bed.jpg">
    				<source src="https://www.themusicbed.com/video/home-the-music-bed.mp4" type="video/mp4">
@@ -40,7 +40,7 @@
 			</span>
 		</section>
 
-		<!--iOS 챙��짹 챙����챗째��-->
+		<!--iOS 梨�占쏙옙吏� 梨�占쏙옙占쏙옙梨�吏몌옙占�-->
 		<section id="aboutApp">
 			<span>Share your story with our creative applications</span>
 			<div>
@@ -53,7 +53,7 @@
 			</div>
 		</section>
 
-		<!--챙��짚챙����챗째�� 챙����챙짼쨈 챙����챙짼짯챙����-->
+		<!--梨�占쏙옙吏�梨�占쏙옙占쏙옙梨�吏몌옙占� 梨�占쏙옙占쏙옙梨�吏쇱�� 梨�占쏙옙占쏙옙梨�吏쇱㎝梨�占쏙옙占쏙옙-->
 		<div id="countTotalView">
 			<span> 999,999,999 </span>
 			<div></div>
@@ -62,7 +62,7 @@
 				As featured in:<div></div>
 			</span>
 		</div>
-		<!-- 챙��쨍챗쨍째 챘쨔��챘����챙��짚 챘쨀쨈챙��짭챙짙쩌챗쨍째 -->
+		<!-- 梨�占쏙옙夷�梨�夷�吏� 梨�夷�占쏙옙梨�占쏙옙占쏙옙梨�占쏙옙吏� 梨�夷�夷�梨�占쏙옙吏�梨�吏�姨�梨�夷�吏� -->
 		<section id="featured">
 			<span>FEATURED</span>
 			<div>
