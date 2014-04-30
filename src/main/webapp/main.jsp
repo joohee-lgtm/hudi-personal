@@ -15,7 +15,7 @@
 			--><input type="texst" class="txtbox"/>
 			<input type="submit" value="login"/>
 		</form>
-		<a>create</a>
+		<a href="./create.jsp">create</a>
 	</header>
 	<section id="contents">
 		<section id="bgvideo">
