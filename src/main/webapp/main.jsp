@@ -15,7 +15,7 @@
 			--><input type="texst" class="txtbox"/>
 			<input type="submit" value="login"/>
 		</form>
-		<a>create</a>
+		<a href="./create.jsp">create</a>
 	</header>
 	<section id="contents">
 		<section id="bgvideo">
@@ -27,14 +27,14 @@
 		<section id="intro">
 			<span>Your moments, your story.</span>
 			<span>Create, explore and share photo & video collections in beautiful and creative ways</span>
-			<a href="http://google.com"> 
+			<a href="./create.jsp"> 
 				<div></div>
 				<span>
 					Start Now
 				</span>
 			</a>
 			<span> 
-				or <a href="http://google.com"><u>Sign up</u></a> with Eamil 
+				or <a href="./signup.jsp"><u>Sign up</u></a> with Eamil 
 			</span>
 		</section>
 

@@ -57,6 +57,7 @@
 		header의 child 중에서 4번째는 a라고 알려주는 것
 	*/
 	#header > a:nth-child(4) {
+		color : white;
 		float : right;
 		width : 100px;
 		margin-right : 10px;
