@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="./style/common.css"/>
@@ -84,6 +84,7 @@
 				--><div class="jamjar jar16">16</div><!--
 				--><div class="jamjar jar17">17</div>
 			</div>
+			<span>Start</span>
 		</section>
 	</section>
 

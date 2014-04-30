@@ -1,0 +1,99 @@
+
+#wrap{
+	font-family: 'Nanum Gothic';
+	margin : auto;
+}
+
+#wrap section{
+	position: relative;
+	margin : auto;
+	width : 1200px;
+}
+
+/*슬라이드가 재생되는 부분*/
+#slide {
+	position: relative;
+	float: left;
+	width : 800px;
+	height : 600px;
+	box-shadow: 1px 1px 5px #888888;
+}
+
+#slide div{
+	width : 800px;
+	height : 600px;
+	/*float : left;*/
+}
+
+#slide div img {
+	margin : auto;
+}
+
+/*오디오가 재생되는 부분*/
+#audio {
+	margin-left: 800px;
+	width : 400px;
+	height : 250px;
+	border : 1px solid;
+	margin-bottom: 10px;
+
+  	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#audio embed:nth-child(1){
+	width : 350px;
+	margin : auto;
+	border : 1px solid red;
+}
+
+/*영상과 관련된 설정을 보여주는 곳*/
+#setting {
+	width : 400px;
+	display: block;
+	margin-left: 800px;
+  	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*range*/
+#setting > div:nth-child(1){
+	text-align: center;
+	margin : 10px auto;
+}
+
+#setting > form:nth-child(2){
+	width : 350px;
+	margin : auto;
+	line-height: 0px;
+}
+
+#setting > form:nth-child(2) > input[type="text"],textarea{
+	margin-bottom: 10px;
+	padding : 5px;
+	border : none;
+	display: block;
+	width : 350px;
+	font-family: 'Nanum Gothic';
+	background-color: #E6E6E6;
+}
+
+#setting > form:nth-child(2) > input[type="submit"]{
+	display : block;
+	margin : auto;
+	width : 200px;
+	height : 30px;
+	font-family: 'Nanum Gothic';
+	border : none;
+	background-color: #FAFF73;
+}
+
+
+
+#temparea img{
+	width : 0px;
+	display: block;
+
+}
