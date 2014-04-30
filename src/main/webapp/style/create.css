@@ -45,6 +45,11 @@
 	margin-left: 150px;
 }
 
+#subNavigation h1 a {
+	text-decoration: none;
+	color: white;
+}
+
 
 #search {
 	font-family: helvetica;

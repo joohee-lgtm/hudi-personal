@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<link type="text/css" rel="stylesheet" href="create.css">
+<link type="text/css" rel="stylesheet" href="./style/create.css">
 <title>Create CollageJam</title>
 <script src="https://www.google.com/jsapi" type="text/javascript"></script>
 <script language="Javascript" type="text/javascript">
@@ -188,11 +188,11 @@
 	<div id="wrap">
 		<div id="mainNavigation">
 			<h2>
-				<a href="./create.jsp">CollageJam</a>
+				<a href="./main.jsp">CollageJam</a>
 			</h2>
 		</div>
 		<div id="subNavigation">
-			<h1>Choose photos</h1>
+			<h1><a href="./create.jsp">Choose photos</a></h1>
 		</div>
 		<div id="search">
 			<form accept-charset="UTF-8" onsubmit="emulAcceptCharset(this)">
