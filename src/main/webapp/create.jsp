@@ -172,17 +172,16 @@
 	function getSelectedImages() {
 		return selectedImages;
 	}
-	
+
 	function emulAcceptCharset(form) {
-	console.log("submit");
-    if (form.canHaveHTML) { // detect IE
-        document.charset = form.acceptCharset;
-    }
-    return true;
-}
+		console.log("submit");
+		if (form.canHaveHTML) { // detect IE
+			document.charset = form.acceptCharset;
+		}
+		return true;
+	}
 
 	google.setOnLoadCallback(OnLoad);
-	
 </script>
 </head>
 <body>
