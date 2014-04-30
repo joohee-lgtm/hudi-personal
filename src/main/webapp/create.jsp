@@ -193,9 +193,14 @@
 			</h2>
 		</div>
 		<div id="subNavigation">
+		<div>
 			<h1>
 				<a href="./create.jsp">Choose photos</a>
 			</h1>
+			<span>
+				<a href="./result.jsp">NEXT →</a>
+			</span>
+		</div>
 		</div>
 		<div id="search">
 			<form accept-charset="UTF-8" onsubmit="emulAcceptCharset(this)">

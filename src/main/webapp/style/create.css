@@ -39,17 +39,44 @@
 	position: fixed;
 }
 
-#subNavigation h1 {
-	color: white;
-	font-family: helvetica;
-	margin-left: 150px;
+#subNavigation div {
+	width: 980px;
+	margin: auto;
 }
 
-#subNavigation h1 a {
+#subNavigation div h1 {
+	color: white;
+	font-family: helvetica;
+	display: inline-block;
+}	
+
+#subNavigation div h1 a {
 	text-decoration: none;
 	color: white;
 }
 
+#subNavigation div span {
+	width: 100px;
+	height: 30px;
+	color: white;
+	display: inline-block;
+	float: right;
+	text-align: center;
+	margin-top: 15px;
+	padding-top: 10px;
+	background-color: #239933;
+	border-radius: 8px;
+}
+
+#subNavigation div span a:hover {
+	text-decoration: none;
+	color:yellow;
+}
+
+#subNavigation div span a {
+	text-decoration: none;
+	color:white;
+}
 
 #search {
 	font-family: helvetica;
