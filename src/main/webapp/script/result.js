@@ -144,7 +144,7 @@ window.onload = function(){
 	};
 
 	for (var i=0; i<temparea.children.length ; i++){
-		temparea.children[i].width = 600;
+		temparea.children[i].width = 800;
 		// var w = temparea.children[i].width;
 		// var h = temparea.children[i].height;
 		// if ( w > h){
