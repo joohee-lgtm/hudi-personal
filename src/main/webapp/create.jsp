@@ -198,7 +198,7 @@
 				<a href="./create.jsp">Choose photos</a> 
 				</span>
 				<span id="resultButton"> 
-					<a href="./result.jsp">NEXT →</a>
+					<a href="./result.jsp">NEXT ></a>
 				</span>
 			</div>
 		</div>
