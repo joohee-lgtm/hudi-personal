@@ -52,8 +52,56 @@ firstimg.src = imgArray[0];
 firstimg.onload = function(){
 	selected.removeChild(selected.children[0]);
 	selected.appendChild(firstimg);
-	selected.children[0].height = "300";
+	selected.children[0].width = "800";
 };
+
+
+//load youtube player
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var done = false;
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+      height: '250',
+      width: '400',
+      videoId: 'JW5meKfy3fY',
+      events: {
+        // 'onReady': onPlayerReady,
+        // 'onStateChange': onPlayerStateChange
+      }
+    });
+}
+
+function onPlayerReady(evt) {
+    evt.target.playVideo();
+}
+
+function onPlayerStateChange(evt) {
+    if (evt.data == YT.PlayerState.PLAYING && !done) {
+        setTimeout(stopVideo, 6000);
+        done = true;
+    }
+}
+
+function stopVideo() {
+    player.stopVideo();
+}
+
+var start = document.getElementsByTagName("button")[0];
+start.onclick = function(){
+    player.playVideo();
+}
+
+var stop = document.getElementsByTagName("button")[1];
+stop.onclick = function(){
+    player.stopVideo();
+}
+
+// --------------youtube api----------------
 
 
 window.onload = function(){
@@ -66,6 +114,7 @@ window.onload = function(){
 	var stopBt = document.getElementById('setting').getElementsByTagName('Button')[1];
 	stopBt.onclick = function(){
 		console.log("stop");
+		player.stopVideo();
 		clearInterval(intervalId);
 		var remain = count%(temparea.children.length+1);
 		for(var i=0; i<8-remain ; i++){
@@ -76,11 +125,12 @@ window.onload = function(){
 	};
 
 	for (var i=0; i<temparea.children.length ; i++){
-		temparea.children[i].width = "400";
+		temparea.children[i].width = "800";
 	}
 
 	playBt.onclick = function(){
-		time = document.getElementById("setting").children[1].children[0].value;
+		player.playVideo();
+		time = document.getElementById("setting").getElementsByTagName('div')[0].getElementsByTagName('input')[0].value;
 		function setSlide(){
 			console.log(count);
 			temparea.appendChild(selected.children[0]);
@@ -102,6 +152,8 @@ window.onload = function(){
 	};
 
 };
+
+
 
 
 // intervalId = setInterval(intervalIncrement, 2000);

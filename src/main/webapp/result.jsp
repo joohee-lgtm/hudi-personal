@@ -11,12 +11,20 @@
 <div id="wrap">
 	<!--결과가 나타날 부분-->
 	<section>
+		<div id="slide">
+			<div>
+				<img src="./images/nophoto.jpg"></div>
+<!-- 			<div>
+				<img src="./images/nophoto.jpg"></div>
+			<div>
+				<img src="./images/nophoto.jpg"></div>
+			<div>
+				<img src="./images/nophoto.jpg"></div>
+ -->		</div>
+		<div id="player">
+<!-- 			<embed src="http://www.youtube.com/v/1AmRq8zwpgc?hl=ko_KR&amp;version=3&amp;rel=0" type="application/x-shockwave-flash" width="350" height="250" allowscriptaccess="always" allowfullscreen="true"></embed>
+ -->		</div>
 		<div id="setting">
-			<form>
-				<input type="text" value="title">
-				<textarea rows="5" cols="30">tag</textarea>
-				<input type="submit"/>
-			</form>
 			<div>
 				<input type="range" min="0" max="500" value="5" step="5" onchange="rangevalue.value=value" />
 				<output id="rangevalue"></output>
@@ -24,24 +32,15 @@
 				<button type="button">play</button>
 				<button type="button">stop</button>
 			</div>
-		</div>
-		<div id="slide">
-			<div>
-				<img src="./images/nophoto.jpg"></div>
-			<div>
-				<img src="./images/nophoto.jpg"></div>
-			<div>
-				<img src="./images/nophoto.jpg"></div>
-			<div>
-				<img src="./images/nophoto.jpg"></div>
-		</div>
-		<div id="audio">
-			<!-- <iframe width="100%" height="450" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/146843791&amp;auto_play=true&amp;hide_related=false&amp;start=100&amp;visual=true"></iframe>
-			 -->
+			<form>
+				<input type="text" value="title">
+				<textarea rows="5" cols="30">comment</textarea>
+				<input type="submit" value="등록하기"/>
+			</form>
 		</div>
 	</section>
-			<section id="temparea">
-		</section>
+	<section id="temparea">
+	</section>
 </div>
 	<script type="text/javascript" src="./script/result.js"/></script>
 
