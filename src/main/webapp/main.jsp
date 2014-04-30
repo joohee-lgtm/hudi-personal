@@ -36,7 +36,7 @@
 				</span>
 			</a>
 			<span> 
-				or <a href="http://google.com"><u>Sign up</u></a> with Eamil 
+				or <a href="http://google.com"><u>Sign up</u></a> with Email 
 			</span>
 		</section>
 
