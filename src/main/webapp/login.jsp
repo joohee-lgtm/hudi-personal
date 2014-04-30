@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<link rel="stylesheet" type="text/css" href="./style/common.css"/>
+	<link rel="stylesheet" type="text/css" href="./style/login.css"/>
 </head>
 <body>
+	<header id="header">
+		<a href="./main.jsp"> CollageJam </a>
+	</header>
+
 	<form method="post" action="login.do">
-	username <input type="text" name="username"><br>
-	password <input type="password" name="password">
-	<input type="submit" value="submit">
+	
+		<input type="text" name="username" value="Username"><br>
+		<input type="password" name="password" value="password">
+		<input type="submit" value="submit">
 	</form>
 	
 	
