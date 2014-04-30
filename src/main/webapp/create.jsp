@@ -106,7 +106,7 @@
 
 				//var title = document.createElement('div');
 
-				// We use titleNoFormatting so that no HTML tags are left in the 
+				// We use titleNoFormatting so that no HTML tags are left in the
 				// title
 				//title.innerHTML = result.titleNoFormatting;
 				var newImg = document.createElement('img');
@@ -193,7 +193,9 @@
 			</h2>
 		</div>
 		<div id="subNavigation">
-			<h1><a href="./create.jsp">Choose photos</a></h1>
+			<h1>
+				<a href="./create.jsp">Choose photos</a>
+			</h1>
 		</div>
 		<div id="search">
 			<form accept-charset="UTF-8" onsubmit="emulAcceptCharset(this)">
