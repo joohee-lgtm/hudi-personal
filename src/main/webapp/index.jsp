@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<link rel="stylesheet" type="text/css" href="./style/common.css"/>
+	<style type="text/css">
+		body{
+			background-color: #C9C9C9;
+		}
+		h1{
+			text-align: center;
+			margin-top: 200px;
+			font-family: 'Exo';
+			font-size: 100px;
+		}
+
+		h1 a{
+			color : #1F4A11;
+			
+		}
+	</style>
+</head>
 <body>
-<h3>Join us!</h3>
-<a href="signup.jsp">Sign Up</a> or 
-<a href="login.jsp">Login</a><br>
-<h2>Hello World!</h2>
+	<h1><a href="./main.jsp">Collage Jam </a></h1>
+
 </body>
 </html>
