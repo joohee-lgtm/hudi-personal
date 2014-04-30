@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <link type="text/css" rel="stylesheet" href="./style/create.css">
 <title>Create CollageJam</title>
