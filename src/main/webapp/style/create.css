@@ -1,0 +1,148 @@
+@CHARSET "UTF-8";
+#wrap {
+	font-family: helvetica;
+	width: 100%;
+	height: 100%;
+	background-color:#E9E4DB;
+}
+
+#mainNavigation {
+	background-color: #239933;
+	font-family: cursive;
+	top: 0px;
+	left: 0px;
+	height: 50px;
+	width: 100%;
+	border: 1px solid black;
+	position: fixed;
+}
+
+#mainNavigation h2 {
+	margin:auto;
+	margin-top: 5px;
+	margin-left: 20px;
+	color: white;
+}
+
+#mainNavigation h2 a {
+	text-decoration: none;
+	color: white;
+}
+
+#subNavigation {
+	background-color: #222326;
+	top: 50px;
+	left: 0px;
+	width: 100%;
+	height: 70px;
+	border: 1px solid black;
+	position: fixed;
+}
+
+#subNavigation h1 {
+	color: white;
+	font-family: helvetica;
+	margin-left: 150px;
+}
+
+#subNavigation h1 a {
+	text-decoration: none;
+	color: white;
+}
+
+
+#search {
+	font-family: helvetica;
+	padding-top: 30px;
+	margin-top: 120px;
+}
+
+#search form {
+	margin: auto;
+	padding-top: 10px;
+	width: 320px;
+	height: 30px;
+	text-align: center;
+	border: 1px solid black;
+	background-color: white;
+	border-radius: 8px;
+}
+
+#search form > input[type="text"] {
+	width: 300px;
+	border: 0px solid black;
+}
+
+::-webkit-input-placeholder {
+	color: black;
+}
+
+#overview {
+	background-color: white;
+	width: 880px;
+	margin: auto;
+	border: 1px solid gray;
+	border-radius: 8px;
+	margin-top: 30px;
+	margin-bottom: 150px;
+	overflow: auto;
+}
+
+#overview div {
+	margin: 10px;
+	width: auto;
+	height: auto;
+	display: inline-block;
+	border: 1px solid gray;
+}
+
+#overview div img {
+	border: 1px solid gray;
+	margin: 3px;
+	width: 188px;
+	height: 135px;
+}
+
+#arrangePhotos {
+	background-color: #232322;
+	height: 84px;
+	width: 100%;
+	margin:auto;
+	bottom: 0px;
+	left: 0px;
+	position: fixed;
+}
+
+#details {
+	display: inline-block;
+}
+
+#sortStrip {
+	width: 980px;
+	margin: auto;
+	height: 84px;
+	color: white;
+	word-break: break-word;
+}
+
+#carousel {
+	margin: 10px;
+	width: 485px;
+	height: 64px;
+	float: right;
+	color: black;
+	overflow-y: auto;
+}
+#carousel li {
+	margin: 5px;
+	width: 64px;
+	height: 64px;
+	display: inline;
+}
+
+#carousel li img {
+	width: 64px;
+	height: 64px;
+	display: inline;
+	border: 2px solid white;
+}
