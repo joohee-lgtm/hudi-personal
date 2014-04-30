@@ -1,24 +1,13 @@
 <html>
 <body>
-	<h1 align="center">Beer Selection Page</h1>
-	<form method="POST" action="SelectBeer.do">
-		Select beer characteristics
-		<p>
-			Color: <select name="color" size="1">
-				<option value="light">light</option>
-				<option value="amber">amber</option>
-				<option value="brown">brown</option>
-				<option value="dark">dark</option>
-			</select><br>
-			BODY:
-			<select name="body" size="1">
-			<option>light
-			<option>medium
-			<option>heavy
-			</select>
-		<center>
-			<input type="SUBMIT">
-		</center>
-	</form>
+
+<<<<<<< HEAD
+<h3>Join us!</h3>
+<a href="signup.jsp">Sign Up</a> or 
+<a href="login.jsp">Login</a><br>
+<h2>Hello World!</h2>
+branch test
+hello
+제발
 </body>
 </html>
