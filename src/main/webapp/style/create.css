@@ -7,26 +7,27 @@
 }
 
 #mainNavigation {
-	background-color: #239933;
-	font-family: cursive;
+	background-color: #474747;
+	font-family : "Exo";
+	font-size: 30px;
 	top: 0px;
 	left: 0px;
 	height: 50px;
 	width: 100%;
-	border: 1px solid black;
 	position: fixed;
 }
 
-#mainNavigation h2 {
+#mainNavigation span {
+	padding-top: 5px;
+	display: inline-block;
+}
+
+#mainNavigation a {
 	margin:auto;
 	margin-top: 5px;
 	margin-left: 20px;
-	color: white;
-}
-
-#mainNavigation h2 a {
+	color: #8CFFCF;
 	text-decoration: none;
-	color: white;
 }
 
 #subNavigation {
@@ -40,30 +41,32 @@
 }
 
 #subNavigation div {
-	width: 980px;
+	font-family: "Exo";
+	font-size: 30px;
 	margin: auto;
+	width: 980px;
+	color: white;
 }
 
-#subNavigation div h1 {
-	color: white;
-	font-family: helvetica;
+#subNavigation div span:nth-child(1) {
 	display: inline-block;
-}	
+	margin-top: 12px;
+}
 
-#subNavigation div h1 a {
+#subNavigation div a {
 	text-decoration: none;
 	color: white;
 }
 
-#subNavigation div span {
+#resultButton {
 	width: 100px;
-	height: 30px;
+	height: 40px;
 	color: white;
 	display: inline-block;
 	float: right;
 	text-align: center;
 	margin-top: 15px;
-	padding-top: 10px;
+	padding-top: 0px;
 	background-color: #239933;
 	border-radius: 8px;
 }
@@ -74,6 +77,8 @@
 }
 
 #subNavigation div span a {
+	font-size: 25px;
+	font-family: "Exo";
 	text-decoration: none;
 	color:white;
 }
@@ -106,7 +111,7 @@
 
 #overview {
 	background-color: white;
-	width: 880px;
+	width: 872px;
 	margin: auto;
 	border: 1px solid gray;
 	border-radius: 8px;
@@ -150,6 +155,10 @@
 	height: 84px;
 	color: white;
 	word-break: break-word;
+}
+
+#sortStrip p {
+	margin-top: 35px;
 }
 
 #carousel {

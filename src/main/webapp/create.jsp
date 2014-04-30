@@ -2,6 +2,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <link type="text/css" rel="stylesheet" href="./style/create.css">
+<link rel="stylesheet" type="text/css" href="./style/common.css" />
 <title>Create CollageJam</title>
 <script src="https://www.google.com/jsapi" type="text/javascript"></script>
 <script language="Javascript" type="text/javascript">
@@ -188,19 +189,18 @@
 <body>
 	<div id="wrap">
 		<div id="mainNavigation">
-			<h2>
-				<a href="./main.jsp">CollageJam</a>
-			</h2>
+		<span>
+			<a href="./main.jsp">CollageJam</a>
+		</span>
 		</div>
 		<div id="subNavigation">
-		<div>
-			<h1>
-				<a href="./create.jsp">Choose photos</a>
-			</h1>
-			<span>
-				<a href="./result.jsp">NEXT →</a>
-			</span>
-		</div>
+			<div><span id="create">
+				<a href="./create.jsp">Choose photos</a> 
+				</span>
+				<span id="resultButton"> 
+					<a href="./result.jsp">NEXT →</a>
+				</span>
+			</div>
 		</div>
 		<div id="search">
 			<form accept-charset="UTF-8" onsubmit="emulAcceptCharset(this)">
