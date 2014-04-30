@@ -28,7 +28,7 @@ public class RegisterServlet extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String url = "jdbc:mysql://localhost:3306/collagejam";
+		String url = "jdbc:mysql://10.73.45.132:3306/test";
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -38,7 +38,7 @@ public class RegisterServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		try {
-			conn = DriverManager.getConnection(url, "root", "db0000");
+			conn = DriverManager.getConnection(url, "root", "leonard911");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
