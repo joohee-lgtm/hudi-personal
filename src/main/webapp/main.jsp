@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 	<link rel="stylesheet" type="text/css" href="./style/common.css"/>
 	<link rel="stylesheet" type="text/css" href="./style/main.css"/>
 	<meta charset="utf-8">
@@ -13,13 +12,12 @@
 		<a> myJamJars </a>
 		<form>
 			<input type="text" class="txtbox"/><!--
-			--><input type="text" class="txtbox"/>
+			--><input type="texst" class="txtbox"/>
 			<input type="submit" value="login"/>
 		</form>
 		<a>create</a>
 	</header>
 	<section id="contents">
-		<!--ì½ë¼ì¥¬ì¼ ìê° íì´ì§-->
 		<section id="bgvideo">
 			<video autoplay loop muted poster="https://www.themusicbed.com/video/posters/home-the-music-bed.jpg">
    				<source src="https://www.themusicbed.com/video/home-the-music-bed.mp4" type="video/mp4">
@@ -40,7 +38,6 @@
 			</span>
 		</section>
 
-		<!--iOS ì± ìê°-->
 		<section id="aboutApp">
 			<span>Share your story with our creative applications</span>
 			<div>
@@ -53,7 +50,6 @@
 			</div>
 		</section>
 
-		<!--ì¤ìê° ì ì²´ ìì²­ì-->
 		<div id="countTotalView">
 			<span> 999,999,999 </span>
 			<div></div>
@@ -62,7 +58,7 @@
 				As featured in:<div></div>
 			</span>
 		</div>
-		<!-- ì¸ê¸° ë¹ëì¤ ë³´ì¬ì£¼ê¸° -->
+
 		<section id="featured">
 			<span>FEATURED</span>
 			<div>
