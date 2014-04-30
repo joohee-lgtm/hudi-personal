@@ -10,10 +10,10 @@
 	<header id="header">
 		<a> CollageJam </a>
 		<a> myJamJars </a>
-		<form>
-			<input type="text" class="txtbox"/><!--
-			--><input type="texst" class="txtbox"/>
-			<input type="submit" value="login"/>
+		<form method="post" action="./login.jsp">
+<!-- 			<input type="text" class="txtbox"/>
+			<input type="password" class="txtbox"/>
+ -->			<input type="submit" value="login"/>
 		</form>
 		<a href="./create.jsp">create</a>
 	</header>

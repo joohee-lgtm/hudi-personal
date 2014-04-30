@@ -47,13 +47,32 @@ for( var i=1 ; i<imgArray.length ; i++ ){
 	temparea.appendChild(img);
 }
 
+// 첫번째 그림 보여주기
 var firstimg = new Image();
 firstimg.src = imgArray[0];
 firstimg.onload = function(){
 	selected.removeChild(selected.children[0]);
 	selected.appendChild(firstimg);
-	selected.children[0].width = "800";
+
+	var ratio = firstimg.width/firstimg.height;
+	if (firstimg.width > firstimg.height){
+		selected.children[0].width = "800";
+	} else {
+		selected.children[0].height = "600";
+	}
+	var oImg = selected.children[0];
+	var iStyle = window.getComputedStyle(oImg);
+	if (iStyle.width > "800px"){
+		oImg.height = 800*ratio;
+		oImg.width = 800;
+	} else if (iStyle.height > "600px"){
+		oImg.width = 600*ratio;
+		oImg.height = 600;
+	} else {
+
+	}
 };
+
 
 
 //load youtube player
@@ -125,14 +144,20 @@ window.onload = function(){
 	};
 
 	for (var i=0; i<temparea.children.length ; i++){
-		temparea.children[i].width = "800";
+		temparea.children[i].width = 600;
+		// var w = temparea.children[i].width;
+		// var h = temparea.children[i].height;
+		// if ( w > h){
+		// 	temparea.children[i].width = "800";
+		// } else {
+		// 	temparea.children[i].height = "600";
+		// }
 	}
 
 	playBt.onclick = function(){
 		player.playVideo();
 		time = document.getElementById("setting").getElementsByTagName('div')[0].getElementsByTagName('input')[0].value;
 		function setSlide(){
-			console.log(count);
 			temparea.appendChild(selected.children[0]);
 			selected.appendChild(temparea.children[0]);
 			count++;
