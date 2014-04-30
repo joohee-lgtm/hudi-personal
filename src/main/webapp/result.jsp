@@ -9,6 +9,10 @@
 </head>
 <body>
 <div id="wrap">
+	<header id="header">
+		<a href="./main.jsp"> CollageJam </a>
+	</header>
+
 	<section>
 		<div id="slide">
 			<div>
