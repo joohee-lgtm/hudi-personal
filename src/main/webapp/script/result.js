@@ -58,16 +58,16 @@ function toInt(text){
 }
 
 // 이미지의 주소가 들어있는 곳
-var images = [
-	"https://d2nh4f9cbhlobh.cloudfront.net/_uploads/galleries/18743/theavenegers22806119d74ptwt3.jpg",
-	"http://static.comicvine.com/uploads/original/12/123441/3588197-3150345-8768287685-the-av.jpeg",
-	"http://captainamericanews.files.wordpress.com/2014/04/0a2107702-all_avengers_forever.jpg",
-	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5whXDsNMc3RvN3RMgo64GMnM87FuWh71F9eeTOiLLXkG0FpU",
-	"http://img3.wikia.nocookie.net/__cb20120207200038/marvelmovies/images/a/a3/The_Avengers-1.jpg",
-	"http://www.moviedeskback.com/wp-content/gallery/aside-from-post-gallery/the-avengers-collage-wallpapers-2.jpg",
-	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwjwg4a0UiDMEXBFjMzO_DSMYxnTtMTeTZdDJ0s3-nyKyYsxyt2w",
-	"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQNmZ_AtnrxhQIEBJAGQsVzTMxRRMVJVI9-tHqDtKYVvB8yKgWW",
-];
+// var images = [
+// 	"https://d2nh4f9cbhlobh.cloudfront.net/_uploads/galleries/18743/theavenegers22806119d74ptwt3.jpg",
+// 	"http://static.comicvine.com/uploads/original/12/123441/3588197-3150345-8768287685-the-av.jpeg",
+// 	"http://captainamericanews.files.wordpress.com/2014/04/0a2107702-all_avengers_forever.jpg",
+// 	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5whXDsNMc3RvN3RMgo64GMnM87FuWh71F9eeTOiLLXkG0FpU",
+// 	"http://img3.wikia.nocookie.net/__cb20120207200038/marvelmovies/images/a/a3/The_Avengers-1.jpg",
+// 	"http://www.moviedeskback.com/wp-content/gallery/aside-from-post-gallery/the-avengers-collage-wallpapers-2.jpg",
+// 	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwjwg4a0UiDMEXBFjMzO_DSMYxnTtMTeTZdDJ0s3-nyKyYsxyt2w",
+// 	"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQNmZ_AtnrxhQIEBJAGQsVzTMxRRMVJVI9-tHqDtKYVvB8yKgWW",
+// ];
 
 // 구간별 시간 설정
 var times = [
@@ -105,6 +105,31 @@ function setImgMargin(img){
 	}
 }
 
+
+var photobt = document.getElementById('create');
+var resultbt = document.getElementById('resultButton');
+
+var photo = document.getElementById('photoSelectWrap');
+var result = document.getElementById('resultWrap');
+
+var images = [];
+
+photobt.onclick = function(){
+	result.style.display = "none";
+	photo.style.display = "block"
+
+}
+
+
+photo.style.display = "block";
+result.style.display = "none";
+
+resultbt.onclick = function(){
+	result.style.display = "block";
+	photo.style.display = "none"
+	images = userDataModel.originalURL;
+
+
 // 첫번째 그림 놓기
 var firstimg = new Image();
 firstimg.src = images[0];
@@ -121,7 +146,7 @@ for( var i=1 ; i<images.length ; i++ ){
 	img.src = images[i];
 	temparea.appendChild(img);
 }
-
+}
 window.onload = function(){
 
 	var count = 0;

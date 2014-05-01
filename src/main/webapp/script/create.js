@@ -1,3 +1,4 @@
+
 var data;
 google.load('search', '1');
 var selectedImages = [];
@@ -179,14 +180,6 @@ function emulAcceptCharset(form) {
 
 google.setOnLoadCallback(OnLoad);
 
-var resultbt = document.getElementById('resultButton');
 
-resultbt.onclick = function(){
-data = userDataModel.originalURL;
-};
 
-resultbt.onmouseover = function(){
-console.log("aaa");
-data = userDataModel.originalURL;
-console.log(data);
-};
+
