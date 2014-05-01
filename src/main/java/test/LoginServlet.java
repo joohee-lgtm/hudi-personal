@@ -24,8 +24,8 @@ public class LoginServlet extends HttpServlet{
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
-
-		String url = "jdbc:mysql://localhost:3306/collagejam";
+		String url = "jdbc:mysql://10.73.45.132:3306/test";
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			
@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		try {
-			conn = DriverManager.getConnection(url, "root", "db0000");
+			conn = DriverManager.getConnection(url, "root", "leonard911");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
