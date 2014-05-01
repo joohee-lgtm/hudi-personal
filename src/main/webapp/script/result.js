@@ -1,82 +1,4 @@
-// col, row 에 해당하는 매트릭스 얻기
-function getSection(matrix, col, row){
-	var maxROW = 2;
-	var p = (col)*maxROW + (row);
-	var	result = matrix[p];
-	return result;
-}
-
-// 00px를 숫자로 바꿔주기
-function toInt(text){
-	var result = parseInt(text.substring(0,text.length-2));
-	return result;
-}
-
-// 이미지의 주소가 들어있는 곳
-var imgArray = [
-	"http://static.comicvine.com/uploads/original/12/123441/3588197-3150345-8768287685-the-av.jpeg",
-	"https://d2nh4f9cbhlobh.cloudfront.net/_uploads/galleries/18743/theavenegers22806119d74ptwt3.jpg",
-	"http://captainamericanews.files.wordpress.com/2014/04/0a2107702-all_avengers_forever.jpg",
-	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5whXDsNMc3RvN3RMgo64GMnM87FuWh71F9eeTOiLLXkG0FpU",
-	"http://img3.wikia.nocookie.net/__cb20120207200038/marvelmovies/images/a/a3/The_Avengers-1.jpg",
-	"http://www.moviedeskback.com/wp-content/gallery/aside-from-post-gallery/the-avengers-collage-wallpapers-2.jpg",
-	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwjwg4a0UiDMEXBFjMzO_DSMYxnTtMTeTZdDJ0s3-nyKyYsxyt2w",
-	"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQNmZ_AtnrxhQIEBJAGQsVzTMxRRMVJVI9-tHqDtKYVvB8yKgWW",
-];
-
-// 구간별 시간 설정
-var termArray = [
-	1000,
-	2000,
-	3000,
-	1400,
-	1000,
-	3000,
-	1700,
-	2500,
-	2100
-];
-
-var slide = document.getElementById("slide").children;
-var temparea = document.getElementById("temparea");
-var selected = getSection(slide, 0, 0);
-
-for( var i=1 ; i<imgArray.length ; i++ ){
-	var img = new Image();
-	img.src = imgArray[i];
-	temparea.appendChild(img);
-}
-
-// 첫번째 그림 보여주기
-var firstimg = new Image();
-firstimg.src = imgArray[0];
-firstimg.onload = function(){
-	selected.removeChild(selected.children[0]);
-	selected.appendChild(firstimg);
-
-	var ratio = firstimg.width/firstimg.height;
-	if (firstimg.width > firstimg.height){
-		selected.children[0].width = "800";
-	} else {
-		selected.children[0].height = "600";
-	}
-	var oImg = selected.children[0];
-	var iStyle = window.getComputedStyle(oImg);
-	if (iStyle.width > "800px"){
-		oImg.height = 800*ratio;
-		oImg.width = 800;
-	} else if (iStyle.height > "600px"){
-		oImg.width = 600*ratio;
-		oImg.height = 600;
-	} else {
-
-	}
-};
-
-
-
-//load youtube player
-
+/* youtube api 시작 */
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -85,9 +7,9 @@ var done = false;
 var player;
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
-      height: '250',
+      height: '300',
       width: '400',
-      videoId: 'JW5meKfy3fY',
+      videoId: 'r4u3BzM0rqo',
       events: {
         // 'onReady': onPlayerReady,
         // 'onStateChange': onPlayerStateChange
@@ -119,63 +41,137 @@ var stop = document.getElementsByTagName("button")[1];
 stop.onclick = function(){
     player.stopVideo();
 }
+/* youtube api 끝 */
 
-// --------------youtube api----------------
 
+// col, row 에 해당하는 매트릭스 얻기
+function getSection(matrix, col, row, maxrow){
+	var p = (col)*maxrow + (row);
+	var	result = matrix[p];
+	return result;
+}
+
+// 00px를 숫자로 바꿔주기
+function toInt(text){
+	var result = parseInt(text.substring(0,text.length-2));
+	return result;
+}
+
+// 이미지의 주소가 들어있는 곳
+var images = [
+	"https://d2nh4f9cbhlobh.cloudfront.net/_uploads/galleries/18743/theavenegers22806119d74ptwt3.jpg",
+	"http://static.comicvine.com/uploads/original/12/123441/3588197-3150345-8768287685-the-av.jpeg",
+	"http://captainamericanews.files.wordpress.com/2014/04/0a2107702-all_avengers_forever.jpg",
+	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5whXDsNMc3RvN3RMgo64GMnM87FuWh71F9eeTOiLLXkG0FpU",
+	"http://img3.wikia.nocookie.net/__cb20120207200038/marvelmovies/images/a/a3/The_Avengers-1.jpg",
+	"http://www.moviedeskback.com/wp-content/gallery/aside-from-post-gallery/the-avengers-collage-wallpapers-2.jpg",
+	"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwjwg4a0UiDMEXBFjMzO_DSMYxnTtMTeTZdDJ0s3-nyKyYsxyt2w",
+	"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQNmZ_AtnrxhQIEBJAGQsVzTMxRRMVJVI9-tHqDtKYVvB8yKgWW",
+];
+
+// 구간별 시간 설정
+var times = [
+	1000, 2000, 3000, 1400, 1000, 3000, 1700, 2500, 2100
+];
+
+var slide = document.getElementById("slide").children; // 1x1, 1x2, 2x1, 2x2가 저장된 array
+var temparea = document.getElementById("temparea"); // 구글을 통해 검색된 이미지가 우선 받아질 공간
+var selected = getSection(slide, 0, 0, 2); // 슬라이드에서 원하는 위치를 선택하는 함수
+
+
+
+// 이미지 사이즈 설정하기
+function setImgSize(img){
+	if (img.height < img.width){
+		img.height = img.height*(400/img.width);
+		img.width = "400";
+		if (img.height > 300){
+			img.width = img.width*(300/img.height);
+			img.height = "300";	
+		}
+	} else if (img.width < img.height){
+		img.width = img.width*(300/img.height);
+		img.height = "300";
+	} else {
+		img.height = "300";
+		img.width = "300";
+	}
+}
+
+function setImgMargin(img){
+	if (img.height < 300){
+		var margin = (300-img.height)/2;
+		img.style.marginTop = margin + "px";
+	}
+}
+
+// 첫번째 그림 놓기
+var firstimg = new Image();
+firstimg.src = images[0];
+firstimg.onload = function(){
+	selected.removeChild(selected.children[0]);
+	selected.appendChild(this);
+	setImgSize(selected.children[0]);
+	setImgMargin(selected.children[0]);
+};
+
+// img 목록에 있는 사진들을 temparea에 추가
+for( var i=1 ; i<images.length ; i++ ){
+	var img = new Image();
+	img.src = images[i];
+	temparea.appendChild(img);
+}
 
 window.onload = function(){
 
 	var count = 0;
 	var intervalId = null;
+	var setting = document.getElementById('setting');
 
-	var time;
-	var playBt = document.getElementById('setting').getElementsByTagName('Button')[0];
-	var stopBt = document.getElementById('setting').getElementsByTagName('Button')[1];
-	stopBt.onclick = function(){
-		console.log("stop");
-		player.stopVideo();
+	var playbt = setting.getElementsByTagName('Button')[0];
+	var stopbt = setting.getElementsByTagName('Button')[1];
+
+	// temparea에 저장해둔 이미지 사이즈 정하기
+	for (var i=0; i<temparea.children.length ; i++){
+		setImgSize(temparea.children[i]);
+		setImgMargin(temparea.children[i]);
+	}
+
+	function setSlide(){
+		temparea.appendChild(selected.children[0]);
+		selected.appendChild(temparea.children[0]);
+		count++;
+	}
+
+	// 슬라이드 정지, 정지화면에 나타나는 그림을 첫번째 그림으로 맞추기
+	function stopSlide(count){
 		clearInterval(intervalId);
 		var remain = count%(temparea.children.length+1);
 		for(var i=0; i<8-remain ; i++){
 			temparea.appendChild(selected.children[0]);
 			selected.appendChild(temparea.children[0]);
 		}
-		count = 0;
-	};
-
-	for (var i=0; i<temparea.children.length ; i++){
-		temparea.children[i].width = 800;
-		// var w = temparea.children[i].width;
-		// var h = temparea.children[i].height;
-		// if ( w > h){
-		// 	temparea.children[i].width = "800";
-		// } else {
-		// 	temparea.children[i].height = "600";
-		// }
 	}
 
-	playBt.onclick = function(){
-		player.playVideo();
-		time = document.getElementById("setting").getElementsByTagName('div')[0].getElementsByTagName('input')[0].value;
-		function setSlide(){
-			temparea.appendChild(selected.children[0]);
-			selected.appendChild(temparea.children[0]);
-			count++;
-		}
-		if (count == 0){
-			intervalId = setInterval(setSlide, time*10);
-		} else {
-			clearInterval(intervalId);
-			var remain = count%(temparea.children.length+1);
-			for(var i=0; i<8-remain ; i++){
-				temparea.appendChild(selected.children[0]);
-				selected.appendChild(temparea.children[0]);
-			}
+	// 플레이어 정지
+	playbt.onclick = function(){
+		console.log("play");
+		player.playVideo(); // 유튜브 재생하기
+		var time = setting.getElementsByTagName('div')[0].getElementsByTagName('input')[0].value;
+		
+		if (count != 0){ // 슬라이드가 재생중일 때 play 버튼을 누름
+			stopSlide(count);
 			count = 0;
-			intervalId = setInterval(setSlide, time*10);
 		}
+		intervalId = setInterval(setSlide, time*10);
 	};
 
+	stopbt.onclick = function(){
+		console.log("stop");
+		player.stopVideo(); // 유튜브 멈추기
+		stopSlide(count); // 슬라이드 멈추기
+		count = 0;
+	};
 };
 
 

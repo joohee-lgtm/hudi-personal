@@ -88,5 +88,6 @@
 		footer
 	</footer>
 	<script type="text/javascript" src="./script/main.js"/></script>
+	
 </body>
 </html>
