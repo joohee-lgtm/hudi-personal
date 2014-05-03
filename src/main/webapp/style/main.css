@@ -13,7 +13,12 @@
 	color : #FFFFFF;
 }
 
-#header > a:nth-child(1){
+#header > div {
+	margin : auto;
+	max-width: 1240px;
+}
+
+#header > div > a:nth-child(1){
 	font-size : 30px;
 	color : #8CFFCF;
 	text-shadow: 0px 0px 1px #004226;
@@ -22,28 +27,28 @@
 
 /* 창이 860보다 작아질 때 header */
 @media screen and (max-width:860px){
-	#header > a:nth-child(1) {
+	#header > div > a:nth-child(1) {
 		display : block;
 		text-align: center;
 	}
 
-	#header > a:not(:nth-child(1)){
+	#header > div > a:not(:nth-child(1)){
 		display : none;
 	}
 
-	#header > form{
+	#header > div > form{
 		display : none;
 	}
 }
 
 /* 창이 860보다 커질 때 header */
 @media screen and (min-width:860px){
-	#header > a:nth-child(1) {
+	#header > div > a:nth-child(1) {
 		float : left;
 		padding-right : 3px;
 	}
 
-	#header > a:nth-child(2) {
+	#header > div > a:nth-child(2) {
 		float : left;
 		font-size : 30px;
 		color : white;
@@ -56,45 +61,49 @@
 		header의 child 중에서 3번째 a를 지칭하는 것이 아니라, 
 		header의 child 중에서 4번째는 a라고 알려주는 것
 	*/
-	#header > a:nth-child(4) {
+	#header > div > a:nth-child(4) {
 		color : white;
 		float : right;
 		width : 100px;
+		height : 35px;
 		margin-right : 10px;
-		margin-top : 10px;
+		margin-top : 5px;
 		border : none;
 		border-radius: 5px;
 		font-size: 25px;		
 		text-align: center;
 		background-color : #020A02;
 		line-height : 30px;
+		padding-top: 5px;
 	}
 
-	#header > form {
+	#header > div > form {
 		float : right;
 		margin-right : 20px;
 		margin-top:10px;
 		font-size : 22px;
 	}
 
-	#header > form > .txtbox {
+	#header > div > form > .txtbox {
 		width : 150px;
 		border : none;
 		padding-left : 3px;
 	}
 
-	#header > form > input[type="text"]{
+	#header > div > form > input[type="text"]{
 		margin-right : 3px;
 	}
 
-	#header > form > input[type="submit"]{
-		height : 30px;
+	#header > div > form > input[type="submit"]{
+		width : 100px;
+		height : 40px;
 		border : none;
 		border-radius: 5px;
 		background-color : #020A02;
 		color : #FFFFFF;
 		text-align: center;
 		font-family : "Exo";
+		margin-top : -10px;
 		padding-left : 5px;
 		padding-right : 5px;
 	}
@@ -103,23 +112,25 @@
 
 /* 배경 비디오 */
 #bgvideo {
+
 	z-index : -1;
 	position : absolute;
 	top:60px;
 	left : 0px;
 }
 
-@media screen and (max-width : 1400px){
+@media screen and (max-width : 1400px){ /*1400이하일 경우*/
 	#bgvideo{
-		width : 1400px;
+		width : 100%;
+		/*width : 1400px;*/
 	}
 
 	#bgvideo > video {
-		width : 1400px;
+		width:1400px;
 	}
 }
 
-@media screen and (min-width : 1400px){
+@media screen and (min-width : 1400px){ /*1400이상일 경우*/
 	#bgvideo{
 		width : 100%;
 	}

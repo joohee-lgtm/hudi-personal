@@ -4,6 +4,7 @@
 #resultWrap{
 	margin : auto;
 	margin-top : 150px;
+	margin-bottom : 120px;
 	width : 1200px;
 	height : 600px;
 	box-shadow: 1px 1px 10px #888888;
@@ -108,7 +109,7 @@
 }
 
 #temparea {
-	display : none;
+	/*display : none;*/
 }
 
 #temparea img{

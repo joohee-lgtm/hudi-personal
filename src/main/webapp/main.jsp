@@ -8,14 +8,18 @@
 </head>
 <body>
 	<header id="header">
-		<a> CollageJam </a>
-		<a> myJamJars </a>
-		<form method="post" action="./login.jsp">
-<!-- 			<input type="text" class="txtbox"/>
-			<input type="password" class="txtbox"/>
- -->			<input type="submit" value="login"/>
-		</form>
-		<a href="./create.jsp">create</a>
+		<div>
+			<a href="./main.jsp"> CollageJam </a>
+			<a href="./mypage.jsp"> myJamJars </a>
+			<form method="post" action="./login.jsp">
+				<!--
+ 				<input type="text" class="txtbox"/>
+				<input type="password" class="txtbox"/>
+				-->
+ 				<input type="submit" value="login"/>
+			</form>
+			<a href="./createJar.jsp">create</a>
+		</div>
 	</header>
 	<section id="contents">
 		<section id="bgvideo">

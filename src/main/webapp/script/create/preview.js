@@ -1,47 +1,3 @@
-/* youtube api 시작 */
-var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-var done = false;
-var player;
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '300',
-      width: '400',
-      videoId: 'r4u3BzM0rqo',
-      events: {
-        // 'onReady': onPlayerReady,
-        // 'onStateChange': onPlayerStateChange
-      }
-    });
-}
-
-function onPlayerReady(evt) {
-    evt.target.playVideo();
-}
-
-function onPlayerStateChange(evt) {
-    if (evt.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(stopVideo, 6000);
-        done = true;
-    }
-}
-
-function stopVideo() {
-    player.stopVideo();
-}
-
-var start = document.getElementsByTagName("button")[0];
-start.onclick = function(){
-    player.playVideo();
-}
-
-var stop = document.getElementsByTagName("button")[1];
-stop.onclick = function(){
-    player.stopVideo();
-}
-/* youtube api 끝 */
 
 
 // col, row 에 해당하는 매트릭스 얻기
@@ -112,43 +68,83 @@ var resultbt = document.getElementById('resultButton');
 var photo = document.getElementById('photoSelectWrap');
 var result = document.getElementById('resultWrap');
 
-var images = [];
 
 photobt.onclick = function(){
 	result.style.display = "none";
 	photo.style.display = "block"
-
+	console.log(temparea.children);
 }
 
 
 photo.style.display = "block";
 result.style.display = "none";
 
+
+function imgLoad(imgsrc){
+	var img = new Image();
+	img.src = imgsrc;
+	temparea.appendChild(img);
+	img.onload = function(){
+		setImgSize(img);
+		setImgMargin(img);
+	}
+}
+
+function setDefaultImg(){
+	var img = new Image();
+	img.src = "./images/nophoto.jpg";
+	img.onload = function(){
+		if (selected.children.length != 0){
+			selected.removeChild(selected.children[0]);
+			selected.appendChild(img);
+		} else {
+			selected.appendChild(img);
+		}
+	}
+}
+
 resultbt.onclick = function(){
+	console.log(temparea.children.length);
+	for(var i=0; i<temparea.children.length;i++){
+		temparea.removeChild(temparea.children[i]);
+		console.log("remove");
+	}
+	setDefaultImg();
+
 	result.style.display = "block";
-	photo.style.display = "none"
+	photo.style.display = "none";
+
+	var images = [];
 	images = userDataModel.originalURL;
 
 
-// 첫번째 그림 놓기
-var firstimg = new Image();
-firstimg.src = images[0];
-firstimg.onload = function(){
-	selected.removeChild(selected.children[0]);
-	selected.appendChild(this);
-	setImgSize(selected.children[0]);
-	setImgMargin(selected.children[0]);
-};
+	for (var i=0; i<images.length ; i++){
+		imgLoad(images[i]);
+	}
 
-// img 목록에 있는 사진들을 temparea에 추가
-for( var i=1 ; i<images.length ; i++ ){
-	var img = new Image();
-	img.src = images[i];
-	temparea.appendChild(img);
+	// 첫번째 그림 놓기
+	//selected.removeChild(selected.children[0]);
+	//selected.appendChild(temparea.children[0]);
+	
+	// var firstimg = new Image();
+	// firstimg.src = images[0];
+	// firstimg.onload = function(){
+	// 	selected.removeChild(selected.children[0]);
+	// 	selected.appendChild(this);
+	// 	setImgSize(selected.children[0]);
+	// 	setImgMargin(selected.children[0]);
+	// };
+	/*
+	// img 목록에 있는 사진들을 temparea에 추가
+	for( var i=1 ; i<images.length ; i++ ){
+		var img = new Image();
+		img.src = images[i];
+		temparea.appendChild(img);
+	}
+	*/
 }
-}
+
 window.onload = function(){
-
 	var count = 0;
 	var intervalId = null;
 	var setting = document.getElementById('setting');
@@ -157,10 +153,10 @@ window.onload = function(){
 	var stopbt = setting.getElementsByTagName('Button')[1];
 
 	// temparea에 저장해둔 이미지 사이즈 정하기
-	for (var i=0; i<temparea.children.length ; i++){
-		setImgSize(temparea.children[i]);
-		setImgMargin(temparea.children[i]);
-	}
+	// for (var i=0; i<temparea.children.length ; i++){
+	// 	setImgSize(temparea.children[i]);
+	// 	setImgMargin(temparea.children[i]);
+	// }
 
 	function setSlide(){
 		temparea.appendChild(selected.children[0]);
@@ -198,7 +194,6 @@ window.onload = function(){
 		count = 0;
 	};
 };
-
 
 
 

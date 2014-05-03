@@ -8,7 +8,7 @@ var imageURLHolder = [];
 function userDataModel() {
 	this.originalURL = [];
 	this.tbURL = [];
-	console.log(this.originalURL);
+	// console.log(this.originalURL);
 
 	this.addPhotoURL = function(url) {
 		this.originalURL.push(url);
@@ -17,7 +17,7 @@ function userDataModel() {
 	this.addTbURL = function(url) {
 		this.tbURL.push(url);
 	}
-	console.log("userDataModel created");
+	// console.log("userDataModel created");
 }
 
 function OnLoad() {
@@ -41,10 +41,10 @@ function OnLoad() {
 	// execute an inital search
 	if (userInput[1]) {
 		var decodedUserInput = decodeURI(userInput[1]);
-		console.log("userInput: " + decodedUserInput);
+		// console.log("userInput: " + decodedUserInput);
 		searchControl.execute(decodedUserInput);
 	} else {
-		console.log("userInput is undefined.");
+		// console.log("userInput is undefined.");
 		searchControl.execute("LINE LEONARD");
 	}
 
@@ -55,7 +55,7 @@ function searchComplete(searchControl, searcher) {
 
 	// Check that we got results
 	if (searcher.results && searcher.results.length > 0) {
-		console.log(searcher.cursor.currentPageIndex);
+		// console.log(searcher.cursor.currentPageIndex);
 
 		// Loop through our results, printing them to the page.
 		var results = searcher.results;
@@ -122,7 +122,7 @@ function searchComplete(searchControl, searcher) {
 	}
 
 	if (pageCursor === 8) {
-		console.log("done");
+		// console.log("done");
 		return;
 
 	} else {
@@ -140,8 +140,8 @@ function updatePhotoCount() {
 
 function updateCarousel() {
 	var carousel = document.getElementById("carousel");
-	console.log(carousel);
-	console.log(userDataModel.tbURL);
+	// console.log(carousel);
+	// console.log(userDataModel.tbURL);
 	var imageFrame = document.createElement('li');
 	imageFrame.onclick = function(e) {
 		var carousel = e.target.parentNode.parentNode;
@@ -152,7 +152,7 @@ function updateCarousel() {
 				carousel.removeChild(list[idx]);
 				userDataModel.tbURL.splice(idx - 1, 1);
 				userDataModel.originalURL.splice(idx - 1, 1);
-				console.log(userDataModel.tbURL);
+				// console.log(userDataModel.tbURL);
 				updatePhotoCount();
 				break;
 			}
@@ -171,7 +171,7 @@ function getSelectedImages() {
 }
 
 function emulAcceptCharset(form) {
-	console.log("submit");
+	// console.log("submit");
 	if (form.canHaveHTML) { // detect IE
 		document.charset = form.acceptCharset;
 	}
