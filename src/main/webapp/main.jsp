@@ -18,7 +18,7 @@
 				-->
  				<input type="submit" value="login"/>
 			</form>
-			<a href="./createJar.jsp">create</a>
+			<a href="./create.jsp">create</a>
 		</div>
 	</header>
 	<section id="contents">

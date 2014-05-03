@@ -1,3 +1,27 @@
+
+function wheel(e){
+	if (e.wheelDeltaX != 0 ){
+		e.preventDefault();
+	}
+}
+
+function disable_scroll() {
+	// window.addEventListener('onmousewheel', wheel, false);
+	// window.addEventListener('DOMMouseScroll', wheel, false);
+	window.onmousewheel = wheel;
+	// document.onmousewheel = wheel
+	document.onkeydown = keydown;
+}
+
+//down = 40, right = 39, left = 37, up = 38
+function keydown(e) {
+	if (e.keyCode === 37 || e.keyCode === 39) {
+	    e.preventDefault();
+	}
+}
+
+disable_scroll();
+
 // jar들 가져오기
 var jamjars = document.querySelectorAll('.jamjar');
 // jar group 이 몇개 있는지 세보기
