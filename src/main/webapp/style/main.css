@@ -389,7 +389,7 @@
 	max-width : 1200px;
 }
 
-#featured > div > .jamjar {
+#featured > div:nth-child(2) > div{
 	z-index : -10;
 	position : absolute;
 	top : 0px;
