@@ -87,7 +87,7 @@ public class LoginServlet extends HttpServlet{
 		}
 		System.err.println("connection closed");
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("welcome.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
 		dispatcher.forward(request, response);
 	}
 }

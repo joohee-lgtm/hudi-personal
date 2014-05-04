@@ -25,7 +25,7 @@ public class BBSListServlet extends HttpServlet {
 			upperSeqNo = Integer.parseInt(strUpperSeqNo);
 		BBSList list = readDB(upperSeqNo);
 		request.setAttribute("BBS_LIST", list);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/brain13/BBSListView.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("BBSListView.jsp");
 		dispatcher.forward(request, response);
 	}
 	
@@ -35,7 +35,7 @@ public class BBSListServlet extends HttpServlet {
 		Statement stmt = null;
 		String url = "jdbc:mysql://10.73.45.132:3306/test";
 		String user = "root";
-		String pw = "db0000";
+		String pw = "leonard911";
 		String sql = "select * from bbs where seqNo < " + upperSeqNo + " order by seqno desc;";
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
