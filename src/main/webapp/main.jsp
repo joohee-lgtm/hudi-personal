@@ -8,7 +8,8 @@
 </head>
 <body>
 	<header id="header">
-		<a> CollageJam </a> <a> myJamJars </a>
+		<a> CollageJam </a>
+		<a href="myjars"> myJamJars </a>
 		<form method="post" action="./login.jsp">
 			<!-- 			<input type="text" class="txtbox"/>
 			<input type="password" class="txtbox"/>
@@ -18,9 +19,15 @@
 		<a href="./create.jsp">create</a>
 
 		<%
+			String greeting = "Hello, ";
 			String username = (String) request.getAttribute("USERNAME");
+			System.out.println("username: " + username);
+			if(username == null)
+				username = "anonymous";
+			else
+				session.setAttribute("ID", username);
 		%>
-		<span id="userid">Hello, <%=username%></span>
+		<span id="userid"> Hello, <%=username%></span>
 	</header>
 	<section id="contents">
 		<section id="bgvideo">

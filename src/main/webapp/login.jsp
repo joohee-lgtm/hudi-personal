@@ -15,6 +15,7 @@
 		<input type="text" name="username" placeholder="Username"><br>
 		<input type="password" name="password" placeholder="password">
 		<input type="submit" value="submit">
+		<a href="./signup.jsp">not a member?</button>
 	</form>
 	
 </body>
