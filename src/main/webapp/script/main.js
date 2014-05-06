@@ -2,7 +2,6 @@
 window.addEventListener('load',function(){
 	Featured.posAll();
 	ScrollEvent.disableVerticalScroll();
-	console.log("aaa");
 }, false);
 
 window.addEventListener('resize',function(){
@@ -18,8 +17,8 @@ var Featured = {
 	remain : 0,
 
 	jar : { 
-		wid:400, 
-		mar:40 
+		jWidth:400, 
+		jMargin:40 
 	}
 };
 
@@ -53,10 +52,6 @@ Featured.getRemain = function(){
 }
 
 /* setting about featured end */
-
-
-
-
 
 
 
@@ -101,7 +96,7 @@ Featured.toInt = function(text){
 
 Featured.getBottom = function(obj){
 	var style = getComputedStyle(obj);
-	var bottom = this.toInt(style.top) + this.toInt(style.height) + this.jar.mar;
+	var bottom = this.toInt(style.top) + this.toInt(style.height) + this.jar.jMargin;
 	return bottom;
 }
 
@@ -121,7 +116,7 @@ Featured.posJars = function(){
 
 Featured.posFirstGroup = function(){
 	for(var i=0 ; i<this.row ; i++){
-		this.jarArray[i].style.left = this.jar.wid*i + "px";
+		this.jarArray[i].style.left = this.jar.jWidth*i + "px";
 		this.jarArray[i].style.top = "0px";
 	}
 }
@@ -133,14 +128,14 @@ Featured.posOtherGroup = function(){
 		var R;
 
 		if (i != this.column){ // 마지막 줄이 아닐 때
-			this.groupArrange(BEFORE, CURRENT, this.row);
+			this.posInGroup(BEFORE, CURRENT, this.row);
 		} else { // 마지막줄일 때
-			this.groupArrange(BEFORE, CURRENT, this.remain);
+			this.posInGroup(BEFORE, CURRENT, this.remain);
 		}
 	}
 }
 
-Featured.groupArrange = function(BEFORE, CURRENT, REMAIN){
+Featured.posInGroup = function(BEFORE, CURRENT, REMAIN){
 	var baseObjArray = [];
 	for (var c=0 ; c<this.row ; c++){
 		baseObjArray[c] = this.jarArray[BEFORE+c];
@@ -153,7 +148,7 @@ Featured.groupArrange = function(BEFORE, CURRENT, REMAIN){
 }
 
 Featured.featuredMargin = function(){
-	this.jarArray[0].parentNode.style.width = this.jar.wid*this.row + "px";
+	this.jarArray[0].parentNode.style.width = this.jar.jWidth*this.row + "px";
 };
 
 Featured.featuredHeight = function(){
@@ -171,9 +166,6 @@ Featured.posAll = function(){
 }
 
 /* set jar position function in featured end */
-
-
-
 
 
 
