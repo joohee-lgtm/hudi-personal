@@ -11,11 +11,9 @@
 	</header>
 
 	<form method="post" action="login.do">
-	
 		<input type="text" name="username" placeholder="Username"><br>
 		<input type="password" name="password" placeholder="password">
 		<input type="submit" value="submit">
 	</form>
-	
 </body>
 </html>
