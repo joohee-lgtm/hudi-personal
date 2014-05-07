@@ -1,0 +1,28 @@
+/*모바일 메인 페이지*/
+
+body {
+	margin : 0px;
+}
+
+header, footer {
+	width : 100%;
+	height : 80px;
+	background-color: yellow;
+}
+
+#content {
+	width : 100%;
+	height : 3000px;
+background-image: -webkit-gradient(
+	linear,
+	left top,
+	left bottom,
+	color-stop(0, rgb(235, 187, 36)),
+	color-stop(1, rgb(8, 7, 2))
+);
+background-image: -o-linear-gradient(bottom, rgb(235, 187, 36) 0%, rgb(8, 7, 2) 100%);
+background-image: -moz-linear-gradient(bottom, rgb(235, 187, 36) 0%, rgb(8, 7, 2) 100%);
+background-image: -webkit-linear-gradient(bottom, rgb(235, 187, 36) 0%, rgb(8, 7, 2) 100%);
+background-image: -ms-linear-gradient(bottom, rgb(235, 187, 36) 0%, rgb(8, 7, 2) 100%);
+background-image: linear-gradient(to bottom, rgb(235, 187, 36) 0%, rgb(8, 7, 2) 100%);
+}

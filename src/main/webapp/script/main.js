@@ -1,132 +1,197 @@
-// jar들 가져오기
-var jamjars = document.querySelectorAll('.jamjar');
-// jar group 이 몇개 있는지 세보기
-var q = parseInt(jamjars.length/3);;
-// jar group 속한 것들 외에 나머지 알아보기
-var r = jamjars.length%3;
 
-/*
-+0		+1		+2
-1[0],	2[1],	3[2]	-> i = 0
-4[3],	5[4],	6[5]	-> i = 1
-7[6],	8[7],	9[8]	-> i = 2
-10[9],	11[10],	12[11]	-> i = 3
-13[12],	14[13],	15[14]	-> i = 4
-16[15],	17[16]			-> i = 5
-*/
+window.addEventListener('load',function(){
+	Featured.posAll();
+	ScrollEvent.disableVerticalScroll();
+}, false);
 
-// 1,2,3 jar 위치 지정하기
-jamjars[0].style.left = "0px";
-jamjars[1].style.left = "400px";
-jamjars[2].style.left = "800px";
+window.addEventListener('resize',function(){
+	Featured.posAll();
+}, false);
 
-var ROW = 3;
-var TOTAL_MARGIN = 40;
 
-// 4~15 jar 위치 지정하기
-for ( var i=1 ; i<q ; i++ ){
+// 초기화??
+var Featured = {
+	jarArray : document.getElementById('featured').getElementsByTagName('div')[0].children,
+	row : 0,
+	column : 0,
+	remain : 0,
 
-	var BEFORE = (i-1)*ROW;
-	var CURRENT = i*ROW;
-	var baseObjStyleGroup = Array(ROW);
-
-	// 기준이 되는 이전 jar 그룹 만들기
-	for ( var c=0 ; c<ROW ; c++ ){
-		baseObjStyleGroup[c] = window.getComputedStyle(jamjars[BEFORE+c]);
+	jar : { 
+		jWidth:400, 
+		jMargin:40 
 	}
+};
 
-	// 기준이 되는 이전 jar 그룹을 bottom px를 오름차순대로 sorting 하기
-	baseObjStyleGroup = ascendingBottom(baseObjStyleGroup);
+/* setting about featured start */
 
-	// jar들 옮기기
-	for ( var c=0 ; c<ROW ; c++){
-		jamjars[CURRENT+c].style.left = baseObjStyleGroup[c].left;
-		jamjars[CURRENT+c].style.top = setTopStyle(baseObjStyleGroup[c]);
+Featured.Setting = function(){
+	var inner = window.innerWidth;
+	this.row = this.getRow(inner);
+	this.column = this.getColumn();
+	this.remain = this.getRemain();
+}
+
+Featured.getRow = function(inner){
+	if (inner > 1200){ //1200 보다 큰 경우
+		return 3;
+	} else { // 1200 보다 작은 경우
+		if ( inner > 800 ){ // 1200보다 작은 경우, 800보다 큰 경우
+			return 2;
+		} else { // 1200보다 작은 경우, 800보다 작은 경우 
+			return 1;
+		}
 	}
 }
 
-// 16, 17 jar 위치 지정하기
-if ( r != 0 ){
-	for ( var i=0 ; i<r ; i++ ){
-		var oCur = jamjars[(q*ROW)+i];
-		var oBaseStyle = window.getComputedStyle(jamjars[q*ROW+i-ROW]);
-		oCur.style.left = oBaseStyle.left;
-		oCur.style.top = setTopStyle(oBaseStyle);
-	}
+Featured.getColumn = function(){
+	return parseInt(this.jarArray.length/this.row);
 }
 
+Featured.getRemain = function(){
+	return this.jarArray.length%this.row;
+}
 
-// 00px를 숫자로 바꿔주기
-function toInt(text){
+/* setting about featured end */
+
+
+
+/* used function in featured start */
+
+Featured.ascendingBottom = function(objArray){
+	var len = objArray.length;
+	for (var i=0; i<len ; i++){
+		for (var j=i+1 ; j<len ; j++){
+			var pos = this.getBottom(objArray[i]);
+			var posNext = this.getBottom(objArray[j]);
+			if (pos > posNext){
+				var temp = objArray[i];
+				objArray[i] = objArray[j];
+				objArray[j] = temp;
+			}
+		}
+	}
+	return objArray;
+}
+
+Featured.descendingBottom = function(objArray){
+	var len = objArray.length;
+	for (var i=0; i<len ; i++){
+		for (var j=i+1 ; j<len ; j++){
+			var pos = this.getBottom(objArray[i]);
+			var posNext = this.getBottom(objArray[j]);
+			if (pos < posNext){
+				var temp = objArray[i];
+				objArray[i] = objArray[j];
+				objArray[j] = temp;
+			}
+		}
+	}
+	return objArray;
+}
+
+Featured.toInt = function(text){
 	var result = parseInt(text.substring(0,text.length-2));
 	return result;
 }
 
-// top style 지정하기 (기준이 되는 jar의 스타일)
-function setTopStyle(baseJarStyle){
-	var result = toInt(baseJarStyle.top) + toInt(baseJarStyle.height) + TOTAL_MARGIN;
-	return result + "px";
+Featured.getBottom = function(obj){
+	var style = getComputedStyle(obj);
+	var bottom = this.toInt(style.top) + this.toInt(style.height) + this.jar.jMargin;
+	return bottom;
 }
 
-// jar의 밑 부분 계산하기
-function getBottom(jarStyle){
-	var top = toInt(jarStyle.top) + toInt(jarStyle.height) + TOTAL_MARGIN;
-	return top;
+/* used function in featured end */
+
+
+
+
+/* set jar position function in featured start */
+
+Featured.posJars = function(){
+	this.posFirstGroup();
+	this.posOtherGroup();
+	this.featuredMargin();
+	this.featuredHeight();
 }
 
-// bottom 위치로 오름차순
-function ascendingBottom(jarStyleGroup){
-	
-	var len = jarStyleGroup.length;
+Featured.posFirstGroup = function(){
+	for(var i=0 ; i<this.row ; i++){
+		this.jarArray[i].style.left = this.jar.jWidth*i + "px";
+		this.jarArray[i].style.top = "0px";
+	}
+}
 
-	for ( var i=0 ; i<len ; i++){
-		for (var j=i+1 ; j<len ; j++){
-			var posInt = getBottom(jarStyleGroup[i]);
-			var posIntNext = getBottom(jarStyleGroup[j]);
-			if (posInt > posIntNext){
-				var temp = jarStyleGroup[i];
-				jarStyleGroup[i] = jarStyleGroup[j];
-				jarStyleGroup[j] = temp;
-			}
+Featured.posOtherGroup = function(){
+	for (var i=1 ; i<=this.column ; i++){
+		var BEFORE = (i-1)*this.row;
+		var CURRENT = i*this.row;
+		var R;
+
+		if (i != this.column){ // 마지막 줄이 아닐 때
+			this.posInGroup(BEFORE, CURRENT, this.row);
+		} else { // 마지막줄일 때
+			this.posInGroup(BEFORE, CURRENT, this.remain);
 		}
 	}
-
-	return jarStyleGroup;
 }
 
+Featured.posInGroup = function(BEFORE, CURRENT, REMAIN){
+	var baseObjArray = [];
+	for (var c=0 ; c<this.row ; c++){
+		baseObjArray[c] = this.jarArray[BEFORE+c];
+	}
+	baseObjArray = this.ascendingBottom(baseObjArray);
+	for(var c=0; c<REMAIN ; c++){
+		this.jarArray[CURRENT+c].style.left = getComputedStyle(baseObjArray[c]).left;
+		this.jarArray[CURRENT+c].style.top = this.getBottom(baseObjArray[c]) + "px";
+	}
+}
 
-// bottom 위치로 오름차순
-function descendingBottom(jarStyleGroup){
-	
-	var len = jarStyleGroup.length;
+Featured.featuredMargin = function(){
+	this.jarArray[0].parentNode.style.width = this.jar.jWidth*this.row + "px";
+};
 
-	for ( var i=0 ; i<len ; i++){
-		for (var j=i+1 ; j<len ; j++){
-			var posInt = getBottom(jarStyleGroup[i]);
-			var posIntNext = getBottom(jarStyleGroup[j]);
-			if (posInt < posIntNext){
-				var temp = jarStyleGroup[i];
-				jarStyleGroup[i] = jarStyleGroup[j];
-				jarStyleGroup[j] = temp;
-			}
+Featured.featuredHeight = function(){
+	var deArray = Array(this.row);
+	for (var i=0; i<this.row ; i++){
+		deArray[i] = this.jarArray[(this.jarArray.length-1)-i];
+	}
+	deArray = this.descendingBottom(deArray);
+	this.jarArray[0].parentNode.style.height = this.getBottom(deArray[0]) + "px";
+}
+
+Featured.posAll = function(){
+	this.Setting();
+	this.posJars();
+}
+
+/* set jar position function in featured end */
+
+
+
+var ScrollEvent = {
+	disableVerticalScroll : function(){
+		window.onmousewheel = this.wheel;
+		document.onkeydown = this.keydown;
+	},
+
+	keydown : function(e){
+		leftKey = 37;
+		rightKey = 39;
+		if (e.keyCode === leftKey || e.keyCode === rightKey){
+			e.preventDefault();
+		}
+	},
+
+	wheel : function(e){
+		if (e.wheelDeltaX != 0){
+			e.preventDefault();
 		}
 	}
-
-	return jarStyleGroup;
 }
 
 
 
-var jamStyles = Array(jamjars.length);
-
-for ( i=0 ; i<jamjars.length ; i++){
-	jamStyles[i] = window.getComputedStyle(jamjars[i]);
-}
-
-jamStyles = descendingBottom(jamStyles);
-
-var featured = document.getElementById("featured");
-featured.children[1].style.height = getBottom(jamStyles[0]) + "px";
 
 
 

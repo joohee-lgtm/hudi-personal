@@ -1,48 +1,10 @@
 @CHARSET "UTF-8";
-#wrap {
+
+#photoSelectWrap {
 	font-family: helvetica;
 	width: 100%;
 	height: 100%;
 	background-color:#E9E4DB;
-}
-
-#mainNavigation {
-	background-color: #239933;
-	font-family: cursive;
-	top: 0px;
-	left: 0px;
-	height: 50px;
-	width: 100%;
-	border: 1px solid black;
-	position: fixed;
-}
-
-#mainNavigation h2 {
-	margin:auto;
-	margin-top: 5px;
-	margin-left: 20px;
-	color: white;
-}
-
-#mainNavigation h2 a {
-	text-decoration: none;
-	color: white;
-}
-
-#subNavigation {
-	background-color: #222326;
-	top: 50px;
-	left: 0px;
-	width: 100%;
-	height: 70px;
-	border: 1px solid black;
-	position: fixed;
-}
-
-#subNavigation h1 {
-	color: white;
-	font-family: helvetica;
-	margin-left: 150px;
 }
 
 
@@ -74,7 +36,7 @@
 
 #overview {
 	background-color: white;
-	width: 880px;
+	width: 874px;
 	margin: auto;
 	border: 1px solid gray;
 	border-radius: 8px;
@@ -118,6 +80,10 @@
 	height: 84px;
 	color: white;
 	word-break: break-word;
+}
+
+#sortStrip p {
+	margin-top: 35px;
 }
 
 #carousel {
