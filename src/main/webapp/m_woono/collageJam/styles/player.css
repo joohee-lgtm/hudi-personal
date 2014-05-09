@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.header,.content,.footer,.appstore {
+	width: 100%;
+	margin: auto;
+	overflow: hidden;
+}
+
+.header {
+	
+}
+
+.header p {
+	background-color: #1d1d1d;
+	font-family: helvetica;
+	text-align: center;
+	color: #fff;
+	font-size: 150%;
+	padding: 3px;
+	width: 100%;
+	margin: 0;
+}
+
+.content {
+	
+}
+
+.content p {
+	height: 320px;
+	width: 100%;
+	margin: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.content p img {
+	padding: 0px;
+	left: 0px;
+	width: 100%;
+	height: 320px;
+	position: absolute;
+}
+
+#flickView {
+	overflow: hidden;
+}
+
+.wkit-transition {
+	position: relative;
+	width: 100%;
+	height: 320px;
+}
+
+.flick-jamjar {
+	width: 100%;
+	height: 320px;
+	position: absolute;
+}
+
+.jamjar-one {
+	left: 0%;
+}
+
+.jamjar-two {
+	left: 100%;
+}
+
+.jamjar-three {
+	left: 200%;
+}
+
+.footer {
+	background-color: #1d1d1d;
+}
+
+.footer p {
+	padding: 5px; font-family : helvetica;
+	color: #fff;
+	text-align: center;
+	font-size: 120%;
+	margin: 0;
+	font-family: helvetica;
+}
+
+.appstore {
+	width: 80%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.appstore img {
+	width: 100%;
+}
