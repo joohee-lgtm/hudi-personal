@@ -26,6 +26,7 @@
 			</div>
 		</div>
 		<div id="search">
+			<!-- 자바스크립트로 -->
 			<form accept-charset="UTF-8" onsubmit="emulAcceptCharset(this)">
 				<input type="text" name="search-photos" autocomplete="off"
 					placeholder="Search for Images"> <span class="submit">
@@ -40,7 +41,6 @@
 				</p>
 				<div id="carousel"></div>
 			</div>
-
 		</div>
 	</section>
 <script src="https://www.google.com/jsapi" type="text/javascript"></script>

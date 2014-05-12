@@ -51,6 +51,7 @@ function OnLoad() {
 	//searchControl.setSearchStartingCallback(this, document.prototype.OnSearchStarting);
 }
 
+//Refactoring
 function searchComplete(searchControl, searcher) {
 
 	// Check that we got results
@@ -64,7 +65,9 @@ function searchComplete(searchControl, searcher) {
 
 		if (pageCursor === 1)
 			contentDiv.innerHTML = '';
-
+			
+			
+			//이벤트버블링이나 캡쳐링 이용하기
 		for ( var i = 0; i < results.length; i++) {
 			// For each result write it's title and image to the screen
 			var result = results[i];
@@ -74,17 +77,21 @@ function searchComplete(searchControl, searcher) {
 				if (e.target.tagName === "IMG")
 					e.target.parentNode.style.backgroundColor = "red";
 			}
+			
 			imageFrame.onmouseout = function(e) {
 				e.target.style.backgroundColor = "white";
-
 				e.target.parentNode.style.backgroundColor = "white";
 			}
+			
 			imageFrame.onclick = function(e) {
 				if (userDataModel.originalURL.length == 90) {
+					//Alert은 피곤함.
 					alert("Sorry, You cannot add more than 90 photos");
 					return;
 				}
+				
 				var frames = document.getElementById("overview").childNodes;
+			
 				for ( var idx in frames) {
 					if (frames[idx] === e.target.parentNode) {
 						var url = imageURLHolder[idx];
@@ -163,7 +170,6 @@ function updateCarousel() {
 	newImg.src = userDataModel.tbURL[lengthOfArr - 1];
 	imageFrame.appendChild(newImg);
 	carousel.appendChild(imageFrame);
-
 }
 
 function getSelectedImages() {
@@ -179,7 +185,3 @@ function emulAcceptCharset(form) {
 }
 
 google.setOnLoadCallback(OnLoad);
-
-
-
-

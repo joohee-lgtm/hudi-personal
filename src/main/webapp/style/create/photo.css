@@ -25,6 +25,7 @@
 	border-radius: 8px;
 }
 
+/* CSS Selector 공부하기 */
 #search form > input[type="text"] {
 	width: 300px;
 	border: 0px solid black;
