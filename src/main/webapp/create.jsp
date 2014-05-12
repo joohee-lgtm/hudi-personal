@@ -3,8 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <title>result page</title>
-
-
 <link rel="stylesheet" type="text/css" href="./style/common.css"/> 
 <link rel="stylesheet" type="text/css" href="./style/create/fixed.css"/>
 <link rel="stylesheet" type="text/css" href="./style/create/photo.css"/>
