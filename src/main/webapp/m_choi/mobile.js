@@ -5,6 +5,7 @@ var STATIC_DATA = {
 	WEINRE_TEST_SERVER : "10.73.38.59",
 	WEINRE_PORT : "9999",
 	IMG_SIZE_SECTION02 : 192
+	//NUM_CARDS = getElementBySelector
 }
 
 function toggleContents(e) {
@@ -140,7 +141,7 @@ function adjustImgWidth() {
 	if (orientation !== 0) {
 		console.log(orientation);
 		var viewPortWidth = getViewport();
-		var imgWidth = 192; //same as on portrait view
+		var imgWidth = STATIC_DATA.IMG_SIZE_SECTION02;
 		var proportion = (imgWidth * 100) / viewPortWidth;
 		var leftValue = (100 - proportion) / 2;
 		var eleImg = document.getElementsByClassName('aboutImg');
@@ -185,7 +186,7 @@ window.addEventListener('load', function() {
 	registerEvent();
 	alignJarFrames();
 	//adjustFrameWidth();
-	addScriptForWeinre();
+	//addScriptForWeinre();
 }, false);
 
 window.addEventListener('orientationchange', function() {
