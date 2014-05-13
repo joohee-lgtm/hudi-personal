@@ -67,7 +67,7 @@ function handleTouchend(e) {
 }
 
 function setPosition() {
-	var nCenterIndex = oTouch.nIndex % 4;
+	var nCenterIndex = oTouch.nIndex % STATIC_DATA.NUM_CARDS;
 	var nRightIndex = nCenterIndex + 1;
 	var nLeftIndex = nCenterIndex - 1;
 	//var nLastIndex = nRightIndex + 1;
@@ -98,6 +98,11 @@ function getSpecificProperty(param, property) {
 
 function getElementBySelector(selector) {
 	return document.querySelector(selector);
+}
+
+function getElementBySelectorWithItsParent(selector, parent) {
+	var parent = document.querySelector(parent);
+	return parent.querySelectorAll(selector);
 }
 
 function flickControl() {
@@ -173,11 +178,15 @@ function registerEvent() {
 	flickView.addEventListener('touchend', handleTouchend, false);
 }
 
-function showSameIntroductionCard() {
-	var display = getSpecificProperty("#flickView", "display");
-	if(display !== 'none') {
+// function showSameIntroductionCard() {
+// 	var display = getSpecificProperty("#flickView", "display");
+// 	if(display !== 'none') {
 
-	}
+// 	}
+// }
+
+function initVariables() {
+	STATIC_DATA.NUM_CARDS = getElementBySelectorWithItsParent(".about", ".container").length;
 }
 
 window.addEventListener('load', function() {
@@ -185,6 +194,7 @@ window.addEventListener('load', function() {
 	oTouch.aChildNodes = document.getElementsByClassName('about');
 	registerEvent();
 	alignJarFrames();
+	initVariables();
 	//adjustFrameWidth();
 	//addScriptForWeinre();
 }, false);
