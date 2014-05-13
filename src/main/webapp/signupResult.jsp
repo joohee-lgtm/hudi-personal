@@ -11,5 +11,6 @@
 	<%String username = (String)request.getAttribute("USERNAME"); %>
 	
 	your name: <%= username%> <br><br>
+	<a href="./main.jsp">Home</a>
 </body>
 </html>

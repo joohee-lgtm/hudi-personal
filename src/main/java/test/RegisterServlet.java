@@ -28,6 +28,7 @@ public class RegisterServlet extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String email = request.getParameter("email");
 		String url = "jdbc:mysql://10.73.45.132:3306/test";
 
 		try {
@@ -55,7 +56,7 @@ public class RegisterServlet extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String sql = String.format("insert into user " + "(username, password) values ('%s', '%s');", username, password);
+		String sql = String.format("insert into user " + "(username, password, email) values ('%s', '%s', '%s');", username, password, email);
 		try {
 			rowNum  = stmt.executeUpdate(sql);
 		} catch (SQLException e) {
