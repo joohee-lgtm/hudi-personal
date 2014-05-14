@@ -1,17 +1,40 @@
 oTouch = {};
 oTouch.nIndex = 0;
 
+JE = {
+	getSpecificProperty : function(ele, property) {
+		return window.getComputedStyle(ele).getPropertyValue(property);
+	},
+	getElBySel : function(selector) {
+		return document.querySelector(selector);
+	},
+	getElBySelWithParent : function(selector, parent) {
+		var parent = document.querySelector(parent);
+		return parent.querySelectorAll(selector);
+	},
+	getElByClass : function(name) {
+		return document.getElementsByClassName(name);
+	}
+}
+	
+
 var STATIC_DATA = {
-	WEINRE_TEST_SERVER : "10.73.38.59",
-	WEINRE_PORT : "9999",
-	IMG_SIZE_SECTION02 : 192
-	//NUM_CARDS = getElementBySelector
+		WEINRE_TEST_SERVER 	: "10.73.38.59",
+		WEINRE_PORT 		: "9999",
+		SECTION02_IMG_SIZE 	: 192,
+		FIRST_CARD_INDEX 	: 0,
+		LEFT 				: "left",
+		RIGHT 				: "right",
+		LEFT_CARD_POSITION 	: "-100%",
+		RIGHT_CARD_POSITION : "100%",
+		CENTER_CARD_POSITION: "0%",
+		ONE_HUNDRED_PERCENT : 100
 }
 
 function toggleContents(e) {
 	var tar = e.target;
 	var wrapper = tar.parentNode.parentNode.children[1];
-	var display = getSpecificProperty(wrapper, "display");
+	var display = JE.getSpecificProperty(wrapper, "display");
 	wrapper.style.display = (display === 'none') ? 'block' : 'none';
 }
 
@@ -32,14 +55,27 @@ function handleTouchmove(e) {
 	oTouch.touchX = touch.clientX;
 	oTouch.touchY = touch.clientY;
 	oTouch.nValue = oTouch.touchX - oTouch.touchstartX;
-	var index = oTouch.nIndex, value = oTouch.nValue;
-	if(index <= 0 && value > 0 || index >= 3 && value < 0) 
+	oTouch.sDirection = getDirection(oTouch.nValue);
+	if(isInvalidFlicking()) 
 		return false;
 	else
-		rifflePage();
+		flickPage();
 }
 
-function rifflePage() {
+function isInvalidFlicking() {
+	if(oTouch.nIndex <= STATIC_DATA.FIRST_CARD_INDEX && oTouch.sDirection === STATIC_DATA.LEFT || oTouch.nIndex >= STATIC_DATA.LAST_CARD_INDEX && oTouch.sDirection === STATIC_DATA.RIGHT)
+		return true;
+	return false;
+}
+
+function getDirection(value) {
+	if(value > 0)
+		return STATIC_DATA.LEFT;
+	else 
+		return STATIC_DATA.RIGHT;
+}
+
+function flickPage() {
 	oTouch.eleContainer.style.webkitTransform = "translate(" + oTouch.nValue + "px)";
 }
 
@@ -49,16 +85,14 @@ function handleTouchend(e) {
 	oTouch.touchY = touch.clientY;
 	var nTmpIndex = oTouch.nIndex;
 	
-	// 오른쪽으로
 	if(oTouch.touchstartX - oTouch.touchX > 0) {
-		oTouch.nIndex ++;
+		oTouch.nIndex++;
 	}
-	// 왼쪽으로
 	else {
-		oTouch.nIndex --;
+		oTouch.nIndex--;
 	}
 
-	if(oTouch.nIndex >= 0 && oTouch.nIndex <= 3) {
+	if(oTouch.nIndex >= STATIC_DATA.FIRST_CARD_INDEX && oTouch.nIndex <= STATIC_DATA.LAST_CARD_INDEX) {
 		setPosition();
 		oTouch.eleContainer.style.webkitTransform = "translate(0)";
 	}
@@ -70,69 +104,46 @@ function setPosition() {
 	var nCenterIndex = oTouch.nIndex % STATIC_DATA.NUM_CARDS;
 	var nRightIndex = nCenterIndex + 1;
 	var nLeftIndex = nCenterIndex - 1;
-	//var nLastIndex = nRightIndex + 1;
-	console.log(oTouch.nIndex);
+	//console.log(oTouch.nIndex);
 
-	if(nLeftIndex < 0) {
-		nLeftIndex = 3;
+	if(nLeftIndex < STATIC_DATA.FIRST_CARD_INDEX) {
+		nLeftIndex = STATIC_DATA.LAST_CARD_INDEX;
 	}
-	if (nRightIndex > 3) {
-		nRightIndex = 0;
+	if (nRightIndex > STATIC_DATA.LAST_CARD_INDEX) {
+		nRightIndex = STATIC_DATA.FIRST_CARD_INDEX;
 	}
 
-	oTouch.aChildNodes[nLeftIndex].style.left = "-100%";
-	oTouch.aChildNodes[nCenterIndex].style.left = "0%";
-	oTouch.aChildNodes[nRightIndex].style.left = "100%";
-	//oTouch.aChildNodes[nLastIndex].style.left = "200%";
-}
-
-function getSpecificProperty(param, property) {
-	if(typeof param === "string") 
-		var ele = document.querySelector(param);
-
-	else if(typeof param === "object")
-		var ele = param;
-	var value = window.getComputedStyle(ele).getPropertyValue(property);
-	return value;
-}
-
-function getElementBySelector(selector) {
-	return document.querySelector(selector);
-}
-
-function getElementBySelectorWithItsParent(selector, parent) {
-	var parent = document.querySelector(parent);
-	return parent.querySelectorAll(selector);
-}
-
-function flickControl() {
-
+	oTouch.aChildNodes[nLeftIndex].style.left = STATIC_DATA.LEFT_CARD_POSITION;
+	oTouch.aChildNodes[nCenterIndex].style.left = STATIC_DATA.CENTER_CARD_POSITION;
+	oTouch.aChildNodes[nRightIndex].style.left = STATIC_DATA.RIGHT_CARD_POSITION;
 }
 
 function getDirection() {
-	var direction = (oTouch.touchendX - oTouch.touchstartX) > 0 ? 'left' : 'right';
-	return direction;
+	return direction = (oTouch.touchendX - oTouch.touchstartX) > 0 ? STATIC_DATA.LEFT : STATIC_DATA.RIGHT;
 }
 
 function alignJarFrames() {
 	var viewPortWidth = getViewport();
-	var aFrames = document.getElementsByClassName('jamjar');
+	var aFrames = JE.getElByClass('jamjar');
 	var frameWidth = aFrames[0].offsetWidth;
-	var margin = (viewPortWidth - frameWidth)/2;
+	var margin = (viewPortWidth - frameWidth) / 2;
 
 	for(var i = 0; i < aFrames.length; i ++) {
 		aFrames[i].style.marginLeft = margin + 'px';
 		aFrames[i].style.marginRight = margin + 'px';
 	}
 
-	var eleWrapper = document.getElementById('jar-wrapper');
+	var eleWrapper = getElById('jar-wrapper');
+}
+
+function getElById(name) {
+	return document.getElementById(name);
 }
 
 function adjustFrameWidth() {
 	var viewPortWidth = getViewport();
-	var aFrames = document.getElementsByClassName('about');
-	var numOfPanels = aFrames.length;
-	var eleContainer = document.querySelector(".container");
+	var aFrames = JE.getElByClass('about');
+	var eleContainer = JE.getElBySel(".container");
 	
 	for(var i = 0; i < aFrames.length; i ++) {
 		aFrames[i].style.width = viewPortWidth + 'px';
@@ -140,19 +151,17 @@ function adjustFrameWidth() {
 	eleContainer.style.width = (viewPortWidth * numOfPanels) + 'px';
 }
 
-function adjustImgWidth() {
+function adjustImgWidthOnOrientationChange() {
 	var orientation = window.orientation;
 
 	if (orientation !== 0) {
-		console.log(orientation);
 		var viewPortWidth = getViewport();
-		var imgWidth = STATIC_DATA.IMG_SIZE_SECTION02;
-		var proportion = (imgWidth * 100) / viewPortWidth;
-		var leftValue = (100 - proportion) / 2;
-		var eleImg = document.getElementsByClassName('aboutImg');
+		var proportion = (imgWidth * STATIC_DATA.ONE_HUNDRED_PERCENT) / viewPortWidth;
+		var leftValue = (STATIC_DATA.ONE_HUNDRED_PERCENT - proportion) / 2;
+		var eleImg = JE.getElByClass('aboutImg');
 
 		for(var i = 0; i < eleImg.length; i ++) {
-			eleImg[i].style.width = imgWidth + 'px';
+			eleImg[i].style.width = STATIC_DATA.SECTION02_IMG_SIZE + 'px';
 			eleImg[i].style.left = leftValue + 'px';
 		}
 	}
@@ -161,37 +170,45 @@ function adjustImgWidth() {
 function addScriptForWeinre() {
 	var head = document.getElementsByTagName('head')[0];
 	var script = document.createElement('script');
-	script.src = "http://" + STATIC_DATA.WEINRE_TEST_SERVER + ":" + STATIC_DATA.WEINRE_PORT + "/target/target-script-min.js#anonymous";
+	script.src = getScriptSrc();
 	head.appendChild(script);
 }
 
+function getScriptSrc() {
+	return "http://" + STATIC_DATA.WEINRE_TEST_SERVER + ":" + STATIC_DATA.WEINRE_PORT + "/target/target-script-min.js#anonymous";
+}
+
 function registerEvent() {
-	var aToggler = document.getElementsByClassName('toggler');
+	var aToggler = JE.getElByClass('toggler');
 
 	for(var i = 0; i < aToggler.length; i ++) {
 		aToggler[i].addEventListener('touchstart', toggleContents, false);
 	}
 
-	var flickView = document.getElementById('flickView');
+	var flickView = getElById('flickView');
 	flickView.addEventListener('touchstart', handleTouchstart, false);
 	flickView.addEventListener('touchmove', handleTouchmove, false);
 	flickView.addEventListener('touchend', handleTouchend, false);
 }
 
 // function showSameIntroductionCard() {
-// 	var display = getSpecificProperty("#flickView", "display");
+// 	var ele = getElById('flickView');
+// 	var display = getSpecificProperty(ele, "display");
 // 	if(display !== 'none') {
 
 // 	}
 // }
 
 function initVariables() {
-	STATIC_DATA.NUM_CARDS = getElementBySelectorWithItsParent(".about", ".container").length;
+	STATIC_DATA.NUM_CARDS = JE.getElBySelWithParent(".about", ".container").length;
+	STATIC_DATA.LAST_CARD_INDEX = STATIC_DATA.NUM_CARDS - 1;
+	// STATIC_DATA.LEFT_CARD_INDEX = STATIC_DATA.NUM_CARDS - 1;
+	// STATIC_DATA.RIGHT_CARD_INDEX = STATIC_DATA.NUM_CARDS + 1;
 }
 
 window.addEventListener('load', function() {
-	oTouch.eleContainer = getElementBySelector(".container");
-	oTouch.aChildNodes = document.getElementsByClassName('about');
+	oTouch.eleContainer = JE.getElBySel(".container");
+	oTouch.aChildNodes = JE.getElByClass('about');
 	registerEvent();
 	alignJarFrames();
 	initVariables();
@@ -202,6 +219,6 @@ window.addEventListener('load', function() {
 window.addEventListener('orientationchange', function() {
 	alignJarFrames();
 	adjustFrameWidth();
-	adjustImgWidth();
+	adjustImgWidthOnOrientationChange();
 	showSameIntroductionCard();
 }, false);
