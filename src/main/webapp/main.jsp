@@ -20,17 +20,7 @@
 			</form>
 			<a href="./create.jsp">create</a>
 		</div>
-		<a> CollageJam </a>
-		<a href="myjars"> myJamJars </a>
-		<form method="post" action="./login.jsp">
-			<!-- 			<input type="text" class="txtbox"/>
-			<input type="password" class="txtbox"/>
- -->
-			<input type="submit" value="login" />
-		</form>
-		<a href="./create.jsp">create</a>
-
-		<%
+    	<%
 			String greeting = "Hello, ";
 			String username = (String) request.getAttribute("USERNAME");
 			System.out.println("username: " + username);
