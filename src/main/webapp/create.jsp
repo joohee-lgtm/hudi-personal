@@ -9,8 +9,6 @@
 <link rel="stylesheet" type="text/css" href="./style/create/fixed.css"/>
 <link rel="stylesheet" type="text/css" href="./style/create/photo.css"/>
 <link rel="stylesheet" type="text/css" href="./style/create/preview.css"/>
-<link type="text/css" rel="stylesheet" href="./style/create.css">
-<link rel="stylesheet" type="text/css" href="./style/common.css" />
 <title>Create CollageJam</title>
 <script src="https://www.google.com/jsapi" type="text/javascript"></script>
 <script language="Javascript" type="text/javascript">
