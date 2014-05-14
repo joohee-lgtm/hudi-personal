@@ -12,6 +12,7 @@
 	<div class="header">
 		<p class="title">CollageJam</p>
 	</div>
+	
 	<!-- /header -->
 
 	<div class="content" id="flickView">
