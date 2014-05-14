@@ -1,0 +1,36 @@
+body {
+	margin : 0;
+}
+
+header {
+	border : 1px solid;
+	text-align: center;
+}
+
+nav {
+	position: absolute;
+	top : 0px;
+	left : -300px;
+	width : 300px;
+	background-color: yellow;
+}
+
+section {
+	width : 100%;
+}
+
+section article {
+	width : 100%;
+	background-color: grey;
+}
+
+#featured > div{
+	width : 300px;
+	height : 200px;
+	border : 1px solid;
+	background-color: green;
+}
+
+footer {
+	border : 1px solid;
+}
