@@ -12,11 +12,11 @@ function userDataModel() {
 
 	this.addPhotoURL = function(url) {
 		this.originalURL.push(url);
-	}
+	};
 
 	this.addTbURL = function(url) {
 		this.tbURL.push(url);
-	}
+	};
 	// console.log("userDataModel created");
 }
 
@@ -76,12 +76,12 @@ function searchComplete(searchControl, searcher) {
 				e.target.style.backgroundColor = "red";
 				if (e.target.tagName === "IMG")
 					e.target.parentNode.style.backgroundColor = "red";
-			}
+			};
 			
 			imageFrame.onmouseout = function(e) {
 				e.target.style.backgroundColor = "white";
 				e.target.parentNode.style.backgroundColor = "white";
-			}
+			};
 			
 			imageFrame.onclick = function(e) {
 				if (userDataModel.originalURL.length == 90) {
@@ -105,7 +105,7 @@ function searchComplete(searchControl, searcher) {
 						break;
 					}
 				}
-			}
+			};
 
 			//var title = document.createElement('div');
 
@@ -164,7 +164,7 @@ function updateCarousel() {
 				break;
 			}
 		}
-	}
+	};
 	var newImg = document.createElement('img');
 	var lengthOfArr = userDataModel.tbURL.length;
 	newImg.src = userDataModel.tbURL[lengthOfArr - 1];
