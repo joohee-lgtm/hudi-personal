@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+
+/*결과 페이지 전체*/
+#resultWrap{
+	margin : auto;
+	width : 800px;
+	height : 600px;
+	box-shadow: 1px 1px 10px #888888;
+	background-color: #FFFFFF;
+	z-index: 1;
+}
+
+/*슬라이드가 재생되는 부분*/
+#slide {
+	position: relative;
+	top : 0px;
+	left : 0px;
+	width : 800px;
+	height : 600px;
+	float: left;
+	border-right : 1px solid #E6E6E6;
+  	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#slide div{
+	width : 399px;
+	height : 300px;
+	float : left;
+}
+
+#slide div img {
+	display: block;
+	margin : auto;
+}
+
+/*오디오가 재생되는 부분*/
+#player {
+	position: relative;
+	top : 440px;
+	left : 600px;
+	width : 160px;
+	height : 120px;
+	border : 1px solid #A6A4A6;
+	margin-bottom: 10px;
+  	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    background-color: #FFFFFF;
+}
+
+#temparea {
+	display : none;
+}
+
+#temparea img{
+/*	width : 0px;
+	height : 0px;
+*/	display: block;
+}
