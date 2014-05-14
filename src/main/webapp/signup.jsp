@@ -28,6 +28,10 @@
 						<td><input type="password" name="password" value="" /></td>
 					</tr>
 					<tr>
+						<td>Email</td>
+						<td><input type="text" name="email" value="" /></td>
+					</tr>
+					<tr>
 						<td><input type="submit" value="Submit" /></td>
 						<td><input type="reset" value="Reset" /></td>
 					</tr>
