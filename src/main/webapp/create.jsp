@@ -2,7 +2,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<<<<<<< HEAD
 <title>result page</title>
 
 
@@ -10,8 +9,6 @@
 <link rel="stylesheet" type="text/css" href="./style/create/fixed.css"/>
 <link rel="stylesheet" type="text/css" href="./style/create/photo.css"/>
 <link rel="stylesheet" type="text/css" href="./style/create/preview.css"/>
-
-=======
 <link type="text/css" rel="stylesheet" href="./style/create.css">
 <link rel="stylesheet" type="text/css" href="./style/common.css" />
 <title>Create CollageJam</title>
@@ -196,10 +193,8 @@
 
 	google.setOnLoadCallback(OnLoad);
 </script>
->>>>>>> refs/heads/april
 </head>
 <body>
-<<<<<<< HEAD
 
 <div id="wrap">
 
@@ -237,7 +232,6 @@
 					<a href="./result.jsp">NEXT ></a>
 				</span>
 			</div>
->>>>>>> refs/heads/april
 		</div>
 	</div>
 	<!--네비게이션 바 끝-->
@@ -296,7 +290,6 @@
 				<input type="submit" value="submit"/>
 			</form>
 		</div>
-<<<<<<< HEAD
 	</section>
 	
 	<!--결과 페이지 끝-->
@@ -316,8 +309,6 @@
 	<script type="text/javascript" src="./script/create/photo.js"/></script>
 	<script type="text/javascript" src="./script/create/youtube.js"/></script>
 	<script type="text/javascript" src="./script/create/preview.js"/></script>
-=======
 	</div>
->>>>>>> refs/heads/april
 </body>
 </html>
