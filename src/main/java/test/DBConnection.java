@@ -10,14 +10,14 @@ public class DBConnection extends HttpServlet {
 		String success = "DB Connection Seccess";
 		String fail = "DB Connection fail";
 		String con_s = "driver manager success";
-		System.out.print("connection start\n");
 
 		Connection conn = null;
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			try {
-				conn = DriverManager.getConnection("jdbc:mysql://10.73.45.132:3306/collageJam", "admin", "leonard911");
+				//conn = DriverManager.getConnection("jdbc:mysql://10.73.45.132:3306/collageJam", "admin", "leonard911");
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/collageJam", "devtest", "0000");
 				request.setAttribute("conn", con_s);
 			} catch (SQLException e) {
 				e.printStackTrace();

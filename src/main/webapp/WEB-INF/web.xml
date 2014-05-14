@@ -30,6 +30,14 @@
 		<url-pattern>/register.do</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>showdata</servlet-name>
+		<servlet-class>test.ShowDB</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>showdata</servlet-name>
+		<url-pattern>/showdb</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>dbconntest</servlet-name>
