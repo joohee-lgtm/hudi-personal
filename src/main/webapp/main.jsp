@@ -8,7 +8,6 @@
 </head>
 <body>
 	<header id="header">
-<<<<<<< HEAD
 		<div>
 			<a href="./main.jsp"> CollageJam </a>
 			<a href="./mypage.jsp"> myJamJars </a>
@@ -21,7 +20,6 @@
 			</form>
 			<a href="./create.jsp">create</a>
 		</div>
-=======
 		<a> CollageJam </a>
 		<a href="myjars"> myJamJars </a>
 		<form method="post" action="./login.jsp">
@@ -42,7 +40,6 @@
 				session.setAttribute("ID", username);
 		%>
 		<span id="userid"> Hello, <%=username%></span>
->>>>>>> refs/heads/april
 	</header>
 	<section id="contents">
 		<section id="bgvideo">
@@ -62,7 +59,7 @@
 				href="./create.jsp">
 				<div></div> <span> Start Now </span>
 			</a> <span> or <a href="./signup.jsp"><u>Sign up</u></a> with
-				Eamil
+				Email
 			</span>
 		</section>
 
@@ -99,7 +96,6 @@
 		<section id="featured">
 			<span>FEATURED</span>
 			<div>
-<<<<<<< HEAD
 				<div class="jar1">1</div><!--
 				--><div class="jar2">2</div><!--
 				--><div class="jar3">3</div><!--
@@ -117,7 +113,6 @@
 				--><div class="jar15">15</div><!--
 				--><div class="jar16">16</div><!--
 				--><div class="jar17">17</div>
-=======
 				<div class="jamjar jar1">1</div>
 				<!--
 				-->
@@ -167,7 +162,6 @@
 				<!--
 				-->
 				<div class="jamjar jar17">17</div>
->>>>>>> refs/heads/april
 			</div>
 			<span>Start</span>
 		</section>
