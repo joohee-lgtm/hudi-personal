@@ -24,7 +24,7 @@ public class LoginServlet extends HttpServlet{
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
-		String url = "jdbc:mysql://10.73.45.132:3306/test";
+		String url = "jdbc:mysql://10.73.45.132:3306/collageJam";
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		try {
-			conn = DriverManager.getConnection(url, "root", "leonard911");
+			conn = DriverManager.getConnection(url, "admin", "leonard911");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		String sql = "select * from user where username='" + username + "' and password='" + password + "'";
+		String sql = "select * from user where username='" + username + "' and passwd='" + password + "'";
 		ResultSet rs = null;
 
 		try {
