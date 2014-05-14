@@ -21,22 +21,4 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 		<servlet-name>register</servlet-name>
 		<url-pattern>/register.do</url-pattern>
 	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>bbs-list-servlet</servlet-name>
-		<servlet-class>brainServlet.BBSListServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>bbs-list-servlet</servlet-name>
-		<url-pattern>/bbs-list</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>myjars-servlet</servlet-name>
-		<servlet-class>test.MyJarsServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>myjars-servlet</servlet-name>
-		<url-pattern>myjars</url-pattern>
-	</servlet-mapping>
 </web-app>
