@@ -215,7 +215,6 @@
 				next
 				<!-- <a href="./result.jsp">NEXT ></a> -->
 			</span>
-=======
 	<div id="wrap">
 		<div id="mainNavigation">
 		<span>
