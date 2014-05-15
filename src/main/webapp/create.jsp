@@ -87,7 +87,7 @@
 				<textarea rows="5" cols="30">comment</textarea>
 				<input type="submit" value="submit"/>
 			</form>
-		</div>
+		</div>	
 	</section>
 	
 	<!--결과 페이지 끝-->
