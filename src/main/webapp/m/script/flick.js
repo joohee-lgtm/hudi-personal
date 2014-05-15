@@ -6,7 +6,7 @@ var func = {
 	var result = parseInt(text.substring(0,text.length-2));
 	return result;
 	}
-}
+};
 
 
 var sidebar = {
@@ -16,17 +16,17 @@ var sidebar = {
 		hideBase : 0,
 		term : 0		
 	}
-}
+};
 
 sidebar.setHeight = function(){
 	this.ele.style.height = window.innerHeight + "px";
-}
+};
 
 sidebar.setMoveEle = function(){
 	this.moveEle.showBase = 0;
 	this.moveEle.hideBase = func.toInt(getComputedStyle(this.ele).width);
 	this.moveEle.term = 20;
-}
+};
 
 sidebar.move = function(obj){
 	this.setMoveEle();
@@ -40,7 +40,7 @@ sidebar.move = function(obj){
 			}
 		}
 	}
-}
+};
 
 sidebar.show = function(){
 	var interval = null;
@@ -55,7 +55,7 @@ sidebar.show = function(){
 			obj.ele.style.left = le + "px";
 		}
 	},10);
-}
+};
 
 sidebar.hide = function(){
 	var interval = null;
@@ -70,7 +70,7 @@ sidebar.hide = function(){
 			obj.ele.style.left = le + "px";
 		}
 	}, 10);
-}
+};
 
 
 function touch(){
@@ -104,16 +104,16 @@ touch.prototype.slope = {
 touch.prototype.getStart = function(){
 	this.start.x = event.changedTouches[0].clientX;
 	this.start.y = event.changedTouches[0].clientY;
-}
+};
 
 touch.prototype.getMove = function(){
 	this.move.distance += 1;
-}
+};
 
 touch.prototype.getEnd = function(){
 	this.end.x = event.changedTouches[0].clientX;
 	this.end.y = event.changedTouches[0].clientY;
-}
+};
 
 touch.prototype.getMoveInfo = function(){
 	if (this.move.distance < 5){
@@ -130,12 +130,12 @@ touch.prototype.getMoveInfo = function(){
 			this.move.type.D = true;
 		}
 	}
-}
+};
 
 touch.prototype.afterTouchEvent = function(){
 	this.getMoveInfo();
 	sidebar.move(this);
-}
+};
 
 
 var oTouch;

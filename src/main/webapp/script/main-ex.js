@@ -50,7 +50,7 @@ var ArrangeFeatured = {
 	// len : function(){
 	// 	console.log(this.jars.length);
 	// }
-}
+};
 
 
 ArrangeFeatured.jars = document.getElementById('featured').getElementsByTagName('div')[0].children;
@@ -61,7 +61,7 @@ ArrangeFeatured.remain = ArrangeFeatured.jars.length%3;
 ArrangeFeatured.jar = {
 	wid : 400,
 	mar : 40
-}
+};
 
 ArrangeFeatured.ascendingBottom = function(objArray){
 	var len = objArray.length;
@@ -77,7 +77,7 @@ ArrangeFeatured.ascendingBottom = function(objArray){
 		}
 	}
 	return objArray;
-}
+};
 
 ArrangeFeatured.descendingBottom = function(objArray){
 	var len = objArray.length;
@@ -93,25 +93,25 @@ ArrangeFeatured.descendingBottom = function(objArray){
 		}
 	}
 	return objArray;
-}
+};
 
 ArrangeFeatured.toInt = function(text){
 	var result = parseInt(text.substring(0,text.length-2));
 	return result;
-}
+};
 
 ArrangeFeatured.getBottom = function(obj){
 	var style = getComputedStyle(obj);
 	var bottom = this.toInt(style.top) + this.toInt(style.height) + this.jar.mar;
 	return bottom;
-}
+};
 
 ArrangeFeatured.setFirstGroup = function(){
 	for(var i=0 ; i<this.row ; i++){
 		this.jars[i].style.left = this.jar.wid*i + "px";
 		this.jars[i].style.top = "0px";
 	}
-}
+};
 
 ArrangeFeatured.setRemainGroup = function(){
 	for (var i=1 ; i<this.column ; i++){
@@ -133,7 +133,7 @@ ArrangeFeatured.setRemainGroup = function(){
 			this.jars[CURRENT+c].style.top = this.getBottom(baseObjArray[c]) + "px";
 		}
 	}
-}
+};
 
 ArrangeFeatured.setLastGroup = function(){
 	if (this.remain != 0){
@@ -144,7 +144,7 @@ ArrangeFeatured.setLastGroup = function(){
 			curObj.style.top = this.getBottom(baseObj) + "px";
 		}
 	}
-}
+};
 
 
 
@@ -195,7 +195,7 @@ var SetWindow = {
 			this.featured.children[1].style.height = ArrangeFeatured.getBottom(this.jamStyles[0]) + "px";
 		}
 	}
-}
+};
 
 SetWindow.ScrollEvent.disableVerticalScroll();
 SetWindow.Footer.setFeaturedHeight();

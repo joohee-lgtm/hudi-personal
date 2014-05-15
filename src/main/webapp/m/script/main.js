@@ -5,7 +5,7 @@ var func = {
 	var result = parseInt(text.substring(0,text.length-2));
 	return result;
 	}
-}
+};
 
 var layer = {
 	header : {
@@ -34,21 +34,21 @@ var layer = {
 layer.view.setHeight = function(){
  	// header, footer 영역을 제외한 나머지
  	var header = func.toInt(getComputedStyle(layer.header.ele).height);
- 	var footer = func.toInt(getComputedStyle(layer.footer.ele).height)
+ 	var footer = func.toInt(getComputedStyle(layer.footer.ele).height);
  	this.height = (window.innerHeight - (header + footer));
  	this.ele.style.height = this.height + "px";
 	this.ele.style.overflow = "hidden";
-}
+};
 
 layer.cont.setInitPos = function(){
 	this.ele.style.position = "relative";
 	this.ele.style.top = "0px";
 	this.ele.style.left = "0px";
-}
+};
 
 layer.cont.setHeight = function(){
 	this.height = func.toInt(getComputedStyle(this.ele).height);
-}
+};
 
 layer.cont.maxmin = function(){
 	this.MAXtop = 0;
@@ -58,7 +58,7 @@ layer.cont.maxmin = function(){
 	} else {
 		this.MINtop = 0;
 	}
-}
+};
 
 layer.view.setHeight();
 layer.cont.setInitPos();
