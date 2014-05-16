@@ -1,12 +1,9 @@
 package test;
 
 import javax.servlet.http.*;
-
 import javax.servlet.*;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.io.*;
 import java.sql.*;
 
@@ -39,9 +36,8 @@ public class ShowDB extends HttpServlet {
 				JSONObject json_obj = new JSONObject();
 				json_obj.put("u_id", rs.getInt("u_id"));
 				json_obj.put("email", rs.getString("email"));
-				json_obj.put("username", rs.getInt("username"));
+				json_obj.put("username", rs.getString("username"));
 				json_arr.put(json_obj);
-				System.out.printf("success");
 			}
 			request.setAttribute("DBobj", json_arr);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("dbshow.jsp");
