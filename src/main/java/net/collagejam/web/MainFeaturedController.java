@@ -9,13 +9,15 @@ import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainPageController {
+public class MainFeaturedController extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		Connection conn = null;
 		Statement stmt = null;
@@ -36,12 +38,13 @@ public class MainPageController {
 		} else {
 			try {
 				stmt = conn.createStatement();
-				String sql = selectSql("jamjar", "tb_url");
+				String table = "jamjar";
+				String column = "tb_url";
+				String sql = selectSql(table, column);
 				ResultSet rs = stmt.executeQuery(sql);
 				JSONArray json_arr = new JSONArray();
 				while (rs.next()){
-					json_arr.put(columnToJsonObj(rs));
-					
+					json_arr.put(columnToJsonObj(rs, column));
 				}
 				request.setAttribute("DBobj", json_arr);
 				RequestDispatcher dispatcher = request.getRequestDispatcher("dbshow.jsp");
@@ -53,19 +56,12 @@ public class MainPageController {
 	}
 	
 	String selectSql(String table, String column){
-		return "select " + column + " from " + table;
+		return "select " + column + " from " + table +";";
 	}
 	
-	JSONObject columnToJsonObj(ResultSet rs){
-		
-		return null;
+	JSONObject columnToJsonObj(ResultSet rs, String column) throws JSONException, SQLException{
+		JSONObject obj = new JSONObject();
+		obj.put(column, rs.getString(column));
+		return obj;
 	}
-	
-	
-	
-//	json_obj.put("u_id", rs.getInt("u_id"));
-//	json_obj.put("email", rs.getString("email"));
-//	json_obj.put("username", rs.getString("username"));
-//	json_arr.put(json_obj);
-
 }

@@ -16,7 +16,7 @@
 
 		for (var i=0; i<json_obj.length; i++){
 			var span = document.createElement("span");
-			var tn = document.createTextNode(json_obj[i].email);
+			var tn = document.createTextNode(json_obj[i].tb_url);
 			span.appendChild(tn);
 			document.getElementsByTagName('article')[0].appendChild(span);
 		};

@@ -18,7 +18,7 @@ public class JavascriptServlet extends HttpServlet {
 		System.out.println("connection");
 		String object = request.getParameter("data");
 		JSONObject jsonObj = new JSONObject(object);
-		JSONArray url = jsonObj.getJSONArray("arr");
+		JSONArray url = jsonObj.getJSONArray("urls");
 		System.out.println(url.get(1));
 		}
 }
