@@ -4,18 +4,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script>
-		var json_obj = ${DBobj};
-		console.log(json_obj[0].email);
-	</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>디비에서 정보 가져오기</title>
 </head>
 <body>
 안녕?<br>
+<article></article>
 
-<!-- <c:forEach begin="1" end="2">
-	${DBobj}
-</c:forEach>
- --></body>
+	<script>
+		var json_obj = ${DBobj};
+
+		for (var i=0; i<json_obj.length; i++){
+			var span = document.createElement("span");
+			var tn = document.createTextNode(json_obj[i].email);
+			span.appendChild(tn);
+			document.getElementsByTagName('article')[0].appendChild(span);
+		};
+
+	</script>
+
+</body>
 </html>
