@@ -77,12 +77,12 @@ function searchComplete(searchControl, searcher) {
 				if (e.target.tagName === "IMG")
 					e.target.parentNode.style.backgroundColor = "red";
 			};
-			
+
 			imageFrame.onmouseout = function(e) {
 				e.target.style.backgroundColor = "white";
 				e.target.parentNode.style.backgroundColor = "white";
 			};
-			
+
 			imageFrame.onclick = function(e) {
 				if (userDataModel.originalURL.length == 90) {
 					//Alert은 피곤함.

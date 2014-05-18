@@ -35,10 +35,10 @@ function stopVideo() {
 var start = document.getElementsByTagName("button")[0];
 start.onclick = function(){
     player.playVideo();
-}
+};
 
 var stop = document.getElementsByTagName("button")[1];
 stop.onclick = function(){
     player.stopVideo();
-}
+};
 /* youtube api 끝 */
