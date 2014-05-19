@@ -83,7 +83,7 @@
 			<form>
 				<input type="text" value="title">
 				<textarea rows="5" cols="30">comment</textarea>
-				<input type="submit" value="submit"/>
+				<input id="createbt" type="submit" value="submit"/>
 			</form>
 		</div>
 	</section>
@@ -105,5 +105,6 @@
 	<script type="text/javascript" src="./script/create/photo.js"/></script>
 	<script type="text/javascript" src="./script/create/youtube.js"/></script>
 	<script type="text/javascript" src="./script/create/preview.js"/></script>
+	<script type="text/javascript" src="./script/create/sendData.js"/></script>
 </body>
 </html>
