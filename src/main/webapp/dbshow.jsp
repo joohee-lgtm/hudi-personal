@@ -15,10 +15,23 @@
 		var json_obj = ${DBobj};
 
 		for (var i=0; i<json_obj.length; i++){
-			var span = document.createElement("span");
-			var tn = document.createTextNode(json_obj[i].tb_url);
-			span.appendChild(tn);
-			document.getElementsByTagName('article')[0].appendChild(span);
+			var div = document.createElement("div");
+			var br = document.createElement("br");
+			
+			var tb = document.createTextNode(json_obj[i].tb_url);
+			var title = document.createTextNode(json_obj[i].title);
+			var time = document.createTextNode(json_obj[i].date_created);
+
+			div.appendChild(tb);
+			div.appendChild(br);
+			div.appendChild(title);
+			div.appendChild(br);
+			div.appendChild(time);
+			div.appendChild(br);
+			
+			document.getElementsByTagName('article')[0].appendChild(div);
+			document.getElementsByTagName('article')[0].appendChild(br);
+			document.getElementsByTagName('article')[0].appendChild(br);
 		};
 
 	</script>

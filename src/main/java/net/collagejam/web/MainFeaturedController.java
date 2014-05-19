@@ -39,7 +39,7 @@ public class MainFeaturedController extends HttpServlet{
 			try {
 				stmt = conn.createStatement();
 				String table = "jamjar";
-				String column = "tb_url";
+				String[] column = {"title","tb_url", "date_created"};
 				String sql = selectSql(table, column);
 				ResultSet rs = stmt.executeQuery(sql);
 				JSONArray json_arr = new JSONArray();
@@ -55,13 +55,32 @@ public class MainFeaturedController extends HttpServlet{
 		}
 	}
 	
-	String selectSql(String table, String column){
-		return "select " + column + " from " + table +";";
+	String selectSql(String table, String[] column){
+		String front = "select ";
+		String center = "";
+		String rear = " from " + table + ";";
+		for (int i=0; i<column.length ;i++){
+			if(i == column.length-1){
+				center += column[i];
+			} else {
+				center += column[i] + ", ";
+			}
+		}
+		String sql = front + center + rear;
+		System.out.println(sql);
+		return sql;
 	}
 	
-	JSONObject columnToJsonObj(ResultSet rs, String column) throws JSONException, SQLException{
+	JSONObject columnToJsonObj(ResultSet rs, String[] column){
 		JSONObject obj = new JSONObject();
-		obj.put(column, rs.getString(column));
+		for (int i=0; i<column.length; i++){
+			try {
+				String value = rs.getString(column[i]);
+				obj.put(column[i], value);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		return obj;
 	}
 }
