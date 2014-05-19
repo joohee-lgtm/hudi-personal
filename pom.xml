@@ -8,6 +8,19 @@
 	<name>collageJam Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
+	<pluginRepositories>
+		<pluginRepository>
+		    <id>Codehaus Snapshots</id>
+		    <url>http://snapshots.repository.codehaus.org</url>
+		    <snapshots>
+		        <enabled>true</enabled>
+		    </snapshots>
+		    <releases>
+		        <enabled>true</enabled>  <!-- Workaround for MNG-2974, see note below -->
+		    </releases>
+		</pluginRepository> 
+	</pluginRepositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
