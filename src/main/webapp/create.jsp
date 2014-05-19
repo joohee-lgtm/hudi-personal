@@ -107,5 +107,6 @@
 	<script type="text/javascript" src="./script/create/photo.js"/></script>
 	<script type="text/javascript" src="./script/create/youtube.js"/></script>
 	<script type="text/javascript" src="./script/create/preview.js"/></script>
+	<script type="text/javascript" src="./script/create/sendData.js"/></script>
 </body>
 </html>
