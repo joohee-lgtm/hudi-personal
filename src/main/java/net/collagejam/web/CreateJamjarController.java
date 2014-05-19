@@ -37,8 +37,8 @@ public class CreateJamjarController extends HttpServlet{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			try {
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CollageJam", "devtest", "0000"); // local
-				//conn = DriverManager.getConnection("jdbc:mysql://10.73.45.132:3306/collageJam", "admin", "leonard911"); // dev server
+				//conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/CollageJam", "devtest", "0000"); // local
+				conn = DriverManager.getConnection("jdbc:mysql://10.73.45.132:3306/collageJam", "admin", "leonard911"); // dev server
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
