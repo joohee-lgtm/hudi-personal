@@ -40,14 +40,13 @@
 
 
 	<!-- real development servlet start -->
-
 	<servlet>
-		<servlet-name>main-featured</servlet-name>
-		<servlet-class>net.collagejam.web.MainFeaturedController</servlet-class>
+		<servlet-name>showfeaturedinmain</servlet-name>
+		<servlet-class>net.collagejam.servlet.MainFeaturedServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>main-featured</servlet-name>
-		<url-pattern>/showdb</url-pattern>
+		<servlet-name>showfeaturedinmain</servlet-name>
+		<url-pattern>/main</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

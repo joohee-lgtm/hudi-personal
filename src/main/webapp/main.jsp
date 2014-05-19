@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +15,7 @@
 			<a href="./mypage.jsp"> myJamJars </a>
 			<form method="post" action="./login.jsp">
 				<!--
+				]
  				<input type="text" class="txtbox"/>
 				<input type="password" class="txtbox"/>
 				-->
@@ -23,7 +26,7 @@
     	<%
 			String greeting = "Hello, ";
 			String username = (String) request.getAttribute("USERNAME");
-			System.out.println("username: " + username);
+			//System.out.println("username: " + username);
 			if(username == null)
 				username = "anonymous";
 			else
@@ -158,6 +161,9 @@
 	</section>
 
 	<footer id="footer"> footer </footer>
+	<script>
+		var obj = ${data};
+	</script>
 	<script type="text/javascript" src="./script/main.js" /></script>
 </body>
 </html>

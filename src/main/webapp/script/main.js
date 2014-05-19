@@ -1,5 +1,7 @@
 
+
 window.addEventListener('load',function(){
+	console.log(obj);
 	Featured.posAll();
 	ScrollEvent.disableVerticalScroll();
 }, false);
@@ -7,7 +9,6 @@ window.addEventListener('load',function(){
 window.addEventListener('resize',function(){
 	Featured.posAll();
 }, false);
-
 
 // 초기화??
 var Featured = {
