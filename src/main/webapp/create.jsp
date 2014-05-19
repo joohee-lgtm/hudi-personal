@@ -85,7 +85,7 @@
 			<form>
 				<input type="text" value="title">
 				<textarea rows="5" cols="30">comment</textarea>
-				<input type="submit" value="submit"/>
+				<input id="createbt" type="submit" value="submit"/>
 			</form>
 		</div>
 	</section>
