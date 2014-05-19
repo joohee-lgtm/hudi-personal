@@ -33,7 +33,6 @@ submit.addEventListener("click", function(e){
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/collageJam/createjar");
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
 	
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState === 4 && xhr.status === 200){

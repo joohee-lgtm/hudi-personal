@@ -58,6 +58,15 @@
 		<servlet-name>createjarservlet</servlet-name>
 		<url-pattern>/createjar</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>createController</servlet-name>
+		<servlet-class>net.collagejam.web.CreateController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>createController</servlet-name>
+		<url-pattern>/create</url-pattern>
+	</servlet-mapping>
 
 	<!-- real development servlet end -->
 

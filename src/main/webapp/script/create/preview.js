@@ -124,6 +124,8 @@ resultbt.onclick = function(){
 	selected.appendChild(temparea.children[0]);
 };
 
+
+
 window.onclick = function(e){
 	if (e.srcElement.offsetParent === document.getElementById('slide')){
 		result.style.display = "none";

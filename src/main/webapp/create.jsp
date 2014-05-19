@@ -82,9 +82,9 @@
 					<span>x00.1s</span>
 				</div>
 			</div>
-			<form>
-				<input type="text" value="title">
-				<textarea rows="5" cols="30">comment</textarea>
+			<form id="ajaxform" action="create" method="post">
+				<input type="text" placeholder="title">
+				<textarea rows="5" cols="30" placeholder="description"></textarea>
 				<input id="createbt" type="submit" value="submit"/>
 			</form>
 		</div>
