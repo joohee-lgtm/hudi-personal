@@ -12,7 +12,7 @@
 <article></article>
 
 	<script>
-		var json_obj = ${DBobj};
+		var json_obj = ${data};
 
 		for (var i=0; i<json_obj.length; i++){
 			var div = document.createElement("div");

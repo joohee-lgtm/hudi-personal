@@ -12,8 +12,6 @@
 <body>
 
 <div id="wrap">
-
-	<!--헤더 시작 header.css-->
 	<header id="header">
 		<span>
 			<a href="./main.jsp">CollageJam</a>

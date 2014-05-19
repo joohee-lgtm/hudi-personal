@@ -22,8 +22,8 @@ public class CreateJamjarController extends HttpServlet{
 			throws IOException, ServletException {
 		System.out.println("connection");
 		String object = request.getParameter("data");
-		
 		JSONObject jsonObj = new JSONObject(object);
+				
 		String user = jsonObj.getString("user");
 		String title = jsonObj.getString("title");
 		String description = jsonObj.getString("desc");
