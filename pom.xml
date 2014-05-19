@@ -74,15 +74,18 @@
 				</configuration>
 			</plugin>
 
-			<!-- [WARNING] The POM for org.codehaus.mojo:tomcat-maven-plugin:jar:2.2 
-				is missing, no dependency information available [WARNING] Failed to retrieve 
-				plugin descriptor for org.codehaus.mojo:tomcat-maven-plugin:2.2: Plugin org.codehaus.mojo:tomcat-maven-plugin:2.2 
-				or one of its dependencies could not be resolved: Failed to read artifact 
-				descriptor for org.codehaus.mojo:tomcat-maven-plugin:jar:2.2 <plugin> <groupId>org.codehaus.mojo</groupId> 
-				<artifactId>tomcat-maven-plugin</artifactId> <version>2.2</version> <configuration> 
-				<url>http://10.73.45.132:8080/manager/text</url> <server>mytomcat</server> 
-				<path>/collageJam</path> <username>leonard</username> <password>leonard911</password> 
-				</configuration> </plugin> -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<url>http://10.73.45.132:8080/manager/text</url>
+					<server>mytomcat</server>
+					<path>/collageJam</path>
+					<username>leonard</username>
+					<password>leonard911</password>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>
