@@ -21,6 +21,16 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>showdbservlet</servlet-name>
+		<servlet-class>test.DBshowServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>showdbservlet</servlet-name>
+		<url-pattern>/showdb</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
 		<servlet-name>dbconntest</servlet-name>
 		<servlet-class>test.DBConnection</servlet-class>
 	</servlet>

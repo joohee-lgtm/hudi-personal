@@ -8,6 +8,6 @@
 <body>
 	re : ${RE}<br>
 	conn : ${conn}<br>
-	<a href="/collageJam/showfeatured">show db</a>
+	<a href="/collageJam/showdb">show db</a>
 </body>
 </html>
