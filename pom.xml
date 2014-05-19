@@ -41,7 +41,7 @@
 	<build>
 		<finalName>collageJam</finalName>
 		<plugins>
-<!-- 			<plugin>
+			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<version>2.2</version>
@@ -52,8 +52,8 @@
 					<username>leonard</username>
 					<password>leonard911</password>
 				</configuration>
-			</plugin>
- -->			<plugin>
+			</plugin> 
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
@@ -73,7 +73,7 @@
 					<wtpContextName>/collageJam</wtpContextName>
 				</configuration>
 			</plugin>
-
+<!--  
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>
@@ -86,6 +86,7 @@
 					<password>leonard911</password>
 				</configuration>
 			</plugin>
+			-->
 		</plugins>
 	</build>
 </project>
