@@ -25,12 +25,10 @@
 		</div>
     	<%
 			String greeting = "Hello, ";
-			String username = (String) request.getAttribute("USERNAME");
+			String username = (String) session.getAttribute("username");
 			//System.out.println("username: " + username);
 			if(username == null)
 				username = "anonymous";
-			else
-				session.setAttribute("ID", username);
 		%>
 		<span id="userid"> Hello, <%=username%></span>
 	</header>

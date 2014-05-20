@@ -10,6 +10,7 @@ import java.sql.Statement;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -65,9 +66,9 @@ public class LoginServlet extends HttpServlet{
 		
 		try {
 			if(rs.next()) {
-				session.setAttribute("username", username);
 				String id = rs.getString("username");
-				String pw = rs.getString("password");
+				String pw = rs.getString("passwd");
+				session.setAttribute("username", username);
 				System.out.println("Welcome, " + username);
 				request.setAttribute("USERNAME", username);
 			} else {

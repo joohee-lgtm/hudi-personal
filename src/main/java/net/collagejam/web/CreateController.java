@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,13 +16,14 @@ public class CreateController extends HttpServlet {
 		String obj = request.getParameter("data");
 		
 		PrintWriter out = response.getWriter();
-		out.println(obj);
 		
-		JSONObject jsonObj = new JSONObject(obj);
-		String title = jsonObj.getString("title");
-		String desc = jsonObj.getString("desc");
-		String bgm = jsonObj.getString("bgm");
-		JSONArray urls = jsonObj.getJSONArray("aURL");
-	}
 
+		HttpSession session = request.getSession();
+		JSONObject jsonObj = new JSONObject(obj);
+		String username = (String) session.getAttribute("username");
+		jsonObj.put("username", username);
+
+		out.println(jsonObj);
+		session.setAttribute("data", jsonObj);
+	}
 }
