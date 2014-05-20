@@ -78,7 +78,7 @@ public class CreateJamjarController extends HttpServlet{
 	int getUserId(Statement stmt, String user){
 		int userid = 0;
 		String q = "\"";
-		String get_userid_sql = "select u_id from user where username="+q+user+q+";";
+		String get_userid_sql = "select u_id from user where username=" + q + user + q + ";";
 		System.out.println(get_userid_sql);
 		try {
 			ResultSet rs = stmt.executeQuery(get_userid_sql);
@@ -111,7 +111,12 @@ public class CreateJamjarController extends HttpServlet{
 	void insertInfoSql(Statement stmt, int userid, String title, String description, String bgm, String thumbnail){
 		String q = "\"";
 		String sql = "insert into jamjar (u_id, title, description, bgm_url, tb_url) values ("
-					+ String.valueOf(userid) +"," + q+ title + q + ", " + q + description+q + ", " + q+bgm +q+ ", " +q+ thumbnail+q + ");";
+					+ String.valueOf(userid) +"," 
+					+ q + title + q + ", " 
+					+ q + description + q + ", " 
+					+ q + bgm + q + ", " 
+					+ q + thumbnail + q 
+					+ ");";
 		System.out.println(sql);
 		try {
 			stmt.execute(sql);

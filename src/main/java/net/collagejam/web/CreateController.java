@@ -2,6 +2,11 @@ package net.collagejam.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +17,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class CreateController extends HttpServlet {
+	
+	JSONObject userData = new JSONObject();
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String obj = request.getParameter("data");
 		
@@ -20,10 +28,106 @@ public class CreateController extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		JSONObject jsonObj = new JSONObject(obj);
+		userData = jsonObj;
+		
 		String username = (String) session.getAttribute("username");
-		jsonObj.put("username", username);
+		userData.put("username", username);
 
-		out.println(jsonObj);
-		session.setAttribute("data", jsonObj);
+		out.println(userData);
+		
+		try {
+			sendToDatabase();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void sendToDatabase() throws ClassNotFoundException, SQLException {
+		Connection conn = null;
+		Statement stmt = null;
+		
+		Class.forName("com.mysql.jdbc.Driver");
+		conn = DriverManager.getConnection("jdbc:mysql://10.73.45.132:3306/collageJam", "admin", "leonard911");
+		
+		if(conn != null) {
+			stmt = conn.createStatement();
+			String username = (String) userData.get("username");
+			int uid = getUserId(stmt, username);
+			int thumbnail_idx = getThumbnailIdx();
+			JSONArray aURL = userData.getJSONArray("aURL");
+			String tb_url = aURL.getString(thumbnail_idx);
+			
+			userData.put("uid", uid);
+			userData.put("tb_url", tb_url);
+			
+			insertInfoSql(stmt);
+		}
+	}
+	
+	private void insertInfoSql(Statement stmt) {
+		String qmark = "\"";
+		int uid = getUid();
+		String tb_url = getTbUrl();
+		String title = getTitle();
+		String desc = getDesc();
+		String bgm = getBgm();
+		
+		String sql = "insert into jamjar (u_id, title, description, bgm_url, tb_url) values ("
+				+  uid + "," 
+				+ qmark + title + qmark + "," 
+				+ qmark + desc + qmark + ","
+				+ qmark + bgm + qmark + ","
+				+ qmark + tb_url + qmark
+				+ ");";
+		System.out.println(sql);
+		
+		try {
+			stmt.execute(sql);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private String getBgm() {
+		return userData.getString("bgm");
+	}
+
+	private String getDesc() {
+		return userData.getString("desc");
+	}
+
+	private String getTitle() {
+		return userData.getString("title");
+	}
+
+	private String getTbUrl() {
+		return userData.getString("tb_url");
+	}
+
+	private int getUid() {
+		return userData.getInt("uid");
+	}
+
+	private int getThumbnailIdx() {
+		return 0;
+	}
+
+	private int getUserId(Statement stmt, String user){
+		int userid = 0;
+		String q = "\"";
+		String get_userid_sql = "select u_id from user where username=" + q + user + q + ";";
+		try {
+			ResultSet rs = stmt.executeQuery(get_userid_sql);
+			while(rs.next()){
+				userid = rs.getInt("u_id");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return userid;
 	}
 }
