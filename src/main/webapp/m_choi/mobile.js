@@ -1,7 +1,8 @@
-oTouch = {};
-oTouch.nIndex = 0;
+oTouch = {
+	nIndex : 0
+};
 
-JE = {
+_JE = {
 	getSpecificProperty : function(ele, property) {
 		return window.getComputedStyle(ele).getPropertyValue(property);
 	},
@@ -18,23 +19,18 @@ JE = {
 }
 	
 
-var STATIC_DATA = {
-		WEINRE_TEST_SERVER 	: "10.73.38.59",
+var S_DATA = {
+		WEINRE_TEST_SERVER 	: "10.73.42.167",
 		WEINRE_PORT 		: "9999",
-		SECTION02_IMG_SIZE 	: 192,
-		FIRST_CARD_INDEX 	: 0,
-		LEFT 				: "left",
-		RIGHT 				: "right",
-		LEFT_CARD_POSITION 	: "-100%",
-		RIGHT_CARD_POSITION : "100%",
-		CENTER_CARD_POSITION: "0%",
-		ONE_HUNDRED_PERCENT : 100
+		RIGHT_CARD_LEFT_VAL : 100,
+		ONE_HUNDRED_PERCENT : 100,
+		IMG_VIEWPORT_RATIO	: 0.6
 }
 
 function toggleContents(e) {
 	var tar = e.target;
 	var wrapper = tar.parentNode.parentNode.children[1];
-	var display = JE.getSpecificProperty(wrapper, "display");
+	var display = _JE.getSpecificProperty(wrapper, "display");
 	wrapper.style.display = (display === 'none') ? 'block' : 'none';
 }
 
@@ -48,6 +44,7 @@ function getViewport() {
 function handleTouchstart(e) {
 	oTouch.touchstartX = e.touches[0].clientX;
 	oTouch.touchstartY = e.touches[0].clientY;
+	
 }
 
 function handleTouchmove(e) {
@@ -59,72 +56,103 @@ function handleTouchmove(e) {
 	if(isInvalidFlicking()) 
 		return false;
 	else
-		flickPage();
+		flickPage('.container');
 }
 
 function isInvalidFlicking() {
-	if(oTouch.nIndex <= STATIC_DATA.FIRST_CARD_INDEX && oTouch.sDirection === STATIC_DATA.LEFT || oTouch.nIndex >= STATIC_DATA.LAST_CARD_INDEX && oTouch.sDirection === STATIC_DATA.RIGHT)
+	if(isLeftInvalid() || isRightInvalid())
 		return true;
 	return false;
+
+	function isLeftInvalid() {
+		if(oTouch.nIndex <= 0 && oTouch.sDirection === "left")
+			return true;
+		return false;
+	}
+
+	function isRightInvalid() {
+		if(oTouch.nIndex >= S_DATA.LAST_CARD_IDX && oTouch.sDirection === "right")
+			return true;
+		return false;
+	}
 }
 
 function getDirection(value) {
 	if(value > 0)
-		return STATIC_DATA.LEFT;
+		return S_DATA.LEFT;
 	else 
-		return STATIC_DATA.RIGHT;
+		return S_DATA.RIGHT;
 }
 
-function flickPage() {
-	oTouch.eleContainer.style.webkitTransform = "translate(" + oTouch.nValue + "px)";
+function flickPage(sel) {
+	var container = _JE.getElBySel(sel);
+	container.style.webkitTransform = "translate(" + oTouch.nValue + "px)";
 }
 
 function handleTouchend(e) {
 	var touch = e.changedTouches[0];
 	oTouch.touchX = touch.clientX;
 	oTouch.touchY = touch.clientY;
+
 	var nTmpIndex = oTouch.nIndex;
+	var container = _JE.getElBySel(".container");
 	
-	if(oTouch.touchstartX - oTouch.touchX > 0) {
+	if(isToRight()) {
 		oTouch.nIndex++;
 	}
 	else {
 		oTouch.nIndex--;
 	}
 
-	if(oTouch.nIndex >= STATIC_DATA.FIRST_CARD_INDEX && oTouch.nIndex <= STATIC_DATA.LAST_CARD_INDEX) {
-		setPosition();
-		oTouch.eleContainer.style.webkitTransform = "translate(0)";
+	if(isIndexInRange()) {
+		setPositionWithClassName('about');
+		setTranslateZero(container);
 	}
 	else
 		oTouch.nIndex = nTmpIndex;
 }
 
-function setPosition() {
-	var nCenterIndex = oTouch.nIndex % STATIC_DATA.NUM_CARDS;
+function isIndexInRange() {
+	if(oTouch.nIndex >= 0 && oTouch.nIndex <= S_DATA.LAST_CARD_IDX)
+		return true;
+	return false;
+}
+
+function setTranslateZero(container) {
+	container.style.webkitTransform = "translate(0)";
+}
+
+function isToRight() {
+	if(oTouch.touchstartX - oTouch.touchX > 0)
+		return true;
+	return false;
+}
+
+function setPositionWithClassName(classname) {
+	var nCenterIndex = oTouch.nIndex % S_DATA.NUM_CARDS;
 	var nRightIndex = nCenterIndex + 1;
 	var nLeftIndex = nCenterIndex - 1;
-	//console.log(oTouch.nIndex);
+	var aChildNodes = _JE.getElByClass(classname);
 
-	if(nLeftIndex < STATIC_DATA.FIRST_CARD_INDEX) {
-		nLeftIndex = STATIC_DATA.LAST_CARD_INDEX;
+	if(nLeftIndex < 0) {
+		nLeftIndex = S_DATA.LAST_CARD_IDX;
 	}
-	if (nRightIndex > STATIC_DATA.LAST_CARD_INDEX) {
-		nRightIndex = STATIC_DATA.FIRST_CARD_INDEX;
+	if (nRightIndex > S_DATA.LAST_CARD_IDX) {
+		nRightIndex = 0;
 	}
 
-	oTouch.aChildNodes[nLeftIndex].style.left = STATIC_DATA.LEFT_CARD_POSITION;
-	oTouch.aChildNodes[nCenterIndex].style.left = STATIC_DATA.CENTER_CARD_POSITION;
-	oTouch.aChildNodes[nRightIndex].style.left = STATIC_DATA.RIGHT_CARD_POSITION;
+	aChildNodes[nLeftIndex].style.left = S_DATA.RIGHT_CARD_LEFT_VAL * -1 + "%";
+	aChildNodes[nCenterIndex].style.left = "0%";
+	aChildNodes[nRightIndex].style.left = S_DATA.RIGHT_CARD_LEFT_VAL + "%";
 }
 
 function getDirection() {
-	return direction = (oTouch.touchendX - oTouch.touchstartX) > 0 ? STATIC_DATA.LEFT : STATIC_DATA.RIGHT;
+	return direction = (oTouch.touchendX - oTouch.touchstartX) > 0 ? S_DATA.LEFT : S_DATA.RIGHT;
 }
 
-function alignJarFrames() {
+function alignJarFramesWithClassName(classname) {
 	var viewPortWidth = getViewport();
-	var aFrames = JE.getElByClass('jamjar');
+	var aFrames = _JE.getElByClass(classname);
 	var frameWidth = aFrames[0].offsetWidth;
 	var margin = (viewPortWidth - frameWidth) / 2;
 
@@ -140,10 +168,10 @@ function getElById(name) {
 	return document.getElementById(name);
 }
 
-function adjustFrameWidth() {
+function adjustFrameWidth(card, container) {
 	var viewPortWidth = getViewport();
-	var aFrames = JE.getElByClass('about');
-	var eleContainer = JE.getElBySel(".container");
+	var aFrames = _JE.getElByClass(card);
+	var eleContainer = _JE.getElBySel(container);
 	
 	for(var i = 0; i < aFrames.length; i ++) {
 		aFrames[i].style.width = viewPortWidth + 'px';
@@ -151,19 +179,23 @@ function adjustFrameWidth() {
 	eleContainer.style.width = (viewPortWidth * numOfPanels) + 'px';
 }
 
-function adjustImgWidthOnOrientationChange() {
+function adjustImgWidthOnOrientChange(classname) {
 	var orientation = window.orientation;
 
-	if (orientation !== 0) {
-		var viewPortWidth = getViewport();
-		var proportion = (imgWidth * STATIC_DATA.ONE_HUNDRED_PERCENT) / viewPortWidth;
-		var leftValue = (STATIC_DATA.ONE_HUNDRED_PERCENT - proportion) / 2;
-		var eleImg = JE.getElByClass('aboutImg');
+	if (orientation ===0) return;
+	
+	var viewPortWidth = getViewport();
+	console.log('viewPortWidth: ' + viewPortWidth);
+	var width = viewPortWidth * S_DATA.IMG_VIEWPORT_RATIO;
+	var proportion = (width * S_DATA.ONE_HUNDRED_PERCENT) / viewPortWidth;
+	var leftValue = (S_DATA.ONE_HUNDRED_PERCENT - proportion) / 2;
+	var eleImg = _JE.getElByClass(classname);
+    var eleImgLen = eleImg.length;
 
-		for(var i = 0; i < eleImg.length; i ++) {
-			eleImg[i].style.width = STATIC_DATA.SECTION02_IMG_SIZE + 'px';
-			eleImg[i].style.left = leftValue + 'px';
-		}
+	for(var i = 0; i < eleImgLen; i ++) {
+		eleImg[i].style.width = width + 'px';
+		eleImg[i].style.height = width + 'px';
+		eleImg[i].style.left = leftValue + 'px';
 	}
 }
 
@@ -175,11 +207,11 @@ function addScriptForWeinre() {
 }
 
 function getScriptSrc() {
-	return "http://" + STATIC_DATA.WEINRE_TEST_SERVER + ":" + STATIC_DATA.WEINRE_PORT + "/target/target-script-min.js#anonymous";
+	return "http://" + S_DATA.WEINRE_TEST_SERVER + ":" + S_DATA.WEINRE_PORT + "/target/target-script-min.js#anonymous";
 }
 
-function registerEvent() {
-	var aToggler = JE.getElByClass('toggler');
+function registerEvents() {
+	var aToggler = _JE.getElByClass('toggler');
 
 	for(var i = 0; i < aToggler.length; i ++) {
 		aToggler[i].addEventListener('touchstart', toggleContents, false);
@@ -195,30 +227,26 @@ function registerEvent() {
 // 	var ele = getElById('flickView');
 // 	var display = getSpecificProperty(ele, "display");
 // 	if(display !== 'none') {
-
-// 	}
+// }
 // }
 
 function initVariables() {
-	STATIC_DATA.NUM_CARDS = JE.getElBySelWithParent(".about", ".container").length;
-	STATIC_DATA.LAST_CARD_INDEX = STATIC_DATA.NUM_CARDS - 1;
-	// STATIC_DATA.LEFT_CARD_INDEX = STATIC_DATA.NUM_CARDS - 1;
-	// STATIC_DATA.RIGHT_CARD_INDEX = STATIC_DATA.NUM_CARDS + 1;
+	S_DATA.NUM_CARDS = _JE.getElBySelWithParent(".about", ".container").length;
+	S_DATA.LAST_CARD_IDX = S_DATA.NUM_CARDS - 1;
+	// S_DATA.LEFT_CARD_IDX = S_DATA.NUM_CARDS - 1;
+	// S_DATA.RIGHT_CARD_IDX = S_DATA.NUM_CARDS + 1;
 }
 
 window.addEventListener('load', function() {
-	oTouch.eleContainer = JE.getElBySel(".container");
-	oTouch.aChildNodes = JE.getElByClass('about');
-	registerEvent();
-	alignJarFrames();
+	registerEvents();
+	alignJarFramesWithClassName('jamjar');
 	initVariables();
-	//adjustFrameWidth();
-	//addScriptForWeinre();
+	adjustImgWidthOnOrientChange('aboutImg');
+	addScriptForWeinre();
 }, false);
 
 window.addEventListener('orientationchange', function() {
-	alignJarFrames();
-	adjustFrameWidth();
-	adjustImgWidthOnOrientationChange();
-	showSameIntroductionCard();
+	alignJarFramesWithClassName('jamjar');
+	adjustFrameWidth('about', ".container");
+	adjustImgWidthOnOrientChange('aboutImg');
 }, false);
