@@ -10,6 +10,32 @@ window.addEventListener('resize',function(){
 	Featured.posAll();
 }, false);
 
+
+
+//아래코드의 전체 형태는 이렇게 구성해보세요.
+/*
+var Featured = {};  //이렇게 껍데기 빈 객체를 'namespace' 라고 함.
+Featured.DATA = {
+	jarArray : document.getElementById('featured').getElementsByTagName('div')[0].children,
+	row : 0,
+	column : 0,
+	remain : 0,
+
+	jar : { 
+		jWidth:400, 
+		jMargin:40 
+	}
+}
+
+Featured.logic = {
+	setting : functino() {},
+	getColumn : function() {} , 
+	getRow : functino),
+	,,,,
+}
+*/
+
+
 // 초기화??
 var Featured = {
 	jarArray : document.getElementById('featured').getElementsByTagName('div')[0].children,
@@ -23,6 +49,8 @@ var Featured = {
 	}
 };
 
+
+
 /* setting about featured start */
 
 Featured.Setting = function(){
@@ -33,6 +61,9 @@ Featured.Setting = function(){
 };
 
 Featured.getRow = function(inner){
+
+	//else if 를 사용하면 중첩된 조건문을 피할 수 있지 않을까? 
+	
 	if (inner > 1200){ //1200 보다 큰 경우
 		return 3;
 	} else { // 1200 보다 작은 경우
@@ -136,7 +167,7 @@ Featured.posOtherGroup = function(){
 };
 
 Featured.posInGroup = function(BEFORE, CURRENT, REMAIN){
-	var baseObjArray = [];
+	var baseObjArray = []; //헝가리안 표기법으로 aBaseObj 라는 이름으로 지을 수 있음.
 	for (var c=0 ; c<this.row ; c++){
 		baseObjArray[c] = this.jarArray[BEFORE+c];
 	}
@@ -152,7 +183,7 @@ Featured.featuredMargin = function(){
 };
 
 Featured.featuredHeight = function(){
-	var deArray = Array(this.row);
+	var deArray = Array(this.row); // []사용.  javascript의 array를 공부해야 할 거 같음.
 	for (var i=0; i<this.row ; i++){
 		deArray[i] = this.jarArray[(this.jarArray.length-1)-i];
 	}

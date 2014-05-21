@@ -1,3 +1,8 @@
+//원래 소스의 경우는 이걸 감싸는 함수가 있죠. 그걸 사용하게 되면 전역변수를 없애줍니다. 
+//전역변수를 어떻게 없앨 수 있을지 고민해보면 좋겠어요. 꼭 책에 나와있는 방법말고도 다른 방법은 없을지.말이죠.
+//namespace를 사용하는 건 어떨지
+
+
 var elFlick = document.getElementById("flickView"),
 	elContainer = document.getElementById("flickContainer"),
 	aChildNodes = elContainer.querySelectorAll("div.flick-jamjar"),
@@ -13,6 +18,8 @@ var elFlick = document.getElementById("flickView"),
 	nTimeout = 0;
 	
 // touchstart 이벤트에 이벤트 핸들러 적용
+
+// 언더바를 사용하는지 알고 있나요?
 var _attachTouchStart = function() {
 		elFlick.addEventListener('touchstart', function(event) {
 			_clearAnchor();

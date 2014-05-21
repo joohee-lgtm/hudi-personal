@@ -1,5 +1,10 @@
 @CHARSET "UTF-8";
 
+/*ID선택자 사용한 거 모두 다 Class선택자로 바꾸도록 노력하세요 */
+/* ID는 구조적인 것을 나눌때 의미를 부여하고요, 스타일 관련된 건 모두 CLASS를 사용하세요.
+ * 이런글이 참고 될 듯 : http://css-tricks.com/the-difference-between-id-and-class/ 
+*/
+
 /*결과 페이지 전체*/
 #resultWrap{
 	margin : auto;

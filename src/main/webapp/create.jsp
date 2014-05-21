@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <title>result page</title>
+ <!-- 기능별로 잘 나눴군요 -->
 <link rel="stylesheet" type="text/css" href="./style/common.css"/> 
 <link rel="stylesheet" type="text/css" href="./style/create/fixed.css"/>
 <link rel="stylesheet" type="text/css" href="./style/create/photo.css"/>
@@ -100,6 +101,8 @@
 	<section id="temparea">
 	</section>
 </div>
+	<!-- 프로젝트 막판에는 여러가지 javascript를 하나로 합쳐서 배포할 수 있도록 해보세요. 자동화해주는 도구가 있을 거에요 -->
+	<!-- 실전에서는 성능상의 이유로 그렇게 빌드단계에서 파일을 합쳐서 배포하게 됩니다. -->
 	<script src="https://www.google.com/jsapi" type="text/javascript"></script>
 	<script type="text/javascript" src="./script/create/fixed.js"/></script>
 	<script type="text/javascript" src="./script/create/photo.js"/></script>

@@ -33,6 +33,7 @@
 				</span>
 			</form>
 		</div>
+		<!-- id를 너무 많이 사용했어요. 스타일을 입힐 목적이라면 id대신 class를 사용하세요-->
 		<div id="overview">Loading...</div>
 		<div id="arrangePhotos">
 			<div id="sortStrip">

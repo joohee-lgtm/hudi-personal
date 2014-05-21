@@ -89,6 +89,7 @@
 		<section id="featured">
 			<span>FEATURED</span>
 			<div>
+				<!-- UL / LI 라는 HTML 태그를 좀 써야 하지 않을까?? -->
 				<div class="jar1">1</div><!--
 				--><div class="jar2">2</div><!--
 				--><div class="jar3">3</div><!--

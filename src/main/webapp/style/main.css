@@ -404,6 +404,8 @@
 	box-shadow : 0px 5px 8px #B3B3B3;
 }
 
+/* 혹시 이건 layout이 어떤 이유로 변경되면 다 계산 다시 해서 바꿔져야 하는 건 아닐까? */
+
 #featured > div > .jar1{
 	height : 402px;
 }

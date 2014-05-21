@@ -8,7 +8,8 @@
 <body>
 	<section id="resultWrap">
 		<article id="slide">
-			<div><img src="./images/nophoto.jpg" style="width: 300px;"></div>
+<!-- 		절대로 style관련 내용을 html태그 안에 넣지 말기(html과 css의 분리 차원에서)
+ -->			<div><img src="./images/nophoto.jpg" style="width: 300px;"></div>
 	 		<div><img src="./images/nophoto.jpg" style="width: 300px;"></div>
 			<div><img src="./images/nophoto.jpg" style="width: 300px;"></div>
 			<div><img src="./images/nophoto.jpg" style="width: 300px;"></div>

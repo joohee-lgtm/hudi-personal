@@ -1,5 +1,16 @@
 
 
+// 이 페이지에 있는 함수들은 유틸리티 함수들인데요..이렇게 서비스코드를 구현하는 게 어때요?
+/*
+ var utils = {
+	getSection : functino() {...},
+	setImgSize : functino() {...},
+	setImgMargin : functino() {...},
+ }
+
+//외부에서 호출할 때는 이렇게,
+utils.getSection();
+ */
 
 // col, row 에 해당하는 매트릭스 얻기
 function getSection(matrix, col, row, maxrow){
@@ -75,10 +86,13 @@ function clearTemparea(){
 }
 
 // 구간별 시간 설정
+//이런건 변하지 않는 값이잖아요. 그러니깐 이름을 보통 대문자로 쓸 수 있음.
+// var ANIMATION_TIME_DATA = [100,200,300...]
 var times = [
 	1000, 2000, 3000, 1400, 1000, 3000, 1700, 2500, 2100
 ];
 
+//이하 전역변수들을 모두 없애야 하는데... 전체코드를 namespace에 보관하고 사용하는게 좋을 듯.  
 var slide = document.getElementById("slide").children; // 1x1, 1x2, 2x1, 2x2가 저장된 array
 var selected = getSection(slide, 0, 0, 2); // 슬라이드에서 원하는 위치를 선택하는 함수
 
@@ -96,7 +110,7 @@ var stopbt = setting.getElementsByTagName('Button')[1];
 photo.style.display = "block";
 result.style.display = "none";
 
-var images = new Array();
+var images = new Array();  // 배열을 초기화 할 때 literal방식이라고.. var images = []; 그냥 이렇게 하는게 코드량도 작고 좋음. 
 
 photobt.onclick = function(){
 	result.style.display = "none";

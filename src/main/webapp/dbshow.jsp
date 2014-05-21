@@ -12,9 +12,12 @@
 <article></article>
 
 	<script>
+	// 별거 아니지만 함수로 묶어두는 게 좋을 듯. 이렇게 짧은 코드를 바로 실행시키려면 즉시실행함수를 사용할 수 있습니다 
+	// 즉시 실행함수가 무엇인지 한 번 공부해보세요(html_javascript advanced 과목 관점에서 공부해야 할 내용임)
 		var json_obj = ${data};
 
-		for (var i=0; i<json_obj.length; i++){
+		for (var i=0, jsonLen = json_obj.length ; i < jsonLen ; i++){  //이렇게 length를 미리 계산해서 변수에 담아두고 사용하는 게 더 빠름.
+		//for (var i=0; i<json_obj.length; i++){
 			var div = document.createElement("div");
 			var br = document.createElement("br");
 			

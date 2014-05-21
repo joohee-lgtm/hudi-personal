@@ -44,6 +44,19 @@ var ArrangeFeatured = {
 console.log(ArrangeFeatured.a); // undefined
 */
 
+
+/* 
+
+
+  이하 코드는 객체로 구현한건 좋았어요. 
+  그런데 
+  var ArrangeFeatured = {
+	//이 안에 그냥 다 넣는게 더 보기 좋지 않을까요? 계속 ArrangeFeatured라는 객체명이 있어서 읽기도 힘들고 코드량도 길어진거 같아요.
+  }
+
+
+*/
+
 var ArrangeFeatured = {
 	// jars : document.getElementById('featured').getElementsByTagName('div')[0].children,
 	// row : 3,
@@ -56,13 +69,15 @@ var ArrangeFeatured = {
 ArrangeFeatured.jars = document.getElementById('featured').getElementsByTagName('div')[0].children;
 ArrangeFeatured.row = 3;
 ArrangeFeatured.column = parseInt(ArrangeFeatured.jars.length/ArrangeFeatured.row);
-ArrangeFeatured.remain = ArrangeFeatured.jars.length%3;
+ArrangeFeatured.remain = ArrangeFeatured.jars.length%3; //3은 뭐죠?
 
+//jar라는 이름, wid,mar 이라는 key값.. 모두 다 이름이 너무 함축적이에요. 변수명은 길어도 됩니다. 명확히 표현하세요.
 ArrangeFeatured.jar = {
 	wid : 400,
 	mar : 40
 };
 
+//요 함수 안에 코드들 중 일부분을 발라서 외부로 별도 함수로 분리하는 건 어떠요.
 ArrangeFeatured.ascendingBottom = function(objArray){
 	var len = objArray.length;
 	for (var i=0; i<len ; i++){
@@ -79,6 +94,7 @@ ArrangeFeatured.ascendingBottom = function(objArray){
 	return objArray;
 };
 
+//위에것이랑 성격이 비슷한데 중간에 manager하나 만들어서 받고 인자값에 의해서 분기처리해서 내부적으로 ascen과 descen으로 구분하게 하는 건 어때요?
 ArrangeFeatured.descendingBottom = function(objArray){
 	var len = objArray.length;
 	for (var i=0; i<len ; i++){
@@ -96,7 +112,7 @@ ArrangeFeatured.descendingBottom = function(objArray){
 };
 
 ArrangeFeatured.toInt = function(text){
-	var result = parseInt(text.substring(0,text.length-2));
+	var result = parseInt(text.substring(0,text.length-2)); //2는 뭐에요?
 	return result;
 };
 
@@ -113,11 +129,15 @@ ArrangeFeatured.setFirstGroup = function(){
 	}
 };
 
+//컨벤션 이야기 인데요. 코드문자의 간격을 좀 띄어쓰면 더 가독성이 좋아질 듯.(아래 예.)
 ArrangeFeatured.setRemainGroup = function(){
-	for (var i=1 ; i<this.column ; i++){
-		var BEFORE = (i-1)*this.row;
+	//for (var i=1 ; i<this.column ; i++){
+	for (var i=1 ; i < this.column; i++){
+		//var BEFORE = (i-1)*this.row;
+		var BEFORE = (i-1) * this.row; //즉 연산자 사이는 띄어쓰기가 더 좋을 듯.
+		//var CURRENT = i * this.row;
 		var CURRENT = i*this.row;
-		var baseObjArray = Array(this.row);
+		var baseObjArray = Array(this.row);  //array를 이렇게 생성자를 불러서 쓰지 않음.. 왜냐면 그냥 [] 이렇게 하는 게 똑같고 간결하게 구현할 수 있기 때문. 
 
 		// 기준이 되는 이전 jar 그룹 만들기
 		for (var c=0 ; c<this.row ; c++){
@@ -139,7 +159,8 @@ ArrangeFeatured.setLastGroup = function(){
 	if (this.remain != 0){
 		for (var i=0 ; i<this.remain ; i++){
 			var curObj = this.jars[this.column*this.row+i];
-			var baseObj = this.jars[(this.column-1)*this.row+i];
+			var baseObj = this.jars[(this.column-1)*this.row+i];//여기도 좀 문자띄어쓰기.
+			//비슷하게 동작되는 기능이니까 분리해서 함수로 처리할 수 있을 듯.
 			curObj.style.left = getComputedStyle(baseObj).left;
 			curObj.style.top = this.getBottom(baseObj) + "px";
 		}
@@ -154,6 +175,7 @@ ArrangeFeatured.setLastGroup();
 
 
 
+//의미적으로 잘 그룹핑 했음. 
 var SetWindow = {
 	ScrollEvent : {
 
@@ -179,12 +201,12 @@ var SetWindow = {
 	},
 
 	Footer : {
-		jamStyles : Array(ArrangeFeatured.jars.length),
+		jamStyles : Array(ArrangeFeatured.jars.length), //[]로 변경.
 
 		featured : document.getElementById("featured"),
 		
 		getLastJarBottom : function(){
-			for ( var i=0 ; i<ArrangeFeatured.jars.length ; i++) {
+			for ( var i=0 ; i<ArrangeFeatured.jars.length ; i++) { //배열의 길이는 미리 담아두기.
 				this.jamStyles[i] = ArrangeFeatured.jars[i];
 			}
 			this.jamStyles = ArrangeFeatured.descendingBottom(this.jamStyles);
