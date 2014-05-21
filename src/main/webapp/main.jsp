@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<link rel="stylesheet" type="text/css" href="./style/common.css" />
-<link rel="stylesheet" type="text/css" href="./style/main.css" />
+<link rel="stylesheet" type="text/css" href="./src/css/common.css" />
+<link rel="stylesheet" type="text/css" href="./src/css/main.css" />
 <meta charset="utf-8">
 </head>
 <body>
@@ -162,6 +162,6 @@
 	<script>
 		var obj = ${data};
 	</script>
-	<script type="text/javascript" src="./script/main.js" /></script>
+	<script type="text/javascript" src="./src/js/main.js" /></script>
 </body>
 </html>

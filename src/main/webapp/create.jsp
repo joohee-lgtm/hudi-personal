@@ -3,10 +3,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <title>result page</title>
-<link rel="stylesheet" type="text/css" href="./style/common.css"/> 
-<link rel="stylesheet" type="text/css" href="./style/create/fixed.css"/>
-<link rel="stylesheet" type="text/css" href="./style/create/photo.css"/>
-<link rel="stylesheet" type="text/css" href="./style/create/preview.css"/>
+<link rel="stylesheet" type="text/css" href="./src/css/common.css"/> 
+<link rel="stylesheet" type="text/css" href="./src/css/create/fixed.css"/>
+<link rel="stylesheet" type="text/css" href="./src/css/create/photo.css"/>
+<link rel="stylesheet" type="text/css" href="./src/css/create/preview.css"/>
 
 </head>
 <body>
@@ -101,10 +101,10 @@
 	</section>
 </div>
 	<script src="https://www.google.com/jsapi" type="text/javascript"></script>
-	<script type="text/javascript" src="./script/create/fixed.js"/></script>
-	<script type="text/javascript" src="./script/create/photo.js"/></script>
-	<script type="text/javascript" src="./script/create/youtube.js"/></script>
-	<script type="text/javascript" src="./script/create/preview.js"/></script>
-	<script type="text/javascript" src="./script/create/sendData.js"/></script>
+	<script type="text/javascript" src="./src/js/create/fixed.js"/></script>
+	<script type="text/javascript" src="./src/js/create/photo.js"/></script>
+	<script type="text/javascript" src="./src/js/create/youtube.js"/></script>
+	<script type="text/javascript" src="./src/js/create/preview.js"/></script>
+	<script type="text/javascript" src="./src/js/create/sendData.js"/></script>
 </body>
 </html>

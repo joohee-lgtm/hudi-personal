@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="./style/common.css"/>
-	<link rel="stylesheet" type="text/css" href="./style/output.css"/>
+	<link rel="stylesheet" type="text/css" href="./src/css/common.css"/>
+	<link rel="stylesheet" type="text/css" href="./src/css/output.css"/>
 <title> 결과 페이지 </title>
 </head>
 <body>
