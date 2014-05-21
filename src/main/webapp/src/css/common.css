@@ -1,0 +1,22 @@
+@CHARSET "utf-8";
+/*글꼴 적용하기*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+@import url(http://fonts.googleapis.com/css?family=Exo:800);
+@import url(http://fonts.googleapis.com/css?family=Coda:800);
+@import url(http://fonts.googleapis.com/css?family=Londrina+Outline);
+
+/* 브라우저 별로 다른 default css값을 초기화 */
+/* System Name, CSS Version_Creater_Date */
+/* Common */
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0px;padding:0px}
+body,input,textarea,select,button,table{font-family:'돋움','Dotum','AppleGothic','sans-serif','Coda','Nanum Gothic','Exo';font-size:1em}
+img,fieldset{border:0px}
+ul,ol{list-style:none}
+em,address{font-style:normal} a{text-decoration:none} a:hover,a:active,a:focus{text-decoration:underline}
+a{
+    text-decoration: none !important;
+}
