@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<link type="text/css" rel="stylesheet" href="./style/common.css" />
-<link type="text/css" rel="stylesheet" href="./style/create/photo.css" />
+<link type="text/css" rel="stylesheet" href="./src/css/common.css" />
+<link type="text/css" rel="stylesheet" href="./src/css/create/photo.css" />
 <title>Create CollageJam</title>
 </head>
 <body>
@@ -44,6 +44,6 @@
 		</div>
 	</section>
 <script src="https://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript" src="./script/create/photo.js"/></script>
+<script type="text/javascript" src="./src/js/create/photo.js"/></script>
 </body>
 </html>
