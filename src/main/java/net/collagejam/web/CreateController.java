@@ -19,6 +19,8 @@ import org.json.JSONObject;
 public class CreateController extends HttpServlet {
 	
 	JSONObject userData = new JSONObject();
+	int jamjarId = 0;
+	int uid = 0;
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String obj = request.getParameter("data");
@@ -53,7 +55,7 @@ public class CreateController extends HttpServlet {
 		
 		if(conn != null) {
 			stmt = conn.createStatement();
-			String username = (String) userData.get("username");
+			String username = userData.getString("username");
 			int uid = getUserId(stmt, username);
 			int thumbnail_idx = getThumbnailIdx();
 			JSONArray aURL = userData.getJSONArray("aURL");
@@ -62,11 +64,29 @@ public class CreateController extends HttpServlet {
 			userData.put("uid", uid);
 			userData.put("tb_url", tb_url);
 			
-			insertInfoSql(stmt);
+			insertIntoJamjar(stmt);
+			insertIntoPhotoList(stmt);
 		}
 	}
 	
-	private void insertInfoSql(Statement stmt) {
+	private void insertIntoPhotoList(Statement stmt) {
+		//getJamjarId(stmt, getUid());
+		//url하나씩 넣기
+	}
+
+	private void getJamjarId(Statement stmt, int id) throws SQLException {
+		String sql = "select max(j_id) as max_id from jamjar where u_id =" + id;
+		ResultSet rs = stmt.executeQuery(sql);
+		int last_jid = 0;
+		
+		while (rs.next()){
+			last_jid = rs.getInt(0);
+		}
+		
+		System.out.println("last_jid: " + last_jid);
+	}
+
+	private void insertIntoJamjar(Statement stmt) {
 		String qmark = "\"";
 		int uid = getUid();
 		String tb_url = getTbUrl();
@@ -83,6 +103,8 @@ public class CreateController extends HttpServlet {
 				+ ");";
 		System.out.println(sql);
 		
+		setUid(uid);
+		
 		try {
 			stmt.execute(sql);
 		} catch (SQLException e) {
@@ -92,6 +114,10 @@ public class CreateController extends HttpServlet {
 		
 	}
 	
+	private void setUid(int id) {
+		this.uid = id;
+	}
+
 	private String getBgm() {
 		return userData.getString("bgm");
 	}
