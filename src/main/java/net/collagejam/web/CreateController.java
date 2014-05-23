@@ -16,11 +16,17 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.mysql.jdbc.PreparedStatement;
+
 public class CreateController extends HttpServlet {
 	
 	JSONObject userData = new JSONObject();
 	int jamjarId = 0;
 	int uid = 0;
+	
+	Connection conn = null;
+	Statement stmt = null;
+	PreparedStatement pstmt = null;
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String obj = request.getParameter("data");
@@ -47,8 +53,7 @@ public class CreateController extends HttpServlet {
 	}
 
 	private void sendToDatabase() throws ClassNotFoundException, SQLException {
-		Connection conn = null;
-		Statement stmt = null;
+		
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://10.73.45.132:3306/collageJam", "admin", "leonard911");
@@ -97,14 +102,38 @@ public class CreateController extends HttpServlet {
 	}
 	
 	private void insertIntoPhotoList(Statement stmt) {
+		int j_id = 0;
 		try {
-			int j_id = getJamjarId(stmt);
+			j_id = getJamjarId(stmt);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		makeQueryForPhotoInsert(j_id);
+		
 		//STEP 2 : url하나씩 넣기
+	}
+
+	private void makeQueryForPhotoInsert(int j_id) {
+		
+		Connection con = null;
+		String qmark = "\"";
+		
+		String sql_head = "insert into photo_list values ("
+					+ j_id + ",";
+		String sql = sql_head;
+		//userData.aURL의 길이가 몇인지
+		JSONArray arr = userData.getJSONArray("aURL");
+		int len = arr.length();
+		
+		//for문을 돌면서 하나씩 넣기, for문 안에 sql 생성 및 execute
+		for(int i = 0; i < len; i ++) {
+			sql = sql_head + qmark + arr.getString(i) + qmark + ");";
+			System.out.println(sql);
+			//stmt.e
+			sql = sql_head;
+		}
 	}
 
 	private int getJamjarId(Statement stmt) throws SQLException {
