@@ -24,10 +24,6 @@ public class CreateController extends HttpServlet {
 	int jamjarId = 0;
 	int uid = 0;
 	
-	Connection conn = null;
-	Statement stmt = null;
-	PreparedStatement pstmt = null;
-	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String obj = request.getParameter("data");
 		
@@ -53,7 +49,9 @@ public class CreateController extends HttpServlet {
 	}
 
 	private void sendToDatabase() throws ClassNotFoundException, SQLException {
-		
+		Connection conn = null;
+		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://10.73.45.132:3306/collageJam", "admin", "leonard911");
@@ -90,7 +88,7 @@ public class CreateController extends HttpServlet {
 				+ qmark + tb_url + qmark
 				+ ");";
 		System.out.println(sql);
-		setUid(uid);
+		//setUid(uid);
 		
 		try {
 			stmt.execute(sql);
@@ -103,38 +101,43 @@ public class CreateController extends HttpServlet {
 	
 	private void insertIntoPhotoList(Statement stmt) {
 		int j_id = 0;
+		String query = "";
 		try {
 			j_id = getJamjarId(stmt);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		userData.put("jid", j_id);
+		int len = userData.getJSONArray("aURL").length();
 		
-		makeQueryForPhotoInsert(j_id);
 		
-		//STEP 2 : url하나씩 넣기
-	}
-
-	private void makeQueryForPhotoInsert(int j_id) {
-		
-		Connection con = null;
-		String qmark = "\"";
-		
-		String sql_head = "insert into photo_list values ("
-					+ j_id + ",";
-		String sql = sql_head;
-		//userData.aURL의 길이가 몇인지
-		JSONArray arr = userData.getJSONArray("aURL");
-		int len = arr.length();
-		
-		//for문을 돌면서 하나씩 넣기, for문 안에 sql 생성 및 execute
-		for(int i = 0; i < len; i ++) {
-			sql = sql_head + qmark + arr.getString(i) + qmark + ");";
-			System.out.println(sql);
-			//stmt.e
-			sql = sql_head;
+		for(int i = 0; i <len; i ++) {
+			query = makeQueryForPhotoInsert(i);
+			try {
+				stmt.executeUpdate(query);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
+
+	private String makeQueryForPhotoInsert(int index) {
+		
+		String qmark = "\"";
+		int photo_order = index + 1;
+		String sql = "insert into photo_list values ("
+					+ userData.getInt("jid") + ","
+					+ photo_order + ",";
+		JSONArray jarr = userData.getJSONArray("aURL");
+		
+		sql = sql + qmark + jarr.getString(index) + qmark + ");";
+		System.out.println(sql);
+		return sql;
+	}
+		
+
 
 	private int getJamjarId(Statement stmt) throws SQLException {
 		String sql = "select LAST_INSERT_ID();";
