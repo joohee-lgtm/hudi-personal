@@ -69,23 +69,6 @@ public class CreateController extends HttpServlet {
 		}
 	}
 	
-	private void insertIntoPhotoList(Statement stmt) {
-		//getJamjarId(stmt, getUid());
-		//url하나씩 넣기
-	}
-
-	private void getJamjarId(Statement stmt, int id) throws SQLException {
-		String sql = "select max(j_id) as max_id from jamjar where u_id =" + id;
-		ResultSet rs = stmt.executeQuery(sql);
-		int last_jid = 0;
-		
-		while (rs.next()){
-			last_jid = rs.getInt(0);
-		}
-		
-		System.out.println("last_jid: " + last_jid);
-	}
-
 	private void insertIntoJamjar(Statement stmt) {
 		String qmark = "\"";
 		int uid = getUid();
@@ -102,7 +85,6 @@ public class CreateController extends HttpServlet {
 				+ qmark + tb_url + qmark
 				+ ");";
 		System.out.println(sql);
-		
 		setUid(uid);
 		
 		try {
@@ -113,6 +95,31 @@ public class CreateController extends HttpServlet {
 		}
 		
 	}
+	
+	private void insertIntoPhotoList(Statement stmt) {
+		try {
+			int j_id = getJamjarId(stmt);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//STEP 2 : url하나씩 넣기
+	}
+
+	private int getJamjarId(Statement stmt) throws SQLException {
+		String sql = "select LAST_INSERT_ID();";
+		ResultSet rs = stmt.executeQuery(sql);
+		int last_insert = 0;
+		
+		while (rs.next()){
+			last_insert = rs.getInt(1);
+		}
+		System.out.println("last_jid: " + last_insert);
+		return last_insert;
+	}
+
+
 	
 	private void setUid(int id) {
 		this.uid = id;
