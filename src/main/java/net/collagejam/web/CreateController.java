@@ -16,9 +16,13 @@ import javax.servlet.http.HttpSession;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.mysql.jdbc.PreparedStatement;
+
 public class CreateController extends HttpServlet {
 	
 	JSONObject userData = new JSONObject();
+	int jamjarId = 0;
+	int uid = 0;
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String obj = request.getParameter("data");
@@ -47,13 +51,14 @@ public class CreateController extends HttpServlet {
 	private void sendToDatabase() throws ClassNotFoundException, SQLException {
 		Connection conn = null;
 		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://10.73.45.132:3306/collageJam", "admin", "leonard911");
 		
 		if(conn != null) {
 			stmt = conn.createStatement();
-			String username = (String) userData.get("username");
+			String username = userData.getString("username");
 			int uid = getUserId(stmt, username);
 			int thumbnail_idx = getThumbnailIdx();
 			JSONArray aURL = userData.getJSONArray("aURL");
@@ -62,11 +67,12 @@ public class CreateController extends HttpServlet {
 			userData.put("uid", uid);
 			userData.put("tb_url", tb_url);
 			
-			insertInfoSql(stmt);
+			insertIntoJamjar(stmt);
+			insertIntoPhotoList(stmt);
 		}
 	}
 	
-	private void insertInfoSql(Statement stmt) {
+	private void insertIntoJamjar(Statement stmt) {
 		String qmark = "\"";
 		int uid = getUid();
 		String tb_url = getTbUrl();
@@ -82,6 +88,7 @@ public class CreateController extends HttpServlet {
 				+ qmark + tb_url + qmark
 				+ ");";
 		System.out.println(sql);
+		//setUid(uid);
 		
 		try {
 			stmt.execute(sql);
@@ -91,6 +98,60 @@ public class CreateController extends HttpServlet {
 		}
 		
 	}
+	
+	private void insertIntoPhotoList(Statement stmt) {
+		int j_id = 0;
+		String query = "";
+		try {
+			j_id = getJamjarId(stmt);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		userData.put("jid", j_id);
+		int len = userData.getJSONArray("aURL").length();
+		
+		
+		for(int i = 0; i <len; i ++) {
+			query = makeQueryForPhotoInsert(i);
+			try {
+				stmt.executeUpdate(query);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	private String makeQueryForPhotoInsert(int index) {
+		
+		String qmark = "\"";
+		int photo_order = index + 1;
+		String sql = "insert into photo_list values ("
+					+ userData.getInt("jid") + ","
+					+ photo_order + ",";
+		JSONArray jarr = userData.getJSONArray("aURL");
+		
+		sql = sql + qmark + jarr.getString(index) + qmark + ");";
+		System.out.println(sql);
+		return sql;
+	}
+		
+
+
+	private int getJamjarId(Statement stmt) throws SQLException {
+		String sql = "select LAST_INSERT_ID();";
+		ResultSet rs = stmt.executeQuery(sql);
+		int last_insert = 0;
+		
+		while (rs.next()){
+			last_insert = rs.getInt(1);
+		}
+		System.out.println("last_jid: " + last_insert);
+		return last_insert;
+	}
+
+
 	
 	private String getBgm() {
 		return userData.getString("bgm");
