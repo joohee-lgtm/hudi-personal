@@ -261,7 +261,7 @@ window.addEventListener('load', function() {
 	alignJarFramesWithClassName('jamjar');
 	initVariables();
 	adjustImgWidthOnPortrait('aboutImg');
-	adjustImgWidthOnLandscape('aboutImg');
+	//adjustImgWidthOnLandscape('aboutImg');
 	//addScriptForWeinre();
 }, false);
 
