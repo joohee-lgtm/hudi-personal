@@ -15,9 +15,26 @@ _JE = {
 	},
 	getElByClass : function(name) {
 		return document.getElementsByClassName(name);
+	},
+	setCSSStyle : function(selector, propertyObject) {
+		var ele = _JE.getElBySel(selector);
+//		var keys = Object.keys(propertyObject);
+//		var len = keys.length;
+		for(var property in propertyObject) {
+			ele.style[property]= propertyObject[property];
+		}
 	}
-}
 	
+//	setCSSStyle(element , {width : 200});
+}
+
+function testCSSStyle() {
+	var selector = ".logo";
+	var propertyObject = {
+			'font-size': '40px'
+	};
+	_JE.setCSSStyle(selector, propertyObject);
+}	
 
 var S_DATA = {
 		WEINRE_TEST_SERVER 	: "10.73.42.167",
@@ -44,7 +61,6 @@ function getViewport() {
 function handleTouchstart(e) {
 	oTouch.touchstartX = e.touches[0].clientX;
 	oTouch.touchstartY = e.touches[0].clientY;
-	
 }
 
 function handleTouchmove(e) {
@@ -263,6 +279,7 @@ window.addEventListener('load', function() {
 	adjustImgWidthOnPortrait('aboutImg');
 	adjustImgWidthOnLandscape('aboutImg');
 	//addScriptForWeinre();
+	testCSSStyle();
 }, false);
 
 window.addEventListener('orientationchange', function() {
