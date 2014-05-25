@@ -16,6 +16,9 @@ _JE = {
 	getElByClass : function(name) {
 		return document.getElementsByClassName(name);
 	},
+	getElById : function(name) {
+		return document.getElementById(name);
+	},
 	setCSSStyle : function(selector, propertyObject) {
 		var ele = _JE.getElBySel(selector);
 //		var keys = Object.keys(propertyObject);
@@ -31,7 +34,8 @@ _JE = {
 function testCSSStyle() {
 	var selector = ".logo";
 	var propertyObject = {
-			'font-size': '40px'
+			'font-size': '30px',
+			'color': '#0CF'
 	};
 	_JE.setCSSStyle(selector, propertyObject);
 }	
@@ -177,14 +181,10 @@ function alignJarFramesWithClassName(classname) {
 		aFrames[i].style.marginRight = margin + 'px';
 	}
 
-	var eleWrapper = getElById('jar-wrapper');
+	var eleWrapper = _JE.getElById('jar-wrapper');
 }
 
-function getElById(name) {
-	return document.getElementById(name);
-}
-
-function adjustFrameWidth(card, container) {
+function adjustCardFrameWidth(card, container) {
 	var viewPortWidth = getViewport();
 	var aFrames = _JE.getElByClass(card);
 	var eleContainer = _JE.getElBySel(container);
@@ -245,31 +245,31 @@ function getScriptSrc() {
 	return "http://" + S_DATA.WEINRE_TEST_SERVER + ":" + S_DATA.WEINRE_PORT + "/target/target-script-min.js#anonymous";
 }
 
-function registerEvents() {
-	var aToggler = _JE.getElByClass('toggler');
+function initVariableForNumOfCard() {
+	S_DATA.NUM_CARDS = _JE.getElBySelWithParent(".about", ".container").length;
+	S_DATA.LAST_CARD_IDX = S_DATA.NUM_CARDS - 1;
+}
 
-	for(var i = 0; i < aToggler.length; i ++) {
-		aToggler[i].addEventListener('touchstart', toggleContents, false);
-	}
+function initVariables() {
+	initVariableForNumOfCard();
+}
 
-	var flickView = getElById('flickView');
+function registerFlickingEvent(eleId) {
+	var flickView = _JE.getElById(eleId);
 	flickView.addEventListener('touchstart', handleTouchstart, false);
 	flickView.addEventListener('touchmove', handleTouchmove, false);
 	flickView.addEventListener('touchend', handleTouchend, false);
 }
 
-// function showSameIntroductionCard() {
-// 	var ele = getElById('flickView');
-// 	var display = getSpecificProperty(ele, "display");
-// 	if(display !== 'none') {
-// }
-// }
+function registerToggleMenuEvent(classname) {
+	var aToggler = _JE.getElByClass(classname);
+	for(var i = 0; i < aToggler.length; i ++)
+		aToggler[i].addEventListener('touchstart', toggleContents, false);
+}
 
-function initVariables() {
-	S_DATA.NUM_CARDS = _JE.getElBySelWithParent(".about", ".container").length;
-	S_DATA.LAST_CARD_IDX = S_DATA.NUM_CARDS - 1;
-	// S_DATA.LEFT_CARD_IDX = S_DATA.NUM_CARDS - 1;
-	// S_DATA.RIGHT_CARD_IDX = S_DATA.NUM_CARDS + 1;
+function registerEvents() {
+	registerToggleMenuEvent('toggler');
+	registerFlickingEvent('flickView');
 }
 
 window.addEventListener('load', function() {
@@ -284,7 +284,7 @@ window.addEventListener('load', function() {
 
 window.addEventListener('orientationchange', function() {
 	alignJarFramesWithClassName('jamjar');
-	adjustFrameWidth('about', ".container");
+	adjustCardFrameWidth('about', ".container");
 	adjustImgWidthOnPortrait('aboutImg');
 	adjustImgWidthOnLandscape('aboutImg');
 }, false);
