@@ -193,11 +193,6 @@ function adjustImgWidthOnPortrait(classname) {
 			'margin-left' 	: -1 * (imgWidth / 2) + 'px',
 			top 			: '10%'
 		});
-		//eleImg[i].style.width = imgWidth + 'px';
-		//eleImg[i].style.height = imgWidth + 'px';
-		//eleImg[i].style.left = '50%';
-		//eleImg[i].style.marginLeft = -1 * (imgWidth/2) + 'px';
-		//eleImg[i].style.top = '10%';
 	}
 }
 
@@ -217,11 +212,6 @@ function adjustImgWidthOnLandscape(classname) {
 			'margin-top' 	: -1 * (imgWidth / 2) + 'px',
 			left 			: '10%'
 		});
-//		eleImg[i].style.width = imgWidth + 'px';
-//		eleImg[i].style.height = imgWidth + 'px';
-//		eleImg[i].style.top = '50%';
-//		eleImg[i].style.marginTop = -1 * (imgWidth/2) + 'px';
-//		eleImg[i].style.left = '10%';
 	}
 }
 
