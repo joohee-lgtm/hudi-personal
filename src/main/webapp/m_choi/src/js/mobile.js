@@ -3,6 +3,11 @@ oTouch = {
 };
 
 _JE = {
+	getViewport : function() {
+		if (typeof window.innerWidth != 'undefined')
+			var viewPortWidth = window.innerWidth;
+		return viewPortWidth;
+	},
 	getSpecificProperty : function(ele, property) {
 		return window.getComputedStyle(ele).getPropertyValue(property);
 	},
@@ -19,47 +24,25 @@ _JE = {
 	getElById : function(name) {
 		return document.getElementById(name);
 	},
-	setCSSStyle : function(selector, propertyObject) {
-		var ele = _JE.getElBySel(selector);
-//		var keys = Object.keys(propertyObject);
-//		var len = keys.length;
+	toggleContents : function(e) {
+		var tar = e.target;
+		var wrapper = tar.parentNode.parentNode.children[1];
+		var display = _JE.getSpecificProperty(wrapper, "display");
+		wrapper.style.display = (display === 'none') ? 'block' : 'none';
+	},
+	setCSSStyle : function(element, propertyObject) {
 		for(var property in propertyObject) {
-			ele.style[property]= propertyObject[property];
+			element.style[property]= propertyObject[property];
 		}
 	}
-	
-//	setCSSStyle(element , {width : 200});
 }
 
-function testCSSStyle() {
-	var selector = ".logo";
-	var propertyObject = {
-			'font-size': '30px',
-			'color': '#0CF'
-	};
-	_JE.setCSSStyle(selector, propertyObject);
-}	
-
 var S_DATA = {
-		WEINRE_TEST_SERVER 	: "10.73.42.167",
+		WEINRE_TEST_SERVER 	: "192.168.0.163",
 		WEINRE_PORT 		: "9999",
 		RIGHT_CARD_LEFT_VAL : 100,
 		IMG_VIEWPORT_RATIO_PORTRAIT	: 0.6,
 		IMG_VIEWPORT_RATIO_LANDSCAPE : 0.8
-}
-
-function toggleContents(e) {
-	var tar = e.target;
-	var wrapper = tar.parentNode.parentNode.children[1];
-	var display = _JE.getSpecificProperty(wrapper, "display");
-	wrapper.style.display = (display === 'none') ? 'block' : 'none';
-}
-
-function getViewport() {
-	var viewPortWidth;
-	if (typeof window.innerWidth != 'undefined')
-		viewPortWidth = window.innerWidth;
-	return viewPortWidth;
 }
 
 function handleTouchstart(e) {
@@ -69,9 +52,8 @@ function handleTouchstart(e) {
 
 function handleTouchmove(e) {
 	var touch = e.touches[0];
-	oTouch.touchX = touch.clientX;
-	oTouch.touchY = touch.clientY;
-	oTouch.nValue = oTouch.touchX - oTouch.touchstartX;
+	var touchX= touch.clientX;
+	oTouch.nValue = touchX - oTouch.touchstartX;
 	oTouch.sDirection = getDirection(oTouch.nValue);
 	if(isInvalidFlicking()) 
 		return false;
@@ -117,12 +99,10 @@ function handleTouchend(e) {
 	var nTmpIndex = oTouch.nIndex;
 	var container = _JE.getElBySel(".container");
 	
-	if(isToRight()) {
+	if(isToRight()) 
 		oTouch.nIndex++;
-	}
-	else {
+	else 
 		oTouch.nIndex--;
-	}
 
 	if(isIndexInRange()) {
 		setPositionWithClassName('about');
@@ -161,9 +141,11 @@ function setPositionWithClassName(classname) {
 		nRightIndex = 0;
 	}
 
-	aChildNodes[nLeftIndex].style.left = S_DATA.RIGHT_CARD_LEFT_VAL * -1 + "%";
+	var left = S_DATA.RIGHT_CARD_LEFT_VAL + "%";
+	console.log(left);
+	aChildNodes[nLeftIndex].style.left = S_DATA.RIGHT_CARD_LEFT_VAL + "%";
 	aChildNodes[nCenterIndex].style.left = "0%";
-	aChildNodes[nRightIndex].style.left = S_DATA.RIGHT_CARD_LEFT_VAL + "%";
+	aChildNodes[nRightIndex].style.left = "100%";
 }
 
 function getDirection() {
@@ -171,7 +153,7 @@ function getDirection() {
 }
 
 function alignJarFramesWithClassName(classname) {
-	var viewPortWidth = getViewport();
+	var viewPortWidth = _JE.getViewport();
 	var aFrames = _JE.getElByClass(classname);
 	var frameWidth = aFrames[0].offsetWidth;
 	var margin = (viewPortWidth - frameWidth) / 2;
@@ -185,13 +167,13 @@ function alignJarFramesWithClassName(classname) {
 }
 
 function adjustCardFrameWidth(card, container) {
-	var viewPortWidth = getViewport();
+	var viewPortWidth = _JE.getViewport();
 	var aFrames = _JE.getElByClass(card);
 	var eleContainer = _JE.getElBySel(container);
-	
-	for(var i = 0; i < aFrames.length; i ++) {
+	var numOfPanels = aFrames.length;
+	for(var i = 0; i < aFrames.length; i ++) 
 		aFrames[i].style.width = viewPortWidth + 'px';
-	}
+	
 	eleContainer.style.width = (viewPortWidth * numOfPanels) + 'px';
 }
 
@@ -204,11 +186,18 @@ function adjustImgWidthOnPortrait(classname) {
     var eleImgLen = eleImg.length;
 
 	for(var i = 0; i < eleImgLen; i ++) {
-		eleImg[i].style.width = imgWidth + 'px';
-		eleImg[i].style.height = imgWidth + 'px';
-		eleImg[i].style.left = '50%';
-		eleImg[i].style.marginLeft = -1 * (imgWidth/2) + 'px';
-		eleImg[i].style.top = '10%';
+		_JE.setCSSStyle(eleImg[i], {
+			width 			: imgWidth + 'px',
+			height 			: imgWidth + 'px',
+			left 			: '50%',
+			'margin-left' 	: -1 * (imgWidth / 2) + 'px',
+			top 			: '10%'
+		});
+		//eleImg[i].style.width = imgWidth + 'px';
+		//eleImg[i].style.height = imgWidth + 'px';
+		//eleImg[i].style.left = '50%';
+		//eleImg[i].style.marginLeft = -1 * (imgWidth/2) + 'px';
+		//eleImg[i].style.top = '10%';
 	}
 }
 
@@ -220,12 +209,19 @@ function adjustImgWidthOnLandscape(classname) {
 	var eleImg = _JE.getElByClass(classname);
     var eleImgLen = eleImg.length;
     
-	for(var i = 0; i < eleImgLen; i ++) {
-		eleImg[i].style.width = imgWidth + 'px';
-		eleImg[i].style.height = imgWidth + 'px';
-		eleImg[i].style.top = '50%';
-		eleImg[i].style.marginTop = -1 * (imgWidth/2) + 'px';
-		eleImg[i].style.left = '10%';
+	for(var i = 0; i < eleImgLen; i ++) {		
+		_JE.setCSSStyle(eleImg[i], {
+			width 			: imgWidth + 'px',
+			height 			: imgWidth + 'px',
+			top 			: '50%',
+			'margin-top' 	: -1 * (imgWidth / 2) + 'px',
+			left 			: '10%'
+		});
+//		eleImg[i].style.width = imgWidth + 'px';
+//		eleImg[i].style.height = imgWidth + 'px';
+//		eleImg[i].style.top = '50%';
+//		eleImg[i].style.marginTop = -1 * (imgWidth/2) + 'px';
+//		eleImg[i].style.left = '10%';
 	}
 }
 
@@ -264,7 +260,7 @@ function registerFlickingEvent(eleId) {
 function registerToggleMenuEvent(classname) {
 	var aToggler = _JE.getElByClass(classname);
 	for(var i = 0; i < aToggler.length; i ++)
-		aToggler[i].addEventListener('touchstart', toggleContents, false);
+		aToggler[i].addEventListener('touchstart', _JE.toggleContents, false);
 }
 
 function registerEvents() {
@@ -272,19 +268,32 @@ function registerEvents() {
 	registerFlickingEvent('flickView');
 }
 
-window.addEventListener('load', function() {
-	registerEvents();
-	alignJarFramesWithClassName('jamjar');
-	initVariables();
+function init() {
+	adjustCardFrameWidth('about', ".container");
 	adjustImgWidthOnPortrait('aboutImg');
 	adjustImgWidthOnLandscape('aboutImg');
+	alignJarFramesWithClassName('jamjar');
+	initVariables();
+}
+
+window.addEventListener('load', function() {
+	registerEvents();
+	init();
 	//addScriptForWeinre();
-	testCSSStyle();
 }, false);
 
 window.addEventListener('orientationchange', function() {
 	alignJarFramesWithClassName('jamjar');
 	adjustCardFrameWidth('about', ".container");
+	
 	adjustImgWidthOnPortrait('aboutImg');
 	adjustImgWidthOnLandscape('aboutImg');
 }, false);
+
+window.mTouch = (function() {
+	var _static = {
+			RIGHT_CARD_LEFT_VAL : 100
+	}
+})();
+
+
