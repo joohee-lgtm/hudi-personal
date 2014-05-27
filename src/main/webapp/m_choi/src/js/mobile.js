@@ -280,11 +280,8 @@ window.addEventListener('orientationchange', function() {
 	adjustImgWidthOnLandscape('aboutImg');
 }, false);
 
-<<<<<<< HEAD
+
 window.mFlicking = (function() {
-=======
-window.mTouch = (function() {
->>>>>>> master
 	var _static = {
 			RIGHT_CARD_LEFT_VAL : 100
 	}
