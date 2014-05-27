@@ -153,6 +153,10 @@ public class CreateController extends HttpServlet {
 
 
 	
+	private void setUid(int id) {
+		this.uid = id;
+	}
+
 	private String getBgm() {
 		return userData.getString("bgm");
 	}
