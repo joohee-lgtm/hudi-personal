@@ -129,20 +129,19 @@ header {
 	position: absolute;
 	border-radius: 50%;
 	height: 60%;
-	top: 10%;
 }
 
 .container > div:nth-child(1) > .aboutImg {
-	background-image: url('photos.png');
+	background-image: url('../../img/photos.png');
 }
 .container > div:nth-child(2) > .aboutImg {
-	background-image: url('music.png');
+	background-image: url('../../img/music.png');
 }
 .container > div:nth-child(3) > .aboutImg {
-	background-image: url('slidely02.png');
+	background-image: url('../../img/slidely02.png');
 }
 .container > div:nth-child(4) > .aboutImg {
-	background-image: url('slidely01.png');
+	background-image: url('../../img/slidely01.png');
 }
 
 .aboutText {
@@ -176,11 +175,6 @@ header {
 		width: 80%;
 		left: 10%;
 		top: 45%;
-	}
-
-	.aboutImg {
-		width: 60%;
-		left: 20%;
 	}
 
 	.container > div:nth-child(1) > .aboutText {
