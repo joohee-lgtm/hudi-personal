@@ -37,5 +37,14 @@ _JE = {
 		for(var property in propertyObject) {
 			element.style[property]= propertyObject[property];
 		}
+	},
+	
+	getElementSize : function(classname) {
+		var obj 		= {};
+		var eleWrapper 	= _JE.getElByClass(classname)[0];
+		obj.height 		= parseInt(_JE.getSpecificProperty(eleWrapper, "height"));
+		obj.width		= parseInt(_JE.getSpecificProperty(eleWrapper, "width"));
+		
+		return obj;
 	}
 }

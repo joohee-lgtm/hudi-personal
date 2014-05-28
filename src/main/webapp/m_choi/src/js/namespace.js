@@ -5,16 +5,7 @@ var _JE_Mobile = (function() {
 	var IMG_RATIO_TO_VP = 0.8; 
 	
 	function calCircleImgSize() {
-		imgDiameter 	= parseInt(getWrapperSize('about').height) * IMG_RATIO_TO_VP;
-	}
-	
-	function getWrapperSize(classname) {
-		var obj 		= {};
-		var eleWrapper 	= _JE.getElByClass(classname)[0];
-		obj.height 		= parseInt(_JE.getSpecificProperty(eleWrapper, "height"));
-		obj.width		= parseInt(_JE.getSpecificProperty(eleWrapper, "width"));
-		
-		return obj;
+		imgDiameter 	= parseInt(_JE.getElementSize('about').height) * IMG_RATIO_TO_VP;
 	}
 	
 	function setImgSize(classname) {
@@ -31,7 +22,6 @@ var _JE_Mobile = (function() {
 	function putImgCenter(classname, wrap) {
 		var marginL		= -1 * (imgDiameter / 2) + 'px';
 		var marginT		= marginL;
-		console.log(marginL);
 		var aImg = _JE.getElByClass(classname);
 		
 		for(var i = 0; i < aImg.length; i ++) {
