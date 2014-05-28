@@ -3,9 +3,7 @@ var _JE_Mobile = (function() {
 	
 	var imgDiameter 	= 0,
 		viewportWidth	= 0;
-	
 	var vFrame = {};
-	
 	var IMG_RATIO_TO_VP = 0.8;
 	
 	//private functions
@@ -53,6 +51,12 @@ var _JE_Mobile = (function() {
 		return numFrames;
 		
 	}
+
+	function alignVideoFrames(classname) {
+		setViewportWidth();
+		calFrameWidth(classname);
+		setFramesCentered(classname);
+	}
 	
 	function calFrameWidth(classname) {
 		var frame 		= _JE.getElByClass(classname)[0],
@@ -63,9 +67,7 @@ var _JE_Mobile = (function() {
 		vFrame.frameWidthIncldMargin = frameWidth + frameML + frameMR;
 	}
 	
-	function alignVideoFrames(classname) {
-		setViewportWidth();
-		calFrameWidth(classname);
+	function setFramesCentered(classname) {
 		var numFrames = getPossibleNumOfFrameInARow();
 		var frameWidth = vFrame.frameWidthIncldMargin;
 		var eleWrapper = _JE.getElByClass(classname)[0].parentNode;
