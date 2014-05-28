@@ -1,120 +1,4 @@
-
-
-/* header 공통 */
-#header{
-	position : fixed;
-	top:0;
-	left : 0;
-	width : 100%;
-	height : 50px;
-	background-color: #474747;
-	padding : 5px 10px 5px 10px;
-	font-family : "Exo";
-	color : #FFFFFF;
-}
-
-#header > div {
-	margin : auto;
-	max-width: 1240px;
-}
-
-#header > div > a:nth-child(1){
-	font-size : 30px;
-	color : #8CFFCF;
-	text-shadow: 0px 0px 1px #004226;
-	line-height : 50px;
-}
-
-/* 창이 860보다 작아질 때 header */
-@media screen and (max-width:860px){
-	#header > div > a:nth-child(1) {
-		display : block;
-		text-align: center;
-	}
-
-	#header > div > a:not(:nth-child(1)){
-		display : none;
-	}
-
-	#header > div > form{
-		display : none;
-	}
-}
-
-/* 창이 860보다 커질 때 header */
-@media screen and (min-width:860px){
-	#header > div > a:nth-child(1) {
-		float : left;
-		padding-right : 3px;
-	}
-
-	#header > div > a:nth-child(2) {
-		float : left;
-		font-size : 30px;
-		color : white;
-		line-height : 50px;
-	}
-
-	/*
-		#header > a:nth-child(3) - x
-		#header > a:nth-child(4) - o
-		header의 child 중에서 3번째 a를 지칭하는 것이 아니라, 
-		header의 child 중에서 4번째는 a라고 알려주는 것
-	*/
-	#header > div > a:nth-child(4) {
-		color : white;
-		float : right;
-		width : 100px;
-		height : 35px;
-		margin-right : 10px;
-		margin-top : 5px;
-		border : none;
-		border-radius: 5px;
-		font-size: 25px;		
-		text-align: center;
-		background-color : #020A02;
-		line-height : 30px;
-		padding-top: 5px;
-	}
-
-	#header > div > form {
-		float : right;
-		margin-right : 20px;
-		margin-top:10px;
-		font-size : 22px;
-	}
-
-	#header > div > form > .txtbox {
-		width : 150px;
-		border : none;
-		padding-left : 3px;
-	}
-
-	#header > div > form > input[type="text"]{
-		margin-right : 3px;
-	}
-
-	#header > div > form > input[type="submit"]{
-		width : 100px;
-		height : 40px;
-		border : none;
-		border-radius: 5px;
-		background-color : #020A02;
-		color : #FFFFFF;
-		text-align: center;
-		font-family : "Exo";
-		margin-top : -10px;
-		padding-left : 5px;
-		padding-right : 5px;
-	}
-	
-	#header > span#userid {
-		float: right;
-	}
-}
-
-
-/* 배경 비디오 */
+/* ---------- background section start ---------- */
 #bgvideo {
 
 	z-index : -1;
@@ -123,7 +7,7 @@
 	left : 0px;
 }
 
-@media screen and (max-width : 1400px){ /*1400이하일 경우*/
+@media screen and (max-width : 1400px){
 	#bgvideo{
 		width : 100%;
 		/*width : 1400px;*/
@@ -134,7 +18,7 @@
 	}
 }
 
-@media screen and (min-width : 1400px){ /*1400이상일 경우*/
+@media screen and (min-width : 1400px){
 	#bgvideo{
 		width : 100%;
 	}
@@ -143,8 +27,10 @@
 		width : 100%;
 	}
 }
+/* ---------- background section end ---------- */
 
-/* 인트로 부분 시작 */
+
+/* ---------- intro section start ---------- */
 #intro {
 	margin-top : 60px;
 	height : 540px;
@@ -153,7 +39,6 @@
 	color : #FFFFFF;
 }
 
-/* Your moments, your story. */
 #intro > span:nth-child(1) {
 	display : block;
 	text-align : center;
@@ -175,7 +60,6 @@
 	}
 }
 
-/* Create, explore ~ ways */
 #intro > span:nth-child(2) { 
 	display : block;
 	margin : auto;
@@ -199,7 +83,6 @@
 	}
 }
 
-/* facebook create button * sign up with email*/
 #intro > a {
 	display : block;
 	margin : auto;
@@ -255,19 +138,11 @@
 		margin-top : 10px;
 	}
 }
-/* 인트로 부분 끝 */
-		/*
-		#intro > a > span :before {
-			margin : 7px 0px 0px 20px;
-			width: 40px;
-			height : 40px;
-			background : url(http://d2xx6zcy9l0x7e.cloudfront.net/1397381123/images/sprites/slidesong-homepage.png) no-repeat -80px -177px;
-		}
-		*/
+/* ---------- intro section end ---------- */
 
 
 
-/* 앱 소개 부분 시작 */
+/* ---------- introduce app section start ---------- */
 #aboutApp{
 	width : 100%;
 	padding-top : 100px;
@@ -283,13 +158,13 @@
 	padding : 0px 20px 100px 20px;
 }
 
-#aboutApp > div {
+#aboutApp > ul {
 	margin : auto;
 }
 
-#aboutApp > div > .appbox {
+#aboutApp > ul > li {
 	display :inline-block;
-	margin : 15px 20px;
+	margin : 10px 10px;
 	background-color : #FFFFFF;
 	border-radius: 10px;
 	box-shadow : 0px 5px 8px #B3B3B3;
@@ -300,31 +175,33 @@
 
 /* 창의 크기가 1200 보다 클 때 3xn*/
 @media screen and (min-width:1200px){
-	#aboutApp > div {
+	#aboutApp > ul {
 		max-width : 1200px;
 	}
 }
 
 /* 창의 크기가 1200 보다 작고, 800보다 클 때 2xn*/
 @media screen and (max-width:1200px) and (min-width:800px){
-	#aboutApp > div {
+	#aboutApp > ul {
 		max-width : 800px;
 	}
 }
 
 /* 창의 크기가 800 보다 작을 때 1xn*/
 @media screen and (max-width:800px){
-	#aboutApp > div {
+	#aboutApp > ul {
 		max-width : 400px;
+		text-align: center;
 	}
 }
-/* 앱 소개 끝 */
+/* ---------- introduce app section end ---------- */
 
 
-/* 실시간 전체 시청 수 시작 */
+/* ---------- count view section start ---------- */
+
 #countTotalView{
 	width : 100%;
-	background : url(.//img/overview.jpg);
+	background : url("../img/overview.jpg");
     background-size : cover;
    	font-family: 'Exo';
 	padding : 100px 0px 100px 0px;
@@ -366,10 +243,10 @@
 	background: url(http://nhnnext.org/img/bi/next_bi.png);
 	background-size: 100px;
 }
-/* 실시간 전체 시청 수 끝 */
+/* ---------- count view section end ---------- */
 
 
-/* 인기 비디오 보여주기 시작 */
+/* ---------- show video section start ---------- */
 #featured{
 	width : 100%;
 }
@@ -478,3 +355,6 @@
 	height : 300px;
 	background-color: #363636;
 }
+
+/* ---------- show video section end ---------- */
+

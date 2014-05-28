@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="./src/css/common.css" />
 <link rel="stylesheet" type="text/css" href="./src/css/main.css" />
+<link rel="stylesheet" type="text/css" href="./src/css/header.css" />
 <meta charset="utf-8">
 </head>
 <body>
@@ -14,11 +15,6 @@
 			<a href="./main.jsp"> CollageJam </a>
 			<a href="./mypage.jsp"> myJamJars </a>
 			<form method="post" action="./login.jsp">
-				<!--
-				]
- 				<input type="text" class="txtbox"/>
-				<input type="password" class="txtbox"/>
-				-->
  				<input type="submit" value="login"/>
 			</form>
 			<a href="./create.jsp">create</a>
@@ -56,24 +52,13 @@
 
 		<section id="aboutApp">
 			<span>Share your story with our creative applications</span>
-			<div>
-				<div class="appbox"></div>
-				<!--
-				-->
-				<div class="appbox"></div>
-				<!--
-				-->
-				<div class="appbox"></div>
-				<!--
-				-->
-				<div class="appbox"></div>
-				<!--
-				-->
-				<div class="appbox"></div>
-				<!--
-				-->
-				<div class="appbox"></div>
-			</div>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
 		</section>
 
 		<div id="countTotalView">
@@ -104,61 +89,12 @@
 				--><div class="jar15">15</div><!--
 				--><div class="jar16">16</div><!--
 				--><div class="jar17">17</div>
-				<div class="jamjar jar1">1</div>
-				<!--
-				-->
-				<div class="jamjar jar2">2</div>
-				<!--
-				-->
-				<div class="jamjar jar3">3</div>
-				<!--
-				-->
-				<div class="jamjar jar4">4</div>
-				<!--
-				-->
-				<div class="jamjar jar5">5</div>
-				<!--
-				-->
-				<div class="jamjar jar6">6</div>
-				<!--
-				-->
-				<div class="jamjar jar7">7</div>
-				<!--
-				-->
-				<div class="jamjar jar8">8</div>
-				<!--
-				-->
-				<div class="jamjar jar9">9</div>
-				<!--
-				-->
-				<div class="jamjar jar10">10</div>
-				<!--
-				-->
-				<div class="jamjar jar11">11</div>
-				<!--
-				-->
-				<div class="jamjar jar12">12</div>
-				<!--
-				-->
-				<div class="jamjar jar13">13</div>
-				<!--
-				-->
-				<div class="jamjar jar14">14</div>
-				<!--
-				-->
-				<div class="jamjar jar15">15</div>
-				<!--
-				-->
-				<div class="jamjar jar16">16</div>
-				<!--
-				-->
-				<div class="jamjar jar17">17</div>
-			</div>
+				</div>
 			<span>Start</span>
 		</section>
 	</section>
 
-	<footer id="footer"> footer </footer>
+	<footer id="footer"></footer>
 	<script>
 		var obj = ${data};
 	</script>
