@@ -16,7 +16,7 @@
 				<a href="./create-photo.jsp">Choose photos</a> 
 				</span>
 				<span id="resultButton"> 
-					<a href="./create-preview.jsp">NEXT ></a>
+					<a href="./create-preview.jsp">NEXT</a>
 				</span>
 			</div>
 		</div>

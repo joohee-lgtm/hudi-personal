@@ -324,7 +324,7 @@
 /* 실시간 전체 시청 수 시작 */
 #countTotalView{
 	width : 100%;
-	background : url(https://farm3.staticflickr.com/2883/9162883727_345c1a9ff1_o.jpg);
+	background : url(.//img/overview.jpg);
     background-size : cover;
    	font-family: 'Exo';
 	padding : 100px 0px 100px 0px;
