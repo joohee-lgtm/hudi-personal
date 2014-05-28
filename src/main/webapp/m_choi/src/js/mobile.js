@@ -48,6 +48,7 @@ var S_DATA = {
 function handleTouchstart(e) {
 	oTouch.touchstartX = e.touches[0].clientX;
 	oTouch.touchstartY = e.touches[0].clientY;
+	console.log('touchstart');
 }
 
 function handleTouchmove(e) {
@@ -260,8 +261,8 @@ function registerEvents() {
 
 function init() {
 	adjustCardFrameWidth('about', ".container");
-	adjustImgWidthOnPortrait('aboutImg');
-	adjustImgWidthOnLandscape('aboutImg');
+	//adjustImgWidthOnPortrait('aboutImg');
+	//adjustImgWidthOnLandscape('aboutImg');
 	alignJarFramesWithClassName('jamjar');
 	initVariables();
 }
@@ -276,14 +277,9 @@ window.addEventListener('orientationchange', function() {
 	alignJarFramesWithClassName('jamjar');
 	adjustCardFrameWidth('about', ".container");
 	
-	adjustImgWidthOnPortrait('aboutImg');
-	adjustImgWidthOnLandscape('aboutImg');
+	//adjustImgWidthOnPortrait('aboutImg');
+	//adjustImgWidthOnLandscape('aboutImg');
 }, false);
 
-window.mFlicking = (function() {
-	var _static = {
-			RIGHT_CARD_LEFT_VAL : 100
-	}
-})();
 
 
