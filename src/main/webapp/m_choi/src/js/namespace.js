@@ -63,11 +63,16 @@ var _JE_Mobile = (function() {
 		vFrame.frameWidthIncldMargin = frameWidth + frameML + frameMR;
 	}
 	
-	function alignVideoFrames(classname, wrapper) {
+	function alignVideoFrames(classname) {
 		setViewportWidth();
 		calFrameWidth(classname);
-		var num = getPossibleNumOfFrameInARow();
-		console.log(num);
+		var numFrames = getPossibleNumOfFrameInARow();
+		var frameWidth = vFrame.frameWidthIncldMargin;
+		var eleWrapper = _JE.getElByClass(classname)[0].parentNode;
+		var wrapperPaddingLeft = (viewportWidth - numFrames * frameWidth) / 2 + 'px';
+		_JE.setCSSStyle(eleWrapper, {
+			'padding-left' : wrapperPaddingLeft
+		});
 	}
 	
 	//public functions
@@ -77,7 +82,7 @@ var _JE_Mobile = (function() {
 	};
 	
 	_JE_Mobile.orientChangeInit = function() {
-		alignVideoFrames('jamjar', 'jamjar_wrapper');
+		alignVideoFrames('jamjar');
 	};
 	
 	return _JE_Mobile;
