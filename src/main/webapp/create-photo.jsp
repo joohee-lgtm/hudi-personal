@@ -11,11 +11,6 @@
 	</header>
 
 	<section id="photoSelectWrap">
-		<!-- div id="mainNavigation">
-			<span>
-				<a href="./main.jsp">CollageJam</a>
-			</span>
-		</div> -->
 		<div id="subNavigation">
 			<div><span id="create">
 				<a href="./create-photo.jsp">Choose photos</a> 
@@ -26,7 +21,6 @@
 			</div>
 		</div>
 		<div id="search">
-			<!-- 자바스크립트로 -->
 			<form accept-charset="UTF-8" onsubmit="emulAcceptCharset(this)">
 				<input type="text" name="search-photos" autocomplete="off"
 					placeholder="Search for Images"> <span class="submit">
