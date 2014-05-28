@@ -3,11 +3,18 @@ var _JE_Mobile = (function() {
 	
 	var imgDiameter 	= 0,
 		viewportWidth	= 0;
+	
+	var vFrame = {};
+	
 	var IMG_RATIO_TO_VP = 0.8;
 	
 	//private functions
 	function calCircleImgSize() {
 		imgDiameter 	= parseInt(_JE.getElementSize('about').height) * IMG_RATIO_TO_VP;
+	}
+	
+	function setViewportWidth(classname) {
+		return viewportWidth = _JE.getViewport();
 	}
 	
 	function setImgSize(classname) {
@@ -41,24 +48,36 @@ var _JE_Mobile = (function() {
 		putImgCenter(classname);
 	}
 	
-	function setVideoFramesCenter(classname) {
-		setViewportWidth();
-		var aFrame = _JE.getElByClass(classname);
-		console.log(setViewportWidth());
+	function getPossibleNumOfFrameInARow() {
+		var numFrames = parseInt(viewportWidth / vFrame.frameWidthIncldMargin);
+		return numFrames;
+		
 	}
 	
-	function setViewportWidth() {
-		return viewportWidth = _JE.getViewport();
+	function calFrameWidth(classname) {
+		var frame 		= _JE.getElByClass(classname)[0],
+			frameWidth	= frame.offsetWidth,
+			frameML		= parseInt(_JE.getSpecificProperty(frame, "margin-left")),
+			frameMR		= parseInt(_JE.getSpecificProperty(frame, "margin-right"));
+		
+		vFrame.frameWidthIncldMargin = frameWidth + frameML + frameMR;
+	}
+	
+	function alignVideoFrames(classname, wrapper) {
+		setViewportWidth();
+		calFrameWidth(classname);
+		var num = getPossibleNumOfFrameInARow();
+		console.log(num);
 	}
 	
 	//public functions
 	_JE_Mobile.init = function() {
 		doImgSetting('aboutImg');
-		setVideoFramesCenter('jamjar');
+		alignVideoFrames('jamjar');
 	};
 	
 	_JE_Mobile.orientChangeInit = function() {
-		setVideoFramesCenter();
+		alignVideoFrames('jamjar', 'jamjar_wrapper');
 	};
 	
 	return _JE_Mobile;

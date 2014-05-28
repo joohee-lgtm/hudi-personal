@@ -161,7 +161,7 @@ function alignJarFramesWithClassName(classname) {
 
 	for(var i = 0; i < aFrames.length; i ++) {
 		aFrames[i].style.marginLeft = margin + 'px';
-		aFrames[i].style.marginRight = margin + 'px';
+		//aFrames[i].style.marginRight = margin + 'px';
 	}
 
 	var eleWrapper = _JE.getElById('jar-wrapper');
@@ -263,7 +263,7 @@ function init() {
 	adjustCardFrameWidth('about', ".container");
 	//adjustImgWidthOnPortrait('aboutImg');
 	//adjustImgWidthOnLandscape('aboutImg');
-	alignJarFramesWithClassName('jamjar');
+	//alignJarFramesWithClassName('jamjar');
 	initVariables();
 }
 
