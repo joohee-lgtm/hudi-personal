@@ -1,9 +1,9 @@
-var _JE_Mobile = (function() {
-	var _JE_Mobile = {};
+var JE_Mobile = (function() {
+	var JE_Mobile = {};
 	
 	var imgDiameter 	= 0,
 		viewportWidth	= 0;
-	var vFrame = {};
+	var vFrame 			= {};
 	var IMG_RATIO_TO_VP = 0.8;
 	
 	//private functions
@@ -47,9 +47,7 @@ var _JE_Mobile = (function() {
 	}
 	
 	function getPossibleNumOfFrameInARow() {
-		var numFrames = parseInt(viewportWidth / vFrame.frameWidthIncldMargin);
-		return numFrames;
-		
+		return parseInt(viewportWidth / vFrame.frameWidthIncldMargin);
 	}
 
 	function alignVideoFrames(classname) {
@@ -78,22 +76,22 @@ var _JE_Mobile = (function() {
 	}
 	
 	//public functions
-	_JE_Mobile.init = function() {
+	JE_Mobile.init = function() {
 		doImgSetting('aboutImg');
 		alignVideoFrames('jamjar');
 	};
 	
-	_JE_Mobile.orientChangeInit = function() {
+	JE_Mobile.orientChangeInit = function() {
 		alignVideoFrames('jamjar');
 	};
 	
-	return _JE_Mobile;
+	return JE_Mobile;
 }());
 
 window.addEventListener('load', function() {
-	_JE_Mobile.init();
+	JE_Mobile.init();
 }, false);
 
 window.addEventListener('orientationchange', function() {
-	_JE_Mobile.orientChangeInit();
+	JE_Mobile.orientChangeInit();
 }, false);

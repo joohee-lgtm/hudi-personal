@@ -46,5 +46,8 @@ _JE = {
 		obj.width		= parseInt(_JE.getSpecificProperty(eleWrapper, "width"));
 		
 		return obj;
+	},
+	appendPX : function(value) {
+		return value + 'px';
 	}
 }
