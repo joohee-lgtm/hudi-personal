@@ -77,9 +77,8 @@
 				<input id="createbt" type="submit" value="submit"/>
 			</form>
 		</div>
-		<div id="bg"></div>
 	</section>
-
+	<div id="bg"></div>
 	<div id="arrangePhotos">
 		<div id="sortStrip">
 			<p id="details">

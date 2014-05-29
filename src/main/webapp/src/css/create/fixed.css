@@ -21,6 +21,8 @@
 	margin : auto;
 }
 
+
+
 #navigation {
 	position: fixed;
 	z-index : 1;
@@ -44,13 +46,12 @@
 }
 
 #navigation ul li button {
-	font-family: "Nanum Gothic";
-	color : rgba(255, 255, 255, 0.8);
-	border : 1px solid rgba(255, 255, 255, 0.2);
-	border-radius: 10px;
-	width : 260px;
+	font-family: "Nanum Barun Gothic";
+	color : rgba(140, 255, 207, 0.5);
+	border : 1px solid rgba(140, 255, 207, 0.5);
+	width : 270px;
 	height : 40px;
-	background-color : rgba(255, 255, 255, 0.1);
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 

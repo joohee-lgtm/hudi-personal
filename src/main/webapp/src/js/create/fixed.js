@@ -18,9 +18,9 @@ var work = {
 			t.preview.bt = that.o[2];
 		}
 
-		var setevt = function(obj){
-			obj.bt.addEventListener("click",function(){
-				obj.evt();
+		var setevt = function(sect, tg){
+			tg.bt.addEventListener("click",function(){
+				tg.evt(sect);
 			},false);
 		}
 
@@ -32,9 +32,10 @@ var work = {
 
 		setbt(that.sect);
 		setarea(that.sect);
-		setevt(that.sect.photo);
-		setevt(that.sect.music);
-		setevt(that.sect.preview);
+		setevt(that.sect, that.sect.photo);
+		setevt(that.sect, that.sect.music);
+		setevt(that.sect, that.sect.preview);
+		that.sect.preview.closebt();
 	},
 
 	st : {
@@ -48,20 +49,39 @@ var work = {
 
 	sect : {
 		photo : {
-			evt : function(){
-				st.bl()
+			// bt, area
+			evt : function(sect){
+				this.area.style.display = "block";
+				sect.music.area.style.display = "none";
+				sect.preview.area.style.display = "none";
 			}
 		},
 
 		music : {
-			evt : function(){
-				console.log("music");
+			// bt, area
+			evt : function(sect){
+				this.area.style.display = "block";
+				sect.photo.area.style.display = "none";
+				sect.preview.area.style.display = "none";
 			}
 		},
 
 		preview : {
-			evt : function(){
-				console.log("preview");
+			// bt, area
+			evt : function(sect){
+				this.area.style.display = "block";
+				var nav = document.getElementById("navigation");
+				var arg = document.getElementById("arrangePhotos");
+			},
+
+			closebt : function(){
+				var that = this;
+				var clbt = that.area.children[0];
+				clbt.addEventListener("click", function(){
+					that.area.style.display = "none";
+					var nav = document.getElementById("navigation");
+					var arg = document.getElementById("arrangePhotos");
+				},false);
 			}
 		}
 	}
@@ -69,4 +89,3 @@ var work = {
 
 work.set();
 work.init();
-
