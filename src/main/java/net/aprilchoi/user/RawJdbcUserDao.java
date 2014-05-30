@@ -14,11 +14,7 @@ public class RawJdbcUserDao {
 	
 	public void insert(User user) throws SQLException {
 		UpdateJdbcTemplate template = new UpdateJdbcTemplate(conn) {
-
-			@Override
-			String createQuery() {
-				return "insert into user (email, username, passwd) values (?, ?, ?)";
-			}
+			
 			@Override
 			void setValues(User user, PreparedStatement pstmt) throws SQLException {
 				pstmt.setString(1, user.getEmail());
@@ -27,16 +23,12 @@ public class RawJdbcUserDao {
 			}
 			
 		};
-	    template.update(user);
+		String query = "insert into user (email, username, passwd) values (?, ?, ?)";
+	    template.update(query, user);
 	}
 	
 	public void update(User user) throws SQLException {
 		UpdateJdbcTemplate template = new UpdateJdbcTemplate(conn) {
-
-			@Override
-			String createQuery() {
-				return "update user set email=?, username=? where u_id=?";
-			}
 
 			@Override
 			void setValues(User user, PreparedStatement pstmt) throws SQLException {
@@ -46,7 +38,8 @@ public class RawJdbcUserDao {
 			}
 			
 		};
-		template.update(user);
+		String query = "update user set email=?, username=? where u_id=?";
+		template.update(query, user);
 	}
 	
 	public User selectByUsername(String username) throws SQLException {
