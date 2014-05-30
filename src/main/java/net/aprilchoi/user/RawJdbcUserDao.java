@@ -13,8 +13,22 @@ public class RawJdbcUserDao {
 	}
 	
 	public void insert(User user) throws SQLException {
-		InsertJdbcTemplate template = new InsertJdbcTemplate(conn);
-	    template.insert(user, this);
+		InsertJdbcTemplate template = new InsertJdbcTemplate(conn) {
+
+			@Override
+			String createQueryForInsert() {
+				return "insert into user (email, username, passwd) values (?, ?, ?)";
+			}
+
+			@Override
+			void setValuesForInsert(User user, PreparedStatement pstmt) throws SQLException {
+				pstmt.setString(1, user.getEmail());
+				pstmt.setString(2, user.getUsername());
+				pstmt.setString(3, user.getPassword());
+			}
+			
+		};
+	    template.insert(user);
 	}
 
 	void setValuesForInsert(User user, PreparedStatement pstmt)
