@@ -11,12 +11,12 @@ public abstract class UpdateJdbcTemplate {
 		this.conn = conn;
 	}
 	
-	public void update(String query, User user) throws SQLException {
+	public void update(String query) throws SQLException {
 		PreparedStatement pstmt = conn.prepareStatement(query);
-		setValues(user, pstmt);
+		setValues(pstmt);
 		
 		pstmt.executeUpdate();
 	}
 	
-	abstract void setValues(User user, PreparedStatement pstmt) throws SQLException;
+	abstract void setValues(PreparedStatement pstmt) throws SQLException;
 }
