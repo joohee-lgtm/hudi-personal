@@ -19,7 +19,6 @@ public class RawJdbcUserDao {
 			String createQueryForInsert() {
 				return "insert into user (email, username, passwd) values (?, ?, ?)";
 			}
-
 			@Override
 			void setValuesForInsert(User user, PreparedStatement pstmt) throws SQLException {
 				pstmt.setString(1, user.getEmail());
@@ -30,32 +29,24 @@ public class RawJdbcUserDao {
 		};
 	    template.insert(user);
 	}
-
-	void setValuesForInsert(User user, PreparedStatement pstmt)
-			throws SQLException {
-		pstmt.setString(1, user.getEmail());
-		pstmt.setString(2, user.getUsername());
-		pstmt.setString(3, user.getPassword());
-	}
-
-	String createQueryForInsert() {
-		return "insert into user (email, username, passwd) values (?, ?, ?)";
-	}
 	
 	public void update(User user) throws SQLException {
-		UpdateJdbcTemplate template = new UpdateJdbcTemplate(conn);
+		UpdateJdbcTemplate template = new UpdateJdbcTemplate(conn) {
+
+			@Override
+			String createQueryForUpdate() {
+				return "update user set email=?, username=? where u_id=?";
+			}
+
+			@Override
+			void setValuesForUpdate(User user, PreparedStatement pstmt) throws SQLException {
+				pstmt.setString(1, user.getEmail());
+				pstmt.setString(2, user.getUsername());
+				pstmt.setInt(3, user.getUserId());
+			}
+			
+		};
 		template.update(user, this);
-	}
-
-	void setValuesForUpdate(User user, PreparedStatement pstmt)
-			throws SQLException {
-		pstmt.setString(1, user.getEmail());
-		pstmt.setString(2, user.getUsername());
-		pstmt.setInt(3, user.getUserId());
-	}
-
-	String createQueryForUpdate() {
-		return "update user set email=?, username=? where u_id=?";
 	}
 	
 	public User selectByUsername(String username) throws SQLException {
