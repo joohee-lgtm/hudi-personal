@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class RawJdbcUserDao {
 	private Connection conn;
 	
-	public RawJdbcUserDao (Connection conn) {
+	public RawJdbcUserDao(Connection conn) {
 		this.conn = conn;
 	}
 	
@@ -29,21 +29,18 @@ public class RawJdbcUserDao {
 	}
 	
 	public void update(User user) throws SQLException {
-		String query = createQueryForUpdate();
-		PreparedStatement pstmt = conn.prepareStatement(query);
-		setValuesForUpdate(user, pstmt);
-		
-		pstmt.executeUpdate();
+		UpdateJdbcTemplate template = new UpdateJdbcTemplate(conn);
+		template.update(user, this);
 	}
 
-	public void setValuesForUpdate(User user, PreparedStatement pstmt)
+	void setValuesForUpdate(User user, PreparedStatement pstmt)
 			throws SQLException {
 		pstmt.setString(1, user.getEmail());
 		pstmt.setString(2, user.getUsername());
 		pstmt.setInt(3, user.getUserId());
 	}
 
-	private String createQueryForUpdate() {
+	String createQueryForUpdate() {
 		return "update user set email=?, username=? where u_id=?";
 	}
 	
