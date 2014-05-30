@@ -126,16 +126,16 @@ resultbt.onclick = function(){
 
 
 window.onclick = function(e){
-	if (e.srcElement.offsetParent === document.getElementById('slide')){
-		result.style.display = "none";
-		photo.style.display = "block";
-		navi.style.zIndex = arrange.style.zIndex = 1;
-		player.stopVideo();
-		stopSlide(count);
-		count = 0;
-		clearTemparea();
-		setDefaultImg();
-	}
+	// if (e.srcElement.offsetParent === document.getElementById('slide')){
+	// 	result.style.display = "none";
+	// 	photo.style.display = "block";
+	// 	navi.style.zIndex = arrange.style.zIndex = 1;
+	// 	player.stopVideo();
+	// 	stopSlide(count);
+	// 	count = 0;
+	// 	clearTemparea();
+	// 	setDefaultImg();
+	// }
 };
 
 var count = 0;

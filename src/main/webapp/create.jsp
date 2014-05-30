@@ -54,31 +54,33 @@
 	</section>
 
 	<section id="previewWrap">
-		<button type="button"> X </button>
-		<div id="slide">
-			<img src="./images/nophoto.jpg">
-		</div>
-
-		<div id="player"></div>
-
-		<div id="setting">
-			<div>
-				<button type="button">play</button>
-				<button type="button">stop</button>
-				<div>
-					<input type="range" min="0" max="500" value="5" step="5" onchange="rangevalue.value=value" />
-					<output id="rangevalue"></output>
-					<span>x00.1s</span>
-				</div>
+		<div>
+			<button type="button"> X </button>
+			<div id="slide">
+				<img src="./images/nophoto.jpg">
 			</div>
-			<form id="ajaxform" action="create" method="post">
-				<input type="text" placeholder="title">
-				<textarea rows="4" cols="30" placeholder="description"></textarea>
-				<input id="createbt" type="submit" value="submit"/>
-			</form>
+
+			<div id="player"></div>
+
+			<div id="setting">
+				<div>
+					<button type="button">play</button>
+					<button type="button">stop</button>
+					<div>
+						<input type="range" min="0" max="500" value="5" step="5" onchange="rangevalue.value=value" />
+						<output id="rangevalue"></output>
+						<span>x00.1s</span>
+					</div>
+				</div>
+				<form id="ajaxform" action="create" method="post">
+					<input type="text" placeholder="title">
+					<textarea rows="4" cols="30" placeholder="description"></textarea>
+					<input id="createbt" type="submit" value="submit"/>
+				</form>
+			</div>
 		</div>
+		<div id="bg"></div>
 	</section>
-	<div id="bg"></div>
 	<div id="arrangePhotos">
 		<div id="sortStrip">
 			<p id="details">

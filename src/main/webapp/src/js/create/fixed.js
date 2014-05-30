@@ -1,13 +1,13 @@
-
 var work = {
 
 	o : document.getElementById("navigation").getElementsByTagName("li"),
 	
 	init : function(){
-		var t = this;
-		t.st.bl(t.sect.photo);
-		t.st.no(t.sect.music);
-		t.st.no(t.sect.preview);
+		var that = this;
+		that.st.bl(that.sect.photo.area);
+		that.st.no(that.sect.music.area);
+		that.st.no(that.sect.preview.area);
+		that.st.no(that.sect.preview.bg);
 	},
 
 	set : function(){
@@ -40,10 +40,10 @@ var work = {
 
 	st : {
 		bl : function(obj){
-			obj.area.style.display = "block";
+			obj.style.display = "block";
 		},
 		no : function(obj){
-			obj.area.style.display = "none";
+			obj.style.display = "none";
 		}
 	},
 
@@ -67,11 +67,12 @@ var work = {
 		},
 
 		preview : {
+			bg : document.getElementById("bg"),
 			// bt, area
 			evt : function(sect){
-				this.area.style.display = "block";
-				var nav = document.getElementById("navigation");
-				var arg = document.getElementById("arrangePhotos");
+				var that = this;
+				that.area.style.display = "block";
+				that.bg.style.display = "block";
 			},
 
 			closebt : function(){
@@ -79,8 +80,7 @@ var work = {
 				var clbt = that.area.children[0];
 				clbt.addEventListener("click", function(){
 					that.area.style.display = "none";
-					var nav = document.getElementById("navigation");
-					var arg = document.getElementById("arrangePhotos");
+					that.bg.style.display = "none";
 				},false);
 			}
 		}
