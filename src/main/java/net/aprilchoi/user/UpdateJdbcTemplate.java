@@ -11,7 +11,7 @@ public abstract class UpdateJdbcTemplate {
 		this.conn = conn;
 	}
 	
-	public void update(User user, RawJdbcUserDao userDao) throws SQLException {
+	public void update(User user) throws SQLException {
 		String query = createQuery();
 		PreparedStatement pstmt = conn.prepareStatement(query);
 		setValues(user, pstmt);

@@ -13,7 +13,7 @@ public class RawJdbcUserDao {
 	}
 	
 	public void insert(User user) throws SQLException {
-		InsertJdbcTemplate template = new InsertJdbcTemplate(conn) {
+		UpdateJdbcTemplate template = new UpdateJdbcTemplate(conn) {
 
 			@Override
 			String createQuery() {
@@ -27,7 +27,7 @@ public class RawJdbcUserDao {
 			}
 			
 		};
-	    template.insert(user);
+	    template.update(user);
 	}
 	
 	public void update(User user) throws SQLException {
@@ -46,7 +46,7 @@ public class RawJdbcUserDao {
 			}
 			
 		};
-		template.update(user, this);
+		template.update(user);
 	}
 	
 	public User selectByUsername(String username) throws SQLException {
