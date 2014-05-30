@@ -13,17 +13,41 @@ public class RawJdbcUserDao {
 	}
 	
 	public void insert(User user) throws SQLException {
-		String query = "insert into user (email, username, passwd) values (?, ?, ?)";
+		String query = createQueryForInsert();
 		PreparedStatement pstmt = conn.prepareStatement(query);
-		pstmt.setString(1, user.getEmail());
-		pstmt.setString(2, user.getUsername());
-		pstmt.setString(3, user.getPassword());
+		setValuesForInsert(user, pstmt);
 		
 		pstmt.executeUpdate();
 	}
+
+	private void setValuesForInsert(User user, PreparedStatement pstmt)
+			throws SQLException {
+		pstmt.setString(1, user.getEmail());
+		pstmt.setString(2, user.getUsername());
+		pstmt.setString(3, user.getPassword());
+	}
+
+	private String createQueryForInsert() {
+		return "insert into user (email, username, passwd) values (?, ?, ?)";
+	}
 	
-	public void update(User user) {
-		//String query = "update user set name=?, email=? where u_id"
+	public void update(User user) throws SQLException {
+		String query = createQueryForUpdate();
+		PreparedStatement pstmt = conn.prepareStatement(query);
+		setValuesForUpdate(user, pstmt);
+		
+		pstmt.executeUpdate();
+	}
+
+	private void setValuesForUpdate(User user, PreparedStatement pstmt)
+			throws SQLException {
+		pstmt.setString(1, user.getEmail());
+		pstmt.setString(2, user.getUsername());
+		pstmt.setInt(3, user.getUserId());
+	}
+
+	private String createQueryForUpdate() {
+		return "update user set email=?, username=? where u_id=?";
 	}
 	
 	public User selectByUsername(String username) throws SQLException {

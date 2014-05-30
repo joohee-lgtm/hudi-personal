@@ -21,14 +21,17 @@ public class RawJdbcUserDaoTest {
 	}
 	
 	@Test public void crud() throws Exception {
-		User expected = new User("abcdef4@gmail.com", "choiapril7", "123");
+		String username = "test1";
+		String password = "1234";
+		User expected = new User("test@gmail.com", username, password);
 		
 		dut.insert(expected);
 		expected.setUserId(dut.selectByUsername(expected.getUsername()).getUserId());
 		User actual = dut.selectByUsername(expected.getUsername());
 		assertEquals(expected, actual);
 		
-		expected = new User("mmmg46@naver.com", "choiapril7", "1234");
+		expected = new User("test@naver.com", "test2", password);
+		expected.setUserId(dut.selectByUsername(username).getUserId());
 		dut.update(expected);
 		actual = dut.selectByUsername(expected.getUsername());
 		assertEquals(expected, actual);
