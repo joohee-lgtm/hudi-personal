@@ -43,15 +43,30 @@ public class RawJdbcUserDao {
 	}
 	
 	public User selectByUsername(String username) throws SQLException {
-		String query = "select * from user where username=?";
+		String query = createQuery();
 		PreparedStatement pstmt = conn.prepareStatement(query);
-		pstmt.setString(1, username);
+		setValues(username, pstmt);
 		
 		ResultSet rs = pstmt.executeQuery();
-		User user = null;
 		if(rs.next()) {
-			user = new User(rs.getInt("u_id"), rs.getString("email"), rs.getString("username"), rs.getString("passwd"));
+			return mapRow(rs);
 		}
-		return user;
+		return null;
+	}
+
+	private User mapRow(ResultSet rs) throws SQLException {
+		return new User (
+				rs.getString("email"),
+				rs.getString("username"),
+				rs.getString("passwd")
+				);
+	}
+
+	private String createQuery() {
+		return "select * from user where username=?";
+	}
+
+	private void setValues(String username, PreparedStatement pstmt) throws SQLException {
+		pstmt.setString(1, username);
 	}
 }
