@@ -12,13 +12,13 @@ public abstract class UpdateJdbcTemplate {
 	}
 	
 	public void update(User user, RawJdbcUserDao userDao) throws SQLException {
-		String query = createQueryForUpdate();
+		String query = createQuery();
 		PreparedStatement pstmt = conn.prepareStatement(query);
-		setValuesForUpdate(user, pstmt);
+		setValues(user, pstmt);
 		
 		pstmt.executeUpdate();
 	}
 	
-	abstract String createQueryForUpdate();
-	abstract void setValuesForUpdate(User user, PreparedStatement pstmt) throws SQLException;
+	abstract String createQuery();
+	abstract void setValues(User user, PreparedStatement pstmt) throws SQLException;
 }

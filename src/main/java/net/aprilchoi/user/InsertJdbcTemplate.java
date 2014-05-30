@@ -12,13 +12,13 @@ public abstract class InsertJdbcTemplate {
 	}
 	
 	public void insert(User user) throws SQLException {
-		String query = createQueryForInsert();
+		String query = createQuery();
 		PreparedStatement pstmt = conn.prepareStatement(query);
-		setValuesForInsert(user, pstmt);
+		setValues(user, pstmt);
 		
 		pstmt.executeUpdate();
 	}
 	
-	abstract String createQueryForInsert();
-	abstract void setValuesForInsert(User user, PreparedStatement pstmt) throws SQLException;
+	abstract String createQuery();
+	abstract void setValues(User user, PreparedStatement pstmt) throws SQLException;
 }
