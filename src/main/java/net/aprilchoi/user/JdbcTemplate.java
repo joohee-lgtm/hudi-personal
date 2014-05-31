@@ -5,11 +5,18 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public abstract class SelectJdbcTemplate {
+public abstract class JdbcTemplate {
 	private Connection conn;
 	
-	public SelectJdbcTemplate(Connection conn) {
+	public JdbcTemplate(Connection conn) {
 		this.conn = conn;
+	}
+	
+	public void update(String query) throws SQLException {
+		PreparedStatement pstmt = conn.prepareStatement(query);
+		setValues(pstmt);
+		
+		pstmt.executeUpdate();
 	}
 	
 	public Object selectByUsername(String query) throws SQLException {
