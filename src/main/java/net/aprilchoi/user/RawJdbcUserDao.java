@@ -42,31 +42,26 @@ public class RawJdbcUserDao {
 		template.update(query);
 	}
 	
-	public User selectByUsername(String username) throws SQLException {
-		String query = createQuery();
-		PreparedStatement pstmt = conn.prepareStatement(query);
-		setValues(username, pstmt);
-		
-		ResultSet rs = pstmt.executeQuery();
-		if(rs.next()) {
-			return mapRow(rs);
-		}
-		return null;
-	}
+	public User selectByUsername(final String username) throws SQLException {
+		SelectJdbcTemplate template = new SelectJdbcTemplate(conn) {
 
-	private User mapRow(ResultSet rs) throws SQLException {
-		return new User (
-				rs.getString("email"),
-				rs.getString("username"),
-				rs.getString("passwd")
-				);
-	}
+			@Override
+			Object mapRow(ResultSet rs) throws SQLException {
+				return new User(
+						rs.getInt("u_id"),
+						rs.getString("email"),
+						rs.getString("username"),
+						rs.getString("passwd"));
+			}
 
-	private String createQuery() {
-		return "select * from user where username=?";
-	}
+			@Override
+			void setValues(PreparedStatement pstmt) throws SQLException {
+				pstmt.setString(1, username);
+			}
+			
+		};
 
-	private void setValues(String username, PreparedStatement pstmt) throws SQLException {
-		pstmt.setString(1, username);
+		String query = "select * from user where username=?";
+		return (User)template.selectByUsername(query);
 	}
 }
