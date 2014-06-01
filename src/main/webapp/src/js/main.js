@@ -1,5 +1,7 @@
 
+
 window.addEventListener('load',function(){
+	console.log(obj);
 	Featured.posAll();
 	ScrollEvent.disableVerticalScroll();
 }, false);
@@ -7,7 +9,6 @@ window.addEventListener('load',function(){
 window.addEventListener('resize',function(){
 	Featured.posAll();
 }, false);
-
 
 // 초기화??
 var Featured = {
@@ -29,7 +30,7 @@ Featured.Setting = function(){
 	this.row = this.getRow(inner);
 	this.column = this.getColumn();
 	this.remain = this.getRemain();
-}
+};
 
 Featured.getRow = function(inner){
 	if (inner > 1200){ //1200 보다 큰 경우
@@ -41,15 +42,15 @@ Featured.getRow = function(inner){
 			return 1;
 		}
 	}
-}
+};
 
 Featured.getColumn = function(){
 	return parseInt(this.jarArray.length/this.row);
-}
+};
 
 Featured.getRemain = function(){
 	return this.jarArray.length%this.row;
-}
+};
 
 /* setting about featured end */
 
@@ -71,7 +72,7 @@ Featured.ascendingBottom = function(objArray){
 		}
 	}
 	return objArray;
-}
+};
 
 Featured.descendingBottom = function(objArray){
 	var len = objArray.length;
@@ -87,18 +88,18 @@ Featured.descendingBottom = function(objArray){
 		}
 	}
 	return objArray;
-}
+};
 
 Featured.toInt = function(text){
 	var result = parseInt(text.substring(0,text.length-2));
 	return result;
-}
+};
 
 Featured.getBottom = function(obj){
 	var style = getComputedStyle(obj);
 	var bottom = this.toInt(style.top) + this.toInt(style.height) + this.jar.jMargin;
 	return bottom;
-}
+};
 
 /* used function in featured end */
 
@@ -112,20 +113,19 @@ Featured.posJars = function(){
 	this.posOtherGroup();
 	this.featuredMargin();
 	this.featuredHeight();
-}
+};
 
 Featured.posFirstGroup = function(){
 	for(var i=0 ; i<this.row ; i++){
 		this.jarArray[i].style.left = this.jar.jWidth*i + "px";
 		this.jarArray[i].style.top = "0px";
 	}
-}
+};
 
 Featured.posOtherGroup = function(){
 	for (var i=1 ; i<=this.column ; i++){
 		var BEFORE = (i-1)*this.row;
 		var CURRENT = i*this.row;
-		var R;
 
 		if (i != this.column){ // 마지막 줄이 아닐 때
 			this.posInGroup(BEFORE, CURRENT, this.row);
@@ -133,7 +133,7 @@ Featured.posOtherGroup = function(){
 			this.posInGroup(BEFORE, CURRENT, this.remain);
 		}
 	}
-}
+};
 
 Featured.posInGroup = function(BEFORE, CURRENT, REMAIN){
 	var baseObjArray = [];
@@ -145,7 +145,7 @@ Featured.posInGroup = function(BEFORE, CURRENT, REMAIN){
 		this.jarArray[CURRENT+c].style.left = getComputedStyle(baseObjArray[c]).left;
 		this.jarArray[CURRENT+c].style.top = this.getBottom(baseObjArray[c]) + "px";
 	}
-}
+};
 
 Featured.featuredMargin = function(){
 	this.jarArray[0].parentNode.style.width = this.jar.jWidth*this.row + "px";
@@ -158,12 +158,12 @@ Featured.featuredHeight = function(){
 	}
 	deArray = this.descendingBottom(deArray);
 	this.jarArray[0].parentNode.style.height = this.getBottom(deArray[0]) + "px";
-}
+};
 
 Featured.posAll = function(){
 	this.Setting();
 	this.posJars();
-}
+};
 
 /* set jar position function in featured end */
 
@@ -188,15 +188,4 @@ var ScrollEvent = {
 			e.preventDefault();
 		}
 	}
-}
-
-
-
-
-
-
-
-
-
-
-
+};

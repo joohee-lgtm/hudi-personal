@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
 	<display-name>Archetype Created Web Application</display-name>
-	
+
+	<!-- test servlet start -->
 	<servlet>
 		<servlet-name>login</servlet-name>
 		<servlet-class>test.LoginServlet</servlet-class>
@@ -17,10 +14,69 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 	<servlet>
 		<servlet-name>register</servlet-name>
 		<servlet-class>test.RegisterServlet</servlet-class>
-	</servlet>
-
+	</servlet>		
 	<servlet-mapping>
 		<servlet-name>register</servlet-name>
 		<url-pattern>/register.do</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>showdbservlet</servlet-name>
+		<servlet-class>test.DBshowServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>showdbservlet</servlet-name>
+		<url-pattern>/showdb</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>dbconntest</servlet-name>
+		<servlet-class>test.DBConnection</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dbconntest</servlet-name>
+		<url-pattern>/dbtest</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>js-servlet</servlet-name>
+		<servlet-class>test.JavascriptServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>js-servlet</servlet-name>
+		<url-pattern>/jstest</url-pattern>
+	</servlet-mapping>
+	<!-- test servlet end -->
+
+
+	<!-- real development servlet start -->
+	<servlet>
+		<servlet-name>showfeaturedinmain</servlet-name>
+		<servlet-class>net.collagejam.servlet.MainFeaturedServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>showfeaturedinmain</servlet-name>
+		<url-pattern>/main</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>createjarservlet</servlet-name>
+		<servlet-class>net.collagejam.web.CreateJamjarController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>createjarservlet</servlet-name>
+		<url-pattern>/createjar</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>createController</servlet-name>
+		<servlet-class>net.collagejam.web.CreateController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>createController</servlet-name>
+		<url-pattern>/create</url-pattern>
+	</servlet-mapping>
+
+	<!-- real development servlet end -->
+
 </web-app>

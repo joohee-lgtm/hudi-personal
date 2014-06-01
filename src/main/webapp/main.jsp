@@ -1,9 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<link rel="stylesheet" type="text/css" href="./style/common.css" />
-<link rel="stylesheet" type="text/css" href="./style/main.css" />
+<link rel="stylesheet" type="text/css" href="./src/css/common.css" />
+<link rel="stylesheet" type="text/css" href="./src/css/main.css" />
 <meta charset="utf-8">
 </head>
 <body>
@@ -13,6 +15,7 @@
 			<a href="./mypage.jsp"> myJamJars </a>
 			<form method="post" action="./login.jsp">
 				<!--
+				]
  				<input type="text" class="txtbox"/>
 				<input type="password" class="txtbox"/>
 				-->
@@ -22,12 +25,10 @@
 		</div>
     	<%
 			String greeting = "Hello, ";
-			String username = (String) request.getAttribute("USERNAME");
-			System.out.println("username: " + username);
+			String username = (String) session.getAttribute("username");
+			//System.out.println("username: " + username);
 			if(username == null)
 				username = "anonymous";
-			else
-				session.setAttribute("ID", username);
 		%>
 		<span id="userid"> Hello, <%=username%></span>
 	</header>
@@ -158,6 +159,9 @@
 	</section>
 
 	<footer id="footer"> footer </footer>
-	<script type="text/javascript" src="./script/main.js" /></script>
+	<script>
+		var obj = ${data};
+	</script>
+	<script type="text/javascript" src="./src/js/main.js" /></script>
 </body>
 </html>

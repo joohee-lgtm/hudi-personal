@@ -15,6 +15,7 @@ http://slide.ly/<br>
 >재생하기<br>
 >결과물 보여주기<br>
 >결과물 : 2x2로 된 콜라주에 각각 슬라이드 쇼가 재생되는 형태<br>
+> 예상 화면 : https://docs.google.com/drawings/d/1asWoRDMTq6gljnyqBysSe4Vv3JNDYSrjA4-iJiI0DSQ/edit <br>
 
 2. 모바일<br>
 

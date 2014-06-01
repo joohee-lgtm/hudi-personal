@@ -47,7 +47,7 @@ function imgLoad(imgsrc){
 	img.onload = function(){
 		setImgSize(img);
 		setImgMargin(img);
-	}
+	};
 }
 
 function setDefaultImg(){
@@ -60,7 +60,7 @@ function setDefaultImg(){
 		} else {
 			selected.appendChild(img);
 		}
-	}
+	};
 }
 
 function clearTemparea(){
@@ -100,10 +100,10 @@ var images = new Array();
 
 photobt.onclick = function(){
 	result.style.display = "none";
-	photo.style.display = "block"
+	photo.style.display = "block";
 	clearTemparea();
 	setDefaultImg();
-}
+};
 
 var navi = document.getElementById('navigation');
 var arrange = document.getElementById('arrangePhotos');
@@ -122,7 +122,9 @@ resultbt.onclick = function(){
 	// 첫번째 그림 셋팅
 	selected.removeChild(selected.children[0]);
 	selected.appendChild(temparea.children[0]);
-}
+};
+
+
 
 window.onclick = function(e){
 	if (e.srcElement.offsetParent === document.getElementById('slide')){
@@ -135,7 +137,7 @@ window.onclick = function(e){
 		clearTemparea();
 		setDefaultImg();
 	}
-}
+};
 
 var count = 0;
 var intervalId = null;
@@ -169,14 +171,14 @@ playbt.onclick = function(){
 	}
 
 	intervalId = setInterval(setSlide, time*10);
-}
+};
 
 stopbt.onclick = function(){
 	console.log("stop");
 	player.stopVideo();
 	stopSlide(count);
 	count = 0;
-}
+};
 
 /*
 window.onload = function(){
