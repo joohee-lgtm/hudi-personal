@@ -1,7 +1,3 @@
-document.onclick = function(e){
-	console.log(e);
-}
-
 
 // col, row 에 해당하는 매트릭스 얻기
 function getSection(matrix, col, row, maxrow){

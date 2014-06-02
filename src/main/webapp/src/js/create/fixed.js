@@ -73,11 +73,13 @@ var work = {
 				var that = this;
 				that.area.style.display = "block";
 				that.bg.style.display = "block";
+				_o.init.imgloader();
 			},
 
 			closebt : function(){
 				var that = this;
-				var clbt = that.area.children[0];
+				var clbt = that.area.children[0].children[0];
+				console.log(clbt);
 				clbt.addEventListener("click", function(){
 					that.area.style.display = "none";
 					that.bg.style.display = "none";

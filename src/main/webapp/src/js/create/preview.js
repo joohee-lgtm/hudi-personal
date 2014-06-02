@@ -1,180 +1,154 @@
+var preview = {};
+var _o = preview;
 
+preview.util = {
+	px : function(num){
+		return num+"px"
+	},
 
-// col, row 에 해당하는 매트릭스 얻기
-function getSection(matrix, col, row, maxrow){
-	var p = (col)*maxrow + (row);
-	var	result = matrix[p];
-	return result;
-}
-
-// 00px를 숫자로 바꿔주기
-function toInt(text){
-	var result = parseInt(text.substring(0,text.length-2));
-	return result;
-}
-
-// 이미지 사이즈 설정하기
-function setImgSize(img){
-	if (img.height < img.width){
-		img.height = img.height*(400/img.width);
-		img.width = "400";
-		if (img.height > 300){
-			img.width = img.width*(300/img.height);
-			img.height = "300";	
-		}
-	} else if (img.width < img.height){
-		img.width = img.width*(300/img.height);
-		img.height = "300";
-	} else {
-		img.height = "300";
-		img.width = "300";
+	base : {
+		_width : 640,
+		_height : 480
 	}
-}
-
-function setImgMargin(img){
-	if (img.height < 300){
-		var margin = (300-img.height)/2;
-		img.style.marginTop = margin + "px";
-	}
-}
-
-function imgLoad(imgsrc){
-	var img = new Image();
-	img.src = imgsrc;
-	var temparea = document.getElementById("temparea"); // 구글을 통해 검색된 이미지가 우선 받아질 공간
-	temparea.appendChild(img);
-	img.onload = function(){
-		setImgSize(img);
-		setImgMargin(img);
-	};
-}
-
-function setDefaultImg(){
-	var img = new Image();
-	img.src = "./images/nophoto.jpg";
-	img.onload = function(){
-		if (selected.children.length != 0){
-			selected.removeChild(selected.children[0]);
-			selected.appendChild(img);
-		} else {
-			selected.appendChild(img);
-		}
-	};
-}
-
-function clearTemparea(){
-	var temparea = document.getElementById("temparea"); // 구글을 통해 검색된 이미지가 우선 받아질 공간
-	var pn = temparea.parentNode;
-	if (temparea.children.length != 0){
-		pn.removeChild(temparea);
-		var newta = document.createElement('section');
-		newta.id = 'temparea';
-		pn.appendChild(newta);
-	}
-}
-
-// 구간별 시간 설정
-var times = [
-	1000, 2000, 3000, 1400, 1000, 3000, 1700, 2500, 2100
-];
-
-var slide = document.getElementById("slide").children; // 1x1, 1x2, 2x1, 2x2가 저장된 array
-var selected = getSection(slide, 0, 0, 2); // 슬라이드에서 원하는 위치를 선택하는 함수
-
-var photobt = document.getElementById('create'); // 사진 고르기 버튼
-var resultbt = document.getElementById('resultButton'); // 결과 보기 버튼
-
-var photo = document.getElementById('photoSelectWrap'); // 사진 고르기 창
-var result = document.getElementById('previewWrap'); // 결과 보기창
-
-var setting = document.getElementById('setting');
-var playbt = setting.getElementsByTagName('Button')[0];
-var stopbt = setting.getElementsByTagName('Button')[1];
-
-//처음 create page로 들어갔을 때
-// photo.style.display = "block";
-result.style.display = "none";
-
-var images = new Array();
-
-photobt.onclick = function(){
-	result.style.display = "none";
-	photo.style.display = "block";
-	clearTemparea();
-	setDefaultImg();
 };
 
-var navi = document.getElementById('navigation');
-var arrange = document.getElementById('arrangePhotos');
+//userDataModel.originalURL
+preview.img = {
 
-resultbt.onclick = function(){
-	navi.style.zIndex = arrange.style.zIndex = -2;
+	md : function(url){
+		this._style = {
+			_width : 0,
+			_height : 0,
+			_marginTop : 0,
+		}; 
+		var newimg = new Image();
+		newimg.src = url;
+		this._img = newimg;
+		_o.img.ctr.setAllStyle(this);
+	},
 
-	result.style.display = "block";
-	photo.style.display = "none";
-	images = userDataModel.originalURL;
+	ctr : {
+		setAllStyle : function(obj){
+			var ctr = _o.img.ctr;
+			var px = _o.util.px;
+			obj._img.addEventListener("load", function(){
+				var o = ctr.getSize(obj);
+				obj._img.style.width = px(o._style._width);
+				obj._img.style.height = px(o._style._height);
+				obj._img.style.marginTop = px(o._style._marginTop);
+			}, false);
 
-	for (var i=0; i<images.length ; i++){
-		imgLoad(images[i]);
-	}
+			obj._img.addEventListener("error", function(){
+				console.log("img load error");
+				obj = null;
+			},false);
+			return obj._img;
+		},
 
-	// 첫번째 그림 셋팅
-	// selected.removeChild(selected.children[0]);
-	// selected.appendChild(temparea.children[0]);
-};
+		getSize : function(obj){
+			var _i = obj._img;
+			var b = _o.util.base;
 
+			if (_i.naturalHeight < _i.naturalWidth){
+				obj._style._height = _i.height*(b._width/_i.width);
+				obj._style._width = b._width;
+				if (_i.height > b._height){
+					obj._style._width = _i.width*(b._height/_i.height);
+					obj._style._height = b._height;
+				}
+			} else if (_i.naturalWidth < _i.naturalHeight){
+				obj._style._width = _i.width*(b._height/_i.height);
+				obj._style._height = b._height;
+			} else {
+				obj._style._height  = b._height;
+				obj._style._width = b._height;
+			}
+			obj = _o.img.ctr.getMargin(obj);
+			return obj;
+		},
 
-
-window.onclick = function(e){
-	// if (e.srcElement.offsetParent === document.getElementById('slide')){
-	// 	result.style.display = "none";
-	// 	photo.style.display = "block";
-	// 	navi.style.zIndex = arrange.style.zIndex = 1;
-	// 	player.stopVideo();
-	// 	stopSlide(count);
-	// 	count = 0;
-	// 	clearTemparea();
-	// 	setDefaultImg();
-	// }
-};
-
-var count = 0;
-var intervalId = null;
-
-function setSlide(){
-	temparea.appendChild(selected.children[0]);
-	selected.appendChild(temparea.children[0]);
-	count++;
-}
-
-function stopSlide(count){
-	clearInterval(intervalId);
-	var n = temparea.children.length+1;
-	var remain = count%n;
-	if (n != 0){
-		for (var i=0; i<n-remain ; i++){
-			temparea.appendChild(selected.children[0]);
-			selected.appendChild(temparea.children[0]);
+		getMargin : function(obj){
+			var b = _o.util.base;
+			var px = _o.util.px;
+			obj._img.style.marginLeft = "auto";
+			if (obj._style._height < b._height){
+				var margin = (b._height - obj._style._height)/2;
+				img.style.marginTop = px(margin);
+			}
+			return obj;
 		}
 	}
-}
+};
 
-playbt.onclick = function(){
-	console.log("play");
-	player.playVideo(); // 유튜브 재생하기
-	var time = setting.getElementsByTagName('div')[0].getElementsByTagName('input')[0].value;
 
-	if (count != 0){
-		stopSlide(count);
-		count = 0;
+preview.bgm = {
+	md : {
+
+	},
+	ctr : {
+
 	}
-
-	intervalId = setInterval(setSlide, time*10);
 };
 
-stopbt.onclick = function(){
-	console.log("stop");
-	player.stopVideo();
-	stopSlide(count);
-	count = 0;
+preview.init = {
+
+	setArea : {
+		totalArea : function(){
+			var slide = document.getElementById("slide");
+			_o.init.setArea.playArea(slide);
+			_o.init.setArea.tempArea(slide);
+		},
+
+		playArea : function(slide){
+			var di = _o.init.setDefaultImg();
+			slide.appendChild(di);
+		},
+
+		tempArea : function(slide){
+			var temparea = document.createElement("div");
+			temparea.id = "temparea";
+			temparea.style.display = "none";
+			slide.appendChild(temparea);
+			this.a = temparea;
+		}
+	},
+
+	setDefaultImg : function(){
+		var oi = _o.img;
+		var url = "./src/img/nophoto.jpg";
+		var defalt_img_obj = new oi.md(url);
+		return defalt_img_obj._img;
+	},
+
+	imgloader : function(){
+		var origin = userDataModel.originalURL;
+		console.log(origin);
+		var _pi = _o.img;
+		var img_obj_list = [];
+		var ta = _o.init.setArea.tempArea.a
+		for (var i=0 ; i<origin.length ; i++){
+			var tmp = new _pi.md(origin[i]);
+			img_obj_list[i] = tmp;
+			console.log(img_obj_list[i]._img);
+			// ta.appendChild(img_obj_list[i]._img);
+		}
+	},
+
+	setbgm : function(){
+
+	}
 };
+
+preview.play = {
+
+};
+
+
+_o.init.setArea.totalArea();
+
+
+
+
+
+
+

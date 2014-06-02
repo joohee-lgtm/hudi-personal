@@ -33,13 +33,14 @@ function stopVideo() {
     player.stopVideo();
 }
 
-var start = document.getElementsByTagName("button")[0];
-start.onclick = function(){
+var setting = document.getElementById("setting");
+var playstart = setting.getElementsByTagName("button")[0];
+playstart.onclick = function(){
     player.playVideo();
 };
 
-var stop = document.getElementsByTagName("button")[1];
-stop.onclick = function(){
+var playstop = setting.getElementsByTagName("button")[1];
+playstop.onclick = function(){
     player.stopVideo();
 };
 /* youtube api 끝 */

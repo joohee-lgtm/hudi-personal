@@ -28,7 +28,7 @@
 
 <!-- 	<div id="navigation">
 		<div>
-			<span id="create">
+<span id="create">
 				Current Section
 			</span>
 			<span id="nextBt"> 
@@ -55,10 +55,10 @@
 
 	<section id="previewWrap">
 		<div>
-			<button type="button"> X </button>
-			<div id="slide">
-				<img src="./images/nophoto.jpg">
-			</div>
+			<button> X </button>
+			<!-- reuse in result.jsp -->
+			<div id="slide"></div>
+			<!-- reuse in result.jsp -->
 
 			<div id="player"></div>
 
@@ -89,15 +89,12 @@
 			<div id="carousel"></div>
 		</div>
 	</div>
-
-	<section id="temparea">
-	</section>
 </div>
 	<script src="https://www.google.com/jsapi" type="text/javascript"></script>
 	<script type="text/javascript" src="./src/js/create/fixed.js"/></script>
 	<script type="text/javascript" src="./src/js/create/photo.js"/></script>
 	<script type="text/javascript" src="./src/js/create/youtube.js"/></script>
-	<!-- <script type="text/javascript" src="./src/js/create/preview.js"/></script> -->
+	<script type="text/javascript" src="./src/js/create/preview.js"/></script>
 	<script type="text/javascript" src="./src/js/create/sendData.js"/></script>
 </body>
 </html>
