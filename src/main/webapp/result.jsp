@@ -14,7 +14,6 @@
 </head>
 <body>
 	<section id="previewWrap">
-
 <div id="slide"></div>
 
 </section>
