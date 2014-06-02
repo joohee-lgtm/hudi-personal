@@ -51,7 +51,6 @@ public class LoginServlet extends HttpServlet{
 		try {
 			stmt = conn.createStatement();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		String sql = "select * from user where username='" + username + "' and passwd='" + password + "'";
@@ -60,7 +59,6 @@ public class LoginServlet extends HttpServlet{
 		try {
 			rs = stmt.executeQuery(sql);
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		

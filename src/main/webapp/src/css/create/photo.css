@@ -71,6 +71,11 @@
 	position: fixed;
 }
 
+#arrangePhotos.open {
+	background-color: rgba(35, 35, 34, 0.9);
+	height: 78%;
+}
+
 #details {
 	display: inline-block;
 }
@@ -107,4 +112,23 @@
 	height: 64px;
 	display: inline;
 	border: 2px solid white;
+}
+
+.open-tab {
+	font-family: helvetica;
+	font-size: 1.1em;
+	background-color: black;
+	color: white;
+	height: 20px;
+	width: auto;
+	position: absolute;
+	top: -25px;
+	padding: 5px;
+	border-radius: 8px;
+	left: 80%;
+	cursor: pointer;
+}
+
+.viewport {
+	position: absolute;
 }
