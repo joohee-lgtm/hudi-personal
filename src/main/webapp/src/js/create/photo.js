@@ -1,4 +1,3 @@
-
 var data;
 google.load('search', '1');
 var selectedImages = [];
@@ -47,6 +46,8 @@ function OnLoad() {
 		// console.log("userInput is undefined.");
 		searchControl.execute("LINE LEONARD");
 	}
+	
+	setUpSortPhoto();
 
 	//searchControl.setSearchStartingCallback(this, document.prototype.OnSearchStarting);
 }
@@ -182,6 +183,20 @@ function emulAcceptCharset(form) {
 		document.charset = form.acceptCharset;
 	}
 	return true;
+}
+
+function setUpSortPhoto() {
+	var openTab = document.getElementsByClassName("open-tab");
+	// getElementsByClassName의 반환형은 배열이다.
+	openTab = openTab[0];
+	console.log(openTab);
+	openTab.addEventListener('click', setArrangePhotoOpen, false);
+}
+
+function setArrangePhotoOpen() {
+	var arrangePhoto = document.getElementById("arrangePhotos");
+	arrangePhoto.className = 'open';
+	console.log(arrangePhoto);
 }
 
 google.setOnLoadCallback(OnLoad);
