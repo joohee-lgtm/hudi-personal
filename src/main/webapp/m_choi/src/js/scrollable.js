@@ -5,17 +5,29 @@ window.mScroll = (function() {
 			nHeight : 0
 	},
 	var _element = {},
-	
 	var _setLayer = function(ele) {
 		_element["view"] 	= _JE.getElById(ele);
 		_element["content"] = _element["view"].firstChild;
 		_setProperty();
+	};
+	
+	var _sPrefix = m.getPrefix(), _setProperty = function () {
+		_JE.setCSSStyle(_element["view"], {
+			"position" : "relative",
+			"overflow" : "hidden"
+		});
+		_JE.setCSSStyle(_element["content"], {
+			"position"	: "absolute",
+			"zIndex"	: 1,
+			"left"		: 0,
+			"top"		: 0
+		});
 	}
 	
 	//constructor
 	function mScroll(ele, option) {
 		//옵션 초기화
-		//option이 없으면 생성?
+		//option이 없으면 생성
 		option = option || {};
 		for(var property in option) {
 			_option[property] = option[property];
