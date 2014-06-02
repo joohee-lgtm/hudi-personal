@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
-<title>result page</title>
+<title>preview page</title>
 <link rel="stylesheet" type="text/css" href="./src/css/common.css"/> 
 <link rel="stylesheet" type="text/css" href="./src/css/create/fixed.css"/>
 <link rel="stylesheet" type="text/css" href="./src/css/create/photo.css"/>
