@@ -16,7 +16,6 @@ function userDataModel() {
 	this.addTbURL = function(url) {
 		this.tbURL.push(url);
 	};
-	// console.log("userDataModel created");
 }
 
 function OnLoad() {
@@ -156,11 +155,9 @@ function updateCarousel() {
 		var list = carousel.childNodes;
 		for ( var idx in list) {
 			if (e.target.parentNode === list[idx]) {
-				//console.log("Gotcha!");
 				carousel.removeChild(list[idx]);
 				userDataModel.tbURL.splice(idx - 1, 1);
 				userDataModel.originalURL.splice(idx - 1, 1);
-				// console.log(userDataModel.tbURL);
 				updatePhotoCount();
 				break;
 			}
@@ -195,8 +192,27 @@ function setUpSortPhoto() {
 
 function setArrangePhotoOpen() {
 	var arrangePhoto = document.getElementById("arrangePhotos");
-	arrangePhoto.className = 'open';
-	console.log(arrangePhoto);
+	if ( arrangePhoto.className === 'open') {
+		arrangePhoto.className = '';
+		
+	} else {
+		arrangePhoto.className = 'open';
+		setArrangeButtonsVisible();
+		fillOverview();
+	}
+}
+
+function setArrangeButtonsVisible() {
+	
+}
+
+function fillOverview() {
+	var list = userDataModel.tbURL;
+	for ( var idx in list ) {
+		var newImg = document.createElement('img');
+		newImg.src = list[idx];
+		console.log(list[idx]);
+	}
 }
 
 google.setOnLoadCallback(OnLoad);
