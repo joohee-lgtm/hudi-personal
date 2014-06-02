@@ -73,7 +73,9 @@ var work = {
 				var that = this;
 				that.area.style.display = "block";
 				that.bg.style.display = "block";
+				_o.init.setArea.totalArea();
 				_o.init.imgloader();
+				_o.init.setPlay();
 			},
 
 			closebt : function(){
