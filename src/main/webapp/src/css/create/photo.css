@@ -1,61 +1,134 @@
-@charset "UTF-8";
+@CHARSET "UTF-8";
 
 #photoSelectWrap {
-	font-family	: helvetica;
-	width 		: 100%;
-	height 		: 100%;
-	background-color : #E9E4DB;
+	font-family: helvetica;
+	width: 100%;
+	height: 100%;
+	background-color:#E9E4DB;
 }
 
+
 #search {
-	font-family : helvetica;
-	padding-top : 30px;
-	margin-top 	: 120px;
+	font-family: helvetica;
+	padding-top: 30px;
+	margin-top: 120px;
 }
 
 #search form {
-	margin 		: auto;
-	padding-top : 10px;
-	width		: 320px;
-	height		: 30px;
-	text-align	: center;
-	border 		: 1px solid black;
-	border-radius : 8px;
-	background-color : white;
+	margin: auto;
+	padding-top: 10px;
+	width: 320px;
+	height: 30px;
+	text-align: center;
+	border: 1px solid black;
+	background-color: white;
+	border-radius: 8px;
 }
 
 /* CSS Selector 공부하기 */
 #search form > input[type="text"] {
-	width 		: 300px;
-	border 		: 0px solid black;
+	width: 300px;
+	border: 0px solid black;
 }
 
 ::-webkit-input-placeholder {
-	color 		: black;
+	color: black;
 }
 
 #overview {
-	background-color : white;
-	width 		: 874px;
-	margin 		: auto;
-	border 		: 1px solid gray;
-	overflow 	: auto;
-	margin-top 	: 30px;
-	margin-bottom : 150px;
-	border-radius : 8px;
+	background-color: white;
+	width: 874px;
+	margin: auto;
+	border: 1px solid gray;
+	border-radius: 8px;
+	margin-top: 30px;
+	margin-bottom: 150px;
+	overflow: auto;
 }
 
 #overview div {
-	margin 		: 10px;
-	width 		: auto;
-	height 		: auto;
-	display 	: inline-block;
-	border 		: 1px solid gray;
+	margin: 10px;
+	width: auto;
+	height: auto;
+	display: inline-block;
+	border: 1px solid gray;
 }
 
 #overview div img {
-	border 		: 1px solid gray;
-	margin 		: 3px;
-	width 		: 188px;
-	height 		: 135px;
+	border: 1px solid gray;
+	margin: 3px;
+	width: 188px;
+	height: 135px;
+}
+
+#arrangePhotos {
+	background-color: #232322;
+	height: 84px;
+	width: 100%;
+	margin:auto;
+	bottom: 0px;
+	left: 0px;
+	position: fixed;
+}
+
+#arrangePhotos.open {
+	background-color: rgba(35, 35, 34, 0.9);
+	height: 78%;
+}
+
+#details {
+	display: inline-block;
+}
+
+#sortStrip {
+	width: 980px;
+	margin: auto;
+	height: 84px;
+	color: white;
+	word-break: break-word;
+}
+
+#sortStrip p {
+	margin-top: 35px;
+}
+
+#carousel {
+	margin: 10px;
+	width: 485px;
+	height: 64px;
+	float: right;
+	color: black;
+	overflow-y: auto;
+}
+#carousel li {
+	margin: 5px;
+	width: 64px;
+	height: 64px;
+	display: inline;
+}
+
+#carousel li img {
+	width: 64px;
+	height: 64px;
+	display: inline;
+	border: 2px solid white;
+}
+
+.open-tab {
+	font-family: helvetica;
+	font-size: 1.1em;
+	background-color: black;
+	color: white;
+	height: 20px;
+	width: auto;
+	position: absolute;
+	top: -25px;
+	padding: 5px;
+	border-radius: 8px;
+	left: 80%;
+	cursor: pointer;
+}
+
+.viewport {
+	position: absolute;
 }

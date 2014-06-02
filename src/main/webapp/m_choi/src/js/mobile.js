@@ -48,6 +48,7 @@ var S_DATA = {
 function handleTouchstart(e) {
 	oTouch.touchstartX = e.touches[0].clientX;
 	oTouch.touchstartY = e.touches[0].clientY;
+	console.log('touchstart');
 }
 
 function handleTouchmove(e) {
@@ -160,7 +161,7 @@ function alignJarFramesWithClassName(classname) {
 
 	for(var i = 0; i < aFrames.length; i ++) {
 		aFrames[i].style.marginLeft = margin + 'px';
-		aFrames[i].style.marginRight = margin + 'px';
+		//aFrames[i].style.marginRight = margin + 'px';
 	}
 
 	var eleWrapper = _JE.getElById('jar-wrapper');
@@ -260,9 +261,9 @@ function registerEvents() {
 
 function init() {
 	adjustCardFrameWidth('about', ".container");
-	adjustImgWidthOnPortrait('aboutImg');
-	adjustImgWidthOnLandscape('aboutImg');
-	alignJarFramesWithClassName('jamjar');
+	//adjustImgWidthOnPortrait('aboutImg');
+	//adjustImgWidthOnLandscape('aboutImg');
+	//alignJarFramesWithClassName('jamjar');
 	initVariables();
 }
 
@@ -276,14 +277,9 @@ window.addEventListener('orientationchange', function() {
 	alignJarFramesWithClassName('jamjar');
 	adjustCardFrameWidth('about', ".container");
 	
-	adjustImgWidthOnPortrait('aboutImg');
-	adjustImgWidthOnLandscape('aboutImg');
+	//adjustImgWidthOnPortrait('aboutImg');
+	//adjustImgWidthOnLandscape('aboutImg');
 }, false);
 
-window.mFlicking = (function() {
-	var _static = {
-			RIGHT_CARD_LEFT_VAL : 100
-	}
-})();
 
 
