@@ -17,9 +17,7 @@
 			<a href="./main.jsp">CollageJam</a>
 		</span>
 	</header>
-	<!--헤더 끝-->
-
-	<!--네비게이션 바 시작 header.css-->
+�
 	<div id="navigation">
 		<div>
 			<span id="create">
@@ -32,9 +30,6 @@
 			</span>
 		</div>
 	</div>
-	<!--네비게이션 바 끝-->
-
-	<!--사진 선택 페이지 시작 create.css-->
 	<section id="photoSelectWrap">
 		<div id="search">
 			<form accept-charset="UTF-8" onsubmit="emulAcceptCharset(this)">
@@ -53,11 +48,8 @@
 			</div>
 		</div>
  -->	</section>
-	<!--사진 선택 페이지 끝-->
 
-	<!--결과 페이지 시작 result.css-->
 	<section id="resultWrap">
-		<!--결과가 재생되는 곳-->
 		<div id="slide">
 			<div><img src="./images/nophoto.jpg" style="width: 300px;"></div>
 	 		<div><img src="./images/nophoto.jpg" style="width: 300px;"></div>
@@ -65,11 +57,9 @@
 			<div><img src="./images/nophoto.jpg" style="width: 300px;"></div>
 		</div>
 
-		<!--오디오 재생되는 곳-->
 		<div id="player">
 		</div>
 
-		<!--결과 설정하는 곳-->
 		<div id="setting">
 			<div>
 				<button type="button">play</button>
@@ -88,7 +78,6 @@
 		</div>	
 	</section>
 	
-	<!--결과 페이지 끝-->
 	<div id="arrangePhotos">
 	<div class="sort-content ui-sortable">
 		<div class="viewport"> 
