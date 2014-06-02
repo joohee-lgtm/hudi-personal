@@ -29,7 +29,6 @@ public class CreateController extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-
 		HttpSession session = request.getSession();
 		JSONObject jsonObj = new JSONObject(obj);
 		userData = jsonObj;
