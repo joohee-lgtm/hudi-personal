@@ -1,4 +1,3 @@
-
 var data;
 google.load('search', '1');
 var selectedImages = [];
@@ -17,7 +16,6 @@ function userDataModel() {
 	this.addTbURL = function(url) {
 		this.tbURL.push(url);
 	};
-	// console.log("userDataModel created");
 }
 
 function OnLoad() {
@@ -47,6 +45,8 @@ function OnLoad() {
 		// console.log("userInput is undefined.");
 		searchControl.execute("LINE LEONARD");
 	}
+	
+	setUpSortPhoto();
 
 	//searchControl.setSearchStartingCallback(this, document.prototype.OnSearchStarting);
 }
@@ -155,11 +155,9 @@ function updateCarousel() {
 		var list = carousel.childNodes;
 		for ( var idx in list) {
 			if (e.target.parentNode === list[idx]) {
-				//console.log("Gotcha!");
 				carousel.removeChild(list[idx]);
 				userDataModel.tbURL.splice(idx - 1, 1);
 				userDataModel.originalURL.splice(idx - 1, 1);
-				// console.log(userDataModel.tbURL);
 				updatePhotoCount();
 				break;
 			}
@@ -182,6 +180,39 @@ function emulAcceptCharset(form) {
 		document.charset = form.acceptCharset;
 	}
 	return true;
+}
+
+function setUpSortPhoto() {
+	var openTab = document.getElementsByClassName("open-tab");
+	// getElementsByClassName의 반환형은 배열이다.
+	openTab = openTab[0];
+	console.log(openTab);
+	openTab.addEventListener('click', setArrangePhotoOpen, false);
+}
+
+function setArrangePhotoOpen() {
+	var arrangePhoto = document.getElementById("arrangePhotos");
+	if ( arrangePhoto.className === 'open') {
+		arrangePhoto.className = '';
+		
+	} else {
+		arrangePhoto.className = 'open';
+		setArrangeButtonsVisible();
+		fillOverview();
+	}
+}
+
+function setArrangeButtonsVisible() {
+	
+}
+
+function fillOverview() {
+	var list = userDataModel.tbURL;
+	for ( var idx in list ) {
+		var newImg = document.createElement('img');
+		newImg.src = list[idx];
+		console.log(list[idx]);
+	}
 }
 
 google.setOnLoadCallback(OnLoad);
