@@ -26,17 +26,6 @@
 		</ul>
 	</div>
 
-<!-- 	<div id="navigation">
-		<div>
-<span id="create">
-				Current Section
-			</span>
-			<span id="nextBt"> 
-				next
-			</span>
-		</div>
-	</div>
- -->
 	<section id="photoSelectWrap">
 		<div id="search">
 			<form accept-charset="UTF-8" onsubmit="emulAcceptCharset(this)">

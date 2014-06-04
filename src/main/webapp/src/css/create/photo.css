@@ -7,6 +7,10 @@
 	background-color:#E9E4DB;
 }
 
+/* 상단 네비게이션 버튼에 대해 마우스 커서 변경 */
+#navigation ul li button {
+	cursor: pointer;
+}
 
 #search {
 	font-family: helvetica;
@@ -61,6 +65,11 @@
 	height: 135px;
 }
 
+#overview div:hover {
+	background-color: red;
+	
+}
+
 #arrangePhotos {
 	background-color: #232322;
 	height: 84px;
@@ -69,11 +78,14 @@
 	bottom: 0px;
 	left: 0px;
 	position: fixed;
+	
+	/* Set transition */
+	-webkit-transition: 0.5s;
 }
 
 #arrangePhotos.open {
 	background-color: rgba(35, 35, 34, 0.9);
-	height: 78%;
+	height: 80%;
 }
 
 #details {
@@ -99,8 +111,15 @@
 	float: right;
 	color: black;
 	overflow-y: auto;
+	-webkit-transition: 0.5s;
 }
+
+#carousel.open {
+	display: none;
+}
+
 #carousel li {
+	-webkit-transition: 0.5s;
 	margin: 5px;
 	width: 64px;
 	height: 64px;

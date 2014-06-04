@@ -72,17 +72,6 @@ function searchComplete(searchControl, searcher) {
 			// For each result write it's title and image to the screen
 			var result = results[i];
 			var imageFrame = document.createElement('div');
-			imageFrame.onmouseover = function(e) {
-				e.target.style.backgroundColor = "red";
-				if (e.target.tagName === "IMG")
-					e.target.parentNode.style.backgroundColor = "red";
-			};
-
-			imageFrame.onmouseout = function(e) {
-				e.target.style.backgroundColor = "white";
-				e.target.parentNode.style.backgroundColor = "white";
-			};
-
 			imageFrame.onclick = function(e) {
 				if (userDataModel.originalURL.length == 90) {
 					//Alert은 피곤함.
@@ -192,11 +181,14 @@ function setUpSortPhoto() {
 
 function setArrangePhotoOpen() {
 	var arrangePhoto = document.getElementById("arrangePhotos");
+	var carousel = document.getElementById("carousel");
 	if ( arrangePhoto.className === 'open') {
 		arrangePhoto.className = '';
+		carousel.className = '';
 		
 	} else {
 		arrangePhoto.className = 'open';
+		carousel.className = 'open';
 		setArrangeButtonsVisible();
 		fillOverview();
 	}
