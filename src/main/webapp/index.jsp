@@ -20,7 +20,7 @@
 	</style>
 </head>
 <body>
-	<h1><a href="./main.jsp">Collage Jam </a></h1>
+	<h1><a href="/collageJam/main">Collage Jam </a></h1>
 
 </body>
 </html>

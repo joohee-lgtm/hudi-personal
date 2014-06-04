@@ -12,12 +12,12 @@
 <body>
 	<header id="header">
 		<div>
-			<a href="./main.jsp"> CollageJam </a>
+			<a href="/collageJam/main"> CollageJam </a>
 			<a href="./mypage.jsp"> myJamJars </a>
 			<form method="post" action="./login.jsp">
  				<input type="submit" value="login"/>
 			</form>
-			<a href="./create.jsp">create</a>
+			<a href="/collageJam/create">create</a>
 		</div>
     	<%
 			String greeting = "Hello, ";
@@ -43,7 +43,7 @@
 		<section id="intro">
 			<span>Your moments, your story.</span> <span>Create, explore
 				and share photo & video collections in beautiful and creative ways</span> <a
-				href="./create.jsp">
+				href="/collageJam/create">
 				<div></div> <span> Start Now </span>
 			</a> <span> or <a href="./signup.jsp"><u>Sign up</u></a> with
 				Email

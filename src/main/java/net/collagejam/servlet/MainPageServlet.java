@@ -20,9 +20,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainFeaturedServlet extends HttpServlet{
+public class MainPageServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		System.out.println("servlet connection");
+		System.out.println("main page servlet connection");
 		
 		MainFeaturedController mfc = new MainFeaturedController();
 		mfc.makeShowVideoList();

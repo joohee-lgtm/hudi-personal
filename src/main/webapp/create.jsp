@@ -15,7 +15,7 @@
 <div id="wrap">
 	<header id="header">
 		<span>
-			<a href="./main.jsp">CollageJam</a>
+			<a href="/collageJam/main">CollageJam</a>
 		</span>
 	</header>
 	<div id="navigation">

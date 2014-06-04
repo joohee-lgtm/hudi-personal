@@ -12,6 +12,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>createController</servlet-name>
+		<servlet-class>net.collagejam.web.CreateController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>createController</servlet-name>
+		<url-pattern>/create_test</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>register</servlet-name>
 		<servlet-class>test.RegisterServlet</servlet-class>
 	</servlet>		
@@ -51,31 +60,32 @@
 
 	<!-- real development servlet start -->
 	<servlet>
-		<servlet-name>showfeaturedinmain</servlet-name>
-		<servlet-class>net.collagejam.servlet.MainFeaturedServlet</servlet-class>
+		<servlet-name>MainPageServlet</servlet-name>
+		<servlet-class>net.collagejam.servlet.MainPageServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>showfeaturedinmain</servlet-name>
+		<servlet-name>MainPageServlet</servlet-name>
 		<url-pattern>/main</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
-		<servlet-name>createjarservlet</servlet-name>
+		<servlet-name>CreateJarServlet</servlet-name>
 		<servlet-class>net.collagejam.web.CreateJamjarController</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>createjarservlet</servlet-name>
-		<url-pattern>/createjar</url-pattern>
+		<servlet-name>CreateJarServlet</servlet-name>
+		<url-pattern>/create_jar</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>createController</servlet-name>
-		<servlet-class>net.collagejam.web.CreateController</servlet-class>
+		<servlet-name>CreatePageServlet</servlet-name>
+		<servlet-class>net.collagejam.servlet.CreatePageServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>createController</servlet-name>
+		<servlet-name>CreatePageServlet</servlet-name>
 		<url-pattern>/create</url-pattern>
 	</servlet-mapping>
+
 
 	<!-- real development servlet end -->
 
