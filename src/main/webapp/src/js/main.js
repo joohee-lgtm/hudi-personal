@@ -1,20 +1,3 @@
-var jarobjs 
-	 = [{jid : 1, uname : "u1", desc : "aaa",
-			tn : "http://livedoor.blogimg.jp/linetw_mkt/imgs/f/a/faf4b868.png"},
-		{jid : 2, uname : "u2", desc : "bbb",
-			tn : "http://1.bp.blogspot.com/-AlE59EKecfc/UwM3Z2pgVnI/…T-I/s1600/Line%2Bwith%2BLeonard%2Band%2BSally.JPG"},
-		{jid : 3, uname : "u3", desc : "ccc",
-			tn : "http://www.roykooni.com/wp-content/uploads/leonard-line-theme.jpg"},
-		{jid : 4, uname : "u1", desc : "ddd",
-			tn : "http://www.line.polppolservice.com/getpng/stickers/sticker1775.png"},
-		{jid : 5, uname : "u2", desc : "eee",
-			tn : "http://l.lnwfile.com/85ef0v.png"},
-		{jid : 6, uname : "u2", desc : "eee",
-			tn : "http://www.roykooni.com/wp-content/uploads/leonard-line-theme.jpg"},
-		{jid : 7, uname : "u2", desc : "eee",
-			tn : "http://www.roykooni.com/wp-content/uploads/leonard-line-theme.jpg"}
-		];
-
 var Featured = {};
 var _o = Featured;
 
@@ -39,20 +22,19 @@ Featured.base = {
 
 Featured.jar = {
 	model : function(jarobj){
-		this.li = _o.jar.create.all(jarobj);
+		this.li = _o.jar.create._all(jarobj);
 		this._height = 0;
 		this._top = 0;
 		this._left = 0;
 	},
 
 	create : {
-		all : function(jarobj){
+		_all : function(jarobj){
 			var text;
 			var li = document.createElement("li");
-			li.id = jarobj.jid;
-			var u_ele = this._User(jarobj.uname);
-			var tn_ele = this._Tn(jarobj.tn);
-			var desc_ele = this._Desc(jarobj.desc);
+			var u_ele = this._User(jarobj.title);
+			var tn_ele = this._Tn(jarobj.tb_url);
+			var desc_ele = this._Desc(jarobj.date_created);
 			li.appendChild(u_ele);
 			li.appendChild(tn_ele);
 			li.appendChild(desc_ele);
@@ -67,24 +49,17 @@ Featured.jar = {
 			return span;
 		},
 
-		_Tn : function(tnurl){
-			var img = new Image();
-			var setsize = function(img){
-				var t_width = img.naturalWidth;
-				var t_height = img.naturalHeight;
-				var b_width = _o.base._width;
-				img.style.width = b_width;
-				img.style.height = b_width*(t_height/t_width);
-				return img;
-			};
+		_Tn : function(url){
+			var resize;
+			var img = new Image();			
 
-			img.src = tnurl;
+			img.src = url;
 			img.addEventListener("load",function(){
-				setsize(img);
+				_o.jar.support.setsize(img);
 			}, false);
 			img.addEventListener("error", function(){
 				img.src = "./src/img/nophoto.jpg";
-				setsize(img);
+				_o.jar.support.setsize(img);
 			}, false);
 			return img;
 		},
@@ -97,6 +72,16 @@ Featured.jar = {
 			return span;
 		}
 	},
+	
+	support : {
+		setsize : function(img){
+			var t_width = img.naturalWidth;
+			var t_height = img.naturalHeight;
+			var b_width = _o.base._width;
+			img.style.width = b_width + "px";
+			img.style.height = b_width*(t_height/t_width) + "px";
+		}
+	}
 };
 
 Featured.init = {
@@ -222,21 +207,6 @@ Featured.init = {
 				}
 			}
 		},
-		
-		// arrInGroup : function(ul, BEFORE, CURRENT, REMAIN){
-		// 	console.log(BEFORE, CURRENT, REMAIN);
-		// 	var baseObjArray = [];
-		// 	var b = _o.base.num;
-		// 	var s = this.support;
-		// 	for (var c=0 ; c<b.row ; c++){
-		// 		baseObjArray[c] = ul.children[BEFORE+c];
-		// 	}
-		// 	baseObjArray = s.ascendingBottom(baseObjArray);
-		// 	for(var c=0; c<REMAIN ; c++){
-		// 		// ul.children[CURRENT+c].style.left = getComputedStyle(baseObjArray[c]).left;
-		// 		// ul.children[CURRENT+c].style.top = s.getBottom(baseObjArray[c]) + "px";
-		// 	}
-		// },
 
 		featuredMargin : function(){
 		
