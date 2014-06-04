@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="./style/common.css"/>
+	<link rel="stylesheet" type="text/css" href="./src/css/common.css"/>
 	<style type="text/css">
 		body{
 			background-color: #C9C9C9;

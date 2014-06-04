@@ -1,4 +1,6 @@
-preview.util = {
+var result = {};
+var _o = result;
+result.util = {
 	px : function(num){
 		return num+"px"
 	},
@@ -28,7 +30,7 @@ preview.util = {
 이미지 하나를 객체로 생성 
 객체를 생성한 후 기본 설정에 맞게 크기 조정하기 
 */
-preview.img = {
+result.img = {
 	model : function(url){
 		this._style = {
 			_width : 0,
@@ -54,7 +56,11 @@ preview.img = {
 
 			obj._img.addEventListener("error", function(){
 				console.log("img load error");
-				obj = null;
+				obj._img.src = "./src/img/nophoto.jpg";
+				var o = ctr.getSize(obj);
+				obj._img.style.width = px(o._style._width);
+				obj._img.style.height = px(o._style._height);
+				obj._img.style.marginTop = px(o._style._marginTop);
 			},false);
 			return obj._img;
 		},
@@ -94,7 +100,7 @@ preview.img = {
 };
 
 
-preview.init = {
+result.init = {
 	slide : document.getElementById("slide"),
 
 	setAll : function(startbtn,stopbtn, wid, hei){
@@ -133,9 +139,10 @@ preview.init = {
 	}
 };
 
-preview.slide = {
+result.slide = {
 	slide : document.getElementById("slide"),
 	_set : function(urls){
+		console.log(urls);
 		this.urls = urls;
 		this.clearArea();
 		this.setFirstImg();
@@ -177,7 +184,7 @@ preview.slide = {
 	}
 };
 
-preview.play = {
+result.play = {
 	ready : function(){
 		this.count = 0;
 		this.intervalId = 0;
@@ -191,7 +198,7 @@ preview.play = {
 		var t = this;
 		var setting = document.getElementById("setting");
 		// 개별 페이지 일 때 속도 이슈 해결 해야됨
-		t.speed = setting.getElementsByTagName('div')[0].getElementsByTagName('input')[0].value;
+		t.speed = 100;
 		// t.count != 0 비교 연산자 버그
 		if (this.count === 0){
 			console.log("aaaa");
@@ -231,8 +238,17 @@ preview.play = {
 	}
 };
 
-var setting = document.getElementById("setting");
-var startbtn = setting.getElementsByTagName("button")[0];
-var stopbtn = setting.getElementsByTagName("button")[1];
-preview.init.setAll(startbtn, stopbtn, 640, 480);
+var resultWrap = document.getElementById("resultWrap");
+var startbtn = resultWrap.getElementsByTagName("button")[0];
+var stopbtn = resultWrap.getElementsByTagName("button")[1];
+_o.init.setAll(startbtn, stopbtn, 640, 480);
+
+var urls = userDataModel.originalURL;
+_o.slide._set(urls);
+
+
+
+
+
+
 
