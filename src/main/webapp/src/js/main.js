@@ -7,18 +7,33 @@ var jarobjs
 			tn : "http://www.roykooni.com/wp-content/uploads/leonard-line-theme.jpg"},
 		{jid : 4, uname : "u1", desc : "ddd",
 			tn : "http://www.line.polppolservice.com/getpng/stickers/sticker1775.png"},
-		{jid : 4, uname : "u2", desc : "eee",
-			tn : "http://l.lnwfile.com/85ef0v.png"}];
+		{jid : 5, uname : "u2", desc : "eee",
+			tn : "http://l.lnwfile.com/85ef0v.png"},
+		{jid : 6, uname : "u2", desc : "eee",
+			tn : "http://www.roykooni.com/wp-content/uploads/leonard-line-theme.jpg"},
+		{jid : 7, uname : "u2", desc : "eee",
+			tn : "http://www.roykooni.com/wp-content/uploads/leonard-line-theme.jpg"}
+		];
 
 var Featured = {};
 var _o = Featured;
 
 Featured.base = {
+	arr : [],
 	_width 	: 360,
 	_margin : 40,
-	row		: 0,
-	column 	: 0,
-	remain 	: 0
+	
+	num : {
+		len : 0,
+		row		: 0,
+		column 	: 0,
+		remain 	: 0
+	},
+
+	winsize : {
+		max : 1200,
+		min : 800
+	}
 };
 
 
@@ -34,6 +49,7 @@ Featured.jar = {
 		all : function(jarobj){
 			var text;
 			var li = document.createElement("li");
+			li.id = jarobj.jid;
 			var u_ele = this._User(jarobj.uname);
 			var tn_ele = this._Tn(jarobj.tn);
 			var desc_ele = this._Desc(jarobj.desc);
@@ -87,49 +103,168 @@ Featured.init = {
 	getjars : function(jarobjs){
 		var featured = document.getElementById("featured");
 		var ul = featured.getElementsByTagName("ul")[0];
-		var len = ul.children.length;
+		var len = jarobjs.length;
 		for (var i=0 ; i<len ; i++){
 			var jar = new Featured.jar.model(jarobjs[i]);
 			ul.appendChild(jar.li);
 		}
 	},
 
-	setjars : function(){
+	setjars : function(jarobjs){
 		var win_size = window.innerWidth;
 		var featured = document.getElementById("featured");
 		var ul = featured.getElementsByTagName("ul")[0];
-		var len = ul.children.length;
+		var len = jarobjs.length;
 
 		var get = {
+			_Len : function(len){
+				return len;
+			},
 			_Row : function(win_size){
-				if (win_size < 800) {
-					_o.base.row = 1;
-				} else if (800 <= win_size < 1200){
-					_o.base.row = 2;
-				} else {
-					_o.base.row = 3;
+				var max = _o.base.winsize.max;
+				var min = _o.base.winsize.min;
+				if (win_size < min) {
+					return 1;
+				} else if (win_size >= min && win_size < max){
+					return 2;
+				} else if (win_size >= max) {
+					return 3;
 				}
 			},
-			_Column : function(len){
-				var col = parseInt(len/_o.base.row);
-				_o.base.column = col;
+			_Column : function(){
+				var num = _o.base.num;
+				var col = parseInt(num.len/num.row);
+				return col;
 			},
-			_Remain : function(len){
-				var remain = len%_o.base.row;
-				_o.base.remain = remain;
+			_Remain : function(){
+				var num = _o.base.num;
+				var remain = num.len%num.row;
+				return remain;
 			}
+		};
+
+		var createMatrix = function(lis){
+			var matrix = [];
+			var b = _o.base.num;
+			var c;
+			if (b.remain != 0){
+				c = b.column; 
+			} else {
+				c = b.column - 1;
+			}
+			for (var i=0 ; i<= c ; i++){
+				matrix[i] = [];
+				for (var j=0 ; j<b.row ; j++){
+					matrix[i][j] = lis[i*b.row + j];
+				}
+			}
+			return matrix;
 		}
 
-		get._Row();
-		get._Column();
-		get._Remain();
+		_o.base.num.len = get._Len(len);
+		_o.base.num.row = get._Row(win_size);
+		_o.base.num.column = get._Column();
+		_o.base.num.remain = get._Remain();
+		_o.base.arr = createMatrix(ul.children);
+	},
+
+	posjars : {
+
+		_all : function(){
+			this.posFirstGroup(_o.base.arr);
+			this.posMiddleGroup(_o.base.arr);
+			this.posLastGroup(_o.base.arr);
+		},
+
+		posFirstGroup : function(liarr){
+			var b = _o.base;
+			for (var i=0; i<b.num.row ; i++){
+				liarr[0][i].style.top = "0px";
+				liarr[0][i].style.left = b._width*i + "px";
+			}
+		},
+		
+		posMiddleGroup : function(liarr){
+			var b = _o.base;
+			for (var i=1 ; i<b.num.column ; i++){
+				this.arrInGroup(i, liarr);
+			}
+		},
+
+		arrInGroup : function(curcol, liarr){
+			var b = _o.base.num;
+			var prevcol = curcol - 1;
+			var baseObjArray = [];
+			var s = this.support;
+			for (var i=0 ; i<b.row ; i++){
+				baseObjArray[i] = liarr[prevcol][i];
+			}
+			baseObjArray = s.ascendingBottom(baseObjArray);
+			for (var i=0 ; i<b.row ; i++){
+				liarr[curcol][i].style.left = getComputedStyle(baseObjArray[i]).left;
+				liarr[curcol][i].style.top = "0px";
+			}
+		},
+
+		posLastGroup : function(liarr){
+			var b = _o.base.num;
+			var baseObjArray = [];
+			var s = this.support;
+
+			for (var i=0 ; i<b.remain ; i++){
+				baseObjArray[i] = liarr[b.column-1][i];
+			}
+			baseObjArray = s.ascendingBottom(baseObjArray);
+			if (b.remain != 0){
+				for(var i=0 ; i<b.remain ; i++){
+					liarr[b.column][i].style.left = getComputedStyle(baseObjArray[i]).left;
+					liarr[b.column][i].style.top = "0px";
+				}
+			}
+		},
+		
+		// arrInGroup : function(ul, BEFORE, CURRENT, REMAIN){
+		// 	console.log(BEFORE, CURRENT, REMAIN);
+		// 	var baseObjArray = [];
+		// 	var b = _o.base.num;
+		// 	var s = this.support;
+		// 	for (var c=0 ; c<b.row ; c++){
+		// 		baseObjArray[c] = ul.children[BEFORE+c];
+		// 	}
+		// 	baseObjArray = s.ascendingBottom(baseObjArray);
+		// 	for(var c=0; c<REMAIN ; c++){
+		// 		// ul.children[CURRENT+c].style.left = getComputedStyle(baseObjArray[c]).left;
+		// 		// ul.children[CURRENT+c].style.top = s.getBottom(baseObjArray[c]) + "px";
+		// 	}
+		// },
+
+		featuredMargin : function(){
+		
+		},
+		featuredHeight : function(){
+		
+		},
+		support : {
+			getBottom : function(obj){
+
+			},
+			ascendingBottom : function(objArray){
+				return objArray;
+			},
+			toInt : function(text){
+
+			}
+		}
 	}
 }
 
 _o.init.getjars(jarobjs);
+_o.init.setjars(jarobjs);
+_o.init.posjars._all();
 
 window.addEventListener("resize",function(){
-	_o.init.setjars();
+	_o.init.setjars(jarobjs);
+	_o.init.posjars._all();
 },false);
 
 
