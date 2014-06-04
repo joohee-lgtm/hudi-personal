@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>result</title>
 <link rel="stylesheet" type="text/css" href="./src/css/create/preview.css"/>
-
 </head>
 <body>
 	<section id="resultWrap">
@@ -24,6 +23,6 @@
 	}
 	</script>
 	<script src="https://www.google.com/jsapi" type="text/javascript"></script>
-	<script type="text/javascript" src="./src/js/result_youtube.js"/></script>
-	<script type="text/javascript" src="./src/js/result.js"/></script>
+	<script type="text/javascript" src="./src/js/result/youtube_bgm.js"/></script>
+	<script type="text/javascript" src="./src/js/result/slide.js"/></script>
 </html>

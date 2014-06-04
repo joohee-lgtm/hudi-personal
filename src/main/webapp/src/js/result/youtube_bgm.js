@@ -32,15 +32,3 @@ function onPlayerStateChange(evt) {
 function stopVideo() {
     player.stopVideo();
 }
-
-// var setting = document.getElementById("setting");
-// var playstart = setting.getElementsByTagName("button")[0];
-// playstart.onclick = function(){
-//     player.playVideo();
-// };
-
-// var playstop = setting.getElementsByTagName("button")[1];
-// playstop.onclick = function(){
-//     player.stopVideo();
-// };
-/* youtube api 끝 */
