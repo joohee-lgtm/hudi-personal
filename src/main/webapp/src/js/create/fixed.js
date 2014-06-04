@@ -74,7 +74,7 @@ var work = {
 				that.area.style.display = "block";
 				that.bg.style.display = "block";
 				var urls = userDataModel.originalURL;
-				_o.slide.(urls);
+				_o.slide._set(urls);
 			},
 
 			closebt : function(){
@@ -88,16 +88,10 @@ var work = {
 		}
 	}
 }
-
+var preview = {};
+var _o = preview;
 work.set();
 work.init();
-var setting = document.getElementById("setting");
-var startbtn = setting.getElementsByTagName("button")[0];
-var stopbtn = setting.getElementsByTagName("button")[1];
-_o.init.setAll(startbtn, stopbtn, 640, 480);
-
-
-
 
 
 

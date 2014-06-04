@@ -1,5 +1,4 @@
-var preview = {};
-var _o = preview;
+
 
 preview.util = {
 	px : function(num){
@@ -17,6 +16,12 @@ preview.util = {
 		} else {
 			return false;
 		}
+	},
+
+	getDefaultImg : function(){
+		var url = "./src/img/nophoto.jpg";
+		var defalt_img_obj = new _o.img.model(url);
+		return defalt_img_obj._img;
 	}
 };
 
@@ -91,7 +96,9 @@ preview.img = {
 };
 
 
-preview.init : {
+preview.init = {
+	slide : document.getElementById("slide"),
+
 	setAll : function(startbtn,stopbtn, wid, hei){
 		this.setBtn(startbtn, stopbtn);
 		this.setFrameSize(wid, hei);
@@ -101,11 +108,12 @@ preview.init : {
 	setBtn : function(startbtn, stopbtn) {
 		startbtn.addEventListener("click", function(){
 			player.playVideo();
-			_o.slide._start();
+			_o.play.ready();
+			_o.play._start();
 		}, false);
 		stopbtn.addEventListener("click", function(){
 		    player.stopVideo();
-		    _o.slide._stop();
+		    _o.play._stop();
 		}, false);
 	},
 
@@ -115,95 +123,86 @@ preview.init : {
 	},
 
 	setArea : function(){
-		var slide = document.getElementById("slide");
 		var temparea = document.createElement("div");
 		temparea.id = "temparea";
 		temparea.style.display = "none";
-		slide.appendChild(temparea);
+		this.slide.appendChild(temparea);
+	},
+
+	setDefaultImg : function(){
+		var defaultimg = _o.util.getDefaultImg();
+		slide.appendChild(defaultimg);
 	}
 };
 
-preview.slide = function(){
-	ready : function(urls){
-
+preview.slide = {
+	slide : document.getElementById("slide"),
+	_set : function(urls){
+		this.urls = urls;
+		this.clearArea();
+		this.setFirstImg();
+		this.loadOtherImgs();
 	},
 
-	imgload : function(){
-
+	loadOtherImgs : function(){
+		var t = this;
+		var temparea = this.slide.getElementsByTagName("div")[0];
+		var len = t.urls.length;
+		for (var i=1 ; i<len ; i++){
+			var iobj = new _o.img.model(t.urls[i]);
+			temparea.appendChild(iobj._img);
+		}
 	},
-	
+
+	clearArea : function(){
+		var temparea = this.slide.getElementsByTagName("div")[0];
+		var firstimg = this.slide.getElementsByTagName("img")[0];
+		var len = temparea.children.length;
+		while (_o.util.ckLen(len)){
+			temparea.removeChild(temparea.children[0]);
+			len = temparea.children.length;
+		}
+		if (firstimg != null){
+			this.slide.removeChild(this.slide.children[1]);
+		}
+	},
+
+	setFirstImg : function(){
+		var t = this;
+		if (t.urls.length != 0){
+			 var firstimg = new _o.img.model(t.urls[0]);
+			 slide.appendChild(firstimg._img);
+		} else {
+			var defaultimg = _o.util.getDefaultImg();
+			slide.appendChild(defaultimg);
+		}
+	}
 };
 
-	// setPlay : function(urls){
-	// 	this.setDefaultImg = function(){
-	// 		var url = "./src/img/nophoto.jpg";
-	// 		var defalt_img_obj = new _o.img.model(url);
-	// 		return defalt_img_obj._img;
-	// 	};
-
-	// 	this.setFirstImg = function(temparea){
-	// 		var len = temparea.children.length;
-	// 		var slide = document.getElementById("slide");
-	// 		if (len != 0){
-	// 			slide.appendChild(temparea.children[0]);
-	// 		} else {
-	// 			var di = this.setDefaultImg();
-	// 			slide.appendChild(di);
-	// 		}
-	// 	}
-
-	// 	this.imgLoad = function(urls){
-	// 		var ta = document.getElementById("temparea");
-	// 		var slide = document.getElementById("slide");
-	// 		if(_o.util.ckLen(urls.length)){
-	// 			for(var i=0; i<urls.length; i++){
-	// 				var tempimg = new _o.img.model(urls[i]);
-	// 				ta.appendChild(tempimg._img);
-	// 			}
-	// 		}
-	// 		this.setFirstImg(ta);
-	// 	};
-
-	// 	this.setArea = function(){
-	// 		var slide = document.getElementById("slide");
-	// 		var temparea = document.createElement("div");
-	// 		temparea.id = "temparea";
-	// 		temparea.style.display = "none";
-	// 		slide.appendChild(temparea);
-	// 	}
-
-	// 	this.clearArea = function(){
-	// 		var slide = document.getElementById("slide");
-	// 		while(slide.children.length != 0){
-	// 			slide.removeChild(slide.children[0]);
-	// 		}
-	// 	}
-	// 	this.clearArea();
-	// 	this.setArea();
-	// 	this.imgLoad(urls);
-	// },
-
-	// setbgm : function(){
-
-	// }
-
 preview.play = {
-	count : 0,
-	intervalId : null,
-	slide : document.getElementById("slide"),
-	// tempa : document.getElementById("slide").getElementById("temparea"),
-	setting : document.getElementById("setting"),
+	ready : function(){
+		this.count = 0;
+		this.intervalId = 0;
+		this.total_img_len = 
+		this.slide = document.getElementById("slide");
+		this.temparea = this.slide.getElementsByTagName("div")[0];
+		this.speed = 0;
+	},
 
 	_start : function(){
 		var t = this;
-		console.log(t);
-		var time = t.setting.getElementsByTagName('div')[0].getElementsByTagName('input')[0].value;
-		if (t.count != 0){
+		var setting = document.getElementById("setting");
+		// 개별 페이지 일 때 속도 이슈 해결 해야됨
+		t.speed = setting.getElementsByTagName('div')[0].getElementsByTagName('input')[0].value;
+		// t.count != 0 비교 연산자 버그
+		if (this.count === 0){
+			console.log("aaaa");
+		} else {
+			console.log("bbb");
 			t._stop();
-			// t.gotoInitImg(t.count);
-			// t.count = 0;
+			t.count = 0;
 		}
-		t.intervalId = setInterval(t.setSlide, time*10);
+		t.intervalId = setInterval(t.setSlide, t.speed*10);
 	},
 
 	_stop : function(){
@@ -216,21 +215,30 @@ preview.play = {
 	setSlide : function(){
 		var t = this;
 		var temparea = document.getElementById("temparea");
-		var slide = document.getElementById("slide");
 		temparea.appendChild(slide.children[1]);
-		slide.appendChild(temparea.children[0]);
-		t.count++;
+		t.slide.appendChild(temparea.children[0]);
+		console.log(_o.play.count);
+		_o.play.count++;
 	},
 
 	gotoInitImg : function(){
 		var t = this;
-		var n = t.temparea.children.length + 1;
-		var remain = t.count%n;
-		if (n != 0){
-			for (var i=0 ; i<n-remain ; i++){
-				t.temparea.appendChild(slide.children[1]);
-				t.slide.appendChild(temparea.children[0]);
+		var total_img_len = _o.slide.urls.length;
+		var remain = t.count%total_img_len;
+		if (remain != 0){
+			for (var i=0 ; i<total_img_len - remain ; i++){
+				t.setSlide();
 			}
 		}
 	}
 };
+
+window.onclick = function(){
+	console.log(userDataModel.originalURL);
+}
+
+var setting = document.getElementById("setting");
+var startbtn = setting.getElementsByTagName("button")[0];
+var stopbtn = setting.getElementsByTagName("button")[1];
+preview.init.setAll(startbtn, stopbtn, 640, 480);
+

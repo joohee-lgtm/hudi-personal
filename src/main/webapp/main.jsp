@@ -71,32 +71,16 @@
 
 		<section id="featured">
 			<span>FEATURED</span>
-			<div>
-				<div class="jar1">1</div><!--
-				--><div class="jar2">2</div><!--
-				--><div class="jar3">3</div><!--
-				--><div class="jar4">4</div><!--
-				--><div class="jar5">5</div><!--
-				--><div class="jar6">6</div><!--
-				--><div class="jar7">7</div><!--
-				--><div class="jar8">8</div><!--
-				--><div class="jar9">9</div><!--
-				--><div class="jar10">10</div><!--
-				--><div class="jar11">11</div><!--
-				--><div class="jar12">12</div><!--
-				--><div class="jar13">13</div><!--
-				--><div class="jar14">14</div><!--
-				--><div class="jar15">15</div><!--
-				--><div class="jar16">16</div><!--
-				--><div class="jar17">17</div>
-				</div>
+			<ul>
+				<!--<div class="jar1">1</div>-->
+			</ul>
 			<span>Start</span>
 		</section>
 	</section>
 
-	<footer id="footer"></footer>
+	<!-- <footer id="footer"></footer> -->
 	<script>
-		var obj = ${data};
+		// var obj = ${data};
 	</script>
 	<script type="text/javascript" src="./src/js/main.js" /></script>
 </body>
