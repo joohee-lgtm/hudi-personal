@@ -71,20 +71,21 @@
 		<div id="bg"></div>
 	</section>
 	<div id="arrangePhotos">
-	<div class="sort-content ui-sortable">
-		<div class="viewport"> 
-			<div class="overview">
-			</div>
-		</div> 
-	</div>
-
-		<div id="sortStrip">
+	<div id="sortStrip">
 		<span class="open-tab">Sort Photos</span>
 			<p id="details">
 				<span id="photoCount"> 0 </span> photos / 90 (max) added
 			</p>
 			<div id="carousel"></div>
 		</div>
+	<div class="sort-content ui-sortable">
+		<div id="viewport"> 
+			<div id="sort-overview">
+			</div>
+		</div> 
+	</div>
+
+		
 	</div>
 </div>
 	<script src="https://www.google.com/jsapi" type="text/javascript"></script>

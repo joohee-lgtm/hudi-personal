@@ -96,11 +96,6 @@ function searchComplete(searchControl, searcher) {
 				}
 			};
 
-			//var title = document.createElement('div');
-
-			// We use titleNoFormatting so that no HTML tags are left in the
-			// title
-			//title.innerHTML = result.titleNoFormatting;
 			var newImg = document.createElement('img');
 
 			// There is also a result.url property which has the escaped version
@@ -113,8 +108,6 @@ function searchComplete(searchControl, searcher) {
 			// Put our title + image in the content
 			contentDiv.appendChild(imageFrame);
 		}
-		// Now add links to additional pages of search results.
-		//addPaginationLinks(searcher);
 	}
 
 	if (pageCursor === 8) {
@@ -136,27 +129,13 @@ function updatePhotoCount() {
 
 function updateCarousel() {
 	var carousel = document.getElementById("carousel");
-	// console.log(carousel);
-	// console.log(userDataModel.tbURL);
 	var imageFrame = document.createElement('li');
-	imageFrame.onclick = function(e) {
-		var carousel = e.target.parentNode.parentNode;
-		var list = carousel.childNodes;
-		for ( var idx in list) {
-			if (e.target.parentNode === list[idx]) {
-				carousel.removeChild(list[idx]);
-				userDataModel.tbURL.splice(idx - 1, 1);
-				userDataModel.originalURL.splice(idx - 1, 1);
-				updatePhotoCount();
-				break;
-			}
-		}
-	};
 	var newImg = document.createElement('img');
 	var lengthOfArr = userDataModel.tbURL.length;
 	newImg.src = userDataModel.tbURL[lengthOfArr - 1];
 	imageFrame.appendChild(newImg);
 	carousel.appendChild(imageFrame);
+	fillOverview(newImg.src);
 }
 
 function getSelectedImages() {
@@ -175,22 +154,22 @@ function setUpSortPhoto() {
 	var openTab = document.getElementsByClassName("open-tab");
 	// getElementsByClassName의 반환형은 배열이다.
 	openTab = openTab[0];
-	console.log(openTab);
 	openTab.addEventListener('click', setArrangePhotoOpen, false);
 }
 
 function setArrangePhotoOpen() {
 	var arrangePhoto = document.getElementById("arrangePhotos");
 	var carousel = document.getElementById("carousel");
+	var sort_overview = document.getElementById("sort-overview");
 	if ( arrangePhoto.className === 'open') {
 		arrangePhoto.className = '';
 		carousel.className = '';
-		
+		sort_overview.className = '';
 	} else {
 		arrangePhoto.className = 'open';
 		carousel.className = 'open';
+		sort_overview.className = 'open';
 		setArrangeButtonsVisible();
-		fillOverview();
 	}
 }
 
@@ -198,13 +177,16 @@ function setArrangeButtonsVisible() {
 	
 }
 
-function fillOverview() {
-	var list = userDataModel.tbURL;
-	for ( var idx in list ) {
-		var newImg = document.createElement('img');
-		newImg.src = list[idx];
-		console.log(list[idx]);
-	}
+function fillOverview(imgSrc) {
+	var overview = document.getElementById("sort-overview");
+	console.log(overview);
+	var slide = document.createElement('div');
+	var imgFrame = document.createElement('div');
+	var newImg = document.createElement('img');
+	newImg.src = imgSrc;
+	overview.appendChild(slide);
+	slide.appendChild(imgFrame);
+	imgFrame.appendChild(newImg);
 }
 
 google.setOnLoadCallback(OnLoad);
