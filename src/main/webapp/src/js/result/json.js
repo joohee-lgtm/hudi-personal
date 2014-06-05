@@ -1,6 +1,6 @@
 // var a = ${jamjar};
 // console.log(a);
  
-console.log(eleData);
+console.log('aaaaaaa');
 var eleData = document.getElementById('data');
 console.log(eleData);
