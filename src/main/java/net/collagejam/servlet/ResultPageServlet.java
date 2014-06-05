@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import net.aprilchoi.user.JamjarDao;
 import net.collagejam.obj.JamJar;
 
+import com.google.gson.Gson;
+
 
 public class ResultPageServlet extends HttpServlet{
 	private JamjarDao jdao;
@@ -28,7 +30,8 @@ public class ResultPageServlet extends HttpServlet{
 		request.setAttribute("id", jid);
 		System.out.println(jid);
 		Connection conn = null;
-		JamJar jarInstance = null;
+		JamJar selected = null;
+		Gson gson = new Gson();
 		try {
 			conn = getConnection();
 		} catch (Exception e) {
@@ -37,13 +40,13 @@ public class ResultPageServlet extends HttpServlet{
 		}
 		jdao = new JamjarDao(conn);
 		try {
-			jarInstance = jdao.selectByJarId(jid);
+			selected = jdao.selectByJarId(jid);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(jarInstance.toString());
-		request.setAttribute("jamjar", jarInstance);
+		String jarJson = gson.toJson(selected);
+		request.setAttribute("jamjar", jarJson);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
 		dispatcher.forward(request, response);
 	}
