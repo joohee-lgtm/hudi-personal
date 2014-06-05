@@ -26,6 +26,7 @@ Featured.jar = {
 		this._height = 0;
 		this._top = 0;
 		this._left = 0;
+		this._id = 0;
 	},
 
 	create : {
@@ -38,6 +39,7 @@ Featured.jar = {
 			li.appendChild(u_ele);
 			li.appendChild(tn_ele);
 			li.appendChild(desc_ele);
+			_o.jar.support.setId(li, jarobj.j_id);
 			return li;
 		},
 
@@ -80,6 +82,12 @@ Featured.jar = {
 			var b_width = _o.base._width;
 			img.style.width = b_width + "px";
 			img.style.height = b_width*(t_height/t_width) + "px";
+		},
+		setId : function(li, id){
+			li.addEventListener("click", function(){
+				var url = "/collageJam/result?id="+id;
+				window.location = url;
+			}, false);
 		}
 	}
 };
