@@ -3,12 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <title>preview page</title>
-<link rel="stylesheet" type="text/css" href="./src/css/common.css"/> 
-<link rel="stylesheet" type="text/css" href="./src/css/create/fixed.css"/>
-<link rel="stylesheet" type="text/css" href="./src/css/create/photo.css"/>
-<link rel="stylesheet" type="text/css" href="./src/css/create/music.css"/>
-<link rel="stylesheet" type="text/css" href="./src/css/create/preview.css"/>
-
+	<link rel="stylesheet" type="text/css" href="./src/css/common.css"/> 
+	<link rel="stylesheet" type="text/css" href="./src/css/create/fixed.css"/>
+	<link rel="stylesheet" type="text/css" href="./src/css/create/photo.css"/>
+	<link rel="stylesheet" type="text/css" href="./src/css/create/music.css"/>
+	<link rel="stylesheet" type="text/css" href="./src/css/create/preview.css"/>
 </head>
 
 <body>
@@ -38,9 +37,9 @@
 	</section>
 
 	<section id="musicSelectWrap">
-		<div id="search"></div>
+<!-- 		<div id="search"></div>
 		<div id="overview">Loading..</div>
-	</section>
+ -->	</section>
 
 	<section id="previewWrap">
 		<div>
