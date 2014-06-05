@@ -14,7 +14,8 @@ public class JamJar {
 	private int likes;
 	
 	public JamJar(int j_id, int u_id, Timestamp date_created, 
-			String tb_url, String title, String description, String bgm_url) {
+			String tb_url, String title, String description, 
+			String bgm_url, int views, int likes) {
 		this.j_id 			= j_id;
 		this.u_id 			= u_id;
 		this.date_created 	= date_created;
@@ -22,5 +23,7 @@ public class JamJar {
 		this.title			= title;
 		this.description	= description;
 		this.bgm_url		= bgm_url;
+		this.views			= views;
+		this.views			= likes;
 	}
 }
