@@ -14,7 +14,7 @@
 		<div>
 			<a href="/collageJam/main"> CollageJam </a>
 			<a href="./mypage.jsp"> myJamJars </a>
-			<form method="post" action="./login.jsp">
+			<form method="post" action="/collageJam/login">
  				<input type="submit" value="login"/>
 			</form>
 			<a href="/collageJam/create">create</a>
@@ -85,6 +85,7 @@
 		for (var i=0; i<15 ; i++){
 			jarobjs[i] = arr[i];
 		}
+		console.log(jarobjs);
 	</script>
 	<script type="text/javascript" src="./src/js/main.js" /></script>
 </body>

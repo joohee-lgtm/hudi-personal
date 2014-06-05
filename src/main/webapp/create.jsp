@@ -62,7 +62,7 @@
 						<span>x00.1s</span>
 					</div>
 				</div>
-				<form id="ajaxform" action="create" method="post">
+				<form id="ajaxform"><!--  id="ajaxform" action="create_jar" method="post" -->
 					<input type="text" placeholder="title">
 					<textarea rows="4" cols="30" placeholder="description"></textarea>
 					<input id="createbt" type="submit" value="submit"/>
