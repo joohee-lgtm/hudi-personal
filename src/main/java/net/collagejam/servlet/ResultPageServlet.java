@@ -12,18 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.aprilchoi.user.JamjarDao;
-import net.collagejam.web.MainFeaturedController;
-import net.collagejam.web.SearchJarController;
-
-import org.json.JSONArray;
+import net.collagejam.obj.JamJar;
 
 
 public class ResultPageServlet extends HttpServlet{
-	private JamjarDao dao;
-	
-	public void setup() throws Exception{
-		dao = new JamjarDao(getConnection());
-	}
+	private JamjarDao jdao;
 	
 	private Connection getConnection() throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -31,13 +24,26 @@ public class ResultPageServlet extends HttpServlet{
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		System.out.println("result page servlet");
 		int jid = Integer.parseInt(request.getParameter("id"));
 		request.setAttribute("id", jid);
 		System.out.println(jid);
-		
-		SearchJarController sjc = new SearchJarController(jid);
-		
+		Connection conn = null;
+		JamJar jarInstance = null;
+		try {
+			conn = getConnection();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		jdao = new JamjarDao(conn);
+		try {
+			jarInstance = jdao.selectByJarId(jid);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(jarInstance.toString());
+		request.setAttribute("jamjar", jarInstance);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
 		dispatcher.forward(request, response);
 	}

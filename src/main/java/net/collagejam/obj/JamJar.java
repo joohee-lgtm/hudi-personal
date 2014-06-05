@@ -26,4 +26,12 @@ public class JamJar {
 		this.views			= views;
 		this.views			= likes;
 	}
+	
+	@Override
+	public String toString() {
+		return "JamJar [j_id=" + j_id + ", u_id=" + u_id + ", date_created="
+				+ date_created + ", tb_url=" + tb_url + ", title=" + title
+				+ ", description=" + description + ", bgm_url=" + bgm_url
+				+ ", views=" + views + ", likes=" + likes + "]";
+	}
 }
