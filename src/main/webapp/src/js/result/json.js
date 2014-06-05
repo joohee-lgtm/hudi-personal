@@ -1,6 +1,5 @@
-// var a = ${jamjar};
-// console.log(a);
- 
-console.log('aaaaaaa');
-var eleData = document.getElementById('data');
-console.log(eleData);
+var head 		= document.getElementById('data');
+var child 		= document.createElement('div');
+var json 		= JSON.stringify(jamjar);
+child.innerHTML = json; 
+head.appendChild(child);

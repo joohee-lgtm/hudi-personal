@@ -55,7 +55,7 @@ result.img = {
 			}, false);
 
 			obj._img.addEventListener("error", function(){
-				console.log("img load error");
+				//console.log("img load error");
 				obj._img.src = "./src/img/nophoto.jpg";
 				var o = ctr.getSize(obj);
 				obj._img.style.width = px(o._style._width);
@@ -142,7 +142,7 @@ result.init = {
 result.slide = {
 	slide : document.getElementById("slide"),
 	_set : function(urls){
-		console.log(urls);
+		//console.log(urls);
 		this.urls = urls;
 		this.clearArea();
 		this.setFirstImg();
