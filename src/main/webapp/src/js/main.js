@@ -19,28 +19,36 @@ Featured.base = {
 	}
 };
 
+Featured.util = {
+	toInt : function(text){
+		var result = parseInt(text.substring(0,text.length-2));
+		return result;
+	},
+	
+	gcst : function(obj){
+		return getComputedStyle(obj);
+	}
+}
 
 Featured.jar = {
 	model : function(jarobj){
-		this.li = _o.jar.create._all(jarobj);
-		this._height = 0;
-		this._top = 0;
-		this._left = 0;
-		this._id = 0;
+		var t = this;
+		t.li;
+		_o.jar.create._all(jarobj, t);
 	},
 
 	create : {
-		_all : function(jarobj){
+		_all : function(jarobj, that){
 			var text;
 			var li = document.createElement("li");
 			var u_ele = this._User(jarobj.title);
-			var tn_ele = this._Tn(jarobj.tb_url);
+			var tn_ele = this._Tn(jarobj.tb_url, that);
 			var desc_ele = this._Desc(jarobj.date_created);
 			li.appendChild(u_ele);
 			li.appendChild(tn_ele);
 			li.appendChild(desc_ele);
 			_o.jar.support.setId(li, jarobj.j_id);
-			return li;
+			that.li = li;
 		},
 
 		_User : function(username){
@@ -51,17 +59,17 @@ Featured.jar = {
 			return span;
 		},
 
-		_Tn : function(url){
+		_Tn : function(url, that){
 			var resize;
 			var img = new Image();			
 
 			img.src = url;
 			img.addEventListener("load",function(){
-				_o.jar.support.setsize(img);
+				_o.jar.support.setsize(img, that);
 			}, false);
 			img.addEventListener("error", function(){
 				img.src = "./src/img/nophoto.jpg";
-				_o.jar.support.setsize(img);
+				_o.jar.support.setsize(img, that);
 			}, false);
 			return img;
 		},
@@ -76,12 +84,13 @@ Featured.jar = {
 	},
 	
 	support : {
-		setsize : function(img){
+		setsize : function(img, that){
 			var t_width = img.naturalWidth;
 			var t_height = img.naturalHeight;
 			var b_width = _o.base._width;
 			img.style.width = b_width + "px";
 			img.style.height = b_width*(t_height/t_width) + "px";
+			that._height = b_width*(t_height/t_width);
 		},
 		setId : function(li, id){
 			li.addEventListener("click", function(){
@@ -93,6 +102,7 @@ Featured.jar = {
 };
 
 Featured.init = {
+	re_jar_array : [], 
 	getjars : function(jarobjs){
 		var featured = document.getElementById("featured");
 		var ul = featured.getElementsByTagName("ul")[0];
@@ -100,6 +110,7 @@ Featured.init = {
 		for (var i=0 ; i<len ; i++){
 			var jar = new Featured.jar.model(jarobjs[i]);
 			ul.appendChild(jar.li);
+			this.re_jar_array[i] = jar;
 		}
 	},
 
@@ -158,11 +169,10 @@ Featured.init = {
 		_o.base.num.row = get._Row(win_size);
 		_o.base.num.column = get._Column();
 		_o.base.num.remain = get._Remain();
-		_o.base.arr = createMatrix(ul.children);
+		_o.base.arr = createMatrix(this.re_jar_array);
 	},
 
 	posjars : {
-
 		_all : function(){
 			this.posFirstGroup(_o.base.arr);
 			this.posMiddleGroup(_o.base.arr);
@@ -172,8 +182,8 @@ Featured.init = {
 		posFirstGroup : function(liarr){
 			var b = _o.base;
 			for (var i=0; i<b.num.row ; i++){
-				liarr[0][i].style.top = "0px";
-				liarr[0][i].style.left = b._width*i + "px";
+				liarr[0][i].li.style.top = "0px";
+				liarr[0][i].li.style.left = b._width*i + "px";
 			}
 		},
 		
@@ -194,8 +204,8 @@ Featured.init = {
 			}
 			baseObjArray = s.ascendingBottom(baseObjArray);
 			for (var i=0 ; i<b.row ; i++){
-				liarr[curcol][i].style.left = getComputedStyle(baseObjArray[i]).left;
-				liarr[curcol][i].style.top = "0px";
+				liarr[curcol][i].li.style.left = getComputedStyle(baseObjArray[i].li).left;
+				liarr[curcol][i].li.style.top = s.getBottom(baseObjArray[i])+"px";
 			}
 		},
 
@@ -210,8 +220,9 @@ Featured.init = {
 			baseObjArray = s.ascendingBottom(baseObjArray);
 			if (b.remain != 0){
 				for(var i=0 ; i<b.remain ; i++){
-					liarr[b.column][i].style.left = getComputedStyle(baseObjArray[i]).left;
-					liarr[b.column][i].style.top = "0px";
+					liarr[b.column][i].li.style.left = getComputedStyle(baseObjArray[i].li).left;
+					liarr[b.column][i].li.style.top = s.getBottom(baseObjArray[i])+"px";
+					
 				}
 			}
 		},
@@ -224,9 +235,27 @@ Featured.init = {
 		},
 		support : {
 			getBottom : function(obj){
-
+				var u = _o.util;
+				var st = u.gcst(obj.li);
+				var li_height = u.toInt(st.height);
+				var li_top = u.toInt(st.top);
+				var bottom = li_height + li_top;
+				return bottom;
 			},
+			
 			ascendingBottom : function(objArray){
+				var len = objArray.length;
+				for (var i=0; i<len ; i++){
+					for (var j=i+1 ; j<len ; j++){
+						var pos = this.getBottom(objArray[i]);
+						var posNext = this.getBottom(objArray[j]);
+						if (pos > posNext){
+							var temp = objArray[i];
+							objArray[i] = objArray[j];
+							objArray[j] = temp;
+						}
+					}
+				}
 				return objArray;
 			},
 			toInt : function(text){
@@ -238,7 +267,9 @@ Featured.init = {
 
 _o.init.getjars(jarobjs);
 _o.init.setjars(jarobjs);
-_o.init.posjars._all();
+window.addEventListener("load", function(){
+	_o.init.posjars._all();
+}, false);
 
 window.addEventListener("resize",function(){
 	_o.init.setjars(jarobjs);

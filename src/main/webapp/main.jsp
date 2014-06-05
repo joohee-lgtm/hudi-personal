@@ -80,12 +80,11 @@
 
 	<!-- <footer id="footer"></footer> -->
 	<script>
-		var arr = ${data};
+		var data = ${data};
 		var jarobjs = [];
 		for (var i=0; i<15 ; i++){
-			jarobjs[i] = arr[i];
+			jarobjs[i] = data[i];
 		}
-		console.log(jarobjs);
 	</script>
 	<script type="text/javascript" src="./src/js/main.js" /></script>
 </body>
