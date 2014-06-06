@@ -187,7 +187,6 @@ Featured.init = {
 			var lis = ul.children;
 			var u = Featured.util;
 			var objarr = [];
-			console.log(ul);
 			for (var i=0; i<lis.length ; i++){
 				var tempobj = {
 					li : lis[i]
@@ -204,8 +203,8 @@ Featured.init = {
 		posFirstGroup : function(liarr){
 			var b = _o.base;
 			for (var i=0; i<b.num.row ; i++){
-				liarr[0][i].li.style.top = "0px";
-				liarr[0][i].li.style.left = b._width*i + "px";
+				liarr[0][i].li.style.top = "20px";
+				liarr[0][i].li.style.left = (20 + b._width*i) + "px";
 			}
 		},
 		
@@ -221,13 +220,17 @@ Featured.init = {
 			var prevcol = curcol - 1;
 			var baseObjArray = [];
 			var s = this.support;
+			var u = _o.util;
 			for (var i=0 ; i<b.row ; i++){
 				baseObjArray[i] = liarr[prevcol][i];
 			}
 			baseObjArray = s.ascendingBottom(baseObjArray);
 			for (var i=0 ; i<b.row ; i++){
-				liarr[curcol][i].li.style.left = getComputedStyle(baseObjArray[i].li).left;
-				liarr[curcol][i].li.style.top = s.getBottom(baseObjArray[i])+"px";
+				var left = 20 + s.toInt(u.gcst(baseObjArray[i].li).left);
+				var top = 20 + s.getBottom(baseObjArray[i]);
+				liarr[curcol][i].li.style.left = left + "px";
+				liarr[curcol][i].li.style.top = top +"px";
+				console.log(left, top);
 			}
 		},
 
@@ -235,6 +238,7 @@ Featured.init = {
 			var b = _o.base.num;
 			var baseObjArray = [];
 			var s = this.support;
+			var u = _o.util;
 
 			for (var i=0 ; i<b.remain ; i++){
 				baseObjArray[i] = liarr[b.column-1][i];
@@ -242,15 +246,14 @@ Featured.init = {
 			baseObjArray = s.ascendingBottom(baseObjArray);
 			if (b.remain != 0){
 				for(var i=0 ; i<b.remain ; i++){
-					liarr[b.column][i].li.style.left = getComputedStyle(baseObjArray[i].li).left;
+					liarr[b.column][i].li.style.left = u.gcst(baseObjArray[i].li).left;
 					liarr[b.column][i].li.style.top = s.getBottom(baseObjArray[i])+"px";
-					
 				}
 			}
 		},
 
 		featuredMargin : function(){
-		
+			
 		},
 		featuredHeight : function(){
 		

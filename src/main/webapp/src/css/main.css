@@ -268,14 +268,34 @@
 	z-index 	: -10;
 	position 	: relative;
 	margin 		: auto;
+	display 	: block;
+	text-align 	: center;
 }
+
+@media screen and (max-width : 800px){
+	#featured > ul{
+		width 	: 400px;
+	}
+}
+
+@media screen and (min-width : 800px) and (max-width : 1200px){
+	#featured > ul {
+		width 	: 800px;
+	}
+}
+
+@media screen and (min-width : 1200px){
+	#featured > ul {
+		width 	: 1200px;
+	}	
+}
+
 
 #featured > ul > li{
 	z-index 	: -10;
 	position 	: absolute;
 	top 		: 0px;
 	left 		: 0px;
-	margin 		: 15px 20px;
 	width 		: 360px;
 	border		: 1px solid rgba(71, 71, 71, 0.5);
 	border-radius : 10px;
