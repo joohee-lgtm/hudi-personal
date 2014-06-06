@@ -17,6 +17,7 @@ import net.aprilchoi.user.PhotoDao;
 import net.collagejam.obj.JamJar;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.google.gson.Gson;
 
@@ -61,14 +62,9 @@ public class ResultPageServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		System.out.println(aUrl);
-		
-		getJsonArray(aUrl);
-		
+		selected.setPhotolist(aUrl);
 		String jarJson = gson.toJson(selected);
-		request.setAttribute("id", jid);
 		request.setAttribute("jamjar", jarJson);
-		System.out.println(jid);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
 		dispatcher.forward(request, response);
 	}
