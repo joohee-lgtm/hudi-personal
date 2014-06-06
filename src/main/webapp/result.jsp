@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>result</title>
 <link rel="stylesheet" type="text/css" href="./src/css/create/preview.css"/>
+<link rel="stylesheet" type="text/css" href="./src/css/create/result.css"/>
 </head>
 <body>
 	<section id="resultWrap">
