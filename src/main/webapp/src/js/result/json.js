@@ -5,4 +5,3 @@ var json 		= JSON.stringify(jamjar);
 child.innerHTML = json; 
 head.appendChild(child);
 
-console.log(aUrl);

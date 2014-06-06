@@ -61,8 +61,8 @@ public class ResultPageServlet extends HttpServlet{
 		String jarJson = gson.toJson(selected);
 		request.setAttribute("id", jid);
 		request.setAttribute("jamjar", jarJson);
-		request.setAttribute("aUrl", aUrl);
-		System.out.println(aUrl);
+		//request.setAttribute("aUrl", aUrl);
+		System.out.println(jid);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
 		dispatcher.forward(request, response);
 	}
