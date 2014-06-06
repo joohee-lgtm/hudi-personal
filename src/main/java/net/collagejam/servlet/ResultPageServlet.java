@@ -16,6 +16,8 @@ import net.aprilchoi.user.JamjarDao;
 import net.aprilchoi.user.PhotoDao;
 import net.collagejam.obj.JamJar;
 
+import org.json.JSONArray;
+
 import com.google.gson.Gson;
 
 
@@ -60,12 +62,19 @@ public class ResultPageServlet extends HttpServlet{
 		}
 		
 		System.out.println(aUrl);
+		
+		getJsonArray(aUrl);
+		
 		String jarJson = gson.toJson(selected);
 		request.setAttribute("id", jid);
 		request.setAttribute("jamjar", jarJson);
-		//request.setAttribute("aUrl", aUrl);
 		System.out.println(jid);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
 		dispatcher.forward(request, response);
+	}
+
+	private JSONArray getJsonArray(ArrayList<String> aUrl) {
+		JSONArray arr 	= new JSONArray(aUrl);
+		return arr;
 	}
 }
