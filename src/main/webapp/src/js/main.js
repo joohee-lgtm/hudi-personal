@@ -3,7 +3,7 @@ var _o = Featured;
 
 Featured.base = {
 	arr : [],
-	_width 	: 360,
+	_width 	: 358,
 	_margin : 40,
 	
 	num : {
@@ -204,7 +204,7 @@ Featured.init = {
 			var b = _o.base;
 			for (var i=0; i<b.num.row ; i++){
 				liarr[0][i].li.style.top = "20px";
-				liarr[0][i].li.style.left = (20 + b._width*i) + "px";
+				liarr[0][i].li.style.left = (20*(i+1) + b._width*i) + "px";
 			}
 		},
 		
@@ -226,11 +226,11 @@ Featured.init = {
 			}
 			baseObjArray = s.ascendingBottom(baseObjArray);
 			for (var i=0 ; i<b.row ; i++){
-				var left = 20 + s.toInt(u.gcst(baseObjArray[i].li).left);
+				var left = u.toInt(u.gcst(baseObjArray[i].li).left);
 				var top = 20 + s.getBottom(baseObjArray[i]);
 				liarr[curcol][i].li.style.left = left + "px";
 				liarr[curcol][i].li.style.top = top +"px";
-				console.log(left, top);
+				console.log(u.toInt(u.gcst(baseObjArray[i].li).left));
 			}
 		},
 
