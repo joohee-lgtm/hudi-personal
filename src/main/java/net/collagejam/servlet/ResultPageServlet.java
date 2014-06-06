@@ -52,16 +52,17 @@ public class ResultPageServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		try {
-			aUrl = pldao.getUrlList(jid);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			aUrl = pldao.getUrlList(jid);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		String jarJson = gson.toJson(selected);
 		request.setAttribute("id", jid);
 		request.setAttribute("jamjar", jarJson);
 		request.setAttribute("aUrl", aUrl);
+		System.out.println(aUrl);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
 		dispatcher.forward(request, response);
 	}
