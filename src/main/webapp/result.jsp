@@ -5,10 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>result</title>
-<link rel="stylesheet" type="text/css" href="./src/css/create/preview.css"/>
-<link rel="stylesheet" type="text/css" href="./src/css/create/result.css"/>
+<link rel="stylesheet" type="text/css" href="./src/css/common.css"/>
+<link rel="stylesheet" type="text/css" href="./src/css/result.css"/>
 </head>
 <body>
+	<header>
+			<a href="/collageJam/main"> CollageJam </a>
+	</header>
+
 	<section id="resultWrap">
 		<div id="slide"></div>
 		<div id="player"></div>
@@ -16,7 +20,6 @@
 			<button>play</button>
 			<button>stop</button>
 		</div>
-		<div id="data"></div>
 	</section>
 </body>
 	<script>
