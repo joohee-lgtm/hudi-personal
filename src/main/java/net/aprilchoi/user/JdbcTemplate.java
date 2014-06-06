@@ -40,16 +40,6 @@ public abstract class JdbcTemplate {
 		return null;
 	}
 	
-	public Object selectByJarIdPhotoList(String query) throws SQLException {
-		PreparedStatement pstmt = conn.prepareStatement(query);
-		setValues(pstmt);
-		ResultSet rs = pstmt.executeQuery();
-		while(rs.next()) {
-			return mapRow(rs);
-		}
-		return null;
-	}
-	
 	abstract Object mapRow(ResultSet rs) throws SQLException;
 
 	abstract void setValues(PreparedStatement pstmt) throws SQLException;

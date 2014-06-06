@@ -10,6 +10,10 @@ import net.collagejam.obj.Photo;
 public class PhotoDao {
 	private Connection conn;
 	
+	public PhotoDao(Connection conn) {
+		this.conn = conn;
+	}
+
 	public Photo selectByJarId(final int jid) throws SQLException {
 		JdbcTemplate template = new JdbcTemplate(conn) {
 			Photo mapRow(ResultSet rs) throws SQLException {
@@ -25,6 +29,6 @@ public class PhotoDao {
 		};
 		String query = "select * from photo_list where j_id=?";
 		
-		return (Photo)template.selectByJarIdPhotoList(query);
+		return (Photo)template.selectByJarId(query);
 	}
 }
