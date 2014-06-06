@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 </head>
 <body>
-	<header id="header">
+	<header>
 		<div>
 			<a href="/collageJam/main"> CollageJam </a>
 			<a href="./mypage.jsp"> myJamJars </a>
@@ -28,8 +28,9 @@
 		%>
 		<span id="userid"> Hello, <%=username%></span>
 	</header>
+
 	<section id="contents">
-		<section id="bgvideo">
+		<article id="bgvideo">
 			<video autoplay loop muted
 				poster="https://www.themusicbed.com/video/posters/home-the-music-bed.jpg">
 				<source
@@ -39,8 +40,9 @@
 					src="https://www.themusicbed.com/video/home-the-music-bed.webm"
 					type="video/webm">
 			</video>
-		</section>
-		<section id="intro">
+		</article>
+		
+		<article id="intro">
 			<span>Your moments, your story.</span> <span>Create, explore
 				and share photo & video collections in beautiful and creative ways</span> <a
 				href="/collageJam/create">
@@ -48,9 +50,9 @@
 			</a> <span> or <a href="./signup.jsp"><u>Sign up</u></a> with
 				Email
 			</span>
-		</section>
+		</article>
 
-		<section id="aboutApp">
+		<article id="aboutApp">
 			<span>Share your story with our creative applications</span>
 			<ul>
 				<li></li>
@@ -59,26 +61,25 @@
 				<li></li>
 				<li></li>
 			</ul>
-		</section>
+		</article>
 
-		<div id="countTotalView">
+		<article id="countTotalView">
 			<span> 999,999,999 </span>
 			<div></div>
 			<span> COLLAGEJAM MOMENTS VIEWD </span> <span> As featured in:
 				<div></div>
 			</span>
-		</div>
+		</article>
 
-		<section id="featured">
+		<article id="featured">
 			<span>FEATURED</span>
 			<ul>
-				<!--<div class="jar1">1</div>-->
 			</ul>
 			<span>Start</span>
-		</section>
+		</article>
 	</section>
 
-	<!-- <footer id="footer"></footer> -->
+	<footer id="footer"></footer>
 	<script>
 		var data = ${data};
 		var jarobjs = [];

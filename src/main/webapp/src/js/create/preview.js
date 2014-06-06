@@ -1,3 +1,5 @@
+var preview = {};
+
 preview.util = {
 	px : function(num){
 		return num+"px"
@@ -35,7 +37,7 @@ preview.img = {
 			_height : 0,
 			_marginTop : 0,
 		}; 
-		var newimg = new Image();
+		var newimg = new Image(); // 비용이 조금 큼
 		newimg.src = url;
 		this._img = newimg;
 		_o.img.ctr.setAllStyle(this);
@@ -151,6 +153,7 @@ preview.slide = {
 			temparea.appendChild(iobj._img);
 		}
 	},
+	// 이미지를 생성하고 스타일을 반영해서 본문에 넣는다! => 이를 수행하는 생성자를호출
 
 	clearArea : function(){
 		var temparea = this.slide.getElementsByTagName("div")[0];

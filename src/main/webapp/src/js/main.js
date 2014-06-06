@@ -177,6 +177,28 @@ Featured.init = {
 			this.posFirstGroup(_o.base.arr);
 			this.posMiddleGroup(_o.base.arr);
 			this.posLastGroup(_o.base.arr);
+			this.setUlHeight(_o.base.arr);
+		},
+
+		setUlHeight : function(){
+			var featured = document.getElementById("featured");
+			var ul = featured.getElementsByTagName("ul")[0];
+			var s = this.support;
+			var lis = ul.children;
+			var u = Featured.util;
+			var objarr = [];
+			console.log(ul);
+			for (var i=0; i<lis.length ; i++){
+				var tempobj = {
+					li : lis[i]
+				};
+				objarr[i] = tempobj;
+			}
+			objarr = s.ascendingBottom(objarr);
+			var lasttop = u.toInt(u.gcst(objarr[lis.length-1].li).top);
+			var lastheight = u.toInt(u.gcst(objarr[lis.length-1].li).height);
+			var last = lasttop + lastheight
+			ul.style.height = last + "px";
 		},
 
 		posFirstGroup : function(liarr){
@@ -265,8 +287,33 @@ Featured.init = {
 	}
 }
 
+
+var ScrollEvent = {
+	disableVerticalScroll : function(){
+		window.onmousewheel = this.wheel;
+		document.onkeydown = this.keydown;
+	},
+
+	keydown : function(e){
+		leftKey = 37;
+		rightKey = 39;
+		if (e.keyCode === leftKey || e.keyCode === rightKey){
+			e.preventDefault();
+		}
+	},
+
+	wheel : function(e){
+		if (e.wheelDeltaX != 0){
+			e.preventDefault();
+		}
+	}
+};
+
+
 _o.init.getjars(jarobjs);
 _o.init.setjars(jarobjs);
+ScrollEvent.disableVerticalScroll();
+
 window.addEventListener("load", function(){
 	_o.init.posjars._all();
 }, false);
@@ -275,10 +322,6 @@ window.addEventListener("resize",function(){
 	_o.init.setjars(jarobjs);
 	_o.init.posjars._all();
 },false);
-
-
-// var j = new _o.jar.model(jarobjs[1]);
-// console.log(j.li);
 
 
 
