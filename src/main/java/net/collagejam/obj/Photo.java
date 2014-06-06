@@ -10,4 +10,10 @@ public class Photo {
 		this.index 	= index;
 		this.url	= url;
 	}
+
+	@Override
+	public String toString() {
+		return "Photo [j_id=" + j_id + ", index=" + index + ", url=" + url
+				+ "]";
+	}
 }

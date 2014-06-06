@@ -19,6 +19,7 @@ import com.google.gson.Gson;
 
 public class ResultPageServlet extends HttpServlet{
 	private JamjarDao jdao;
+//	private PhotoDao
 	
 	private Connection getConnection() throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -45,6 +46,8 @@ public class ResultPageServlet extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+//		jdao.selectByJarIdP(jid)
 		String jarJson = gson.toJson(selected);
 		request.setAttribute("jamjar", jarJson);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
