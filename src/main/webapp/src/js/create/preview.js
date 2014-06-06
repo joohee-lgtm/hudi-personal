@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+var preview = {};
+var _o = preview;
+=======
+>>>>>>> refs/heads/slidefix
 
 preview.util = {
 	px : function(num){
@@ -5,32 +10,13 @@ preview.util = {
 	},
 
 	base : {
-		_width : 0,
-		_height : 0
-	},
-
-	ckLen : function(len){
-		if (len != 0){
-			return true;
-		} else {
-			return false;
-		}
-	},
-
-	getDefaultImg : function(){
-		var url = "./src/img/nophoto.jpg";
-		var defalt_img_obj = new _o.img.model(url);
-		return defalt_img_obj._img;
+		_width : 640,
+		_height : 480
 	}
 };
 
-
-/* 
-이미지 하나를 객체로 생성 
-객체를 생성한 후 기본 설정에 맞게 크기 조정하기 
-*/
 preview.img = {
-	model : function(url){
+	md : function(url){
 		this._style = {
 			_width : 0,
 			_height : 0,
@@ -46,27 +32,28 @@ preview.img = {
 		setAllStyle : function(obj){
 			var ctr = _o.img.ctr;
 			var px = _o.util.px;
-			obj._img.addEventListener("load", function(){
+			// obj._img.addEventListener("load", function(){
 				var o = ctr.getSize(obj);
 				obj._img.style.width = px(o._style._width);
 				obj._img.style.height = px(o._style._height);
 				obj._img.style.marginTop = px(o._style._marginTop);
-			}, false);
+			// }, false);
 
-			obj._img.addEventListener("error", function(){
-				console.log("img load error");
-				obj = null;
-			},false);
+			// obj._img.addEventListener("error", function(){
+			// 	console.log("img load error");
+			// 	obj = null;
+			// },false);
 			return obj._img;
 		},
 
 		getSize : function(obj){
 			var _i = obj._img;
 			var b = _o.util.base;
+
 			if (_i.naturalHeight < _i.naturalWidth){
 				obj._style._height = _i.height*(b._width/_i.width);
 				obj._style._width = b._width;
-				if (obj._style._height > b._height){
+				if (_i.height > b._height){
 					obj._style._width = _i.width*(b._height/_i.height);
 					obj._style._height = b._height;
 				}
@@ -87,7 +74,7 @@ preview.img = {
 			obj._img.style.marginLeft = "auto";
 			if (obj._style._height < b._height){
 				var margin = (b._height - obj._style._height)/2;
-				obj._style._marginTop = margin;
+				img.style.marginTop = px(margin);
 			}
 			return obj;
 		}
@@ -95,54 +82,82 @@ preview.img = {
 };
 
 
-preview.init = {
-	slide : document.getElementById("slide"),
+preview.bgm = {
+	md : {
 
-	setAll : function(startbtn,stopbtn, wid, hei){
-		this.setBtn(startbtn, stopbtn);
-		this.setFrameSize(wid, hei);
-		this.setArea();
 	},
+	ctr : {
 
-	setBtn : function(startbtn, stopbtn) {
-		startbtn.addEventListener("click", function(){
-			player.playVideo();
-			_o.play.ready();
-			_o.play._start();
-		}, false);
-		stopbtn.addEventListener("click", function(){
-		    player.stopVideo();
-		    _o.play._stop();
-		}, false);
-	},
-
-	setFrameSize : function(wid, hei){
-		_o.util.base._width = wid;
-		_o.util.base._height = hei;
-	},
-
-	setArea : function(){
-		var temparea = document.createElement("div");
-		temparea.id = "temparea";
-		temparea.style.display = "none";
-		this.slide.appendChild(temparea);
-	},
-
-	setDefaultImg : function(){
-		var defaultimg = _o.util.getDefaultImg();
-		slide.appendChild(defaultimg);
 	}
 };
 
-preview.slide = {
-	slide : document.getElementById("slide"),
-	_set : function(urls){
-		this.urls = urls;
-		this.clearArea();
-		this.setFirstImg();
-		this.loadOtherImgs();
+preview.init = {
+
+	setPlay : function(){
+		var setting = document.getElementById("setting");
+		var startbtn = setting.getElementsByTagName("button")[0];
+		var stopbtn = setting.getElementsByTagName("button")[1];
+
+		playstart.addEventListener("click", function(){
+			player.playVideo();
+		}, false);
+		playstop.addEventListener("click", function(){
+		    player.stopVideo();
+		}, false);
 	},
 
+	setArea : {
+		totalArea : function(){
+			var slide = document.getElementById("slide");
+			_o.init.setArea.playArea(slide);
+			_o.init.setArea.tempArea(slide);
+		},
+
+		playArea : function(slide){
+			var di = _o.init.setDefaultImg();
+			slide.appendChild(di);
+		},
+
+		tempArea : function(slide){
+			var temparea = document.createElement("div");
+			temparea.id = "temparea";
+			temparea.style.display = "none";
+			slide.appendChild(temparea);
+			this.a = temparea;
+		}
+	},
+
+	setDefaultImg : function(){
+		var oi = _o.img;
+		var url = "./src/img/nophoto.jpg";
+		var defalt_img_obj = new oi.md(url);
+		return defalt_img_obj._img;
+	},
+
+	imgloader : function(){
+		var origin = userDataModel.originalURL;
+		console.log(origin);
+		var _pi = _o.img;
+		var img_obj_list = [];
+		var ta = document.getElementById("temparea");
+		for (var i=0 ; i<origin.length ; i++){
+			var tmp = new _pi.md(origin[i]);
+			img_obj_list[i] = tmp;
+			console.log(img_obj_list[i]._img);
+			ta.appendChild(img_obj_list[i]._img);
+		}
+	},
+
+	setbgm : function(){
+
+	}
+};
+
+preview.article = {
+	play : {
+
+<<<<<<< HEAD
+=======
 	loadOtherImgs : function(){
 		var t = this;
 		var temparea = this.slide.getElementsByTagName("div")[0];
@@ -153,88 +168,19 @@ preview.slide = {
 		}
 	},
 	// 이미지를 생성하고 스타일을 반영해서 본문에 넣는다! => 이를 수행하는 생성자를호출
+>>>>>>> refs/heads/slidefix
 
-	clearArea : function(){
-		var temparea = this.slide.getElementsByTagName("div")[0];
-		var firstimg = this.slide.getElementsByTagName("img")[0];
-		var len = temparea.children.length;
-		while (_o.util.ckLen(len)){
-			temparea.removeChild(temparea.children[0]);
-			len = temparea.children.length;
-		}
-		if (firstimg != null){
-			this.slide.removeChild(this.slide.children[1]);
-		}
 	},
+	stop : {
 
-	setFirstImg : function(){
-		var t = this;
-		if (t.urls.length != 0){
-			 var firstimg = new _o.img.model(t.urls[0]);
-			 slide.appendChild(firstimg._img);
-		} else {
-			var defaultimg = _o.util.getDefaultImg();
-			slide.appendChild(defaultimg);
-		}
 	}
 };
 
-preview.play = {
-	ready : function(){
-		this.count = 0;
-		this.intervalId = 0;
-		this.total_img_len = 
-		this.slide = document.getElementById("slide");
-		this.temparea = this.slide.getElementsByTagName("div")[0];
-		this.speed = 0;
-	},
 
-	_start : function(){
-		var t = this;
-		var setting = document.getElementById("setting");
-		// 개별 페이지 일 때 속도 이슈 해결 해야됨
-		t.speed = setting.getElementsByTagName('div')[0].getElementsByTagName('input')[0].value;
-		// t.count != 0 비교 연산자 버그
-		if (this.count === 0){
-			console.log("aaaa");
-		} else {
-			console.log("bbb");
-			t._stop();
-			t.count = 0;
-		}
-		t.intervalId = setInterval(t.setSlide, t.speed*10);
-	},
 
-	_stop : function(){
-		var t = this;
-		clearInterval(t.intervalId);
-		t.gotoInitImg();
-		t.count = 0;
-	},
 
-	setSlide : function(){
-		var t = this;
-		var temparea = document.getElementById("temparea");
-		temparea.appendChild(slide.children[1]);
-		t.slide.appendChild(temparea.children[0]);
-		console.log(_o.play.count);
-		_o.play.count++;
-	},
 
-	gotoInitImg : function(){
-		var t = this;
-		var total_img_len = _o.slide.urls.length;
-		var remain = t.count%total_img_len;
-		if (remain != 0){
-			for (var i=0 ; i<total_img_len - remain ; i++){
-				t.setSlide();
-			}
-		}
-	}
-};
 
-var setting = document.getElementById("setting");
-var startbtn = setting.getElementsByTagName("button")[0];
-var stopbtn = setting.getElementsByTagName("button")[1];
-preview.init.setAll(startbtn, stopbtn, 640, 480);
+
+
 

@@ -12,10 +12,11 @@ public class JamJar {
 	private String bgm_url;
 	private int views;
 	private int likes;
-	
-	public JamJar(int j_id, int u_id, Timestamp date_created, 
-			String tb_url, String title, String description, 
-			String bgm_url, int views, int likes) {
+
+
+
+	public JamJar(int j_id, int u_id, Timestamp date_created, String tb_url,
+			String title, String description, String bgm_url, int views, int likes) {
 		this.j_id 			= j_id;
 		this.u_id 			= u_id;
 		this.date_created 	= date_created;
@@ -24,9 +25,9 @@ public class JamJar {
 		this.description	= description;
 		this.bgm_url		= bgm_url;
 		this.views			= views;
-		this.views			= likes;
+		this.likes			= likes;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "JamJar [j_id=" + j_id + ", u_id=" + u_id + ", date_created="

@@ -264,12 +264,31 @@
 	background-color : rgba(255,255,255,0.5);
 }
 
+<<<<<<< HEAD
+#featured > div:nth-child(2) {
+	z-index : -10;
+	position : relative;
+	margin : auto;
+=======
 #featured > ul {
 	z-index 	: -10;
 	position 	: relative;
 	margin 		: auto;
+>>>>>>> refs/heads/slidefix
 }
 
+<<<<<<< HEAD
+#featured > div:nth-child(2) > div{
+	z-index : -10;
+	position : absolute;
+	top : 0px;
+	left : 0px;
+	margin : 15px 20px;
+	width : 360px;
+	background-color : #FFFFFF;
+	border-radius: 10px;
+	box-shadow : 0px 5px 8px #B3B3B3;
+=======
 #featured > ul > li{
 	z-index 	: -10;
 	position 	: absolute;
@@ -279,22 +298,96 @@
 	width 		: 360px;
 	border		: 1px solid rgba(71, 71, 71, 0.5);
 	border-radius : 10px;
+>>>>>>> refs/heads/slidefix
 }
+<<<<<<< HEAD
+
+#featured > div > .jar1{
+	height : 402px;
+=======
 #featured > ul > li > span{
 	padding 	: 10px 0px;
 	display 	: block;
 	text-align 	: center;
 	font-size 	: 20px;
 	font-family : 'Exo';
+>>>>>>> refs/heads/slidefix
 }
 
+<<<<<<< HEAD
+#featured > div > .jar2{
+	height : 494px;
+=======
 #featured > ul > li > span:nth-child(1){
 	border-top-left-radius 		: 10px;
 	border-top-right-radius 	: 10px;
+>>>>>>> refs/heads/slidefix
 }
+<<<<<<< HEAD
+
+#featured > div > .jar3{
+	height : 280px;
+}
+
+#featured > div > .jar4{
+	height : 592px;
+}
+
+#featured > div > .jar5{
+	height : 395px;
+}
+
+#featured > div > .jar6{
+	height : 438px;
+}
+
+#featured > div > .jar7{
+	height : 421px;
+}
+
+#featured > div > .jar8{
+	height : 476px;
+}
+
+#featured > div > .jar9{
+	height : 360px;
+}
+
+#featured > div > .jar10{
+	height : 310px;
+}
+
+#featured > div > .jar11{
+	height : 430px;
+}
+
+#featured > div > .jar12{
+	height : 350px;
+}
+
+#featured > div > .jar13{
+	height : 400px;
+}
+
+#featured > div > .jar14{
+	height : 370px;
+}
+
+#featured > div > .jar15{
+	height : 500px;
+}
+
+#featured > div > .jar16{
+	height : 480px;
+}
+
+#featured > div > .jar17{
+	height : 300px;
+=======
 #featured > ul > li > span:nth-child(2){
 	border-bottom-left-radius 	: 10px;
 	border-bottom-right-radius 	: 10px;
+>>>>>>> refs/heads/slidefix
 }
 
 #footer {

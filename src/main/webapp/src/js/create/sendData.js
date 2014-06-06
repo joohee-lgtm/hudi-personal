@@ -1,58 +1,39 @@
-/*
-	send data from client to server
-*/
+/**
+ * send data from client to server
+ */
 
 function sendUserData(e) {
-	e.preventDefault();
+	var aURL = getImgURLs();
+	var title = getTitle();
+	var desc = getDesc();
+	var bgm = getBgmId();
 	
 	var data = {
-		aURL : "",
-		title : "",
-		desc : "",
-		bgm : "",
-		user : "kjhwee91",
-		thumbnail : ""
+		aURL : aURL,
+		title : title,
+		desc : desc,
+		bgm : bgm
 	};
 	
-	data.aURL = getImgURLs();
-	data.title = getTitle();
-	data.desc = getDesc();
-	data.bgm = getBgmId();
-	data.thumbnail = data.aURL[0];
-	
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "/collageJam/create_jar", true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "/collageJam/create", true);
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState === 4 && xhr.status === 200){
-			console.log('status: ' + xhr.statusText);
-			var created_jid = xhr.getResponseHeader("jid");
-			var url = "/collageJam/result?id="+created_jid;
-			window.location = url;
-			//gotoResultPage(created_jid);
+			response = xhr.responseText;
+			var data = JSON.parse(response);
+			console.log(data.jid);
+			
 		}
-	};	
+	};
+	
 	xhr.send("data="+JSON.stringify(data));
 	
+	e.preventDefault();
 	return false;
 }
-
-function gotoResultPage(i){
-	var xhr = new XMLHttpRequest();
-	var url = "/collageJam/result?id="+i;
-	xhr.open("get", url, true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState === 4 && xhr.status === 200){
-			console.log('status: ' + xhr.statusText);
-		}
-	};	
-	xhr.send();
-	return false;
-}
-
 
 function getImgURLs() {
 	return userDataModel.originalURL;
@@ -77,6 +58,4 @@ function registerEvents() {
 
 window.addEventListener('load', function() {
 	registerEvents();
-}, false);
-
-
+}, false)

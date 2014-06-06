@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,37 +22,41 @@ import com.mysql.jdbc.PreparedStatement;
 
 public class CreateController extends HttpServlet {
 	
-	JSONObject userData = new JSONObject();
-	int jamjarId = 0;
-	int uid = 0;
-	
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String obj = request.getParameter("data");
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("create.jsp");
+		dispatcher.forward(request, response);
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		PrintWriter out = response.getWriter();
-		
 		HttpSession session = request.getSession();
-		JSONObject jsonObj = new JSONObject(obj);
-		userData = jsonObj;
+//		int jamjarId = 0;
+//		int uid = 0;
 		
+		JSONObject userData = new JSONObject(request.getParameter("data"));
+	
 		String username = (String) session.getAttribute("username");
 		userData.put("username", username);
-
-		out.println(userData);
 		
 		try {
-			sendToDatabase();
+			sendToDatabase(userData);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		// db 불러오기
+		out.println("{ \"jid\": 10 }");
+		
 	}
 
-	private void sendToDatabase() throws ClassNotFoundException, SQLException {
+	private void sendToDatabase(JSONObject userData) throws ClassNotFoundException, SQLException {
 		Connection conn = null;
 		Statement stmt = null;
-		PreparedStatement pstmt = null;
+//		PreparedStatement pstmt = null;
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection("jdbc:mysql://10.73.45.132:3306/collageJam", "admin", "leonard911");
@@ -59,25 +65,25 @@ public class CreateController extends HttpServlet {
 			stmt = conn.createStatement();
 			String username = userData.getString("username");
 			int uid = getUserId(stmt, username);
-			int thumbnail_idx = getThumbnailIdx();
+			int thumbnail_idx = 0;
 			JSONArray aURL = userData.getJSONArray("aURL");
 			String tb_url = aURL.getString(thumbnail_idx);
 			
 			userData.put("uid", uid);
 			userData.put("tb_url", tb_url);
 			
-			insertIntoJamjar(stmt);
-			insertIntoPhotoList(stmt);
+			insertIntoJamjar(stmt, userData);
+			insertIntoPhotoList(stmt, userData);
 		}
 	}
 	
-	private void insertIntoJamjar(Statement stmt) {
+	private void insertIntoJamjar(Statement stmt, JSONObject userData) {
 		String qmark = "\"";
-		int uid = getUid();
-		String tb_url = getTbUrl();
-		String title = getTitle();
-		String desc = getDesc();
-		String bgm = getBgm();
+		int uid = userData.getInt("uid");
+		String tb_url = userData.getString("tb_url");
+		String title = userData.getString("title");
+		String desc = userData.getString("desc");
+		String bgm = userData.getString("bgm");
 		
 		String sql = "insert into jamjar (u_id, title, description, bgm_url, tb_url) values ("
 				+  uid + "," 
@@ -98,7 +104,7 @@ public class CreateController extends HttpServlet {
 		
 	}
 	
-	private void insertIntoPhotoList(Statement stmt) {
+	private void insertIntoPhotoList(Statement stmt, JSONObject userData) {
 		int j_id = 0;
 		String query = "";
 		try {
@@ -107,12 +113,11 @@ public class CreateController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		userData.put("jid", j_id);
-		int len = userData.getJSONArray("aURL").length();
-		
-		
-		for(int i = 0; i <len; i ++) {
-			query = makeQueryForPhotoInsert(i);
+
+		JSONArray jarr = userData.getJSONArray("aURL");
+		for(int i = 0; i <jarr.length(); i ++) {
+			String url = jarr.getString(i);
+			query = makeQueryForPhotoInsert(i, j_id, url);
 			try {
 				stmt.executeUpdate(query);
 			} catch (SQLException e) {
@@ -122,16 +127,17 @@ public class CreateController extends HttpServlet {
 		}
 	}
 
-	private String makeQueryForPhotoInsert(int index) {
+	private String makeQueryForPhotoInsert(int index, int j_id, String url) {
 		
 		String qmark = "\"";
 		int photo_order = index + 1;
 		String sql = "insert into photo_list values ("
-					+ userData.getInt("jid") + ","
-					+ photo_order + ",";
-		JSONArray jarr = userData.getJSONArray("aURL");
-		
-		sql = sql + qmark + jarr.getString(index) + qmark + ");";
+					+ j_id + ","
+					+ photo_order + ","
+					+ qmark + url + qmark
+					+ ");";
+//		JSONArray jarr = userData.getJSONArray("aURL");
+//		sql = sql + qmark + jarr.getString(index) + qmark + ");";
 		System.out.println(sql);
 		return sql;
 	}
@@ -148,36 +154,6 @@ public class CreateController extends HttpServlet {
 		}
 		System.out.println("last_jid: " + last_insert);
 		return last_insert;
-	}
-
-
-	
-	private void setUid(int id) {
-		this.uid = id;
-	}
-
-	private String getBgm() {
-		return userData.getString("bgm");
-	}
-
-	private String getDesc() {
-		return userData.getString("desc");
-	}
-
-	private String getTitle() {
-		return userData.getString("title");
-	}
-
-	private String getTbUrl() {
-		return userData.getString("tb_url");
-	}
-
-	private int getUid() {
-		return userData.getInt("uid");
-	}
-
-	private int getThumbnailIdx() {
-		return 0;
 	}
 
 	private int getUserId(Statement stmt, String user){

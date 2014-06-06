@@ -9,11 +9,11 @@ import net.collagejam.obj.JamJar;
 
 public class JamjarDao {
 	private Connection conn;
-	
+
 	public JamjarDao(Connection conn) {
 		this.conn = conn;
 	}
-	
+
 	public JamJar selectByJarId(final int jid) throws SQLException {
 		JdbcTemplate template = new JdbcTemplate(conn) {
 			void setValues(PreparedStatement pstmt) throws SQLException {

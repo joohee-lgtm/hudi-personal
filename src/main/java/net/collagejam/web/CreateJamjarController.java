@@ -20,6 +20,9 @@ import org.json.JSONObject;
 public class CreateJamjarController extends HttpServlet{
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
+
+		System.out.println("connection");
+
 		String object = request.getParameter("data");
 		JSONObject jsonObj = new JSONObject(object);
 				

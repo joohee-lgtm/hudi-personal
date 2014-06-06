@@ -1,24 +1,29 @@
-var Featured = {};
-var _o = Featured;
 
-Featured.base = {
-	arr : [],
-	_width 	: 360,
-	_margin : 40,
-	
-	num : {
-		len : 0,
-		row		: 0,
-		column 	: 0,
-		remain 	: 0
-	},
 
-	winsize : {
-		max : 1200,
-		min : 800
+window.addEventListener('load',function(){
+	Featured.posAll();
+	ScrollEvent.disableVerticalScroll();
+}, false);
+
+window.addEventListener('resize',function(){
+	Featured.posAll();
+}, false);
+
+var Featured = {
+	jarArray : document.getElementById('featured').getElementsByTagName('div')[0].children,
+	row : 0,
+	column : 0,
+	remain : 0,
+
+	jar : { 
+		jWidth:400, 
+		jMargin:40 
 	}
 };
 
+<<<<<<< HEAD
+/* setting about featured start */
+=======
 Featured.util = {
 	toInt : function(text){
 		var result = parseInt(text.substring(0,text.length-2));
@@ -29,14 +34,34 @@ Featured.util = {
 		return getComputedStyle(obj);
 	}
 }
+>>>>>>> refs/heads/slidefix
 
+<<<<<<< HEAD
+Featured.Setting = function(){
+	var inner = window.innerWidth;
+	this.row = this.getRow(inner);
+	this.column = this.getColumn();
+	this.remain = this.getRemain();
+};
+=======
 Featured.jar = {
 	model : function(jarobj){
 		var t = this;
 		t.li;
 		_o.jar.create._all(jarobj, t);
 	},
+>>>>>>> refs/heads/slidefix
 
+<<<<<<< HEAD
+Featured.getRow = function(inner){
+	if (inner > 1200){ //1200 보다 큰 경우
+		return 3;
+	} else { // 1200 보다 작은 경우
+		if ( inner > 800 ){ // 1200보다 작은 경우, 800보다 큰 경우
+			return 2;
+		} else { // 1200보다 작은 경우, 800보다 작은 경우 
+			return 1;
+=======
 	create : {
 		_all : function(jarobj, that){
 			var text;
@@ -97,10 +122,16 @@ Featured.jar = {
 				var url = "/collageJam/result?id="+id;
 				window.location = url;
 			}, false);
+>>>>>>> refs/heads/slidefix
 		}
 	}
 };
 
+<<<<<<< HEAD
+Featured.getColumn = function(){
+	return parseInt(this.jarArray.length/this.row);
+};
+=======
 Featured.init = {
 	re_jar_array : [], 
 	getjars : function(jarobjs){
@@ -113,65 +144,39 @@ Featured.init = {
 			this.re_jar_array[i] = jar;
 		}
 	},
+>>>>>>> refs/heads/slidefix
 
-	setjars : function(jarobjs){
-		var win_size = window.innerWidth;
-		var featured = document.getElementById("featured");
-		var ul = featured.getElementsByTagName("ul")[0];
-		var len = jarobjs.length;
+Featured.getRemain = function(){
+	return this.jarArray.length%this.row;
+};
 
-		var get = {
-			_Len : function(len){
-				return len;
-			},
-			_Row : function(win_size){
-				var max = _o.base.winsize.max;
-				var min = _o.base.winsize.min;
-				if (win_size < min) {
-					return 1;
-				} else if (win_size >= min && win_size < max){
-					return 2;
-				} else if (win_size >= max) {
-					return 3;
-				}
-			},
-			_Column : function(){
-				var num = _o.base.num;
-				var col = parseInt(num.len/num.row);
-				return col;
-			},
-			_Remain : function(){
-				var num = _o.base.num;
-				var remain = num.len%num.row;
-				return remain;
-			}
-		};
+/* setting about featured end */
 
-		var createMatrix = function(lis){
-			var matrix = [];
-			var b = _o.base.num;
-			var c;
-			if (b.remain != 0){
-				c = b.column; 
-			} else {
-				c = b.column - 1;
-			}
-			for (var i=0 ; i<= c ; i++){
-				matrix[i] = [];
-				for (var j=0 ; j<b.row ; j++){
-					matrix[i][j] = lis[i*b.row + j];
-				}
-			}
-			return matrix;
-		}
 
+<<<<<<< HEAD
+=======
 		_o.base.num.len = get._Len(len);
 		_o.base.num.row = get._Row(win_size);
 		_o.base.num.column = get._Column();
 		_o.base.num.remain = get._Remain();
 		_o.base.arr = createMatrix(this.re_jar_array);
 	},
+>>>>>>> refs/heads/slidefix
 
+<<<<<<< HEAD
+/* used function in featured start */
+
+Featured.ascendingBottom = function(objArray){
+	var len = objArray.length;
+	for (var i=0; i<len ; i++){
+		for (var j=i+1 ; j<len ; j++){
+			var pos = this.getBottom(objArray[i]);
+			var posNext = this.getBottom(objArray[j]);
+			if (pos > posNext){
+				var temp = objArray[i];
+				objArray[i] = objArray[j];
+				objArray[j] = temp;
+=======
 	posjars : {
 		_all : function(){
 			this.posFirstGroup(_o.base.arr);
@@ -282,11 +287,30 @@ Featured.init = {
 			},
 			toInt : function(text){
 
+>>>>>>> refs/heads/slidefix
 			}
 		}
 	}
-}
+	return objArray;
+};
 
+<<<<<<< HEAD
+Featured.descendingBottom = function(objArray){
+	var len = objArray.length;
+	for (var i=0; i<len ; i++){
+		for (var j=i+1 ; j<len ; j++){
+			var pos = this.getBottom(objArray[i]);
+			var posNext = this.getBottom(objArray[j]);
+			if (pos < posNext){
+				var temp = objArray[i];
+				objArray[i] = objArray[j];
+				objArray[j] = temp;
+			}
+		}
+	}
+	return objArray;
+};
+=======
 
 var ScrollEvent = {
 	disableVerticalScroll : function(){
@@ -317,11 +341,111 @@ ScrollEvent.disableVerticalScroll();
 window.addEventListener("load", function(){
 	_o.init.posjars._all();
 }, false);
+>>>>>>> refs/heads/slidefix
 
+<<<<<<< HEAD
+Featured.toInt = function(text){
+	var result = parseInt(text.substring(0,text.length-2));
+	return result;
+};
+
+Featured.getBottom = function(obj){
+	var style = getComputedStyle(obj);
+	var bottom = this.toInt(style.top) + this.toInt(style.height) + this.jar.jMargin;
+	return bottom;
+};
+
+/* used function in featured end */
+=======
 window.addEventListener("resize",function(){
 	_o.init.setjars(jarobjs);
 	_o.init.posjars._all();
 },false);
+>>>>>>> refs/heads/slidefix
 
 
 
+
+/* set jar position function in featured start */
+
+Featured.posJars = function(){
+	this.posFirstGroup();
+	this.posOtherGroup();
+	this.featuredMargin();
+	this.featuredHeight();
+};
+
+Featured.posFirstGroup = function(){
+	for(var i=0 ; i<this.row ; i++){
+		this.jarArray[i].style.left = this.jar.jWidth*i + "px";
+		this.jarArray[i].style.top = "0px";
+	}
+};
+
+Featured.posOtherGroup = function(){
+	for (var i=1 ; i<=this.column ; i++){
+		var BEFORE = (i-1)*this.row;
+		var CURRENT = i*this.row;
+
+		if (i != this.column){ // 마지막 줄이 아닐 때
+			this.posInGroup(BEFORE, CURRENT, this.row);
+		} else { // 마지막줄일 때
+			this.posInGroup(BEFORE, CURRENT, this.remain);
+		}
+	}
+};
+
+Featured.posInGroup = function(BEFORE, CURRENT, REMAIN){
+	var baseObjArray = [];
+	for (var c=0 ; c<this.row ; c++){
+		baseObjArray[c] = this.jarArray[BEFORE+c];
+	}
+	baseObjArray = this.ascendingBottom(baseObjArray);
+	for(var c=0; c<REMAIN ; c++){
+		this.jarArray[CURRENT+c].style.left = getComputedStyle(baseObjArray[c]).left;
+		this.jarArray[CURRENT+c].style.top = this.getBottom(baseObjArray[c]) + "px";
+	}
+};
+
+Featured.featuredMargin = function(){
+	this.jarArray[0].parentNode.style.width = this.jar.jWidth*this.row + "px";
+};
+
+Featured.featuredHeight = function(){
+	var deArray = Array(this.row);
+	for (var i=0; i<this.row ; i++){
+		deArray[i] = this.jarArray[(this.jarArray.length-1)-i];
+	}
+	deArray = this.descendingBottom(deArray);
+	this.jarArray[0].parentNode.style.height = this.getBottom(deArray[0]) + "px";
+};
+
+Featured.posAll = function(){
+	this.Setting();
+	this.posJars();
+};
+
+/* set jar position function in featured end */
+
+
+
+var ScrollEvent = {
+	disableVerticalScroll : function(){
+		window.onmousewheel = this.wheel;
+		document.onkeydown = this.keydown;
+	},
+
+	keydown : function(e){
+		leftKey = 37;
+		rightKey = 39;
+		if (e.keyCode === leftKey || e.keyCode === rightKey){
+			e.preventDefault();
+		}
+	},
+
+	wheel : function(e){
+		if (e.wheelDeltaX != 0){
+			e.preventDefault();
+		}
+	}
+};

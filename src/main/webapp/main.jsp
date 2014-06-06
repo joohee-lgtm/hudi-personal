@@ -12,12 +12,12 @@
 <body>
 	<header>
 		<div>
-			<a href="/collageJam/main"> CollageJam </a>
+			<a href="./main.jsp"> CollageJam </a>
 			<a href="./mypage.jsp"> myJamJars </a>
-			<form method="post" action="/collageJam/login">
+			<form method="post" action="./login.jsp">
  				<input type="submit" value="login"/>
 			</form>
-			<a href="/collageJam/create">create</a>
+			<a href="./create.jsp">create</a>
 		</div>
     	<%
 			String greeting = "Hello, ";
@@ -45,7 +45,7 @@
 		<article id="intro">
 			<span>Your moments, your story.</span> <span>Create, explore
 				and share photo & video collections in beautiful and creative ways</span> <a
-				href="/collageJam/create">
+				href="./create.jsp">
 				<div></div> <span> Start Now </span>
 			</a> <span> or <a href="./signup.jsp"><u>Sign up</u></a> with
 				Email
@@ -73,19 +73,45 @@
 
 		<article id="featured">
 			<span>FEATURED</span>
+<<<<<<< HEAD
+			<div>
+				<div class="jar1">1</div><!--
+				--><div class="jar2">2</div><!--
+				--><div class="jar3">3</div><!--
+				--><div class="jar4">4</div><!--
+				--><div class="jar5">5</div><!--
+				--><div class="jar6">6</div><!--
+				--><div class="jar7">7</div><!--
+				--><div class="jar8">8</div><!--
+				--><div class="jar9">9</div><!--
+				--><div class="jar10">10</div><!--
+				--><div class="jar11">11</div><!--
+				--><div class="jar12">12</div><!--
+				--><div class="jar13">13</div><!--
+				--><div class="jar14">14</div><!--
+				--><div class="jar15">15</div><!--
+				--><div class="jar16">16</div><!--
+				--><div class="jar17">17</div>
+				</div>
+=======
 			<ul>
 			</ul>
+>>>>>>> refs/heads/slidefix
 			<span>Start</span>
 		</article>
 	</section>
 
 	<footer id="footer"></footer>
 	<script>
+<<<<<<< HEAD
+		var obj = ${data};
+=======
 		var data = ${data};
 		var jarobjs = [];
 		for (var i=0; i<15 ; i++){
 			jarobjs[i] = data[i];
 		}
+>>>>>>> refs/heads/slidefix
 	</script>
 	<script type="text/javascript" src="./src/js/main.js" /></script>
 </body>

@@ -17,12 +17,13 @@ public class MainFeaturedController {
 	
 	public void makeShowVideoList(){
 		String table = "jamjar";
-		String[] column = {"title", "tb_url", "date_created", "j_id", "u_id"};
+		String[] column = {"title", "tb_url", "date_created"};
 		String sql = selectColumnSql(table, column);
 		JSONArray rows = new JSONArray();
 		
 		DBSetting dbc = new DBSetting();
 		dbc. setJDBC();
+		Connection conn = dbc.getConnection();
 		Statement stmt = dbc.getStatement();
 		
 		try {
