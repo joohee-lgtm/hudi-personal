@@ -47,8 +47,7 @@ Featured.jar = {
 			li.appendChild(u_ele);
 			li.appendChild(tn_ele);
 			li.appendChild(desc_ele);
-			_o.jar.support.setId(li, jarobj.j_id);
-			that.li = li;
+			that.li = _o.jar.support.setId(li, jarobj.j_id);
 		},
 
 		_User : function(username){
@@ -93,10 +92,8 @@ Featured.jar = {
 			that._height = b_width*(t_height/t_width);
 		},
 		setId : function(li, id){
-			li.addEventListener("click", function(){
-				var url = "/collageJam/result?id="+id;
-				window.location = url;
-			}, false);
+			li.id = id;
+			return li;
 		}
 	}
 };
@@ -112,6 +109,13 @@ Featured.init = {
 			ul.appendChild(jar.li);
 			this.re_jar_array[i] = jar;
 		}
+		for (var i=0; i<ul.children.length ; i++){
+			var targ = ul.children[i];
+			targ.addEventListener("click", function(e){
+				var url = "collageJam/result?id=" + targ.id;
+				window.location = url;
+			}, false);
+		};
 	},
 
 	setjars : function(jarobjs){
@@ -196,7 +200,7 @@ Featured.init = {
 			objarr = s.ascendingBottom(objarr);
 			var lasttop = u.toInt(u.gcst(objarr[lis.length-1].li).top);
 			var lastheight = u.toInt(u.gcst(objarr[lis.length-1].li).height);
-			var last = lasttop + lastheight
+			var last = lasttop + lastheight + 200;
 			ul.style.height = last + "px";
 		},
 
@@ -230,7 +234,6 @@ Featured.init = {
 				var top = 20 + s.getBottom(baseObjArray[i]);
 				liarr[curcol][i].li.style.left = left + "px";
 				liarr[curcol][i].li.style.top = top +"px";
-				console.log(u.toInt(u.gcst(baseObjArray[i].li).left));
 			}
 		},
 
@@ -246,8 +249,9 @@ Featured.init = {
 			baseObjArray = s.ascendingBottom(baseObjArray);
 			if (b.remain != 0){
 				for(var i=0 ; i<b.remain ; i++){
+					var top = s.getBottom(baseObjArray[i]) + 20;
 					liarr[b.column][i].li.style.left = u.gcst(baseObjArray[i].li).left;
-					liarr[b.column][i].li.style.top = s.getBottom(baseObjArray[i])+"px";
+					liarr[b.column][i].li.style.top = top+"px";
 				}
 			}
 		},

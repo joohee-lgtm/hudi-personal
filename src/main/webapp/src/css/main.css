@@ -248,7 +248,7 @@
 
 /* ---------- show video section start ---------- */
 #featured{
-	width : 100%;
+	width 		: 100%;
 }
 
 #featured > span {
@@ -265,7 +265,7 @@
 }
 
 #featured > ul {
-	z-index 	: -10;
+	/* z-index 	: -10; */
 	position 	: relative;
 	margin 		: auto;
 	display 	: block;
@@ -292,7 +292,7 @@
 
 
 #featured > ul > li{
-	z-index 	: -10;
+	/* z-index 	: -10; */
 	position 	: absolute;
 	top 		: 0px;
 	left 		: 0px;
