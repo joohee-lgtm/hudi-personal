@@ -1,4 +1,3 @@
-var preview = {};
 
 preview.util = {
 	px : function(num){
