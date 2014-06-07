@@ -15,14 +15,23 @@
 
 	<section id="resultWrap">
 		<div>
+			<article id="player"></article>
+			<article id="slide">
+			</article>
+			<article id="info">
+				<ul>
+					<li>userid</li>
+<!-- 					<li>description</li>
+					<li>datetime</li>
+ -->				</ul>
+			</article>
+		</div>
+		<div>
 			<button>PLAY</button>
 			<button>STOP</button>
 		</div>
-		<article id="slide"></article>
-		<article id="player"></article>
-		<article id="info"></article>
 	</section>
-	
+	<footer>footer</footer>
 </body>
 	<script src="https://www.google.com/jsapi" type="text/javascript"></script>
 	<script type="text/javascript" src="./src/js/result/youtube_bgm.js"/></script>
