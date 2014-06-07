@@ -95,4 +95,3 @@
 	<script type="text/javascript" src="./src/js/create/sendData.js"/></script>
 </body>
 </html>
-

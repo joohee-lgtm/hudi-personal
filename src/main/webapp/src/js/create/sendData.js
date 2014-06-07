@@ -9,8 +9,8 @@ function sendUserData(e) {
 		aURL : "",
 		title : "",
 		desc : "",
+		user : "",
 		bgm : "",
-		user : "kjhwee91",
 		thumbnail : ""
 	};
 	

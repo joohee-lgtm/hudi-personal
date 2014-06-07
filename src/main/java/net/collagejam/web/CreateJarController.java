@@ -22,14 +22,17 @@ import org.json.JSONObject;
 public class CreateJarController {
 	JSONObject jar_obj;
 	int jarid;
+	String sessionId;
 
-	public CreateJarController(String data) {
+	public CreateJarController(String data, String sessionId) {
 		this.jar_obj = new JSONObject(data);
+		this.sessionId = sessionId;
 	}
 	
 	public void saveData(){
 		
-		String user = jar_obj.getString("user");
+//		String user = jar_obj.getString("user");
+		String user = sessionId;
 		String title = jar_obj.getString("title");
 		String description = jar_obj.getString("desc");
 		String bgm = jar_obj.getString("bgm");
