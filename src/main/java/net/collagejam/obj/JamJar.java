@@ -1,6 +1,9 @@
 package net.collagejam.obj;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+
+import org.json.JSONArray;
 
 public class JamJar {
 	private int j_id;
@@ -12,6 +15,8 @@ public class JamJar {
 	private String bgm_url;
 	private int views;
 	private int likes;
+	private ArrayList<String> photolist;
+	
 	
 	public JamJar(int j_id, int u_id, Timestamp date_created, 
 			String tb_url, String title, String description, 
@@ -24,7 +29,7 @@ public class JamJar {
 		this.description	= description;
 		this.bgm_url		= bgm_url;
 		this.views			= views;
-		this.views			= likes;
+		this.likes			= likes;
 	}
 	
 	@Override
@@ -33,5 +38,9 @@ public class JamJar {
 				+ date_created + ", tb_url=" + tb_url + ", title=" + title
 				+ ", description=" + description + ", bgm_url=" + bgm_url
 				+ ", views=" + views + ", likes=" + likes + "]";
+	}
+
+	public void setPhotolist(ArrayList<String> aUrl) {
+		this.photolist	= aUrl;
 	}
 }

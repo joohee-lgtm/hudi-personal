@@ -112,7 +112,7 @@ Featured.init = {
 		for (var i=0; i<ul.children.length ; i++){
 			var targ = ul.children[i];
 			targ.addEventListener("click", function(e){
-				var url = "collageJam/result?id=" + targ.id;
+				var url = "/collageJam/result?id=" + targ.id;
 				window.location = url;
 			}, false);
 		};

@@ -25,6 +25,7 @@ public class CreateController extends HttpServlet {
 	int uid = 0;
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		request.setCharacterEncoding("euc-kr");
 		String obj = request.getParameter("data");
 		
 		PrintWriter out = response.getWriter();

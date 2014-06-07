@@ -13,15 +13,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.aprilchoi.user.JamjarDao;
-import net.aprilchoi.user.PhotoListDao;
+import net.aprilchoi.user.PhotoDao;
 import net.collagejam.obj.JamJar;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import com.google.gson.Gson;
 
 
 public class ResultPageServlet extends HttpServlet{
 	private JamjarDao jdao;
-	private PhotoListDao pldao;
+	private PhotoDao pdao;
 	
 	private Connection getConnection() throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
@@ -44,7 +47,7 @@ public class ResultPageServlet extends HttpServlet{
 		}
 		
 		jdao	= new JamjarDao(conn);
-		pldao	= new PhotoListDao();
+		pdao	= new PhotoDao(conn);
 		
 		try {
 			selected = jdao.selectByJarId(jid);
@@ -52,18 +55,23 @@ public class ResultPageServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-//		try {
-//			aUrl = pldao.getUrlList(jid);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			aUrl = pdao.selectListOfPhotosByJarId(jid);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		selected.setPhotolist(aUrl);
 		String jarJson = gson.toJson(selected);
-		request.setAttribute("id", jid);
 		request.setAttribute("jamjar", jarJson);
-		request.setAttribute("aUrl", aUrl);
-		System.out.println(aUrl);
+		response.setContentType("text/html; charset=euc-kr");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
 		dispatcher.forward(request, response);
+	}
+
+	private JSONArray getJsonArray(ArrayList<String> aUrl) {
+		JSONArray arr 	= new JSONArray(aUrl);
+		return arr;
 	}
 }

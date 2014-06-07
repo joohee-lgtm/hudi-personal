@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import net.collagejam.obj.Photo;
 
@@ -14,14 +15,10 @@ public class PhotoDao {
 		this.conn = conn;
 	}
 
-	public Photo selectByJarId(final int jid) throws SQLException {
+	public ArrayList<String> selectListOfPhotosByJarId(final int jid) throws SQLException {
 		JdbcTemplate template = new JdbcTemplate(conn) {
-			Photo mapRow(ResultSet rs) throws SQLException {
-				return new Photo(
-						rs.getInt("j_id"),
-						rs.getInt("photo_order"),
-						rs.getString("photo_url")
-						);
+			String mapRow(ResultSet rs) throws SQLException {
+				return rs.getString("photo_url");
 			}
 			void setValues(PreparedStatement pstmt) throws SQLException {
 				pstmt.setInt(1, jid);
@@ -29,6 +26,6 @@ public class PhotoDao {
 		};
 		String query = "select * from photo_list where j_id=?";
 		
-		return (Photo)template.selectByJarId(query);
+		return template.selectListOfPhotosByJarId(query);
 	}
 }
