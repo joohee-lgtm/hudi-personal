@@ -88,8 +88,6 @@ public class CreateController extends HttpServlet {
 				+ qmark + bgm + qmark + ","
 				+ qmark + tb_url + qmark
 				+ ");";
-		System.out.println(sql);
-		//setUid(uid);
 		
 		try {
 			stmt.execute(sql);

@@ -14,11 +14,17 @@ function sendUserData(e) {
 		thumbnail : ""
 	};
 	
-	data.aURL = getImgURLs();
-	data.title = getTitle();
-	data.desc = getDesc();
-	data.bgm = getBgmId();
-	data.thumbnail = data.aURL[0];
+	data.aURL 			= getImgURLs();
+	data.title 			= getTitle();
+	data.desc 			= getDesc();
+	data.bgm 			= getBgmId();
+	data.thumbnail 		= data.aURL[0];
+	data.bgmStart		= getBgmStart();
+	data.bgmEnd			= getBgmEnd();
+	data.sec_per_img	= getSpi();
+	
+	console.log(data.sec_per_img);
+	
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/collageJam/create_jar", true);
@@ -73,6 +79,19 @@ function getBgmId() {
 function registerEvents() {
 	var createbt = document.getElementById('ajaxform');
 	createbt.addEventListener('submit', sendUserData, false);
+}
+
+function getBgmStart() {
+	return 10;
+}
+
+function getBgmEnd() {
+	return 10;
+}
+
+function getSpi() {
+	var spi = document.getElementById('rangevalue');
+	return spi.value;
 }
 
 window.addEventListener('load', function() {

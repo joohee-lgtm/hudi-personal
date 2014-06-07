@@ -15,7 +15,7 @@ public class CreateJarServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		System.out.println("create jar servlet connection");
 		String data = request.getParameter("data");
-
+		System.out.println(data);
 		HttpSession session = request.getSession();
 		String username = (String) session.getAttribute("username");
 		CreateJarController cjc = new CreateJarController(data, username);
