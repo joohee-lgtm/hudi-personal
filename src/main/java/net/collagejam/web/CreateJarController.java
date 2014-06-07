@@ -31,13 +31,16 @@ public class CreateJarController {
 	
 	public void saveData(){
 		
-//		String user = jar_obj.getString("user");
-		String user = sessionId;
-		String title = jar_obj.getString("title");
-		String description = jar_obj.getString("desc");
-		String bgm = jar_obj.getString("bgm");
-		String thumbnail = jar_obj.getString("thumbnail");
-		JSONArray urls = jar_obj.getJSONArray("aURL");
+//		String user 		= jar_obj.getString("user");
+		String user 		= sessionId;
+		String title 		= jar_obj.getString("title");
+		String description 	= jar_obj.getString("desc");
+		String bgm 			= jar_obj.getString("bgm");
+		String thumbnail 	= jar_obj.getString("thumbnail");
+		JSONArray urls 		= jar_obj.getJSONArray("aURL");
+		String bgmStart		= jar_obj.getString("bgmStart");
+		String bgmEnd 		= jar_obj.getString("bgmEnd");
+		String spi			= jar_obj.getString("secPerImg");
 		
 		DBSetting dbc = new DBSetting();
 		dbc.setJDBC();
@@ -45,7 +48,7 @@ public class CreateJarController {
 		
 		try {
 				int userid = getUserId(stmt, user);
-				insertInfoSql(stmt, userid, title, description, bgm, thumbnail);
+				insertInfoSql(stmt, userid, title, description, bgm, thumbnail, bgmStart, bgmEnd, spi);
 				searchJarId(stmt, userid);
 				insertImgsSql(stmt, jarid, urls);
 				stmt.close();
@@ -53,6 +56,7 @@ public class CreateJarController {
 				e.printStackTrace();
 		}
 	}
+	
 	public int getJarId(){
 		return this.jarid;
 	}
@@ -71,15 +75,20 @@ public class CreateJarController {
 		}
 	}
 	
-	void insertInfoSql(Statement stmt, int userid, String title, String description, String bgm, String thumbnail){
+	void insertInfoSql(Statement stmt, int userid, String title, String description, String bgm, String thumbnail, String bgmStart, String bgmEnd, String spi){
 		String q = "\"";
-		String sql = "insert into jamjar (u_id, title, description, bgm_url, tb_url) values ("
+		String sql = "insert into jamjar (u_id, title, description, bgm_url, tb_url, bgm_start, bgm_end, sec_per_img) values ("
 					+ String.valueOf(userid) +"," 
-					+ q + title + q + ", " 
-					+ q + description + q + ", " 
-					+ q + bgm + q + ", " 
-					+ q + thumbnail + q 
+					+ q + title 		+ q + ", " 
+					+ q + description 	+ q + ", " 
+					+ q + bgm 			+ q + ", " 
+					+ q + thumbnail 	+ q + ", "
+					+ q + bgmStart 		+ q + ", "
+					+ q + bgmEnd 		+ q + ", "
+					+ q + spi 			+ q 
 					+ ");";
+		
+		
 		System.out.println(sql);
 		try {
 			stmt.execute(sql);

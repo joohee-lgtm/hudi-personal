@@ -21,7 +21,7 @@ function sendUserData(e) {
 	data.thumbnail 		= data.aURL[0];
 	data.bgmStart		= getBgmStart();
 	data.bgmEnd			= getBgmEnd();
-	data.sec_per_img	= getSpi();
+	data.secPerImg		= getSpi();
 	
 	console.log(data.sec_per_img);
 	
