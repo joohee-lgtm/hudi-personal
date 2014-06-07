@@ -65,6 +65,7 @@ public class ResultPageServlet extends HttpServlet{
 		selected.setPhotolist(aUrl);
 		String jarJson = gson.toJson(selected);
 		request.setAttribute("jamjar", jarJson);
+		response.setContentType("text/html; charset=euc-kr");
 		RequestDispatcher dispatcher = request.getRequestDispatcher("result.jsp");
 		dispatcher.forward(request, response);
 	}
