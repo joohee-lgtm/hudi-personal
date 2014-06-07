@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
 <title>result</title>
 <link rel="stylesheet" type="text/css" href="./src/css/create/preview.css"/>
 <link rel="stylesheet" type="text/css" href="./src/css/create/result.css"/>
