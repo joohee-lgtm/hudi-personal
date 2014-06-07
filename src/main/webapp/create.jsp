@@ -57,7 +57,7 @@
 					<button type="button">stop</button>
 					<div>
 						<input type="range" min="0" max="500" value="5" step="5" onchange="rangevalue.value=value" />
-						<output id="rangevalue"></output>
+						<output id="rangevalue">100</output>
 						<span>x00.1s</span>
 					</div>
 				</div>

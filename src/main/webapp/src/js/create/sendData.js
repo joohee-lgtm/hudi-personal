@@ -82,11 +82,11 @@ function registerEvents() {
 }
 
 function getBgmStart() {
-	return 10;
+	return '1m10s';
 }
 
 function getBgmEnd() {
-	return 10;
+	return '2m2s';
 }
 
 function getSpi() {
