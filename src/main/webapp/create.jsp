@@ -37,9 +37,11 @@
 	</section>
 
 	<section id="musicSelectWrap">
-<!-- 		<div id="search"></div>
-		<div id="overview">Loading..</div>
- -->	</section>
+		<article id="content">
+		</article>
+		<ul>
+		</ul>
+	</section>
 
 	<section id="previewWrap">
 		<div>
@@ -93,6 +95,7 @@
 	<script type="text/javascript" src="./src/js/create/youtube.js"/></script>
 	<script type="text/javascript" src="./src/js/create/preview.js"/></script>
 	<script type="text/javascript" src="./src/js/create/sendData.js"/></script>
+	<script type="text/javascript" src="./src/js/create/bgm.js"/></script>
 </body>
 </html>
 
