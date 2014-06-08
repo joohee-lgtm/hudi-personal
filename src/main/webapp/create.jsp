@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body id = "body">
 <div id="wrap">
 	<header id="header">
 		<span>
