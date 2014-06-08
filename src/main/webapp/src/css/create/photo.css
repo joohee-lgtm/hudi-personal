@@ -46,7 +46,8 @@
 
 #overview {
 	background-color: white;
-	width: 874px;
+	height: 800px;
+	width: 890px;
 	margin: auto;
 	border: 1px solid gray;
 	border-radius: 8px;
@@ -115,13 +116,11 @@
 	height: 64px;
 	float: right;
 	color: black;
-	overflow-y: auto;
 	-webkit-transition: 0.5s;
 }
 
 #carousel.open {
 	display: none;
-
 }
 
 #carousel li {
@@ -160,13 +159,15 @@
 
 #viewport {
 	position: relative;
-	width: 960px;
+	width: 980px;
+	height: 800px;
 	margin: auto;
+	overflow: auto;
 }
 
 #sort-overview {
 	margin: auto;
-	overflow: auto;
+	height: 100%;
 }
 
 #sort-overview div {
