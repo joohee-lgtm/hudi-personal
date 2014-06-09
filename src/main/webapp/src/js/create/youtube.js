@@ -8,15 +8,15 @@ var done = false;
 var player;
 
 function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-      height: '300',
-      width: '400',
-      videoId: 'FTzeJO9zQ8E',
-      events: {
-        // 'onReady': onPlayerReady,
-        // 'onStateChange': onPlayerStateChange
-      }
-    });
+//    player = new YT.Player('player', {
+//      height: '300',
+//      width: '400',
+//      videoId: 'zj_tWuMgrPw',
+//      events: {
+//        // 'onReady': onPlayerReady,
+//        // 'onStateChange': onPlayerStateChange
+//      }
+//    });
 }
 
 function onPlayerReady(evt) {

@@ -43,10 +43,7 @@
 	var jamjar = ${jamjar};
 	var aUrl	= ${aUrl};
 	 */	
-	console.log(player);
 	 var jamjar = ${jamjar};
-	 console.log(jamjar);
-	 console.log(jamjar.photolist);
 	 var userDataModel = {
 			 originalURL : jamjar.photolist
 	 }
