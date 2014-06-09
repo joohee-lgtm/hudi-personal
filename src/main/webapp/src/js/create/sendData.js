@@ -24,8 +24,7 @@ function sendUserData(e) {
 	data.secPerImg		= getSpi();
 	
 	console.log(data.sec_per_img);
-	
-	
+		
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/collageJam/create_jar", true);
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -59,6 +58,9 @@ function gotoResultPage(i){
 	return false;
 }
 
+function getBgm(){
+	return selectedBGM.url;
+}
 
 function getImgURLs() {
 	return userDataModel.originalURL;

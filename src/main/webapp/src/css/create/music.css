@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
 #musicSelectWrap{
-	display 	: none;
+	border : 1px solid;
+}
+
+#content {
+	margin 		: auto;
+	margin-top 	: 200px;
 }

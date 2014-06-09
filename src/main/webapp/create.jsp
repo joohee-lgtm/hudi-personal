@@ -25,12 +25,38 @@
 			</ul>
 		</div>
 
-		<section id="photoSelectWrap">
-			<div id="search">
-				<form accept-charset="UTF-8" onsubmit="emulAcceptCharset(this)">
-					<input type="text" name="search-photos" autocomplete="off"
-						placeholder="Search for Images"> <span class="submit">
-					</span>
+	<section id="musicSelectWrap">
+		<div>
+		</div>
+		<article id="content"></article>
+		<ul></ul>
+	</section>
+
+	<section id="previewWrap">
+		<div>
+			<button> X </button>
+			<!-- reuse in result.jsp -->
+			<div id="slide">
+			</div>
+			<!-- reuse in result.jsp -->
+
+			<div id="player"></div>
+
+			<div id="setting">
+				<div>
+					<button type="button">play</button>
+					<button type="button">stop</button>
+					<div>
+						<input type="range" min="0" max="500" value="5" step="5" onchange="rangevalue.value=value" />
+						<output id="rangevalue">100</output>
+						<span>x00.1s</span>
+					</div>
+				</div>
+				<form id="ajaxform"><!--  id="ajaxform" action="create_jar" method="post" -->
+					<input type="text" placeholder="title">
+					<textarea rows="4" cols="30" placeholder="description"></textarea>
+					<input id="createbt" type="submit" value="submit"/>
+>>>>>>> refs/heads/slidefix
 				</form>
 			</div>
 			<div id="overview">Loading...</div>
@@ -91,11 +117,14 @@
 
 		</div>
 	</div>
-	<script src="https://www.google.com/jsapi" type="text/javascript"></script>
-	<script type="text/javascript" src="./src/js/create/fixed.js" /></script>
-	<script type="text/javascript" src="./src/js/create/photo.js" /></script>
-	<script type="text/javascript" src="./src/js/create/youtube.js" /></script>
-	<script type="text/javascript" src="./src/js/create/preview.js" /></script>
-	<script type="text/javascript" src="./src/js/create/sendData.js" /></script>
+
+</div>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="./src/js/create/fixed.js"/></script>
+	<script type="text/javascript" src="./src/js/create/photo.js"/></script>
+	<script type="text/javascript" src="./src/js/create/youtube.js"/></script>
+	<script type="text/javascript" src="./src/js/create/preview.js"/></script>
+	<script type="text/javascript" src="./src/js/create/sendData.js"/></script>
+	<script type="text/javascript" src="./src/js/create/bgm.js"/></script>
 </body>
 </html>

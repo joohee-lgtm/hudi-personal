@@ -297,9 +297,10 @@
 	top 		: 0px;
 	left 		: 0px;
 	width 		: 360px;
-	border		: 1px solid rgba(71, 71, 71, 0.5);
+	border		: 1px solid rgba(196, 196, 196, 1);
 	box-sizing 	: border-box;
-	border-radius 		: 10px;
+	box-shadow 	: 0px 0px 4px rgba(226, 226, 226, 1);
+	border-radius 		: 5px;
 	-webkit-box-sizing 	: border-box;
 	-moz-box-sizing 	: border-box;
 }
@@ -314,12 +315,12 @@
 #featured > ul > li > span:nth-child(1){
 	border-top-left-radius 		: 10px;
 	border-top-right-radius 	: 10px;
-	border-bottom 	: 1px solid rgba(71, 71, 71, 0.5);
+	border-bottom 	: 1px solid RGBA(196, 196, 196, 1);
 }
 #featured > ul > li > span:nth-child(2){
 	border-bottom-left-radius 	: 10px;
 	border-bottom-right-radius 	: 10px;
-	border-top	 : 1px solid rgba(71, 71, 71, 0.5);
+	border-top	 : 1px solid RGBA(196, 196, 196, 1);
 }
 
 #footer {
