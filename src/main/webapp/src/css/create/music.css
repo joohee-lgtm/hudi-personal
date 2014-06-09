@@ -1,10 +1,61 @@
 @charset "UTF-8";
 
 #musicSelectWrap{
-	border : 1px solid;
+	margin-top : 200px;
+	
 }
 
-#content {
-	margin 		: auto;
-	margin-top 	: 200px;
+.gsc-input input{
+	border-radius : 5px;
 }
+
+.gsc-search-button input[type="button"]{
+	width 		: 40px;
+	height 		: 40px;
+	border 		: 1px solid rgba(213, 221, 228, 1);
+	border-radius : 5px;
+	background 	: none;
+}
+
+#musicSelectWrap input[type="text"]{
+	width 		: 300px;
+	height 		: 40px;
+}
+
+#musicSelectWrap ul{
+	margin 		: auto;
+	width 		: 800px;
+	text-align	: center;
+	margin-top 	: 30px;
+	margin-bottom : 150px;
+	border 		: 1px solid RGBA(207, 207, 207, 1);
+	border-radius : 5px;
+	box-shadow 	: 0px 0px 2px RGBA(207, 207, 207, 1);
+}
+
+#musicSelectWrap ul li{
+	display 	: inline-block;
+	margin 		: 10px;
+}
+
+#musicSelectWrap img {
+	width 		: 150px;
+}
+
+#musicSelectWrap > div:nth-child(1){
+	margin 		: auto;
+	margin-bottom : 20px;
+	width 		: 800px;
+	height 		: 200px;
+	text-align 	: center;
+	border 		: 1px solid RGBA(207, 207, 207, 1);
+	border-radius : 5px;
+	box-shadow 	: 0px 0px 2px RGBA(207, 207, 207, 1);
+}
+
+#musicSelectWrap > article{
+	margin 		: auto;
+	margin-bottom : 20px;
+	width 		: 400px;
+}
+

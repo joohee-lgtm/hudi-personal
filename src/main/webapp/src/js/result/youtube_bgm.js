@@ -10,7 +10,7 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
       height: '300',
       width: '400',
-      videoId: 'FTzeJO9zQ8E',
+      videoId: jamjar.bgm_url,
       playerVars: {
     	  'autoplay': 0, 
     	  'controls': 0, 
@@ -19,6 +19,7 @@ function onYouTubeIframeAPIReady() {
     	  'modestbranding' : 0,
     	  'disablekb' : 0}
     });
+    console.log(jamjar.bgm_url);
 }
 
 function onPlayerReady(evt) {
