@@ -162,5 +162,20 @@ function fillOverview(imgSrc) {
 	overview.appendChild(slide);
 	slide.appendChild(imgFrame);
 	imgFrame.appendChild(newImg);
+	newImg.addEventListener('dragstart', handleDragStart, false);
+	newImg.addEventListener('dragend', handleDragLeave, false);
 }
+
+
+/* 추가한 사진 정렬시 필요한 드래그앤드롭 이벤트를 위한 함수들 */
+function handleDragStart(e) {
+	this.style.opacity = '0.0';
+}
+
+function handleDragLeave(e) {
+	this.style.opacity = '1.0';
+}
+
+
+
 google.setOnLoadCallback(OnLoad);
