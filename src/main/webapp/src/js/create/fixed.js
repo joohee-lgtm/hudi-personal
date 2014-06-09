@@ -73,15 +73,13 @@ var work = {
 				var that = this;
 				that.area.style.display = "block";
 				that.bg.style.display = "block";
-				_o.init.setArea.totalArea();
-				_o.init.imgloader();
-				_o.init.setPlay();
+				var urls = userDataModel.originalURL;
+				_o.slide._set(urls);
 			},
 
 			closebt : function(){
 				var that = this;
 				var clbt = that.area.children[0].children[0];
-				console.log(clbt);
 				clbt.addEventListener("click", function(){
 					that.area.style.display = "none";
 					that.bg.style.display = "none";
@@ -91,5 +89,12 @@ var work = {
 	}
 }
 
+var preview = {};
+
+var _o = preview;
+
 work.set();
 work.init();
+
+
+

@@ -84,7 +84,7 @@ public class RegisterServlet extends HttpServlet{
 		}
 		request.setAttribute("USERNAME", username);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("signupResult.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
 		dispatcher.forward(request, response);
 	}
 

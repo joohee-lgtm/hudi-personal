@@ -10,14 +10,14 @@
 <meta charset="utf-8">
 </head>
 <body>
-	<header id="header">
+	<header>
 		<div>
-			<a href="./main.jsp"> CollageJam </a>
+			<a href="/collageJam/main"> CollageJam </a>
 			<a href="./mypage.jsp"> myJamJars </a>
-			<form method="post" action="./login.jsp">
+			<form method="post" action="/collageJam/login">
  				<input type="submit" value="login"/>
 			</form>
-			<a href="./create.jsp">create</a>
+			<a href="/collageJam/create">create</a>
 		</div>
     	<%
 			String greeting = "Hello, ";
@@ -28,8 +28,9 @@
 		%>
 		<span id="userid"> Hello, <%=username%></span>
 	</header>
+
 	<section id="contents">
-		<section id="bgvideo">
+		<article id="bgvideo">
 			<video autoplay loop muted
 				poster="https://www.themusicbed.com/video/posters/home-the-music-bed.jpg">
 				<source
@@ -39,18 +40,19 @@
 					src="https://www.themusicbed.com/video/home-the-music-bed.webm"
 					type="video/webm">
 			</video>
-		</section>
-		<section id="intro">
+		</article>
+		
+		<article id="intro">
 			<span>Your moments, your story.</span> <span>Create, explore
 				and share photo & video collections in beautiful and creative ways</span> <a
-				href="./create.jsp">
+				href="/collageJam/create">
 				<div></div> <span> Start Now </span>
 			</a> <span> or <a href="./signup.jsp"><u>Sign up</u></a> with
 				Email
 			</span>
-		</section>
+		</article>
 
-		<section id="aboutApp">
+		<article id="aboutApp">
 			<span>Share your story with our creative applications</span>
 			<ul>
 				<li></li>
@@ -59,44 +61,31 @@
 				<li></li>
 				<li></li>
 			</ul>
-		</section>
+		</article>
 
-		<div id="countTotalView">
+		<article id="countTotalView">
 			<span> 999,999,999 </span>
 			<div></div>
 			<span> COLLAGEJAM MOMENTS VIEWD </span> <span> As featured in:
 				<div></div>
 			</span>
-		</div>
+		</article>
 
-		<section id="featured">
+		<article id="featured">
 			<span>FEATURED</span>
-			<div>
-				<div class="jar1">1</div><!--
-				--><div class="jar2">2</div><!--
-				--><div class="jar3">3</div><!--
-				--><div class="jar4">4</div><!--
-				--><div class="jar5">5</div><!--
-				--><div class="jar6">6</div><!--
-				--><div class="jar7">7</div><!--
-				--><div class="jar8">8</div><!--
-				--><div class="jar9">9</div><!--
-				--><div class="jar10">10</div><!--
-				--><div class="jar11">11</div><!--
-				--><div class="jar12">12</div><!--
-				--><div class="jar13">13</div><!--
-				--><div class="jar14">14</div><!--
-				--><div class="jar15">15</div><!--
-				--><div class="jar16">16</div><!--
-				--><div class="jar17">17</div>
-				</div>
+			<ul>
+			</ul>
 			<span>Start</span>
-		</section>
+		</article>
 	</section>
 
 	<footer id="footer"></footer>
 	<script>
-		var obj = ${data};
+		var data = ${data};
+		var jarobjs = [];
+		for (var i=0; i<15 ; i++){
+			jarobjs[i] = data[i];
+		}
 	</script>
 	<script type="text/javascript" src="./src/js/main.js" /></script>
 </body>

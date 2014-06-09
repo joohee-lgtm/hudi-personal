@@ -1,5 +1,4 @@
 /* youtube api 시작 */
-
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -12,10 +11,13 @@ function onYouTubeIframeAPIReady() {
       height: '300',
       width: '400',
       videoId: 'FTzeJO9zQ8E',
-      events: {
-        // 'onReady': onPlayerReady,
-        // 'onStateChange': onPlayerStateChange
-      }
+      playerVars: {
+    	  'autoplay': 0, 
+    	  'controls': 0, 
+    	  'showinfo' : 0, 
+    	  'showsearch' : 0, 
+    	  'modestbranding' : 0,
+    	  'disablekb' : 0}
     });
 }
 
@@ -30,4 +32,6 @@ function onPlayerStateChange(evt) {
     }
 }
 
-/* youtube api 끝 */
+function stopVideo() {
+    player.stopVideo();
+}

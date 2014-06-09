@@ -7,7 +7,7 @@
 </head>
 <body>
 	<header id="header">
-		<a href="./main.jsp"> CollageJam </a>
+		<a href="/collageJam/main"> CollageJam </a>
 	</header>
 
 	<form method="post" action="login.do">

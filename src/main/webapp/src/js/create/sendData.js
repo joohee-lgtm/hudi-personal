@@ -1,36 +1,64 @@
-/**
- * send data from client to server
- */
+/*
+	send data from client to server
+*/
 
 function sendUserData(e) {
-	var aURL = getImgURLs();
-	var title = getTitle();
-	var desc = getDesc();
-	var bgm = getBgmId();
+	e.preventDefault();
 	
 	var data = {
-		aURL : aURL,
-		title : title,
-		desc : desc,
-		bgm : bgm
+		aURL : "",
+		title : "",
+		desc : "",
+		user : "",
+		bgm : "",
+		thumbnail : ""
 	};
 	
-
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "/collageJam/create", true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	data.aURL 			= getImgURLs();
+	data.title 			= getTitle();
+	data.desc 			= getDesc();
+	data.bgm 			= getBgmId();
+	data.thumbnail 		= data.aURL[0];
+	data.bgmStart		= getBgmStart();
+	data.bgmEnd			= getBgmEnd();
+	data.secPerImg		= getSpi();
 	
+	console.log(data.sec_per_img);
+	
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", "/collageJam/create_jar", true);
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState === 4 && xhr.status === 200){
+			console.log('status: ' + xhr.statusText);
+			var created_jid = xhr.getResponseHeader("jid");
+			var url = "/collageJam/result?id="+created_jid;
+			window.location = url;
+			//gotoResultPage(created_jid);
+		}
+	};	
+	xhr.send("data="+JSON.stringify(data));
+	
+	return false;
+}
+
+function gotoResultPage(i){
+	var xhr = new XMLHttpRequest();
+	var url = "/collageJam/result?id="+i;
+	xhr.open("get", url, true);
+	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState === 4 && xhr.status === 200){
 			console.log('status: ' + xhr.statusText);
 		}
 	};	
-	
-	xhr.send("data="+JSON.stringify(data));
-	
-	e.preventDefault();
+	xhr.send();
 	return false;
 }
+
 
 function getImgURLs() {
 	return userDataModel.originalURL;
@@ -53,6 +81,21 @@ function registerEvents() {
 	createbt.addEventListener('submit', sendUserData, false);
 }
 
+function getBgmStart() {
+	return '1m10s';
+}
+
+function getBgmEnd() {
+	return '2m2s';
+}
+
+function getSpi() {
+	var spi = document.getElementById('rangevalue');
+	return spi.value;
+}
+
 window.addEventListener('load', function() {
 	registerEvents();
-}, false)
+}, false);
+
+
