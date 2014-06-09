@@ -1,17 +1,8 @@
 package net.collagejam.web;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import net.collagejam.model.DBSetting;
 
@@ -22,19 +13,25 @@ import org.json.JSONObject;
 public class CreateJarController {
 	JSONObject jar_obj;
 	int jarid;
+	String sessionId;
 
-	public CreateJarController(String data) {
+	public CreateJarController(String data, String sessionId) {
 		this.jar_obj = new JSONObject(data);
+		this.sessionId = sessionId;
 	}
 	
 	public void saveData(){
 		
-		String user = jar_obj.getString("user");
-		String title = jar_obj.getString("title");
-		String description = jar_obj.getString("desc");
-		String bgm = jar_obj.getString("bgm");
-		String thumbnail = jar_obj.getString("thumbnail");
-		JSONArray urls = jar_obj.getJSONArray("aURL");
+//		String user 		= jar_obj.getString("user");
+		String user 		= sessionId;
+		String title 		= jar_obj.getString("title");
+		String description 	= jar_obj.getString("desc");
+		String bgm 			= jar_obj.getString("bgm");
+		String thumbnail 	= jar_obj.getString("thumbnail");
+		JSONArray urls 		= jar_obj.getJSONArray("aURL");
+		String bgmStart		= jar_obj.getString("bgmStart");
+		String bgmEnd 		= jar_obj.getString("bgmEnd");
+		String spi			= jar_obj.getString("secPerImg");
 		
 		DBSetting dbc = new DBSetting();
 		dbc.setJDBC();
@@ -42,14 +39,16 @@ public class CreateJarController {
 		
 		try {
 				int userid = getUserId(stmt, user);
-				insertInfoSql(stmt, userid, title, description, bgm, thumbnail);
-				searchJarId(stmt, userid);
+				insertInfoSql(stmt, userid, title, description, bgm, thumbnail, bgmStart, bgmEnd, spi);
+				getJamjarId(stmt);
+//				searchJarId(stmt, userid);
 				insertImgsSql(stmt, jarid, urls);
 				stmt.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 		}
 	}
+	
 	public int getJarId(){
 		return this.jarid;
 	}
@@ -57,26 +56,33 @@ public class CreateJarController {
 	void insertImgsSql(Statement stmt, int jarid, JSONArray urls){
 		String sql_front = "insert into photo_list (j_id, photo_order, photo_url) values (";
 		String q = "\"";
-		for (int i=0; i<urls.length(); i++){
+		for (int i=0; i < urls.length(); i++){
 			String values = jarid + "," + i + "," + q + urls.getString(i) +q; 
-			String fullsql = sql_front + values + ");";
+			String sql = sql_front + values + ");";
+			System.out.println(sql);
 			try {
-				stmt.execute(fullsql);
+				stmt.execute(sql);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 	}
+
 	
-	void insertInfoSql(Statement stmt, int userid, String title, String description, String bgm, String thumbnail){
+	void insertInfoSql(Statement stmt, int userid, String title, String description, String bgm, String thumbnail, String bgmStart, String bgmEnd, String spi){
 		String q = "\"";
-		String sql = "insert into jamjar (u_id, title, description, bgm_url, tb_url) values ("
+		String sql = "insert into jamjar (u_id, title, description, bgm_url, tb_url, bgm_start, bgm_end, sec_per_img) values ("
 					+ String.valueOf(userid) +"," 
-					+ q + title + q + ", " 
-					+ q + description + q + ", " 
-					+ q + bgm + q + ", " 
-					+ q + thumbnail + q 
+					+ q + title 		+ q + ", " 
+					+ q + description 	+ q + ", " 
+					+ q + bgm 			+ q + ", " 
+					+ q + thumbnail 	+ q + ", "
+					+ q + bgmStart 		+ q + ", "
+					+ q + bgmEnd 		+ q + ", "
+					+ q + spi 			+ q 
 					+ ");";
+		
+		
 		System.out.println(sql);
 		try {
 			stmt.execute(sql);
@@ -116,7 +122,7 @@ public class CreateJarController {
 	}
 
 
-	int searchJarId(Statement stmt, int userid){
+	void searchJarId(Statement stmt, int userid){
 		int jarid = 0;
 		String get_jarid_sql = "select j_id from jamjar where u_id=" + String.valueOf(userid) + " order by date_created desc limit 1;";
 		System.out.println("search jarid sql : " + get_jarid_sql);
@@ -129,7 +135,19 @@ public class CreateJarController {
 			e.printStackTrace();
 		}
 		this.jarid = jarid;
-		return jarid;
+//		return jarid;
+	}
+	
+	private void getJamjarId(Statement stmt) throws SQLException {
+		String sql = "select LAST_INSERT_ID();";
+		ResultSet rs = stmt.executeQuery(sql);
+		int last_insert = 0;
+		
+		while (rs.next()){
+			last_insert = rs.getInt(1);
+		}
+		System.out.println("last_jid: " + last_insert);
+		this.jarid = last_insert;
 	}
 	
 	String selectSql(String table, String column){

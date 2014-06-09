@@ -9,18 +9,21 @@ function sendUserData(e) {
 		aURL : "",
 		title : "",
 		desc : "",
+		user : "",
 		bgm : "",
-		user : "kjhwee91",
 		thumbnail : ""
 	};
-
-	data.aURL = getImgURLs();
-	data.title = getTitle();
-	data.desc = getDesc();
-	data.bgm = getBgm();
-	data.thumbnail = userDataModel.originalURL[0];
 	
-	console.log(data);
+	data.aURL 			= getImgURLs();
+	data.title 			= getTitle();
+	data.desc 			= getDesc();
+	data.bgm 			= getBgmId();
+	data.thumbnail 		= data.aURL[0];
+	data.bgmStart		= getBgmStart();
+	data.bgmEnd			= getBgmEnd();
+	data.secPerImg		= getSpi();
+	
+		
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/collageJam/create_jar", true);
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -77,6 +80,19 @@ function getBgmId() {
 function registerEvents() {
 	var createbt = document.getElementById('ajaxform');
 	createbt.addEventListener('submit', sendUserData, false);
+}
+
+function getBgmStart() {
+	return '1m10s';
+}
+
+function getBgmEnd() {
+	return '2m2s';
+}
+
+function getSpi() {
+	var spi = document.getElementById('rangevalue');
+	return spi.value;
 }
 
 window.addEventListener('load', function() {

@@ -193,7 +193,7 @@ preview.play = {
 		var t = this;
 		var setting = document.getElementById("setting");
 		// 개별 페이지 일 때 속도 이슈 해결 해야됨
-		t.speed = setting.getElementsByTagName('div')[0].getElementsByTagName('input')[0].value;
+		t.speed = setting.getElementsByTagName('div')[0].getElementsByTagName('output')[0].value;
 		// t.count != 0 비교 연산자 버그
 		if (this.count === 0){
 			console.log("aaaa");

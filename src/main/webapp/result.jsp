@@ -47,6 +47,8 @@
 	 var userDataModel = {
 			 originalURL : jamjar.photolist
 	 }
+	 
+	 
 	</script>
 	<script type="text/javascript" src="./src/js/result/slide.js"/></script>
 	<script type="text/javascript" src="./src/js/result/json.js"/></script>
