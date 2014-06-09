@@ -174,7 +174,6 @@ result.slide = {
 
 	setFirstImg : function(){
 		var t = this;
-		
 		if (t.urls.length != 0){
 			 var firstimg = new _o.img.model(t.urls[0]);
 			 slide.appendChild(firstimg._img);
@@ -246,6 +245,9 @@ _o.init.setAll(startbtn, stopbtn, 640, 480);
 
 var urls = userDataModel.originalURL;
 _o.slide._set(urls);
+
+
+
 
 
 
