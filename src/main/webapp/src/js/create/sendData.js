@@ -13,12 +13,12 @@ function sendUserData(e) {
 		user : "kjhwee91",
 		thumbnail : ""
 	};
-	
+
 	data.aURL = getImgURLs();
 	data.title = getTitle();
 	data.desc = getDesc();
-	data.bgm = getBgmId();
-	data.thumbnail = data.aURL[0];
+	data.bgm = getBgm();
+	data.thumbnail = userDataModel.originalURL[0];
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/collageJam/create_jar", true);
@@ -53,6 +53,9 @@ function gotoResultPage(i){
 	return false;
 }
 
+function getBgm(){
+	return selectedBGM.url;
+}
 
 function getImgURLs() {
 	return userDataModel.originalURL;

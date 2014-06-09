@@ -37,10 +37,10 @@
 	</section>
 
 	<section id="musicSelectWrap">
-		<article id="content">
-		</article>
-		<ul>
-		</ul>
+		<div>
+		</div>
+		<article id="content"></article>
+		<ul></ul>
 	</section>
 
 	<section id="previewWrap">
@@ -89,7 +89,7 @@
 		</div>
 	</div>
 </div>
-	<script src="https://www.google.com/jsapi" type="text/javascript"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript" src="./src/js/create/fixed.js"/></script>
 	<script type="text/javascript" src="./src/js/create/photo.js"/></script>
 	<script type="text/javascript" src="./src/js/create/youtube.js"/></script>

@@ -84,8 +84,9 @@
 		var data = ${data};
 		var jarobjs = [];
 		for (var i=0; i<15 ; i++){
-			jarobjs[i] = data[i];
+			jarobjs[i] = data[data.length-i-1];
 		}
+		console.log(jarobjs);
 	</script>
 	<script type="text/javascript" src="./src/js/main.js" /></script>
 </body>
