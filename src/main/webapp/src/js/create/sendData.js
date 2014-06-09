@@ -20,6 +20,7 @@ function sendUserData(e) {
 	data.bgm = getBgm();
 	data.thumbnail = userDataModel.originalURL[0];
 	
+	console.log(data);
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/collageJam/create_jar", true);
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
