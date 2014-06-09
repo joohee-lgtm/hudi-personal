@@ -32,10 +32,12 @@
 
 #search {
 	font-family: helvetica;
+	font-size: 0.8em;
 	padding-top: 20px;
 	width: 920px;
 	background-color: white;
 	border-radius: 8px;
+	margin-bottom: 17px;
 }
 
 #search form {
@@ -81,9 +83,13 @@
 #overview div {
 	margin: 10px;
 	width: auto;
-	height: auto;
+	height: 143px;
 	display: inline-block;
 	border: 1px solid gray;
+}
+
+#overview div:hover {
+	background-color: #4b4b4b;
 }
 
 #overview div img {
@@ -91,11 +97,7 @@
 	margin: 3px;
 	width: 188px;
 	height: 135px;
-}
-
-#overview div:hover {
-	background-color: red;
-	
+	z-index: 0;
 }
 
 #arrangePhotos {
@@ -142,7 +144,7 @@
 }
 
 #carousel.open {
-	display: none;
+	opacity: 0;
 }
 
 #carousel li {

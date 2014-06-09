@@ -8,11 +8,9 @@ function userDataModel() {
 	this.originalURL = [];
 	this.tbURL = [];
 	// console.log(this.originalURL);
-
 	this.addPhotoURL = function(url) {
 		this.originalURL.push(url);
 	};
-
 	this.addTbURL = function(url) {
 		this.tbURL.push(url);
 	};
@@ -24,18 +22,13 @@ function OnLoad() {
 	var searchControl = new google.search.SearchControl();
 	var searcher = new google.search.ImageSearch();
 	searchControl.addSearcher(searcher);
-
 	searchControl.setSearchCompleteCallback(this, searchComplete);
-
 	// tell the searcher to draw itself and tell it where to attach
 	searchControl.draw(document.getElementById("result"));
-
 	// tell the searcher the number of result in each page.
 	searcher.setResultSetSize(8);
-
 	var userInput = document.URL;
 	userInput = userInput.split("search-photos=");
-
 	// execute an inital search
 	if (userInput[1]) {
 		var decodedUserInput = decodeURI(userInput[1]);
@@ -45,30 +38,22 @@ function OnLoad() {
 		// console.log("userInput is undefined.");
 		searchControl.execute("LINE LEONARD");
 	}
-	
 	setUpSortPhoto();
-
 	//searchControl.setSearchStartingCallback(this, document.prototype.OnSearchStarting);
 }
-
 //Refactoring
-function searchComplete(searchControl, searcher) {
 
+function searchComplete(searchControl, searcher) {
 	// Check that we got results
 	if (searcher.results && searcher.results.length > 0) {
 		// console.log(searcher.cursor.currentPageIndex);
-
 		// Loop through our results, printing them to the page.
 		var results = searcher.results;
 		// Grab our content div, clear it.
 		var contentDiv = document.getElementById('overview');
-
-		if (pageCursor === 1)
-			contentDiv.innerHTML = '';
-			
-			
-			//이벤트버블링이나 캡쳐링 이용하기
-		for ( var i = 0; i < results.length; i++) {
+		if (pageCursor === 1) contentDiv.innerHTML = '';
+		//이벤트버블링이나 캡쳐링 이용하기
+		for (var i = 0; i < results.length; i++) {
 			// For each result write it's title and image to the screen
 			var result = results[i];
 			var imageFrame = document.createElement('div');
@@ -78,10 +63,8 @@ function searchComplete(searchControl, searcher) {
 					alert("Sorry, You cannot add more than 90 photos");
 					return;
 				}
-				
 				var frames = document.getElementById("overview").childNodes;
-			
-				for ( var idx in frames) {
+				for (var idx in frames) {
 					if (frames[idx] === e.target.parentNode) {
 						var url = imageURLHolder[idx];
 						userDataModel.addPhotoURL(url);
@@ -95,25 +78,19 @@ function searchComplete(searchControl, searcher) {
 					}
 				}
 			};
-
 			var newImg = document.createElement('img');
-
 			// There is also a result.url property which has the escaped version
 			newImg.src = result.tbUrl;
 			imageURLHolder.push(result.url);
-
 			//imgContainer.appendChild(title);
 			imageFrame.appendChild(newImg);
-
 			// Put our title + image in the content
 			contentDiv.appendChild(imageFrame);
 		}
 	}
-
 	if (pageCursor === 8) {
 		// console.log("done");
 		return;
-
 	} else {
 		searcher.gotoPage(pageCursor);
 		pageCursor++;
@@ -161,7 +138,7 @@ function setArrangePhotoOpen() {
 	var arrangePhoto = document.getElementById("arrangePhotos");
 	var carousel = document.getElementById("carousel");
 	var sort_overview = document.getElementById("sort-overview");
-	if ( arrangePhoto.className === 'open') {
+	if (arrangePhoto.className === 'open') {
 		arrangePhoto.className = '';
 		carousel.className = '';
 		sort_overview.className = '';
@@ -173,9 +150,7 @@ function setArrangePhotoOpen() {
 	}
 }
 
-function setArrangeButtonsVisible() {
-	
-}
+function setArrangeButtonsVisible() {}
 
 function fillOverview(imgSrc) {
 	var overview = document.getElementById("sort-overview");
@@ -188,5 +163,4 @@ function fillOverview(imgSrc) {
 	slide.appendChild(imgFrame);
 	imgFrame.appendChild(newImg);
 }
-
 google.setOnLoadCallback(OnLoad);
