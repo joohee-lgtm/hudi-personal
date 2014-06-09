@@ -49,7 +49,8 @@ public class CreateJarController {
 		try {
 				int userid = getUserId(stmt, user);
 				insertInfoSql(stmt, userid, title, description, bgm, thumbnail, bgmStart, bgmEnd, spi);
-				searchJarId(stmt, userid);
+				getJamjarId(stmt);
+//				searchJarId(stmt, userid);
 				insertImgsSql(stmt, jarid, urls);
 				stmt.close();
 			} catch (SQLException e) {
@@ -64,11 +65,12 @@ public class CreateJarController {
 	void insertImgsSql(Statement stmt, int jarid, JSONArray urls){
 		String sql_front = "insert into photo_list (j_id, photo_order, photo_url) values (";
 		String q = "\"";
-		for (int i=0; i<urls.length(); i++){
+		for (int i=0; i < urls.length(); i++){
 			String values = jarid + "," + i + "," + q + urls.getString(i) +q; 
-			String fullsql = sql_front + values + ");";
+			String sql = sql_front + values + ");";
+			System.out.println(sql);
 			try {
-				stmt.execute(fullsql);
+				stmt.execute(sql);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -128,7 +130,7 @@ public class CreateJarController {
 	}
 
 
-	int searchJarId(Statement stmt, int userid){
+	void searchJarId(Statement stmt, int userid){
 		int jarid = 0;
 		String get_jarid_sql = "select j_id from jamjar where u_id=" + String.valueOf(userid) + " order by date_created desc limit 1;";
 		System.out.println("search jarid sql : " + get_jarid_sql);
@@ -141,7 +143,19 @@ public class CreateJarController {
 			e.printStackTrace();
 		}
 		this.jarid = jarid;
-		return jarid;
+//		return jarid;
+	}
+	
+	private void getJamjarId(Statement stmt) throws SQLException {
+		String sql = "select LAST_INSERT_ID();";
+		ResultSet rs = stmt.executeQuery(sql);
+		int last_insert = 0;
+		
+		while (rs.next()){
+			last_insert = rs.getInt(1);
+		}
+		System.out.println("last_jid: " + last_insert);
+		this.jarid = last_insert;
 	}
 	
 	String selectSql(String table, String column){
