@@ -85,10 +85,7 @@
 
 	<footer id="footer"></footer>
 	<script>
-		var data = $
-		{
-			data
-		};
+		var data = ${data};
 		var jarobjs = [];
 		for ( var i = 0; i < 15; i++) {
 			jarobjs[i] = data[data.length - i - 1];
