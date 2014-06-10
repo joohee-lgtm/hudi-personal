@@ -1,5 +1,6 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,21 +13,24 @@
 <body>
 	<header>
 		<div>
-			<a href="/collageJam/main"> CollageJam </a>
-			<a href="./mypage.jsp"> myJamJars </a>
-			<form method="post" action="/collageJam/login">
- 				<input type="submit" value="login"/>
-			</form>
+			<a href="/collageJam/main"> CollageJam </a> <a href="./mypage.jsp">
+				myJamJars </a>
+
+
+			<c:choose>
+				<c:when test="${sessionScope.username!=null}">
+					<a href="/collageJam/logout.do">logout</a>
+				</c:when>
+				<c:otherwise>
+					<form method="post" action="/collageJam/login">
+						<input type="submit" value="login" />
+					</form>
+				</c:otherwise>
+			</c:choose>
+			
 			<a href="/collageJam/create">create</a>
 		</div>
-    	<%
-			String greeting = "Hello, ";
-			String username = (String) session.getAttribute("username");
-			//System.out.println("username: " + username);
-			if(username == null)
-				username = "anonymous";
-		%>
-		<span id="userid"> Hello, <%=username%></span>
+		<span id="userid"> Hello, ${sessionScope.username} </span>
 	</header>
 
 	<section id="contents">
@@ -41,7 +45,7 @@
 					type="video/webm">
 			</video>
 		</article>
-		
+
 		<article id="intro">
 			<span>Your moments, your story.</span> <span>Create, explore
 				and share photo & video collections in beautiful and creative ways</span> <a
@@ -81,10 +85,13 @@
 
 	<footer id="footer"></footer>
 	<script>
-		var data = ${data};
+		var data = $
+		{
+			data
+		};
 		var jarobjs = [];
-		for (var i=0; i<15 ; i++){
-			jarobjs[i] = data[data.length-i-1];
+		for ( var i = 0; i < 15; i++) {
+			jarobjs[i] = data[data.length - i - 1];
 		}
 	</script>
 	<script type="text/javascript" src="./src/js/main.js" /></script>

@@ -1,4 +1,4 @@
-package test;
+package net.collagejam.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -87,7 +87,8 @@ public class LoginServlet extends HttpServlet{
 		}
 		System.err.println("connection closed");
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
-		dispatcher.forward(request, response);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
+//		dispatcher.forward(request, response);
+		response.sendRedirect("/collageJam/main");
 	}
 }

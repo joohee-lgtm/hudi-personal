@@ -19,7 +19,6 @@
 			<article id="slide"></article>
 			<article id="info">
 				<ul>
-					<li>userid</li>
 				</ul>
 			</article>
 		</div>
@@ -35,9 +34,9 @@
 	var userDataModel = {
 		originalURL : jamjar.photolist
 	}
-	console.log(jamjar);
 </script>
 <script src="https://www.google.com/jsapi" type="text/javascript"></script>
 <script type="text/javascript" src="./src/js/result/bgm.js" /></script>
 <script type="text/javascript" src="./src/js/result/slide.js" /></script>
+<script type="text/javascript" src="./src/js/result/info.js" /></script>
 </html>

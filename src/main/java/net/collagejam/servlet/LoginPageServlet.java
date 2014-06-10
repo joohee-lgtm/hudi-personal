@@ -13,10 +13,15 @@ import net.collagejam.web.MainFeaturedController;
 import org.json.JSONArray;
 
 public class LoginPageServlet extends HttpServlet{
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		System.out.println("login page servlet connection");
-		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
-		dispatcher.forward(request, response);
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+		doPost(request, response);
 	}
 
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		System.out.println("login page servlet connection");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
+		dispatcher.forward(req, resp);
+	}
 }
