@@ -37,22 +37,16 @@
 	</section>
 
 	<section id="musicSelectWrap">
-		<div>
-		</div>
+		<div><!-- show youtube preview --></div>
 		<article id="content"></article>
-		<ul></ul>
+		<ul><!-- show search youtube result --></ul>
 	</section>
 
 	<section id="previewWrap">
 		<div>
 			<button> X </button>
-			<!-- reuse in result.jsp -->
-			<div id="slide">
-			</div>
-			<!-- reuse in result.jsp -->
-
+			<div id="slide"></div>
 			<div id="player"></div>
-
 			<div id="setting">
 				<div>
 					<button type="button">play</button>
@@ -63,7 +57,7 @@
 						<span>x00.1s</span>
 					</div>
 				</div>
-				<form id="ajaxform"><!--  id="ajaxform" action="create_jar" method="post" -->
+				<form id="ajaxform">
 					<input type="text" placeholder="title">
 					<textarea rows="4" cols="30" placeholder="description"></textarea>
 					<input id="createbt" type="submit" value="submit"/>

@@ -12,25 +12,21 @@
 </head>
 <body>
 	<header>
-		<div>
-			<a href="/collageJam/main"> CollageJam </a> <a href="./mypage.jsp">
-				myJamJars </a>
-
-
-			<c:choose>
-				<c:when test="${sessionScope.username!=null}">
-					<a href="/collageJam/logout.do">logout</a>
-				</c:when>
-				<c:otherwise>
-					<form method="post" action="/collageJam/login">
-						<input type="submit" value="login" />
-					</form>
-				</c:otherwise>
-			</c:choose>
-			
-			<a href="/collageJam/create">create</a>
-		</div>
-		<span id="userid"> Hello, ${sessionScope.username} </span>
+	<div>
+		<a href="/collageJam/main"> CollageJam </a>
+		<c:choose>
+			<c:when test="${sessionScope.username!=null}">
+				<a href="/collageJam/logout.do">logout</a>
+				<a href="/collageJam/create">create</a>
+				<span id="userid"> Hello, ${sessionScope.username} </span>
+			</c:when>
+			<c:otherwise>
+				<a href="/collageJam/login">login</a>
+				<a href="/collageJam/create">create</a>
+				<span id="userid"> Hello, Anonymous </span>
+			</c:otherwise>
+		</c:choose>
+	</div>
 	</header>
 
 	<section id="contents">
