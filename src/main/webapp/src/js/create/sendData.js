@@ -57,10 +57,6 @@ function gotoResultPage(i){
 	return false;
 }
 
-function getBgm(){
-	return selectedBGM.url;
-}
-
 function getImgURLs() {
 	return userDataModel.originalURL;
 }
@@ -74,7 +70,7 @@ function getDesc() {
 }
 
 function getBgmId() {
-	return player.getVideoUrl();
+	return selectedBGM.url;
 }
 
 function registerEvents() {

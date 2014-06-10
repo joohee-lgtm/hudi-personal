@@ -58,10 +58,10 @@ public class ResultPageServlet extends HttpServlet{
 		try {
 			aUrl = pdao.selectListOfPhotosByJarId(jid);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// TODO Auto-generated cat ch block
 			e.printStackTrace();
 		}
-		//selected.setPhotolist(aUrl);
+		selected.setPhotolist(aUrl);
 		String jarJson = gson.toJson(selected);
 		request.setAttribute("jamjar", jarJson);
 		response.setContentType("text/html; charset=euc-kr");
