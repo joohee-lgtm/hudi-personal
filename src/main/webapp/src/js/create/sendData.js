@@ -64,20 +64,14 @@ function checkData(data){
 function alertPutData(alert_arr){
 	var alertext = "";
 	for (var i=0; i<alert_arr.length; i++){
-		alertext = alert_arr[i] + alert + "\n";
+		alertext = alertext + alert_arr[i] + "\n";
+		console.log(alertext);
 	}
-	console.log(alertext);
 	alert(alertext);
 }
 
 function getTn(urllist){
-	var tn;
-	if (urllist.length === 0){
-		tn = "./src/img/nophoto.jpg";
-	} else {
-		tn = urllist[0];
-	}
-	return tn;
+	return urllist[0];
 }
 
 function getImgURLs() {
@@ -85,26 +79,15 @@ function getImgURLs() {
 }
 
 function getTitle() {
-	var title = document.querySelector('#ajaxform > input').value;
-	if (title === "");{
-		title = "no title";
-	}
-	return title;
+	return document.querySelector('#ajaxform > input').value;
 }
 
 function getDesc() {
-	var desc = document.querySelector('#ajaxform > textarea').value;
-	if (desc === ""){
-		desc = "no description";
-	}
-	return desc;
+	return document.querySelector('#ajaxform > textarea').value;
 }
 
 function getBgmId() {
 	var bgm = selectedBGM.url;
-	if (bgm === ""){
-		bgm = "HxXYAfBdre8";
-	}
 	return bgm;
 }
 

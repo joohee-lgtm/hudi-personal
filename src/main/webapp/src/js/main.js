@@ -43,7 +43,7 @@ Featured.jar = {
 			var li = document.createElement("li");
 			var u_ele = this._User(jarobj.title);
 			var tn_ele = this._Tn(jarobj.tb_url, that);
-			var desc_ele = this._Desc(jarobj.date_created);
+			var desc_ele = this._Desc(jarobj.description);
 			li.appendChild(u_ele);
 			li.appendChild(tn_ele);
 			li.appendChild(desc_ele);

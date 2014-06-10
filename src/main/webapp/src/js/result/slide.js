@@ -197,6 +197,7 @@ result.play = {
 		var t = this;
 		var setting = document.getElementById("setting");
 		t.speed = jamjar.sec_per_img;
+		console.log(t.speed);
 		if (this.count === 0){
 		} else {
 			t._stop();
