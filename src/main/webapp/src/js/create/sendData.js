@@ -23,7 +23,6 @@ function sendUserData(e) {
 	data.bgmEnd			= getBgmEnd();
 	data.secPerImg		= getSpi();
 	
-		
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", "/collageJam/create_jar", true);
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -70,8 +69,8 @@ function getBgmEnd() {
 }
 
 function getSpi() {
-	var spi = document.getElementById('rangevalue');
-	return spi.value;
+	var speed = setting.getElementsByTagName('div')[0].getElementsByTagName('output')[0].value;
+	return speed;
 }
 
 window.addEventListener('load', function() {

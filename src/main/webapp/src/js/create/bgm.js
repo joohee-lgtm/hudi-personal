@@ -12,7 +12,6 @@ var selectedBGM = {
 		// url
 		// start
 		// end
-		
 };
 
 google.load('search', '1');

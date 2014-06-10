@@ -29,7 +29,8 @@ public class JamjarDao {
 						rs.getString("description"),
 						rs.getString("bgm_url"),
 						rs.getInt("views"),
-						rs.getInt("likes")
+						rs.getInt("likes"),
+						rs.getInt("sec_per_img")
 						);
 			}
 		};
