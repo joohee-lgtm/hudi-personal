@@ -5,6 +5,7 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var done = false;
 var player;
+var vdata;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -19,6 +20,7 @@ function onYouTubeIframeAPIReady() {
     	  'modestbranding' : 0,
     	  'disablekb' : 0}
     });
+    jObjInfo.getBgmInfo();
 }
 
 function onPlayerReady(evt) {

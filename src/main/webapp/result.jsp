@@ -18,8 +18,30 @@
 			<article id="player"></article>
 			<article id="slide"></article>
 			<article id="info">
-				<ul>
-				</ul>
+			<ul>
+				<li>
+					<span class="k">producer</span>
+					<span class="v"></span>
+				</li>
+				<li>
+					<span class="k">title</span>
+					<span class="v"></span>
+				</li>
+				<li>
+					<span class="k">description</span>
+					<span class="v"></span>
+				</li>
+				<li>
+					<span class="k">background youtube</span>
+					<span class="v"></span>
+				</li>
+				<li>
+				<li>
+					<span class="k">created date</span>
+					<span class="v"></span>
+				</li>
+				
+			</ul>
 			</article>
 		</div>
 		<div>
