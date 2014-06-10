@@ -30,30 +30,13 @@ function sendUserData(e) {
 
 	xhr.onreadystatechange = function(){
 		if(xhr.readyState === 4 && xhr.status === 200){
-			console.log('status: ' + xhr.statusText);
 			var created_jid = xhr.getResponseHeader("jid");
 			var url = "/collageJam/result?id="+created_jid;
 			window.location = url;
-			//gotoResultPage(created_jid);
 		}
 	};	
 	xhr.send("data="+JSON.stringify(data));
 	
-	return false;
-}
-
-function gotoResultPage(i){
-	var xhr = new XMLHttpRequest();
-	var url = "/collageJam/result?id="+i;
-	xhr.open("get", url, true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState === 4 && xhr.status === 200){
-			console.log('status: ' + xhr.statusText);
-		}
-	};	
-	xhr.send();
 	return false;
 }
 

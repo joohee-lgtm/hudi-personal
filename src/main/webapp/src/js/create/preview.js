@@ -1,3 +1,5 @@
+var preview = {};
+var _o = preview;
 
 preview.util = {
 	px : function(num){
@@ -196,9 +198,9 @@ preview.play = {
 		t.speed = setting.getElementsByTagName('div')[0].getElementsByTagName('output')[0].value;
 		// t.count != 0 비교 연산자 버그
 		if (this.count === 0){
-			console.log("aaaa");
+			console.log(this.count + "= 0");
 		} else {
-			console.log("bbb");
+			console.log(this.count + "!= 0");
 			t._stop();
 			t.count = 0;
 		}
@@ -217,7 +219,6 @@ preview.play = {
 		var temparea = document.getElementById("temparea");
 		temparea.appendChild(slide.children[1]);
 		t.slide.appendChild(temparea.children[0]);
-		console.log(_o.play.count);
 		_o.play.count++;
 	},
 

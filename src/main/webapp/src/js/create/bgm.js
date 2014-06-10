@@ -1,3 +1,10 @@
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var done = false;
+var player;
+
 var resultArr = [];
 var page = 1;
 var selectedBGM = {
@@ -29,7 +36,6 @@ function ytSearchComplete(searchControl, videoSearch){
 	}
 	if (page === 8){
 		setResultTn();
-		console.log(resultArr);
 		page = 1;
 		resultArr = [];
 		return ;
@@ -96,7 +102,6 @@ function addEvent(li, reobj){
 function sortUrl(url){
 	var start = url.search(/\?v=/) + 3;
 	subtext = url.substring(start, url.length);
-	console.log(subtext);
 	return subtext;
 }
 

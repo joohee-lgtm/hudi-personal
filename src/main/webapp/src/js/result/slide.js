@@ -55,7 +55,6 @@ result.img = {
 			}, false);
 
 			obj._img.addEventListener("error", function(){
-				//console.log("img load error");
 				obj._img.src = "./src/img/nophoto.jpg";
 				var o = ctr.getSize(obj);
 				obj._img.style.width = px(o._style._width);
@@ -142,7 +141,6 @@ result.init = {
 result.slide = {
 	slide : document.getElementById("slide"),
 	_set : function(urls){
-		//console.log(urls);
 		this.urls = urls;
 		this.clearArea();
 		this.setFirstImg();
@@ -202,9 +200,9 @@ result.play = {
 		t.speed = 100;
 		// t.count != 0 비교 연산자 버그
 		if (this.count === 0){
-			console.log("aaaa");
+			console.log(this.count + "= 0");
 		} else {
-			console.log("bbb");
+			console.log(this.count + "!= 0");
 			t._stop();
 			t.count = 0;
 		}
@@ -223,7 +221,6 @@ result.play = {
 		var temparea = document.getElementById("temparea");
 		temparea.appendChild(slide.children[1]);
 		t.slide.appendChild(temparea.children[0]);
-		console.log(_o.play.count);
 		_o.play.count++;
 	},
 

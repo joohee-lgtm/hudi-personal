@@ -1,5 +1,4 @@
 /* youtube api 시작 */
-
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -8,15 +7,18 @@ var done = false;
 var player;
 
 function onYouTubeIframeAPIReady() {
-//    player = new YT.Player('player', {
-//      height: '300',
-//      width: '400',
-//      videoId: 'zj_tWuMgrPw',
-//      events: {
-//        // 'onReady': onPlayerReady,
-//        // 'onStateChange': onPlayerStateChange
-//      }
-//    });
+    player = new YT.Player('player', {
+      height: '300',
+      width: '400',
+      videoId: jamjar.bgm_url,
+      playerVars: {
+    	  'autoplay': 0, 
+    	  'controls': 0, 
+    	  'showinfo' : 0, 
+    	  'showsearch' : 0, 
+    	  'modestbranding' : 0,
+    	  'disablekb' : 0}
+    });
 }
 
 function onPlayerReady(evt) {
@@ -30,4 +32,6 @@ function onPlayerStateChange(evt) {
     }
 }
 
-/* youtube api 끝 */
+function stopVideo() {
+    player.stopVideo();
+}

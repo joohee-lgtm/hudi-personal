@@ -90,10 +90,9 @@
 	</div>
 </div>
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="./src/js/create/preview.js"/></script>
 	<script type="text/javascript" src="./src/js/create/fixed.js"/></script>
 	<script type="text/javascript" src="./src/js/create/photo.js"/></script>
-	<script type="text/javascript" src="./src/js/create/youtube.js"/></script>
-	<script type="text/javascript" src="./src/js/create/preview.js"/></script>
 	<script type="text/javascript" src="./src/js/create/sendData.js"/></script>
 	<script type="text/javascript" src="./src/js/create/bgm.js"/></script>
 </body>

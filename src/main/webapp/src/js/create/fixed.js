@@ -89,9 +89,6 @@ var work = {
 	}
 }
 
-var preview = {};
-
-var _o = preview;
 
 work.set();
 work.init();
