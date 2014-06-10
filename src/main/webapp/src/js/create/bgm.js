@@ -56,12 +56,17 @@ function setResultTn(){
 	for (var i=0 ; i<resultArr.length ; i++){
 		var li = document.createElement("li");
 		var tnimg = "<img src=\"" +  resultArr[i].tbUrl + "\">";
-		li.innerHTML = tnimg;
+		var title = "<span>"+ resultArr[i].title + "</span>"; 
+		var total = tnimg +"<br>"+ title;
+		li.innerHTML = total;
 		newul.appendChild(li);
 		addEvent(li, resultArr[i]);
 	}
 	msw.appendChild(newul);
 }
+
+
+
 function putYt(ytobj){
 	var mswrap = document.getElementById("musicSelectWrap");
 	var div = mswrap.getElementsByTagName("div")[0];
@@ -96,6 +101,15 @@ function addEvent(li, reobj){
 		putYt(reobj);
 		putBgmAtPreview(reobj);
 	}, false);
+	
+	li.addEventListener('mouseover', function(){
+		li.style.background = "RGBA(35, 35, 34, 0.3)";
+	}, false);
+	
+	li.addEventListener('mouseout', function(){
+		li.style.background = "none";
+	}, false);
+
 }
 
 function sortUrl(url){

@@ -66,9 +66,7 @@
 		<article id="countTotalView">
 			<span> 999,999,999 </span>
 			<div></div>
-			<span> COLLAGEJAM MOMENTS VIEWD </span> <span> As featured in:
-				<div></div>
-			</span>
+			<span> COLLAGEJAM MOMENTS VIEWD </span>	
 		</article>
 
 		<article id="featured">

@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="./src/css/common.css"/> 
 	<link rel="stylesheet" type="text/css" href="./src/css/create/fixed.css"/>
 	<link rel="stylesheet" type="text/css" href="./src/css/create/photo.css"/>
-	<link rel="stylesheet" type="text/css" href="./src/css/create/music.css"/>
+	<link rel="stylesheet" type="text/css" href="./src/css/create/bgm.css"/>
 	<link rel="stylesheet" type="text/css" href="./src/css/create/preview.css"/>
 </head>
 
@@ -37,7 +37,9 @@
 	</section>
 
 	<section id="musicSelectWrap">
-		<div><!-- show youtube preview --></div>
+		<div><!-- show youtube preview -->
+			<p>search & select</p>
+		</div>
 		<article id="content"></article>
 		<ul><!-- show search youtube result --></ul>
 	</section>
