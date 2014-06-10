@@ -3,7 +3,6 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var done = false;
-var player;
 
 var resultArr = [];
 var page = 1;
@@ -65,15 +64,26 @@ function setResultTn(){
 	msw.appendChild(newul);
 }
 
-
-
+var player2;
 function putYt(ytobj){
+	var vId = sortUrl(ytobj.url);
+	player2 = new YT.Player('player2', {
+	      height: '180',
+	      width: '300',
+	      videoId: vId,
+	      events: {
+	      }
+	    });
+	var title = "<span>" + ytobj.title +"</span>";
 	var mswrap = document.getElementById("musicSelectWrap");
-	var div = mswrap.getElementsByTagName("div")[0];
-	var embed = "<embed src=\"" + ytobj.playUrl + "\">";
-	var span = "<span>" + ytobj.title +"</span>"
-	var total = embed + span;
-	div.innerHTML = total;
+	var span = mswrap.getElementsByTagName("span")[0];
+	span.innerHTML = title;
+//	var mswrap = document.getElementById("musicSelectWrap");
+//	var div = mswrap.getElementsByTagName("div")[0];
+//	var embed = "<embed src=\"" + ytobj.playUrl + "\">";
+//	var span = "<span>" + ytobj.title +"</span>"
+//	var total = embed + span;
+//	div.innerHTML = total;	
 }
 
 function putBgmAtPreview(ytobj){
@@ -96,6 +106,8 @@ function putBgmAtPreview(ytobj){
 	selectedBGM.url = vId;
 }
 
+var urlstorage;
+
 function addEvent(li, reobj){
 	li.addEventListener('click', function(){
 		putYt(reobj);
@@ -110,6 +122,10 @@ function addEvent(li, reobj){
 		li.style.background = "none";
 	}, false);
 
+}
+
+function stopYtInSelectMusic(){
+	player2.stopVideo();
 }
 
 function sortUrl(url){

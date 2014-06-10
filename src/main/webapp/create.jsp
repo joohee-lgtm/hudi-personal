@@ -37,8 +37,10 @@
 	</section>
 
 	<section id="musicSelectWrap">
-		<div><!-- show youtube preview -->
-			<p>search & select</p>
+		<div>
+			<div id="player2"></div>
+		<!-- show youtube preview -->
+			<span>search & select</span>
 		</div>
 		<article id="content"></article>
 		<ul><!-- show search youtube result --></ul>

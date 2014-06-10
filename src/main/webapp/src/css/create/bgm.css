@@ -60,7 +60,7 @@
 	margin 		: auto;
 	margin-bottom : 20px;
 	width 		: 900px;
-	height 		: 240px;
+	height 		: 250px;
 	text-align 	: center;
 	border 		: 1px solid RGBA(207, 207, 207, 1);
 	border-radius : 5px;
@@ -72,7 +72,7 @@
 	font-size :40px;
 }
 
-#musicSelectWrap div embed{
+#musicSelectWrap div iframe{
 	margin-top : 20px;
 	margin-left : auto;
 	margin-right : auto;

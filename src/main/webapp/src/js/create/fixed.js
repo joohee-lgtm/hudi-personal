@@ -1,3 +1,4 @@
+var player;
 var work = {
 
 	o : document.getElementById("navigation").getElementsByTagName("li"),
@@ -73,8 +74,13 @@ var work = {
 				var that = this;
 				that.area.style.display = "block";
 				that.bg.style.display = "block";
+				window.addEventListener("scroll",function(e){
+					console.log(e);
+					e.preventDefault();
+				},false);
 				var urls = userDataModel.originalURL;
 				_o.slide._set(urls);
+				stopYtInSelectMusic();
 			},
 
 			closebt : function(){
@@ -83,6 +89,8 @@ var work = {
 				clbt.addEventListener("click", function(){
 					that.area.style.display = "none";
 					that.bg.style.display = "none";
+				    player.stopVideo();
+				    _o.play._stop();
 				},false);
 			}
 		}
