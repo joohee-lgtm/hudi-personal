@@ -1,0 +1,93 @@
+@CHARSET "UTF-8";
+
+body {
+	width 	: 100%;
+	background 	: url("http://www.nhnnext.org/static/20140425/16/bg.jpg");
+	background-size : cover;
+}
+
+header {
+	height 	: 100px;
+	background 	: RGBA(71, 71, 71, 1);
+	text-align 	: center;
+	padding-top : 25px;
+}
+
+header a{
+	font-family : "Exo";
+	color 		: RGBA(137, 252, 203, 1);
+	font-size 	: 50px;
+}
+
+#resultWrap {
+	margin-top 	: 20px;
+	text-align 	: center;
+	position 	: relative;
+	top 	: 0px;
+	left 	: 0px;
+}
+
+#resultWrap #temparea {
+	display : none;
+}
+
+#resultWrap > #slide{
+	margin 	: auto;
+	width 		: 80%;
+	border 		: 1px solid RGBA(137, 252, 203, 1);
+	box-sizing 	: border-box;
+	-moz-box-sizing 	: border-box;
+	-webkit-box-sizing 	: border-box;
+}
+
+#resultWrap > #player {
+	display : none;
+	width 		: 20%;
+	border 		: 1px solid RGBA(137, 252, 203, 1);
+	box-sizing 	: border-box;
+	-moz-box-sizing 	: border-box;
+	-webkit-box-sizing 	: border-box;
+}
+
+#btn {
+	margin	 	: 20px 0px;
+	text-align : center;
+}
+
+#btn button {
+	height 	: 60px;
+	width 	: 30%;
+	color 	: RGBA(140, 255, 207, 1);
+    border	: 1px solid RGBA(140, 255, 207, 1);
+	background 	: RGBA(0, 0, 0, 0.7);
+	font-family : 'Nanum Gothic';
+	font-weight : lighter;
+	letter-spacing : 1em;
+}
+
+#btn button:nth-child(1) {
+	margin-right : 3%;
+}
+
+#info {
+	dispaly : block;
+	width 	: 80%;
+	color 	: RGBA(255, 255, 255, 0.7);
+	border	: 1px solid RGBA(140, 255, 207, 1);
+	margin 	: auto;
+	padding : 20px 0px;
+}
+
+#info p {
+	margin-left : 20px;
+}
+
+footer {
+	width 	: 100%;
+	height 	: 200px;
+	border 	: 1px solid white;
+	margin-top 	: 50px;
+	box-sizing 	: border-box;
+	-moz-box-sizing 	: border-box;
+	-webkit-box-sizing 	: border-box;
+}

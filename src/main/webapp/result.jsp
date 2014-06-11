@@ -36,7 +36,6 @@
 					<span class="v"></span>
 				</li>
 				<li>
-				<li>
 					<span class="k">created date</span>
 					<span class="v"></span>
 				</li>
@@ -53,6 +52,7 @@
 </body>
 <script>
 	var jamjar = ${jamjar};
+	console.log(jamjar);
 	var userDataModel = {
 		originalURL : jamjar.photolist
 	}
