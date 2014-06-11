@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header>
-		<a>collageJam</a>
+		<a href="/collageJam/m/main">collageJam</a>
 	</header>
 	<section id="resultWrap">
 		<article id="player"></article>
@@ -44,13 +44,15 @@
 					<p class="v"></p>
 				</li>
 	</section>
-	<footer></footer>
+	<footer>
+	<a href="/collageJam/m/featured">show more featured</a>
+	</footer>
 </body>
 <script>
 	var slidetotal = document.getElementById("resultWrap");
 	var slide = document.getElementById("slide");
 	slide.style.height = window.getComputedStyle(slide).width;
-	var jamjar = {
+/* 	var jamjar = {
 		bgm_url: "2GRP1rkE4O0",
 		date_created: "Jun 11, 2014 3:49:13 PM",
 		description: "b",
@@ -68,8 +70,8 @@
 			"http://1.bp.blogspot.com/-AlE59EKecfc/UwM3Z2pgVnI/AAAAAAAA12c/4esJXPuaT-I/s1600/Line+with+Leonard+and+Sally.JPG",
 		]
 	};
-	
- 	/* var jamjar = ${jamjar}; */
+ */	
+ 	var jamjar = ${jamjar};
 	var userDataModel = {
 		originalURL : jamjar.photolist
 	}
