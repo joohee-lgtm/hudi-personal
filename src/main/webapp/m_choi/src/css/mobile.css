@@ -133,15 +133,23 @@ header {
 
 .container > div:nth-child(1) > .aboutImg {
 	background-image: url('../../img/photos.png');
+	background-repeat:no-repeat;
+	background-size: 100%;
 }
 .container > div:nth-child(2) > .aboutImg {
 	background-image: url('../../img/music.png');
+	background-repeat:no-repeat;
+	background-size: 100%;
 }
 .container > div:nth-child(3) > .aboutImg {
 	background-image: url('../../img/slidely02.png');
+	background-repeat:no-repeat;
+	background-size: 100%;
 }
 .container > div:nth-child(4) > .aboutImg {
 	background-image: url('../../img/slidely01.png');
+	background-repeat:no-repeat;
+	background-size: 100%;
 }
 
 .aboutText {
