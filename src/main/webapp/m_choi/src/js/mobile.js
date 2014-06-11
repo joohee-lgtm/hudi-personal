@@ -256,7 +256,7 @@ function registerToggleMenuEvent(classname) {
 
 function registerEvents() {
 	registerToggleMenuEvent('toggler');
-	registerFlickingEvent('flickView');
+	//registerFlickingEvent('flickView');
 }
 
 function init() {

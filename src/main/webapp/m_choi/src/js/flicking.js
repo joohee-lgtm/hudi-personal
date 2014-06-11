@@ -90,9 +90,14 @@ var mFlicking = (function() {
 		console.log(nContainerWidth);
 	};
 	
+	mFlicking.init = function() {
+		_attachTouchStart();
+		_attachTouchMove();
+		_attachTouchEnd();
+	}
 	return mFlicking;
 }());
 
 window.addEventListener('load', function() {
-	mFlicking.test();
+	mFlicking.init();
 }, false);
