@@ -60,7 +60,8 @@
             </div>
         </section>
         <script type="text/javascript" src="src/js/mobile.js" ></script> 
-        <script type="text/javascript" src="src/js/main.js" ></script> 
+        <script type="text/javascript" src="src/js/main.js" ></script>  
+        <script type="text/javascript" src="src/js/flicking.js" ></script> 
         <script type="text/javascript" src="lib/_JE.js" ></script> 
     </body>
 </html>
