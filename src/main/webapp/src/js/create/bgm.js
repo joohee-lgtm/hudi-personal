@@ -67,6 +67,15 @@ function setResultTn(){
 var player2;
 function putYt(ytobj){
 	var vId = sortUrl(ytobj.url);
+	var title = "<span>" + ytobj.title +"</span>";
+	var mswrap = document.getElementById("musicSelectWrap");
+	var span = mswrap.getElementsByTagName("span")[0];
+	var div = mswrap.getElementsByTagName("div")[0];
+	var pyt = document.getElementById("player2");
+	div.removeChild(pyt);
+	var newyt = document.createElement("div");
+	newyt.id = "player2";
+	div.insertBefore(newyt, span);
 	player2 = new YT.Player('player2', {
 	      height: '180',
 	      width: '300',
@@ -74,16 +83,7 @@ function putYt(ytobj){
 	      events: {
 	      }
 	    });
-	var title = "<span>" + ytobj.title +"</span>";
-	var mswrap = document.getElementById("musicSelectWrap");
-	var span = mswrap.getElementsByTagName("span")[0];
 	span.innerHTML = title;
-//	var mswrap = document.getElementById("musicSelectWrap");
-//	var div = mswrap.getElementsByTagName("div")[0];
-//	var embed = "<embed src=\"" + ytobj.playUrl + "\">";
-//	var span = "<span>" + ytobj.title +"</span>"
-//	var total = embed + span;
-//	div.innerHTML = total;	
 }
 
 function putBgmAtPreview(ytobj){
