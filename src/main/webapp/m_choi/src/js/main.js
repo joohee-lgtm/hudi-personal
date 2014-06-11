@@ -70,6 +70,7 @@ var JE_Mobile = (function() {
 		var frameWidth = vFrame.frameWidthIncldMargin;
 		var eleWrapper = _JE.getElByClass(classname)[0].parentNode;
 		var wrapperPaddingLeft = (viewportWidth - numFrames * frameWidth) / 2 + 'px';
+		
 		_JE.setCSSStyle(eleWrapper, {
 			'padding-left' : wrapperPaddingLeft
 		});
