@@ -1,4 +1,4 @@
-package net.collagejam.web;
+package test;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -22,7 +22,7 @@ public class CreateJamjarController extends HttpServlet{
 			throws IOException, ServletException {
 		String object = request.getParameter("data");
 		JSONObject jsonObj = new JSONObject(object);
-	
+				
 		String user = jsonObj.getString("user");
 		String title = jsonObj.getString("title");
 		String description = jsonObj.getString("desc");

@@ -15,12 +15,13 @@ public class JamJar {
 	private String bgm_url;
 	private int views;
 	private int likes;
+	private int sec_per_img;
 	private ArrayList<String> photolist;
 	
 	
 	public JamJar(int j_id, int u_id, Timestamp date_created, 
 			String tb_url, String title, String description, 
-			String bgm_url, int views, int likes) {
+			String bgm_url, int views, int likes, int sec_per_img) {
 		this.j_id 			= j_id;
 		this.u_id 			= u_id;
 		this.date_created 	= date_created;
@@ -30,6 +31,7 @@ public class JamJar {
 		this.bgm_url		= bgm_url;
 		this.views			= views;
 		this.likes			= likes;
+		this.sec_per_img			= sec_per_img;
 	}
 	
 	@Override

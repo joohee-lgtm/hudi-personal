@@ -1,3 +1,5 @@
+var preview = {};
+var _o = preview;
 
 preview.util = {
 	px : function(num){
@@ -193,12 +195,10 @@ preview.play = {
 		var t = this;
 		var setting = document.getElementById("setting");
 		// 개별 페이지 일 때 속도 이슈 해결 해야됨
-		t.speed = setting.getElementsByTagName('div')[0].getElementsByTagName('output')[0].value;
+		 t.speed = setting.getElementsByTagName('div')[0].getElementsByTagName('output')[0].value;
 		// t.count != 0 비교 연산자 버그
 		if (this.count === 0){
-			console.log("aaaa");
 		} else {
-			console.log("bbb");
 			t._stop();
 			t.count = 0;
 		}
@@ -217,7 +217,6 @@ preview.play = {
 		var temparea = document.getElementById("temparea");
 		temparea.appendChild(slide.children[1]);
 		t.slide.appendChild(temparea.children[0]);
-		console.log(_o.play.count);
 		_o.play.count++;
 	},
 
@@ -232,6 +231,29 @@ preview.play = {
 		}
 	}
 };
+
+
+var ScrollEvent = {
+	disableVerticalScroll : function(){
+		window.onmousewheel = this.wheel;
+		document.onkeydown = this.keydown;
+	},
+
+	keydown : function(e){
+		leftKey = 37;
+		rightKey = 39;
+		if (e.keyCode === leftKey || e.keyCode === rightKey){
+			e.preventDefault();
+		}
+	},
+
+	wheel : function(e){
+		if (e.wheelDeltaX != 0){
+			e.preventDefault();
+		}
+	}
+};
+
 
 var setting = document.getElementById("setting");
 var startbtn = setting.getElementsByTagName("button")[0];

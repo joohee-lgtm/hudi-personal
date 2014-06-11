@@ -44,6 +44,7 @@
 }
 
 #navigation ul li button {
+	cursor: pointer;
 	font-family : "Nanum Barun Gothic";
 	color 		: rgba(140, 255, 207, 0.5);
 	border 		: 1px solid rgba(140, 255, 207, 0.5);
@@ -101,50 +102,4 @@
 	border 		: 2px solid white;
 }
 
-
-
-
-/*#navigation div {
-	font-family: "Exo";
-	font-size: 30px;
-	margin: auto;
-	width: 980px;
-	color: white;
-}
-
-#navigation div span:nth-child(1) {
-	display: inline-block;
-	margin-top: 12px;
-}
-
-#navigation div a {
-	text-decoration: none;
-	color: white;
-}
-
-#resultButton {
-	width: 100px;
-	height: 40px;
-	color: white;
-	display: inline-block;
-	float: right;
-	text-align: center;
-	margin-top: 15px;
-	padding-top: 0px;
-	background-color: #239933;
-	border-radius: 8px;
-}
-
-#navigation div span a:hover {
-	text-decoration: none;
-	color:yellow;
-}
-
-#navigation div span a {
-	font-size: 25px;
-	font-family: "Exo";
-	text-decoration: none;
-	color:white;
-}
-*/
 

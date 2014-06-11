@@ -55,7 +55,6 @@ result.img = {
 			}, false);
 
 			obj._img.addEventListener("error", function(){
-				//console.log("img load error");
 				obj._img.src = "./src/img/nophoto.jpg";
 				var o = ctr.getSize(obj);
 				obj._img.style.width = px(o._style._width);
@@ -142,7 +141,6 @@ result.init = {
 result.slide = {
 	slide : document.getElementById("slide"),
 	_set : function(urls){
-		//console.log(urls);
 		this.urls = urls;
 		this.clearArea();
 		this.setFirstImg();
@@ -174,6 +172,7 @@ result.slide = {
 
 	setFirstImg : function(){
 		var t = this;
+		
 		if (t.urls.length != 0){
 			 var firstimg = new _o.img.model(t.urls[0]);
 			 slide.appendChild(firstimg._img);
@@ -197,13 +196,10 @@ result.play = {
 	_start : function(){
 		var t = this;
 		var setting = document.getElementById("setting");
-		// 개별 페이지 일 때 속도 이슈 해결 해야됨
-		t.speed = 100;
-		// t.count != 0 비교 연산자 버그
+		t.speed = jamjar.sec_per_img;
+		console.log(t.speed);
 		if (this.count === 0){
-			console.log("aaaa");
 		} else {
-			console.log("bbb");
 			t._stop();
 			t.count = 0;
 		}
@@ -222,7 +218,6 @@ result.play = {
 		var temparea = document.getElementById("temparea");
 		temparea.appendChild(slide.children[1]);
 		t.slide.appendChild(temparea.children[0]);
-		console.log(_o.play.count);
 		_o.play.count++;
 	},
 
@@ -245,9 +240,6 @@ _o.init.setAll(startbtn, stopbtn, 640, 480);
 
 var urls = userDataModel.originalURL;
 _o.slide._set(urls);
-
-
-
 
 
 

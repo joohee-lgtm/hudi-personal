@@ -18,48 +18,60 @@ function sendUserData(e) {
 	data.title 			= getTitle();
 	data.desc 			= getDesc();
 	data.bgm 			= getBgmId();
-	data.thumbnail 		= data.aURL[0];
+	data.thumbnail 		= getTn(data.aURL);
 	data.bgmStart		= getBgmStart();
 	data.bgmEnd			= getBgmEnd();
 	data.secPerImg		= getSpi();
 	
-	console.log(data.sec_per_img);
-		
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "/collageJam/create_jar", true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState === 4 && xhr.status === 200){
-			console.log('status: ' + xhr.statusText);
-			var created_jid = xhr.getResponseHeader("jid");
-			var url = "/collageJam/result?id="+created_jid;
-			window.location = url;
-			//gotoResultPage(created_jid);
-		}
-	};	
-	xhr.send("data="+JSON.stringify(data));
+	var incomplete_data_arr = checkData(data);
 	
-	return false;
+	if (incomplete_data_arr.length === 0){
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "/collageJam/create_jar", true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState === 4 && xhr.status === 200){
+				var created_jid = xhr.getResponseHeader("jid");
+				var url = "/collageJam/result?id="+created_jid;
+				window.location = url;
+			}
+		};	
+		xhr.send("data="+JSON.stringify(data));
+		
+		return false;
+	} else {
+		alertPutData(incomplete_data_arr);
+	}
 }
 
-function gotoResultPage(i){
-	var xhr = new XMLHttpRequest();
-	var url = "/collageJam/result?id="+i;
-	xhr.open("get", url, true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+function checkData(data){
+	var data_arr = [];
+	var text;
 
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState === 4 && xhr.status === 200){
-			console.log('status: ' + xhr.statusText);
-		}
-	};	
-	xhr.send();
-	return false;
+	if(data.aURL.length === 0)
+		data_arr.push("select one more image");
+	if(data.title === "")
+		data_arr.push("please set title");
+	if(data.desc === "")
+		data_arr.push("please set desc");
+	if(data.bgm === "")
+		data_arr.push("select background music");
+	
+	return data_arr;
 }
 
-function getBgm(){
-	return selectedBGM.url;
+function alertPutData(alert_arr){
+	var alertext = "";
+	for (var i=0; i<alert_arr.length; i++){
+		alertext = alertext + alert_arr[i] + "\n";
+		console.log(alertext);
+	}
+	alert(alertext);
+}
+
+function getTn(urllist){
+	return urllist[0];
 }
 
 function getImgURLs() {
@@ -75,7 +87,8 @@ function getDesc() {
 }
 
 function getBgmId() {
-	return player.getVideoUrl();
+	var bgm = selectedBGM.url;
+	return bgm;
 }
 
 function registerEvents() {
@@ -92,8 +105,8 @@ function getBgmEnd() {
 }
 
 function getSpi() {
-	var spi = document.getElementById('rangevalue');
-	return spi.value;
+	var speed = setting.getElementsByTagName('div')[0].getElementsByTagName('output')[0].value;
+	return speed;
 }
 
 window.addEventListener('load', function() {

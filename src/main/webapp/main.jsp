@@ -1,5 +1,6 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,22 +12,21 @@
 </head>
 <body>
 	<header>
-		<div>
-			<a href="/collageJam/main"> CollageJam </a>
-			<a href="./mypage.jsp"> myJamJars </a>
-			<form method="post" action="/collageJam/login">
- 				<input type="submit" value="login"/>
-			</form>
-			<a href="/collageJam/create">create</a>
-		</div>
-    	<%
-			String greeting = "Hello, ";
-			String username = (String) session.getAttribute("username");
-			//System.out.println("username: " + username);
-			if(username == null)
-				username = "anonymous";
-		%>
-		<span id="userid"> Hello, <%=username%></span>
+	<div>
+		<a href="/collageJam/main"> CollageJam </a>
+		<c:choose>
+			<c:when test="${sessionScope.username!=null}">
+				<a href="/collageJam/logout.do">logout</a>
+				<a href="/collageJam/create">create</a>
+				<span id="userid"> Hello, ${sessionScope.username} </span>
+			</c:when>
+			<c:otherwise>
+				<a href="/collageJam/login">login</a>
+				<a href="/collageJam/create">create</a>
+				<span id="userid"> Hello, Anonymous </span>
+			</c:otherwise>
+		</c:choose>
+	</div>
 	</header>
 
 	<section id="contents">
@@ -41,7 +41,7 @@
 					type="video/webm">
 			</video>
 		</article>
-		
+
 		<article id="intro">
 			<span>Your moments, your story.</span> <span>Create, explore
 				and share photo & video collections in beautiful and creative ways</span> <a
@@ -66,9 +66,7 @@
 		<article id="countTotalView">
 			<span> 999,999,999 </span>
 			<div></div>
-			<span> COLLAGEJAM MOMENTS VIEWD </span> <span> As featured in:
-				<div></div>
-			</span>
+			<span> COLLAGEJAM MOMENTS VIEWD </span>	
 		</article>
 
 		<article id="featured">
@@ -83,10 +81,9 @@
 	<script>
 		var data = ${data};
 		var jarobjs = [];
-		for (var i=0; i<15 ; i++){
-			jarobjs[i] = data[data.length-i-1];
+		for ( var i = 0; i < 15; i++) {
+			jarobjs[i] = data[data.length - i - 1];
 		}
-		console.log(jarobjs);
 	</script>
 	<script type="text/javascript" src="./src/js/main.js" /></script>
 </body>

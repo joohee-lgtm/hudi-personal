@@ -1,57 +1,137 @@
-// How to search through a YouTube channel aka http://www.youtube.com/members
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+var done = false;
+
+var resultArr = [];
+var page = 1;
+var selectedBGM = {
+		url : ""
+		// url
+		// start
+		// end
+};
+
 google.load('search', '1');
-function OnLoad() {
-	// create a search control 
-	var sc = new google.search.SearchControl();
+google.setOnLoadCallback(ytOnLoad);
+
+function ytOnLoad(){
+	var searchControl = new google.search.SearchControl();
 	var videoSearch = new google.search.VideoSearch();
-	// So the results are expanded by default
-	// options = new google.search.SearcherOptions();
-	// options.setExpandMode(google.search.SearchControl.EXPAND_MODE_OPEN);
-	// Create a video searcher and add it to the control
-	// searchControl.addSearcher(new google.search.VideoSearch(), options);
-	sc.addSearcher(videoSearch);
-	sc.setSearchCompleteCallback(this, searchCpl);
+	searchControl.addSearcher(videoSearch);
+	searchControl.setSearchCompleteCallback(this, ytSearchComplete);
 	videoSearch.setResultSetSize(8);
-	
-	// Draw the control onto the page 
-	var searchbox = document.getElementById("content");
-	sc.draw(searchbox);
-	//search 
-	sc.execute("bigbang");
-	/* console.log(videoSearch.results); */
+	var content = document.getElementById("content");
+	searchControl.draw(content);
+	searchControl.execute("bigbang");
 }
-var a = [];
-var p=1;
-function searchCpl(searchControl, videoSearch){
-	for (var c=0; c<8 ; c++){
-		var result = videoSearch.results[c];
-		a.push(result);
-		setObj(result);
+
+function ytSearchComplete(searchControl, videoSearch){
+	for (var i=0 ; i<8 ; i++){
+		var reobj = videoSearch.results[i]
+		resultArr.push(reobj);
 	}
-	if (p === 8){
-//		console.log(a);
+	if (page === 8){
+		setResultTn();
+		page = 1;
+		resultArr = [];
 		return ;
 	} else {
-		videoSearch.gotoPage(p);
-		p++;
+		videoSearch.gotoPage(page);
+		page++;
 	}
 	var cont = document.getElementById("content");
-
 	var rest = cont.children[0].children[1];
 	rest.style.display = "none";
 }
 
+function setResultTn(){
+	var msw = document.getElementById("musicSelectWrap");
+	var ul = msw.getElementsByTagName("ul")[0];
+	msw.removeChild(ul);
+	var newul = document.createElement("ul");
+	
+	for (var i=0 ; i<resultArr.length ; i++){
+		var li = document.createElement("li");
+		var tnimg = "<img src=\"" +  resultArr[i].tbUrl + "\">";
+		var title = "<span>"+ resultArr[i].title + "</span>"; 
+		var total = tnimg +"<br>"+ title;
+		li.innerHTML = total;
+		newul.appendChild(li);
+		addEvent(li, resultArr[i]);
+	}
+	msw.appendChild(newul);
+}
 
-function setObj(obj){
-	var wrap = document.getElementById("musicSelectWrap");
-	var ul = wrap.getElementsByTagName("ul")[0];
+var player2;
+function putYt(ytobj){
+	var vId = sortUrl(ytobj.url);
+	player2 = new YT.Player('player2', {
+	      height: '180',
+	      width: '300',
+	      videoId: vId,
+	      events: {
+	      }
+	    });
+	var title = "<span>" + ytobj.title +"</span>";
+	var mswrap = document.getElementById("musicSelectWrap");
+	var span = mswrap.getElementsByTagName("span")[0];
+	span.innerHTML = title;
+//	var mswrap = document.getElementById("musicSelectWrap");
+//	var div = mswrap.getElementsByTagName("div")[0];
+//	var embed = "<embed src=\"" + ytobj.playUrl + "\">";
+//	var span = "<span>" + ytobj.title +"</span>"
+//	var total = embed + span;
+//	div.innerHTML = total;	
+}
 
-	var li = document.createElement("li");
-	var span = document.createElement("span");
-	var tn = "<img src=\"" + obj.tbUrl + "\">";
-	li.innerHTML = tn;
-	ul.appendChild(li);
+function putBgmAtPreview(ytobj){
+	var vId = sortUrl(ytobj.url);
+	var pwrap = document.getElementById("previewWrap");
+	var slide = pwrap.getElementsByTagName("div")[0];
+	var pyt = document.getElementById("player");
+	slide.removeChild(pyt);
+	var newyt = document.createElement("div");
+	newyt.id = "player";
+	var setting = document.getElementById("setting");
+	slide.insertBefore(newyt, setting);
+	player = new YT.Player('player', {
+	      height: '300',
+	      width: '400',
+	      videoId: vId,
+	      events: {
+	      }
+	    });
+	selectedBGM.url = vId;
+}
+
+var urlstorage;
+
+function addEvent(li, reobj){
+	li.addEventListener('click', function(){
+		putYt(reobj);
+		putBgmAtPreview(reobj);
+	}, false);
+	
+	li.addEventListener('mouseover', function(){
+		li.style.background = "RGBA(35, 35, 34, 0.3)";
+	}, false);
+	
+	li.addEventListener('mouseout', function(){
+		li.style.background = "none";
+	}, false);
+
+}
+
+function stopYtInSelectMusic(){
+	player2.stopVideo();
+}
+
+function sortUrl(url){
+	var start = url.search(/\?v=/) + 3;
+	subtext = url.substring(start, url.length);
+	return subtext;
 }
 
 
-google.setOnLoadCallback(OnLoad);
