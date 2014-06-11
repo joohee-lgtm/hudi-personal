@@ -58,6 +58,7 @@ var mFlicking = (function() {
 					elContainer.style.webkitTransform 	= "translate(0)";
 					elContainer.style.webkitTransition 	= null;
 				}, 200);
+				console.log("nTimeout: " + nTimeout);
 				elContainer.style.webkitTransition 	= "all 0.2s ease-out";
 				elContainer.style.webkitTransform	= "translate(" + nTranslate + "px)";
 			}
