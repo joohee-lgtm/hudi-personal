@@ -74,10 +74,14 @@ var work = {
 				var that = this;
 				that.area.style.display = "block";
 				that.bg.style.display = "block";
-				window.addEventListener("scroll",function(e){
-					console.log(e);
+				var prev = document.getElementById("previewWrap")
+				prev.addEventListener('wheel', function(e){
 					e.preventDefault();
-				},false);
+				}, false);
+				var head = document.getElementsByTagName("header")[0];
+				head.addEventListener('wheel', function(e){
+					e.preventDefault();
+				}, false);
 				var urls = userDataModel.originalURL;
 				_o.slide._set(urls);
 				stopYtInSelectMusic();

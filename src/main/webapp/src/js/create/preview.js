@@ -232,6 +232,29 @@ preview.play = {
 	}
 };
 
+
+var ScrollEvent = {
+	disableVerticalScroll : function(){
+		window.onmousewheel = this.wheel;
+		document.onkeydown = this.keydown;
+	},
+
+	keydown : function(e){
+		leftKey = 37;
+		rightKey = 39;
+		if (e.keyCode === leftKey || e.keyCode === rightKey){
+			e.preventDefault();
+		}
+	},
+
+	wheel : function(e){
+		if (e.wheelDeltaX != 0){
+			e.preventDefault();
+		}
+	}
+};
+
+
 var setting = document.getElementById("setting");
 var startbtn = setting.getElementsByTagName("button")[0];
 var stopbtn = setting.getElementsByTagName("button")[1];
