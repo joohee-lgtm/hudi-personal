@@ -14,7 +14,7 @@
 	height 		: 40px;
 	border 		: 1px solid rgba(213, 221, 228, 1);
 	border-radius : 5px;
-	background 	: none;
+	background 	: RGBA(255, 255, 255, 1);
 }
 
 #musicSelectWrap input[type="text"]{
@@ -32,6 +32,8 @@
  	border 		: 1px solid RGBA(207, 207, 207, 1);
 	border-radius : 5px;
 	box-shadow 	: 0px 0px 2px RGBA(207, 207, 207, 1);
+	background 	: RGBA(255, 255, 255, 1);
+
 }
 
 #musicSelectWrap ul li{
@@ -48,11 +50,14 @@
 
 #musicSelectWrap ul li img {
 	width 		: 150px;
+	margin-bottom : 10px;
 }
 
-#musicSelectWrap ul li span {
+#musicSelectWrap ul li p {
 	display 	: block;
-	width 		: 270px;
+	margin 	: auto;
+	width 		: 200px;
+	text-overflow:ellipsis;
 }
 
 
@@ -65,6 +70,8 @@
 	border 		: 1px solid RGBA(207, 207, 207, 1);
 	border-radius : 5px;
 	box-shadow 	: 0px 0px 2px RGBA(207, 207, 207, 1);
+	background 	: RGBA(255, 255, 255, 1);
+
 }
 
 #musicSelectWrap div p{

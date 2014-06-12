@@ -57,10 +57,11 @@ function setResultTn(){
 	for (var i=0 ; i<resultArr.length ; i++){
 		var li = document.createElement("li");
 		var tnimg = "<img src=\"" +  resultArr[i].tbUrl + "\">";
-		var title = "<span>"+ resultArr[i].title + "</span>"; 
-		var total = tnimg +"<br>"+ title;
+		var title = "<p>"+ resultArr[i].title + "</p>"; 
+		var total = tnimg + title;
 		li.innerHTML = total;
 		newul.appendChild(li);
+		li.getElementsByTagName("p")[0].style.textOverflow = "ellipsis";
 		addEvent(li, resultArr[i]);
 	}
 	msw.appendChild(newul);
