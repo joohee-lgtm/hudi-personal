@@ -1,6 +1,5 @@
 package net.collagejam.web;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,7 +21,7 @@ public class MainFeaturedController {
 		JSONArray rows = new JSONArray();
 		
 		DBSetting dbc = new DBSetting();
-		dbc. setJDBC();
+		dbc.setJDBC();
 		Statement stmt = dbc.getStatement();
 		
 		try {
