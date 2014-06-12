@@ -7,10 +7,9 @@ var done = false;
 var resultArr = [];
 var page = 1;
 var selectedBGM = {
-		url : ""
-		// url
-		// start
-		// end
+		url : "",
+		start : 0,
+		end : 0
 };
 
 google.load('search', '1');
@@ -84,13 +83,18 @@ function putYt(ytobj){
 	      width: '300',
 	      videoId: vId,
 	      events: {
+	    	  'onReady': onPlayerReady,
 	      }
 	    });
 	span.innerHTML = title;
+	selectedBGM.url = vId;
 }
 
-function putBgmAtPreview(ytobj){
-	var vId = sortUrl(ytobj.url);
+function onPlayerReady() {
+	console.log(player2.getDuration());
+}
+
+function putBgmAtPreview(){
 	var pwrap = document.getElementById("previewWrap");
 	var slide = pwrap.getElementsByTagName("div")[0];
 	var pyt = document.getElementById("player");
@@ -99,14 +103,23 @@ function putBgmAtPreview(ytobj){
 	newyt.id = "player";
 	var setting = document.getElementById("setting");
 	slide.insertBefore(newyt, setting);
-	player = new YT.Player('player', {
-	      height: '300',
-	      width: '400',
-	      videoId: vId,
-	      events: {
-	      }
-	    });
-	selectedBGM.url = vId;
+	if (selectedBGM.start < selectedBGM.end){
+		player = new YT.Player('player', {
+		      height: '300',
+		      width: '400',
+		      videoId: selectedBGM.url,
+		      playerVars: { 
+		    	  'controls' : 0,
+		    	  'start': selectedBGM.start,
+		    	  'end' : selectedBGM.end
+		      },
+		      events: {
+		      }
+		    });
+	} else {
+		alert("reset start, end time");
+	}
+	
 }
 
 var urlstorage;
@@ -114,7 +127,6 @@ var urlstorage;
 function addEvent(li, reobj){
 	li.addEventListener('click', function(){
 		putYt(reobj);
-		putBgmAtPreview(reobj);
 	}, false);
 	
 	li.addEventListener('mouseover', function(){
@@ -124,17 +136,41 @@ function addEvent(li, reobj){
 	li.addEventListener('mouseout', function(){
 		li.style.background = "none";
 	}, false);
-
 }
 
 function stopYtInSelectMusic(){
 	player2.stopVideo();
 }
 
+function setYtStart(){
+	var ct = parseInt(player2.getCurrentTime());
+	selectedBGM.start = ct
+	var msw = document.getElementById("musicSelectWrap");
+	var op = msw.getElementsByTagName("output")[0];
+	op.innerHTML = ct;
+}
+
+function setYtEnd(){
+	var ct = parseInt(player2.getCurrentTime());
+	selectedBGM.end = ct
+	var msw = document.getElementById("musicSelectWrap");
+	var op = msw.getElementsByTagName("output")[1];
+	op.innerHTML = ct;
+}
+
+var p2start = document.getElementById("sbtns");
+p2start.addEventListener("click", function(){
+	setYtStart();
+}, false);
+
+var p2end = document.getElementById("sbtne");
+p2end.addEventListener("click", function(){
+	setYtEnd();
+}, false);
+
+
 function sortUrl(url){
 	var start = url.search(/\?v=/) + 3;
 	subtext = url.substring(start, url.length);
 	return subtext;
 }
-
-

@@ -38,9 +38,12 @@
 
 	<section id="musicSelectWrap">
 		<div>
-			<div id="player2"></div>
-		<!-- show youtube preview -->
+			<article id="player2"></article>
 			<span>search & select</span>
+			<article>
+				<input type="button" id="sbtns" value="set start" /><output></output>
+				<input type="button" id="sbtne" value="set end" /><output></output>
+			</article>
 		</div>
 		<article id="content"></article>
 		<ul><!-- show search youtube result --></ul>

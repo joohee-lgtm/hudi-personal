@@ -18,7 +18,7 @@
 }
 
 #musicSelectWrap input[type="text"]{
-	width 		: 300px;
+	width 		: 400px;
 	height 		: 40px;
 }
 
@@ -74,6 +74,18 @@
 
 }
 
+#musicSelectWrap > div:nth-child(1) > article:nth-child(3) {
+	width : 300px;
+	height : 200px;
+	border : 1px solid;
+	display : inline-block;
+}
+
+#musicSelectWrap > div:nth-child(1) > article > input{
+	width : 50px;
+	height : 20px;
+}
+
 #musicSelectWrap div p{
 	margin-top : 70px;
 	font-size :40px;
@@ -83,12 +95,12 @@
 	margin-top : 20px;
 	margin-left : auto;
 	margin-right : auto;
-	display : block;
+	display : inline-block;
 	box-shadow 	: 0px 0px 5px RGBA(50, 50, 50, 1);
 }
+
 #musicSelectWrap div span{
 	margin-top : 20px;
-	display : block;
 }
 
 #musicSelectWrap > article{
