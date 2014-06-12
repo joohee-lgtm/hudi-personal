@@ -12,22 +12,11 @@
 </head>
 <body>
 	<header>
-		<a>Collage Jam</a>
+		<a href="/collageJam/m/main">Collage Jam</a>
 	</header>
 	<h1>featured</h1>
 	<article>
-		<ul>
-			<li>
-				<span>title</span>
-				<div>img</div>
-				<span>desc</span>
-			</li>
-			<li>
-				<span>title</span>
-				<div>img</div>
-				<span>desc</span>
-			</li>
-		
+		<ul>		
 		</ul>
 	</article>
 	<button>see more</button>
