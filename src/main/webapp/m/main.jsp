@@ -51,12 +51,30 @@
                 <img class="toggler" src="img/plus.png">
             </div>
             <div id="jamjar_wrapper" class="wrapper">
-                <div id="videoFrame" class="jamjar"></div>
-                <div class="jamjar"></div>
-                <div class="jamjar"></div>
-                <div class="jamjar"></div>
-                <div class="jamjar"></div>
-                <div class="jamjar"></div>
+            	<div class="jamjar">
+                	<img class="thumbnail">
+                	<div class="desc"></div>
+                </div>
+                <div class="jamjar">
+                	<img class="thumbnail">
+                	<div class="desc"></div>
+                </div>
+                <div class="jamjar">
+                	<img class="thumbnail">
+                	<div class="desc"></div>
+                </div>
+                <div class="jamjar">
+                	<img class="thumbnail">
+                	<div class="desc"></div>
+                </div>
+                <div class="jamjar">
+                	<img class="thumbnail">
+                	<div class="desc"></div>
+                </div>
+                <div class="jamjar">
+                	<img class="thumbnail">
+                	<div class="desc"></div>
+                </div>
             </div>
         </section>
 		<script>
@@ -68,7 +86,8 @@
 		</script>
         <script type="text/javascript" src="src/js/main/mobile.js" ></script> 
         <script type="text/javascript" src="src/js/main/main.js" ></script>  
-        <script type="text/javascript" src="src/js/main/flicking.js" ></script> 
+        <script type="text/javascript" src="src/js/main/flicking.js" ></script>
+        <script type="text/javascript" src="src/js/main/featured.js"></script>
         <script type="text/javascript" src="lib/_JE.js" ></script> 
     </body>
 </html>
