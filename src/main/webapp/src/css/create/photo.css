@@ -22,7 +22,7 @@
 	position: relative;
 	font-family: helvetica;
 	width: 920px;
-	height: 850px;
+	height: 805px;
 	margin: auto;
 	margin-top: 150px;
 	background-color:white;
@@ -64,10 +64,10 @@
 
 #overview {
 	background-color: white;
-	height: 772px;
+	height: 720px;
 	width: 890px;
 	margin: auto;
-	margin-bottom: 10px;
+	margin-bottom: 30px;
 	overflow: auto;
 }
 
