@@ -143,6 +143,16 @@
 	-webkit-transition: 0.5s;
 }
 
+#carousel::-webkit-scrollbar {
+	opacity: 0;
+}
+
+#carousel::-webkit-scrollbar-thumb {
+	background-color: white;
+	border-radius: 8px;
+	width: 2px;
+}
+
 #carousel.open {
 	opacity: 0;
 }
