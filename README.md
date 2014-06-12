@@ -1,9 +1,10 @@
 2014-01-HUDI-LEONARD
 ====================
 <br>
-http://10.73.45.132:8080/collageJam/<br>
 팀 활동 문서 (백로그, 일정 등)<br>
 http://bit.ly/1szvoUe<br>
+팀서버<br>
+http://10.73.45.132:8080/collageJam/<br>
 <br>
 참고사이트<br>
 http://slide.ly/<br>
