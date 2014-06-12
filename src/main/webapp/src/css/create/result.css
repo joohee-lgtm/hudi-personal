@@ -1,0 +1,7 @@
+#data {
+	width	: 500px;
+	height	: 200px;
+	float	: left;
+	border	: solid 1px black;
+	word-wrap: break-word; 
+}

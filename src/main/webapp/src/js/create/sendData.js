@@ -1,35 +1,77 @@
-/**
- * send data from client to server
- */
+/*
+	send data from client to server
+*/
 
 function sendUserData(e) {
-	var aURL = getImgURLs();
-	var title = getTitle();
-	var desc = getDesc();
-	var bgm = getBgmId();
+	e.preventDefault();
 	
 	var data = {
-		aURL : aURL,
-		title : title,
-		desc : desc,
-		bgm : bgm
+		aURL : "",
+		title : "",
+		desc : "",
+		user : "",
+		bgm : "",
+		thumbnail : ""
 	};
 	
+	data.aURL 			= getImgURLs();
+	data.title 			= getTitle();
+	data.desc 			= getDesc();
+	data.bgm 			= getBgmId();
+	data.thumbnail 		= getTn(data.aURL);
+	data.bgmStart		= getBgmStart();
+	data.bgmEnd			= getBgmEnd();
+	data.secPerImg		= getSpi();
+	
+	var incomplete_data_arr = checkData(data);
+	
+	if (incomplete_data_arr.length === 0){
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "/collageJam/create_jar", true);
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", "/collageJam/create", true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState === 4 && xhr.status === 200){
+				var created_jid = xhr.getResponseHeader("jid");
+				var url = "/collageJam/result?id="+created_jid;
+				window.location = url;
+			}
+		};	
+		xhr.send("data="+JSON.stringify(data));
+		
+		return false;
+	} else {
+		alertPutData(incomplete_data_arr);
+	}
+}
+
+function checkData(data){
+	var data_arr = [];
+	var text;
+
+	if(data.aURL.length === 0)
+		data_arr.push("select one more image");
+	if(data.title === "")
+		data_arr.push("please set title");
+	if(data.desc === "")
+		data_arr.push("please set desc");
+	if(data.bgm === "")
+		data_arr.push("select background music");
 	
-	xhr.onreadystatechange = function(){
-		if(xhr.readyState === 4 && xhr.status === 200){
-			console.log('status: ' + xhr.statusText);
-		}
-	};	
-	
-	xhr.send("data="+JSON.stringify(data));
-	
-	e.preventDefault();
-	return false;
+	return data_arr;
+}
+
+function alertPutData(alert_arr){
+	var alertext = "";
+	for (var i=0; i<alert_arr.length; i++){
+		alertext = alertext + alert_arr[i] + "\n";
+		console.log(alertext);
+	}
+	alert(alertext);
+}
+
+function getTn(urllist){
+	return urllist[0];
 }
 
 function getImgURLs() {
@@ -45,7 +87,8 @@ function getDesc() {
 }
 
 function getBgmId() {
-	return player.getVideoUrl();
+	var bgm = selectedBGM.url;
+	return bgm;
 }
 
 function registerEvents() {
@@ -53,6 +96,21 @@ function registerEvents() {
 	createbt.addEventListener('submit', sendUserData, false);
 }
 
+function getBgmStart() {
+	return '1m10s';
+}
+
+function getBgmEnd() {
+	return '2m2s';
+}
+
+function getSpi() {
+	var speed = setting.getElementsByTagName('div')[0].getElementsByTagName('output')[0].value;
+	return speed;
+}
+
 window.addEventListener('load', function() {
 	registerEvents();
-}, false)
+}, false);
+
+

@@ -5,17 +5,22 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var done = false;
 var player;
+var vdata;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
       height: '300',
       width: '400',
-      videoId: 'r4u3BzM0rqo',
-      events: {
-        // 'onReady': onPlayerReady,
-        // 'onStateChange': onPlayerStateChange
-      }
+      videoId: jamjar.bgm_url,
+      playerVars: {
+    	  'autoplay': 0, 
+    	  'controls': 0, 
+    	  'showinfo' : 0, 
+    	  'showsearch' : 0, 
+    	  'modestbranding' : 0,
+    	  'disablekb' : 0}
     });
+    jObjInfo.getBgmInfo();
 }
 
 function onPlayerReady(evt) {
@@ -32,14 +37,3 @@ function onPlayerStateChange(evt) {
 function stopVideo() {
     player.stopVideo();
 }
-
-var start = document.getElementsByTagName("button")[0];
-start.onclick = function(){
-    player.playVideo();
-};
-
-var stop = document.getElementsByTagName("button")[1];
-stop.onclick = function(){
-    player.stopVideo();
-};
-/* youtube api 끝 */

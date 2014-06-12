@@ -1,48 +1,65 @@
-@CHARSET "UTF-8";
+@charset "UTF-8";
 
-/*결과 페이지 전체*/
-#resultWrap{
-	margin : auto;
-	margin-top : 70px;
-	width : 1200px;
-	height : 600px;
-	box-shadow: 1px 1px 10px #888888;
-	background-color: #FFFFFF;
-	z-index: 1;
+#previewWrap{
+	margin-top	: 50px;
+	text-align	: center;
+	width		: 100%; 
+	height		: 480px;
+	position 	: fixed;
+	z-index 	: 10;
+	top 		: 60px;
+}
+
+#previewWrap > div {
+	width		: 1040px; /* 640+400 */
+	height		: 480px;
+	margin 		: auto;
+	background 	: #FFF;
+	position 	: relative;
+	top 		: 30px;
+	z-index 	: 12;
+}
+
+#previewWrap > div > button:nth-child(1){
+	width 		: 50px;
+	height 		: 50px;
+	border 		: none;
+	position 	: absolute;
+	left 		: 990px;
+	top 		: -50px;
+}
+
+#previewWrap > #bg {
+	width 		: 100%;
+	height 		: 100%;
+	position 	: fixed;
+	z-index 	: 11;
+	top 		: 0px;
+	left 		: 0px;
+	background-color : rgba(39, 40, 34, 0.4);
 }
 
 /*슬라이드가 재생되는 부분*/
 #slide {
-	position: relative;
-	top : 0px;
-	left : 0px;
-	width : 800px;
-	height : 600px;
-	float: left;
+	width 		: 640px;
+	height 		: 480px;
+	float 		: left;
 	border-right : 1px solid #E6E6E6;
   	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-#slide div{
-	width : 399px;
-	height : 300px;
-	float : left;
-}
-
-#slide div img {
-	display: block;
-	margin : auto;
+#slide img {
+	height 		: 480px;
+	display 	: block;
+	margin 		: auto;
 }
 
 /*오디오가 재생되는 부분*/
 #player {
-	position: relative;
-	width : 400px;
-	height : 250px;
-	border : 1px solid;
-	margin-bottom: 10px;
+	width 		: 400px;
+	height 		: 200px;
   	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -51,69 +68,66 @@
 
 /*영상과 관련된 설정을 보여주는 곳*/
 #setting {
-	position : relative;
-	margin-top : 20px;
-	margin-left: 800px;
-	width : 400px;
-	display: block;
+	margin-top 	: 10px;
+	margin-left	: 640px;
+	width 		: 400px;
+	display 	: block;
 }
 
 /*range*/
 #setting > div:nth-child(1){
-	display: block;
-	text-align: center;
+	display 	: block;
+	text-align 	: center;
 	margin-bottom : 10px;
 }
 
 #setting > div:nth-child(1) > button {
-	border-radius: 10px;
-	width : 100px;
-	height : 50px;
-	font-family: 'Exo';
-	border : none;
-	margin : auto 3px;
-	background-color: #DBFFEC;
-	box-shadow: 0px 1px 1px #305E46;
+	width		: 100px;
+	height		: 30px;
+	font-family	: 'Exo';
+	border 		: none;
+	box-shadow 	: 0px 1px 1px #305E46;
+	margin 		: auto 3px;
+	border-radius : 10px;
+	background-color : #DBFFEC;
 }
 
 #setting > div:nth-child(1) > div {
-	margin-top : 20px;
+	margin-top 	: 20px;
 }
 
 #setting > form:nth-child(2){
-	width : 400px;
+	width		: 400px;
 }
 
 #setting > form:nth-child(2) > input[type="text"],textarea{
-	margin: auto;
-	margin-bottom: 10px;
-	padding : 5px;
-	border : none;
-	display: block;
-	width : 390px;
-	font-family: 'Nanum Gothic';
-	background-color: #E6E6E6;
+	padding		: 5px;
+	border 		: none;
+	display 	: block;
+	width 		: 390px;
+	font-family	: 'Nanum Gothic';
+	margin 		: auto;
+	margin-bottom : 10px;
+	background-color : #E6E6E6;
 }
 
 #setting > form:nth-child(2) > input[type="submit"]{
-	display : block;
-	margin : auto;
-	border-radius: 4px;
-	width : 100px;
-	height : 30px;
-	font-family: 'Exo';
-	color : #303030;
-	border : none;
-	background-color: #FAFF73;
-	box-shadow: 0px 1px 2px #9C9C59;
+	display		: block;
+	margin 		: auto;
+	border-radius : 4px;
+	width		: 100px;
+	height 		: 30px;
+	font-family	: 'Exo';
+	color 		: #303030;
+	border 		: none;
+	background-color : #FAFF73;
+	box-shadow 	: 0px 1px 2px #9C9C59;
 }
 
 #temparea {
-	display : none;
+	display		: none;
 }
 
 #temparea img{
-/*	width : 0px;
-	height : 0px;
-*/	display: block;
+	display 	: block;
 }

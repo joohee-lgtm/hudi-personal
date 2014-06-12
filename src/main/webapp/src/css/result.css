@@ -1,0 +1,133 @@
+@charset "UTF-8";
+
+header{
+	width		: 100%;
+	height 		: 50px;
+	position	: fixed;
+	z-index		: 1000; /* highest layer */
+	top 		: 0;
+	left 		: 0;
+	padding 	: 5px 10px; /* total height : 50+10 */
+	text-align 	: center;
+	font-size	: 30px;
+	font-family : "Exo";
+	background-color : rgba(71, 71, 71, 1);
+}
+
+header > a:nth-child(1){
+	color 		: #8CFFCF;
+	text-shadow : 0px 0px 1px #004226;
+	line-height	: 50px;
+}
+
+body {
+	background 	: url("http://www.nhnnext.org/static/20140425/16/bg.jpg");
+    background-size : cover;
+}
+
+#resultWrap{
+	width 		: 960px;
+	margin 		: auto;
+	margin-top 	: 100px;
+	position 	: relative;
+	top			: 0px;
+	left		: 0px;
+}
+
+#resultWrap div:nth-child(1){
+	position 	: absolute;
+	top			: 0px;
+	left		: 0px;
+	display		: block;
+	width 		: 640px;
+}
+
+#resultWrap div:nth-child(2){
+	position 	: absolute;
+	top			: 0px;
+	left		: 650px;
+	display		: block;
+	width 		: 300px;
+}
+	
+#resultWrap > div:nth-child(2) > button {
+	width 		: 130px;
+	height 		: 50px;
+	color 		: RGBA(140, 255, 207, 1);
+	font-family : 'Nanum Gothic';
+	font-weight : lighter;
+    border		: 1px solid RGBA(140, 255, 207, 1);
+    background 	: RGBA(0, 0, 0, 0.7);
+	letter-spacing : 1em;
+}
+
+#info {
+	padding : 10px;
+	position 	: absolute;
+	top			: 60px;
+	left		: 650px;
+	width 		: 245px;
+    border		: 1px solid RGBA(140, 255, 207, 1);
+    background 	: RGBA(71, 71, 71, 0.6);
+}
+
+#info ul li span{
+	display 	: block;
+}
+
+#info ul li span.k{
+	font-family : "Exo";
+	font-size 	: x-large;
+	color 	: RGBA(224, 226, 224, 1);
+}
+
+#info ul li span.v{
+	font-family : "Nanum Gothic";
+	background 	: RGBA(255, 255, 255, 0.5);
+	margin-bottom : 10px;
+}
+
+/*슬라이드가 재생되는 부분*/
+#slide {
+	position	: absolute;
+	top 		: 0px;
+	left		: 0px;
+	width 		: 642px;
+	height 		: 482px;
+    box-sizing 	: border-box;
+    border		: 1px solid RGBA(140, 255, 207, 1);
+    background 	: RGBA(71, 71, 71, 0.6);
+    -moz-box-sizing: border-box;
+  	-webkit-box-sizing: border-box;
+}
+
+#slide img {
+	height 		: 480px;
+	display 	: block;
+	margin 		: auto;
+}
+
+footer {
+	position 	: relative;
+	top 		: 520px;
+	width : 100%;
+	height : 200px;
+    background 	: RGBA(187, 187, 187, 0.6);
+}
+/*오디오가 재생되는 부분*/
+#player {
+	position	: absolute;
+	top			: 370px;
+	left		: 480px;
+	z-index		: 1;
+ 	width 		: 150px;
+	height 		: 100px;
+	border : 1px solid RGBA(140, 255, 207, 1);
+    box-sizing 	: border-box;
+    -moz-box-sizing: border-box;
+  	-webkit-box-sizing: border-box;
+}
+
+#temparea img{
+	display 	: block;
+}

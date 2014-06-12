@@ -1,22 +1,47 @@
 @CHARSET "UTF-8";
 
-#photoSelectWrap {
-	font-family: helvetica;
-	width: 100%;
-	height: 100%;
-	background-color:#E9E4DB;
+#navigation ul {
+	width: 890px;
+	margin: auto;
 }
 
+/* 상단 네비게이션 버튼에 대해 마우스 커서 변경 */
+#navigation ul li button {
+	cursor: pointer;
+}
+
+#body {
+	background-color: #EAE4DC;
+}
+
+#wrap {
+	background-color: #EAE4DC;
+}
+
+#photoSelectWrap {
+	position: relative;
+	font-family: helvetica;
+	width: 920px;
+	height: 850px;
+	margin: auto;
+	margin-top: 150px;
+	background-color:white;
+	border: 1px solid black;
+	border-radius: 8px;
+}
 
 #search {
 	font-family: helvetica;
-	padding-top: 30px;
-	margin-top: 120px;
+	font-size: 0.8em;
+	padding-top: 20px;
+	width: 920px;
+	background-color: white;
+	border-radius: 8px;
+	margin-bottom: 17px;
 }
 
 #search form {
 	margin: auto;
-	padding-top: 10px;
 	width: 320px;
 	height: 30px;
 	text-align: center;
@@ -28,7 +53,9 @@
 /* CSS Selector 공부하기 */
 #search form > input[type="text"] {
 	width: 300px;
-	border: 0px solid black;
+	margin-top: 2px;
+	height: 25px;
+	border: 0px;
 }
 
 ::-webkit-input-placeholder {
@@ -37,21 +64,32 @@
 
 #overview {
 	background-color: white;
-	width: 874px;
+	height: 772px;
+	width: 890px;
 	margin: auto;
-	border: 1px solid gray;
-	border-radius: 8px;
-	margin-top: 30px;
-	margin-bottom: 150px;
+	margin-bottom: 10px;
 	overflow: auto;
+}
+
+#overview::-webkit-scrollbar {
+	background-color: white;
+}
+
+#overview::-webkit-scrollbar-thumb {
+	background-color: #878787;
+	border-radius: 8px;
 }
 
 #overview div {
 	margin: 10px;
 	width: auto;
-	height: auto;
+	height: 143px;
 	display: inline-block;
 	border: 1px solid gray;
+}
+
+#overview div:hover {
+	background-color: #4b4b4b;
 }
 
 #overview div img {
@@ -59,6 +97,7 @@
 	margin: 3px;
 	width: 188px;
 	height: 135px;
+	z-index: 0;
 }
 
 #arrangePhotos {
@@ -69,6 +108,14 @@
 	bottom: 0px;
 	left: 0px;
 	position: fixed;
+	
+	/* Set transition */
+	-webkit-transition: 0.5s;
+}
+
+#arrangePhotos.open {
+	background-color: rgba(35, 35, 34, 0.9);
+	height: 80%;
 }
 
 #details {
@@ -93,9 +140,15 @@
 	height: 64px;
 	float: right;
 	color: black;
-	overflow-y: auto;
+	-webkit-transition: 0.5s;
 }
+
+#carousel.open {
+	opacity: 0;
+}
+
 #carousel li {
+	-webkit-transition: 0.5s;
 	margin: 5px;
 	width: 64px;
 	height: 64px;
@@ -107,4 +160,56 @@
 	height: 64px;
 	display: inline;
 	border: 2px solid white;
+}
+
+.overview {
+	width: 100%;
+}
+
+.open-tab {
+	font-family: helvetica;
+	font-size: 1.1em;
+	background-color: black;
+	color: white;
+	height: 20px;
+	width: auto;
+	position: absolute;
+	top: -25px;
+	padding: 5px;
+	border-radius: 8px;
+	left: 80%;
+	cursor: pointer;
+}
+
+#viewport {
+	position: relative;
+	width: 980px;
+	height: 800px;
+	margin: auto;
+	overflow: auto;
+}
+
+#sort-overview {
+	margin: auto;
+	height: 100%;
+}
+
+#sort-overview div {
+	display: inline-block;	
+	width: 240px;
+	height: 175px;
+}
+
+#sort-overview div div {
+	width: 188px;
+	height: 135px;
+	background-color: white;
+	border: 2px dashed gray;
+}
+
+#sort-overview div div img {
+	width: 100%;
+	height: 100%;
+	cursor: move;
+	
 }

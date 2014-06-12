@@ -7,14 +7,14 @@
 </head>
 <body>
 	<header id="header">
-		<a href="./main.jsp"> CollageJam </a>
+		<a href="/collageJam/main"> CollageJam </a>
 	</header>
 
 	<form method="post" action="login.do">
 		<input type="text" name="username" placeholder="Username"><br>
 		<input type="password" name="password" placeholder="password">
 		<input type="submit" value="submit">
-		<a href="./signup.jsp">not a member?</button>
+		<a href="/collageJam/signup">not a member?</button>
 	</form>
 </body>
 </html>

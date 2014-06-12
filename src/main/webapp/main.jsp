@@ -1,39 +1,36 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="./src/css/common.css" />
 <link rel="stylesheet" type="text/css" href="./src/css/main.css" />
+<link rel="stylesheet" type="text/css" href="./src/css/header.css" />
 <meta charset="utf-8">
 </head>
 <body>
-	<header id="header">
-		<div>
-			<a href="./main.jsp"> CollageJam </a>
-			<a href="./mypage.jsp"> myJamJars </a>
-			<form method="post" action="./login.jsp">
-				<!--
-				]
- 				<input type="text" class="txtbox"/>
-				<input type="password" class="txtbox"/>
-				-->
- 				<input type="submit" value="login"/>
-			</form>
-			<a href="./create.jsp">create</a>
-		</div>
-    	<%
-			String greeting = "Hello, ";
-			String username = (String) session.getAttribute("username");
-			//System.out.println("username: " + username);
-			if(username == null)
-				username = "anonymous";
-		%>
-		<span id="userid"> Hello, <%=username%></span>
+	<header>
+	<div>
+		<a href="/collageJam/main"> CollageJam </a>
+		<c:choose>
+			<c:when test="${sessionScope.username!=null}">
+				<a href="/collageJam/logout.do">logout</a>
+				<a href="/collageJam/create">create</a>
+				<span id="userid"> Hello, ${sessionScope.username} </span>
+			</c:when>
+			<c:otherwise>
+				<a href="/collageJam/login">login</a>
+				<a href="/collageJam/create">create</a>
+				<span id="userid"> Hello, Anonymous </span>
+			</c:otherwise>
+		</c:choose>
+	</div>
 	</header>
+
 	<section id="contents">
-		<section id="bgvideo">
+		<article id="bgvideo">
 			<video autoplay loop muted
 				poster="https://www.themusicbed.com/video/posters/home-the-music-bed.jpg">
 				<source
@@ -43,124 +40,50 @@
 					src="https://www.themusicbed.com/video/home-the-music-bed.webm"
 					type="video/webm">
 			</video>
-		</section>
-		<section id="intro">
+		</article>
+
+		<article id="intro">
 			<span>Your moments, your story.</span> <span>Create, explore
 				and share photo & video collections in beautiful and creative ways</span> <a
-				href="./create.jsp">
+				href="/collageJam/create">
 				<div></div> <span> Start Now </span>
 			</a> <span> or <a href="./signup.jsp"><u>Sign up</u></a> with
 				Email
 			</span>
-		</section>
+		</article>
 
-		<section id="aboutApp">
+		<article id="aboutApp">
 			<span>Share your story with our creative applications</span>
-			<div>
-				<div class="appbox"></div>
-				<!--
-				-->
-				<div class="appbox"></div>
-				<!--
-				-->
-				<div class="appbox"></div>
-				<!--
-				-->
-				<div class="appbox"></div>
-				<!--
-				-->
-				<div class="appbox"></div>
-				<!--
-				-->
-				<div class="appbox"></div>
-			</div>
-		</section>
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</article>
 
-		<div id="countTotalView">
+		<article id="countTotalView">
 			<span> 999,999,999 </span>
 			<div></div>
-			<span> COLLAGEJAM MOMENTS VIEWD </span> <span> As featured in:
-				<div></div>
-			</span>
-		</div>
+			<span> COLLAGEJAM MOMENTS VIEWD </span>	
+		</article>
 
-		<section id="featured">
+		<article id="featured">
 			<span>FEATURED</span>
-			<div>
-				<div class="jar1">1</div><!--
-				--><div class="jar2">2</div><!--
-				--><div class="jar3">3</div><!--
-				--><div class="jar4">4</div><!--
-				--><div class="jar5">5</div><!--
-				--><div class="jar6">6</div><!--
-				--><div class="jar7">7</div><!--
-				--><div class="jar8">8</div><!--
-				--><div class="jar9">9</div><!--
-				--><div class="jar10">10</div><!--
-				--><div class="jar11">11</div><!--
-				--><div class="jar12">12</div><!--
-				--><div class="jar13">13</div><!--
-				--><div class="jar14">14</div><!--
-				--><div class="jar15">15</div><!--
-				--><div class="jar16">16</div><!--
-				--><div class="jar17">17</div>
-				<div class="jamjar jar1">1</div>
-				<!--
-				-->
-				<div class="jamjar jar2">2</div>
-				<!--
-				-->
-				<div class="jamjar jar3">3</div>
-				<!--
-				-->
-				<div class="jamjar jar4">4</div>
-				<!--
-				-->
-				<div class="jamjar jar5">5</div>
-				<!--
-				-->
-				<div class="jamjar jar6">6</div>
-				<!--
-				-->
-				<div class="jamjar jar7">7</div>
-				<!--
-				-->
-				<div class="jamjar jar8">8</div>
-				<!--
-				-->
-				<div class="jamjar jar9">9</div>
-				<!--
-				-->
-				<div class="jamjar jar10">10</div>
-				<!--
-				-->
-				<div class="jamjar jar11">11</div>
-				<!--
-				-->
-				<div class="jamjar jar12">12</div>
-				<!--
-				-->
-				<div class="jamjar jar13">13</div>
-				<!--
-				-->
-				<div class="jamjar jar14">14</div>
-				<!--
-				-->
-				<div class="jamjar jar15">15</div>
-				<!--
-				-->
-				<div class="jamjar jar16">16</div>
-				<!--
-				-->
-				<div class="jamjar jar17">17</div>
-			</div>
+			<ul>
+			</ul>
 			<span>Start</span>
-		</section>
+		</article>
 	</section>
 
-	<footer id="footer"> footer </footer>
+	<footer id="footer"></footer>
 	<script>
-		var obj = ${data};
+		var data = ${data};
+		var jarobjs = [];
+		for ( var i = 0; i < 15; i++) {
+			jarobjs[i] = data[data.length - i - 1];
+		}
 	</script>
 	<script type="text/javascript" src="./src/js/main.js" /></script>
 </body>
