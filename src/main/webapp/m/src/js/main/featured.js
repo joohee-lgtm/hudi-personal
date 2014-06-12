@@ -38,12 +38,11 @@ var mFeatured = (function() {
 		
 	 * */
 	
-	mFeatured.test = function() {
-		console.log(aDivDesc);
+	mFeatured.init = function() {
 		showData();
 	};
 	
 	return mFeatured;
 }());
 
-mFeatured.test();
+mFeatured.init();

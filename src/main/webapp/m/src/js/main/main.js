@@ -76,10 +76,18 @@ var JE_Mobile = (function() {
 		});
 	}
 	
+	function registerEvents() {
+		var aDivJamjar = _JE.getElByClass("jamjar");
+		for(var i = 0; i < aDivJamjar.lenth; i ++) {
+			//aDivJamjar.addEventListener('touchstart', )
+		}
+	}
+	
 	//public functions
 	JE_Mobile.init = function() {
 		doImgSetting('aboutImg');
 		alignVideoFrames('jamjar');
+		registerEvents();
 	};
 	
 	JE_Mobile.orientChangeInit = function() {
