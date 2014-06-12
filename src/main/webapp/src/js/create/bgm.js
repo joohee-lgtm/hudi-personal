@@ -29,8 +29,10 @@ function ytOnLoad(){
 
 function ytSearchComplete(searchControl, videoSearch){
 	for (var i=0 ; i<8 ; i++){
-		var reobj = videoSearch.results[i]
-		resultArr.push(reobj);
+		var reobj = videoSearch.results[i];
+		if (reobj != null){
+			resultArr.push(reobj);
+		}
 	}
 	if (page === 8){
 		setResultTn();
