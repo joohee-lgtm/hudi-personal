@@ -30,7 +30,9 @@ public class JamjarDao {
 						rs.getString("bgm_url"),
 						rs.getInt("views"),
 						rs.getInt("likes"),
-						rs.getInt("sec_per_img")
+						rs.getInt("sec_per_img"),
+						rs.getString("bgm_start"),
+						rs.getString("bgm_end")
 						);
 			}
 		};

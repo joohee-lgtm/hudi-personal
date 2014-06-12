@@ -16,12 +16,14 @@ function onYouTubeIframeAPIReady() {
     	  'onReady': onPlayerReady,
       },
       playerVars: {
-    	  'autoplay': 0, 
+    	  'start' 	: parseInt(jamjar.bgm_start),
+    	  'end' 	: parseInt(jamjar.bgm_end),
     	  'controls': 0, 
     	  'showinfo' : 0, 
     	  'showsearch' : 0, 
     	  'modestbranding' : 0,
-    	  'disablekb' : 0}
+    	  'disablekb' : 0
+    	  }
     });
     jObjInfo.getBgmInfo();
 }

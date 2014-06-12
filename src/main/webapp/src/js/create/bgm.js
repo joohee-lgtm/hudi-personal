@@ -49,18 +49,17 @@ function ytSearchComplete(searchControl, videoSearch){
 
 function setResultTn(){
 	var msw = document.getElementById("musicSelectWrap");
-	var ul = msw.getElementsByTagName("ul")[0];
-	msw.removeChild(ul);
+	var _ul = msw.getElementsByTagName("ul")[0];
+	msw.removeChild(_ul);
 	var newul = document.createElement("ul");
 	
 	for (var i=0 ; i<resultArr.length ; i++){
 		var li = document.createElement("li");
-		var tnimg = "<img src=\"" +  resultArr[i].tbUrl + "\">";
 		var title = "<p>"+ resultArr[i].title + "</p>"; 
-		var total = tnimg + title;
-		li.innerHTML = total;
+		li.innerHTML = title;
 		newul.appendChild(li);
-		li.getElementsByTagName("p")[0].style.textOverflow = "ellipsis";
+		li.style.backgroundImage = "url(\"" + resultArr[i].tbUrl + "\")";
+		li.style.backgroundSize = "cover";
 		addEvent(li, resultArr[i]);
 	}
 	msw.appendChild(newul);
@@ -69,15 +68,15 @@ function setResultTn(){
 var player2;
 function putYt(ytobj){
 	var vId = sortUrl(ytobj.url);
-	var title = "<span>" + ytobj.title +"</span>";
-	var mswrap = document.getElementById("musicSelectWrap");
-	var span = mswrap.getElementsByTagName("span")[0];
-	var div = mswrap.getElementsByTagName("div")[0];
+	var mswrap = document.getElementById("musicSelectWrap");	
+	var article = mswrap.getElementsByTagName("article")[0];
 	var pyt = document.getElementById("player2");
-	div.removeChild(pyt);
+	article.removeChild(pyt);
+	
 	var newyt = document.createElement("div");
+	var secdiv = article.getElementsByTagName("div")[0];
 	newyt.id = "player2";
-	div.insertBefore(newyt, span);
+	article.insertBefore(newyt, secdiv);
 	player2 = new YT.Player('player2', {
 	      height: '180',
 	      width: '300',
@@ -86,7 +85,8 @@ function putYt(ytobj){
 	    	  'onReady': onPlayerReady,
 	      }
 	    });
-	span.innerHTML = title;
+	var span = article.getElementsByTagName("p")[0];
+	span.innerHTML = ytobj.title;
 	selectedBGM.url = vId;
 }
 
@@ -130,11 +130,16 @@ function addEvent(li, reobj){
 	}, false);
 	
 	li.addEventListener('mouseover', function(){
-		li.style.background = "RGBA(35, 35, 34, 0.3)";
+		li.style.background = "none";
+		li.style.border = "1px solid RGBA(140, 255, 207, 1)";
+		li.style.color = "RGBA(81, 81, 81, 1)";
 	}, false);
 	
 	li.addEventListener('mouseout', function(){
-		li.style.background = "none";
+		li.style.backgroundImage = "url(\"" + reobj.tbUrl + "\")";
+		li.style.backgroundSize = "cover";
+		li.style.border = "none";
+		li.style.color = "RGBA(255, 255, 255, 0.5)";
 	}, false);
 }
 
@@ -147,7 +152,7 @@ function setYtStart(){
 	selectedBGM.start = ct
 	var msw = document.getElementById("musicSelectWrap");
 	var op = msw.getElementsByTagName("output")[0];
-	op.innerHTML = ct;
+	op.innerHTML = "start = " + ct+ " sec";
 }
 
 function setYtEnd(){
@@ -155,7 +160,7 @@ function setYtEnd(){
 	selectedBGM.end = ct
 	var msw = document.getElementById("musicSelectWrap");
 	var op = msw.getElementsByTagName("output")[1];
-	op.innerHTML = ct;
+	op.innerHTML = "end = " + ct + " sec";
 }
 
 var p2start = document.getElementById("sbtns");
@@ -174,3 +179,12 @@ function sortUrl(url){
 	subtext = url.substring(start, url.length);
 	return subtext;
 }
+
+var que = document.getElementById("q");
+que.addEventListener('click', function(){
+	var text = 
+		"1) play youtube \n" +
+		"2) click \'set start\' button\n" +
+		"3) click \'set end\' button";
+	alert(text);
+}, false);

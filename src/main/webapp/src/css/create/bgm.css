@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 #musicSelectWrap{
-	margin-top : 200px;
+	margin-top : 180px;
 	font-family : "Nanum Gothic";
 }
 
@@ -25,7 +25,7 @@
 #musicSelectWrap ul{
 	margin 		: auto;
 	width 		: 900px;
-	padding 	: 0px;
+	padding 	: 20px 0px;
 	text-align	: center;
 	margin-top 	: 30px;
 	margin-bottom : 150px;
@@ -37,73 +37,96 @@
 }
 
 #musicSelectWrap ul li{
-	display 	: inline-block;
-	width 		: 270px;
-	margin 		: 10px;
-	height 		: 200px;
-	padding 	: 10px;
+	display : inline-flex;
+	width 	: 200px;
+	height 	: 150px;
+	margin 	: 10px;
+	padding : 10px;
+	color 	: RGBA(255, 255, 255, 0.5);
 	border-radius : 10px;
   	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-#musicSelectWrap ul li img {
-	width 		: 150px;
-	margin-bottom : 10px;
-}
-
 #musicSelectWrap ul li p {
-	display 	: block;
+	display : block;
 	margin 	: auto;
-	width 		: 200px;
+	width 	: 180px;
 	text-overflow:ellipsis;
 }
 
 
-#musicSelectWrap > div:nth-child(1){
+#musicSelectWrap > article:nth-child(1){
 	margin 		: auto;
-	margin-bottom : 20px;
 	width 		: 900px;
-	height 		: 250px;
+	height 		: 300px;
 	text-align 	: center;
 	border 		: 1px solid RGBA(207, 207, 207, 1);
-	border-radius : 5px;
 	box-shadow 	: 0px 0px 2px RGBA(207, 207, 207, 1);
 	background 	: RGBA(255, 255, 255, 1);
-
+	margin-bottom : 20px;
+	border-radius : 5px;
 }
 
-#musicSelectWrap > div:nth-child(1) > article:nth-child(3) {
-	width : 300px;
-	height : 200px;
-	border : 1px solid;
-	display : inline-block;
+#musicSelectWrap > article:nth-child(1) > div{
+	margin 	: 25px;
+	float 	: left;
+	width 	: 400px;
+	height 	: 250px;
+	border 	: 1px solid RGBA(234, 228, 220, 1);
+    box-sizing 	: border-box;
+  	-webkit-box-sizing 	: border-box;
+    -moz-box-sizing 	: border-box;
 }
 
-#musicSelectWrap > div:nth-child(1) > article > input{
-	width : 50px;
-	height : 20px;
+#musicSelectWrap article iframe{
+	margin 	: 25px;
+	float 	: left;
+	width 	: 400px;
+	height 	: 250px;
+	border 	: 1px solid black;
+    box-sizing 	: border-box;
+  	-webkit-box-sizing 	: border-box;
+    -moz-box-sizing 	: border-box;
 }
 
-#musicSelectWrap div p{
-	margin-top : 70px;
-	font-size :40px;
+#musicSelectWrap > article:nth-child(1) > div > p{
+	margin : 20px 10px;
 }
 
-#musicSelectWrap div iframe{
-	margin-top : 20px;
-	margin-left : auto;
-	margin-right : auto;
-	display : inline-block;
-	box-shadow 	: 0px 0px 5px RGBA(50, 50, 50, 1);
+#musicSelectWrap > article:nth-child(1) > div > input[type="button"]{
+	width : 100px;
+	height : 30px;
+	border : 1px solid RGBA(71, 71, 71, 1);
+	background : none;
+	border-radius : 5px;
 }
 
-#musicSelectWrap div span{
-	margin-top : 20px;
+#musicSelectWrap > article:nth-child(1) > div > output{
+	display : block;
+	text-align : center;
+	height : 30px;
+	margin : auto;
+	margin-top : 5px;
+	margin-bottom : 15px;
+    box-sizing 	: border-box;
+  	-webkit-box-sizing 	: border-box;
+    -moz-box-sizing 	: border-box;	
 }
 
-#musicSelectWrap > article{
+#musicSelectWrap > article:nth-child(1) > div > button{
+	width : 20px;
+	border: none;
+	height  : 20px;
+	background : RGBA(140, 255, 207, 1);
+	color : RGBA(71, 71, 71, 1);
+	border-radius : 10px;
+	float : right;
+	margin-right : 8px;
+}
+
+#musicSelectWrap > article:nth-child(2){
 	margin 		: auto;
 	margin-bottom : 20px;
 	width 		: 400px;

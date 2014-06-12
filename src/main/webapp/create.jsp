@@ -37,14 +37,17 @@
 	</section>
 
 	<section id="musicSelectWrap">
-		<div>
-			<article id="player2"></article>
-			<span>search & select</span>
-			<article>
-				<input type="button" id="sbtns" value="set start" /><output></output>
-				<input type="button" id="sbtne" value="set end" /><output></output>
-			</article>
-		</div>
+		<article>
+			<div id="player2"></div>
+			<div>
+				<p>search & select & set time</p>
+				<input type="button" id="sbtns" value="set start" />
+				<output>start = ? sec</output>
+				<input type="button" id="sbtne" value="set end" />
+				<output>end = ? sec</output>
+				<button id="q">?</button>
+			</div>
+		</article>
 		<article id="content"></article>
 		<ul><!-- show search youtube result --></ul>
 	</section>

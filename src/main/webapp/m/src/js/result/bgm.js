@@ -16,6 +16,8 @@ function onYouTubeIframeAPIReady() {
     	  'onReady': onPlayerReady,
       },
       playerVars: {
+    	  'start' 	: parseInt(jamjar.bgm_start),
+    	  'end' 	: parseInt(jamjar.bgm_end),
     	  'autoplay': 0, 
     	  'controls': 0, 
     	  'showinfo' : 0, 
