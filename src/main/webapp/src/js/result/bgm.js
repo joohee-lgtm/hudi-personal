@@ -12,6 +12,9 @@ function onYouTubeIframeAPIReady() {
       height: '300',
       width: '400',
       videoId: jamjar.bgm_url,
+      events : {
+    	  'onReady': onPlayerReady,
+      },
       playerVars: {
     	  'autoplay': 0, 
     	  'controls': 0, 
@@ -23,8 +26,9 @@ function onYouTubeIframeAPIReady() {
     jObjInfo.getBgmInfo();
 }
 
-function onPlayerReady(evt) {
-    evt.target.playVideo();
+function onPlayerReady() {
+    jObjInfo.m_title = player.getVideoData().title;
+    jObjInfo.setData(3, jObjInfo.m_title);
 }
 
 function onPlayerStateChange(evt) {

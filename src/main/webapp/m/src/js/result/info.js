@@ -13,7 +13,6 @@ jarInfoManager.prototype = {
 		var ytframe = document.getElementById("player");
 		var that = this;
 		ytframe.addEventListener('load', function(){
-			that.m_title = player.getVideoData().title;
 			that.setInfoView();
 		}, false);
 	},
@@ -22,7 +21,7 @@ jarInfoManager.prototype = {
 		this.setData(0, this.user);
 		this.setData(1, this.title);
 		this.setData(2, this.desc);
-		this.setData(3, this.m_title);
+//		this.setData(3, this.m_title);
 		this.setData(4, this.date);
 	},
 
