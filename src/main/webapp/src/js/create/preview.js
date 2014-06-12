@@ -54,11 +54,9 @@ preview.img = {
 				obj._img.style.height = px(o._style._height);
 				obj._img.style.marginTop = px(o._style._marginTop);
 			}, false);
-
-			obj._img.addEventListener("error", function(){
-				console.log("img load error");
-				obj = null;
-			},false);
+//			obj._img.addEventListener("error", function(){
+//				obj = null;
+//			},false);
 			return obj._img;
 		},
 
@@ -151,7 +149,12 @@ preview.slide = {
 		var len = t.urls.length;
 		for (var i=1 ; i<len ; i++){
 			var iobj = new _o.img.model(t.urls[i]);
-			temparea.appendChild(iobj._img);
+			iobj._img.addEventListener("load", function(){
+				temparea.appendChild(iobj._img);
+			}, false);
+			iobj._img.addEventListener("error", function(){
+				alert("order [" + i + "] img load error.\nselect other image.");
+			}, false);
 		}
 	},
 	// 이미지를 생성하고 스타일을 반영해서 본문에 넣는다! => 이를 수행하는 생성자를호출
@@ -172,8 +175,16 @@ preview.slide = {
 	setFirstImg : function(){
 		var t = this;
 		if (t.urls.length != 0){
-			 var firstimg = new _o.img.model(t.urls[0]);
-			 slide.appendChild(firstimg._img);
+			var firstimg = new _o.img.model(t.urls[0]);
+			firstimg._img.addEventListener("load", function(){
+				console.log("first img load");
+				slide.appendChild(firstimg._img);
+			}, false);
+			firstimg._img.addEventListener("error", function(){
+				alert("first img load error\nselect other image");
+				var defaultimg = _o.util.getDefaultImg();
+				slide.appendChild(defaultimg);
+			}, false);
 		} else {
 			var defaultimg = _o.util.getDefaultImg();
 			slide.appendChild(defaultimg);
