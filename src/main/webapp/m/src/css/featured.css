@@ -32,18 +32,18 @@ ul {
 	width 	: 90%;
 	border 	: 1px solid RGBA(137, 252, 203, 1);
 	margin 	: auto;
-	border-radius 	: 10px;
 	padding : 20px;
+	margin-bottom : 20px;
+	border-radius 	: 10px;
 	box-sizing 	: border-box;
 	-moz-box-sizing 	: border-box;
 	-webkit-box-sizing 	: border-box;
-	margin-bottom : 20px;
 }
 
 ul li {
 	text-align 	: center;
 	border-top 	: 1px solid RGBA(137, 252, 203, 1);
-	padding 	: 20px 0px;
+	padding 	: 40px 0px;
 }
 	
 ul li:nth-child(1) {
@@ -51,10 +51,29 @@ ul li:nth-child(1) {
 }
 
 ul li span {
+	background : RGBA(0, 0, 0, 0.7);
+	font-family : "Nanum Gothic";
 	font-size 	: 30px;	
 }
 
-ul li div img {
-	widht : inherit;
+ul li span:nth-child(1) {
+	font-size : 50px;
+}
+	
+
+ul li div {
+	margin : 30px 0px;
 }
 
+button {
+	font-family : "Nanum Gothic";
+	height : 150px;
+	width : 90%;
+	display : block;
+	margin : 40px auto;
+	border 	: 1px solid RGBA(137, 252, 203, 1);
+	border-radius 	: 10px;
+	background : none;
+	color : RGBA(137, 252, 203, 1);
+	font-size : 50px;
+}
