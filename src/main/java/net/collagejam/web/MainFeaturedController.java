@@ -1,6 +1,5 @@
 package net.collagejam.web;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -22,7 +21,7 @@ public class MainFeaturedController {
 		JSONArray rows = new JSONArray();
 		
 		DBSetting dbc = new DBSetting();
-		dbc. setJDBC();
+		dbc.setJDBC();
 		Statement stmt = dbc.getStatement();
 		
 		try {
@@ -38,6 +37,31 @@ public class MainFeaturedController {
 		}
 	}
 	
+	public String getTopLikedSlides() {
+		String table = "jamjar";
+		String[] column = {"title", "tb_url", "date_created", "j_id", "u_id", "likes"};
+		int limit = 6;
+		String sql = getTopLikedJarsSql(table, column, limit);
+		JSONArray rows = new JSONArray();
+		DBSetting dbc = new DBSetting();
+		dbc.setJDBC();
+		Statement stmt = dbc.getStatement();
+		
+		try {
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()){
+				JSONObject one_row = rowRemakeJSONObj(rs, column);
+				rows.put(one_row);
+			setRows(rows);
+			}
+			dbc.closeConnection();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		return sql;
+	}
+	
 	String selectColumnSql(String table, String[] column){
 		String front = "select ";
 		String center = "";
@@ -50,6 +74,22 @@ public class MainFeaturedController {
 			}
 		}
 		String sql = front + center + rear;
+		return sql;
+	}
+	
+	String getTopLikedJarsSql(String table, String[] column, int limit){
+		String front = "select ";
+		String center = "";
+		String rear = " from " + table;
+		for (int i=0; i<column.length ;i++){
+			if(i == column.length-1){
+				center += column[i];
+			} else {
+				center += column[i] + ", ";
+			}
+		}
+		String option = " order by likes desc limit " + limit;
+		String sql = front + center + rear + option + ";";
 		return sql;
 	}
 	
