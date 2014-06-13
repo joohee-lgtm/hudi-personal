@@ -17,7 +17,7 @@ public class MobileMainPageServlet extends HttpServlet{
 		System.out.println("main page servlet connection");
 		
 		MainFeaturedController mfc = new MainFeaturedController();
-		mfc.makeShowVideoList();
+		String finalQuery = mfc.getTopLikedSlides();
 		JSONArray rows = mfc.getRows();
 		
 		request.setAttribute("data", rows);

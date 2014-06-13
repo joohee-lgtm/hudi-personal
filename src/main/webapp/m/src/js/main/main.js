@@ -78,9 +78,15 @@ var JE_Mobile = (function() {
 	
 	function registerEvents() {
 		var aDivJamjar = _JE.getElByClass("jamjar");
-		for(var i = 0; i < aDivJamjar.lenth; i ++) {
-			//aDivJamjar.addEventListener('touchstart', )
+		for(var i = 0; i < aDivJamjar.length; i ++) {
+			aDivJamjar[i].addEventListener('click', function(e) {
+				window.location = "/collageJam/m/result?id=" + this.id;
+			}, false);
 		}
+	}
+	
+	function makeSomeChange() {
+		console.log("make some change");
 	}
 	
 	//public functions
