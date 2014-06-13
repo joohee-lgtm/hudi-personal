@@ -52,9 +52,8 @@
             </div>
             <div id="jamjar_wrapper" class="wrapper">
             	<div class="jamjar">
-                	<div class="videoFrame">
-                		<img class="thumbnail">
-                		<div class="desc"></div>
+                	<img class="thumbnail">
+                	<div class="desc"></div>
                 </div>
                 <div class="jamjar">
                 	<img class="thumbnail">
