@@ -133,11 +133,11 @@ function setArrangePhotoOpen() {
 	if (arrangePhoto.className === 'open') {
 		arrangePhoto.className = '';
 		carousel.className = '';
-		sort_overview.className = '';
+		sort_overview.className = 'sortable';
 	} else {
 		arrangePhoto.className = 'open';
 		carousel.className = 'open';
-		sort_overview.className = 'open sortable';
+		sort_overview.className = 'sortable open';
 		setArrangeButtonsVisible();
 	}
 }
@@ -151,12 +151,10 @@ function fillOverview(imgSrc) {
 	var imgFrame = document.createElement('div');
 	var newImg = document.createElement('img');
 	newImg.src = imgSrc;
+	slide.className = "sortable";
 	overview.appendChild(slide);
 	slide.appendChild(imgFrame);
 	imgFrame.appendChild(newImg);
-	newImg.addEventListener('dragstart', handleDragStart, false);
-	newImg.addEventListener('dragend', handleDragLeave, false);
-	newImg.addEventListener('click', imageClicked, false);
 }
 
 
