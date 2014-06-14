@@ -199,6 +199,16 @@
 	overflow: auto;
 }
 
+#viewport::-webkit-scrollbar {
+	opacity: 0;
+}
+
+#viewport::-webkit-scrollbar-thumb {
+	background-color: white;
+	border-radius: 8px;
+	width: 2px;
+}
+
 #sort-overview {
 	margin: auto;
 	height: 100%;

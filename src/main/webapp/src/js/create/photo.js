@@ -23,19 +23,14 @@ function OnLoad() {
 	var searcher = new google.search.ImageSearch();
 	searchControl.addSearcher(searcher);
 	searchControl.setSearchCompleteCallback(this, searchComplete);
-	// tell the searcher to draw itself and tell it where to attach
 	searchControl.draw(document.getElementById("result"));
-	// tell the searcher the number of result in each page.
 	searcher.setResultSetSize(8);
 	var userInput = document.URL;
 	userInput = userInput.split("search-photos=");
-	// execute an inital search
 	if (userInput[1]) {
 		var decodedUserInput = decodeURI(userInput[1]);
-		// console.log("userInput: " + decodedUserInput);
 		searchControl.execute(decodedUserInput);
 	} else {
-		// console.log("userInput is undefined.");
 		searchControl.execute("LINE LEONARD");
 	}
 	setUpSortPhoto();
@@ -69,9 +64,6 @@ function searchComplete(searchControl, searcher) {
 						var url = imageURLHolder[idx];
 						userDataModel.addPhotoURL(url);
 						userDataModel.addTbURL(e.target.src);
-						//userDataModel.originalURL.push(imageURLHolder[idx]);
-						//console.log(userDataModel.originalURL);
-						//console.log(userDataModel.tbURL);
 						updatePhotoCount();
 						updateCarousel();
 						break;
@@ -145,7 +137,7 @@ function setArrangePhotoOpen() {
 	} else {
 		arrangePhoto.className = 'open';
 		carousel.className = 'open';
-		sort_overview.className = 'open';
+		sort_overview.className = 'open sortable';
 		setArrangeButtonsVisible();
 	}
 }
@@ -164,18 +156,36 @@ function fillOverview(imgSrc) {
 	imgFrame.appendChild(newImg);
 	newImg.addEventListener('dragstart', handleDragStart, false);
 	newImg.addEventListener('dragend', handleDragLeave, false);
+	newImg.addEventListener('click', imageClicked, false);
 }
 
 
 /* 추가한 사진 정렬시 필요한 드래그앤드롭 이벤트를 위한 함수들 */
 function handleDragStart(e) {
 	this.style.opacity = '0.0';
+	console.log(this.getBoundingClientRect());
+	
 }
 
 function handleDragLeave(e) {
 	this.style.opacity = '1.0';
 }
 
+function imageClicked(e) {
+	var nextImg = getNextSiblingSrc(this);
+	var thisSrc = this.src;
+	var thatSrc = nextImg.src;
+	this.src = thatSrc;
+	nextImg.src = thisSrc;
+}
 
+function getNextSiblingSrc(theImg) {
+	var nextImg = theImg.parentNode.parentNode.nextSibling;
+	nextImg = nextImg.childNodes;
+	nextImg = nextImg[0];
+	nextImg = nextImg.childNodes;
+	nextImg = nextImg[0];
+	return nextImg;
+}
 
 google.setOnLoadCallback(OnLoad);

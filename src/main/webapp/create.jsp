@@ -72,7 +72,7 @@
 	</section>
 	
 	<div id="arrangePhotos">
-		<div class="sort-content ui-sortable">
+		<div class="sort-content">
 			<div class="viewport">
 				<div class="overview"></div>
 			</div> 
@@ -85,8 +85,8 @@
 				</p>
 				<div id="carousel"></div>
 			</div>
-			<div class="sort-content ui-sortable">
-				<div id="viewport">
+			<div class="sort-content">
+				<div id="viewport" class="sortable">
 					<div id="sort-overview"></div>
 				</div>
 			</div>
