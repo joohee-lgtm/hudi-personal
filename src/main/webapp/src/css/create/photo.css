@@ -149,7 +149,7 @@
 
 #carousel::-webkit-scrollbar-thumb {
 	background-color: white;
-	border-radius: 8px;
+	border-radius: 9px;
 	width: 2px;
 }
 
