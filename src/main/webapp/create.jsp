@@ -13,7 +13,12 @@
 </head>
 <script>
 $(function() {
-    $( "#sort-overview" ).sortable();
+    $( "#sort-overview" ).sortable({
+	    connectWith: ".column",
+	    start: function(e, ui){
+	        ui.placeholder.height("auto");
+    }
+    });
     $( "#sort-overview" ).disableSelection();
     console.log("Sortable implemented");
   });
