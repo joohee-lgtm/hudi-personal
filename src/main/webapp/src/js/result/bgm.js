@@ -24,7 +24,9 @@ function onYouTubeIframeAPIReady() {
     	  'showinfo' : 0, 
     	  'showsearch' : 0, 
     	  'modestbranding' : 0,
-    	  'disablekb' : 0
+    	  'disablekb' : 0,
+    	  'loop' : 0
+
     	  }
     });
     jObjInfo.getBgmInfo();

@@ -15,7 +15,6 @@
 	<header>
 		<a href="/collageJam/m/main">collageJam</a>
 	</header>
-	
 
 	<section id="resultWrap">
 		<article id="player"></article>
