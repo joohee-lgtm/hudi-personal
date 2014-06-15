@@ -53,7 +53,7 @@
 		</article>
 
 		<article id="aboutApp">
-			<span>Top Lank : Like</span>
+			<span>Top Rank : Like</span>
 			<ul>
 				<li></li>
 				<li></li>
