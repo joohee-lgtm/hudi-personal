@@ -15,6 +15,15 @@ function userDataModel() {
 	this.addTbURL = function(url) {
 		this.tbURL.push(url);
 	};
+	
+	this.moveElement = function(src, dst) {
+		var tempTbSrc = userDataModel.tbURL[src];
+		var tempOriSrc = userDataModel.originalURL[src];
+		userDataModel.tbURL.splice(src, 1);
+		userDataModel.originalURL.splice(src, 1);
+		userDataModel.tbURL.splice(dst, 0, tempTbSrc);
+		userDataModel.originalURL.splice(dst, 0, tempOriSrc);
+	}
 }
 
 function OnLoad() {
@@ -41,6 +50,7 @@ function OnLoad() {
 // jQuery를 이용하여 drag-to-sort 구현
 $(function() {
 	var originalIdx;
+	var destIdx;
 	var prevPagesOrder = [];
     $( "#sort-overview" ).sortable({
     	placeholder: "sort-placeholder",
@@ -50,32 +60,52 @@ $(function() {
 	    	originalIdx = ui.helper[0].id;
 	        ui.placeholder.height("auto");
 	        prevPagesOrder = $("#sort-overview").sortable('toArray');
-	        //prevPagesOrder.splice(" ", 1);
+	        for (idx in prevPagesOrder) {
+		        if(prevPagesOrder[idx] == "") {
+			        prevPagesOrder.splice(idx, 1);
+		        }
+	        }
 	        },
 	   update: function(e, ui) {
 	   		var currentOrder = $(this).sortable('toArray');
-            var second = currentOrder[prevPagesOrder.indexOf(originalIdx)];
-            console.log("prev:" + prevPagesOrder);
+	   		for (idx in currentOrder) {
+		        if(currentOrder[idx] == "") {
+			        currentOrder.splice(idx, 1);
+		        }
+	        }
+	   		for ( idx in currentOrder ) {
+		   		if ( currentOrder[idx] == originalIdx ) {
+			   		destIdx = idx;
+		   		}
+	   		}
             for (var idx = 0; idx < this.childNodes.length; idx++) {
 	            this.childNodes[idx].id = idx;
             }
-            for (var idx = 0; idx < this.childNodes.length; idx++) {
-	            console.log(getImgSrc(this, idx));
-            }
-            console.log(originalIdx);
-            console.log(second);
+            
+            reorderUserDataModel(originalIdx, destIdx)
 	   }
     });
     $( "#sort-overview" ).disableSelection();
-    console.log("Sortable implemented");
   });
 
 function getImgSrc(theDiv, idx) {
 	return theDiv.childNodes[idx].childNodes[0].childNodes[0].src
 }
 
-function reorderUserDataModel() {
-	
+function reorderUserDataModel(src, dst) {
+	this.userDataModel.moveElement(src, dst);
+	refreshCarousel();
+}
+
+function refreshCarousel() {
+	var carousel = document.getElementById("carousel");
+	for ( idx in carousel.childNodes ) {
+		if ( idx === "length" ) {
+			return;
+		}
+		carousel.childNodes[idx].childNodes[0].src = userDataModel.tbURL[idx];
+		
+	}
 }
 
 // jQuery End
@@ -124,7 +154,6 @@ function searchComplete(searchControl, searcher) {
 		}
 	}
 	if (pageCursor === 8) {
-		// console.log("done");
 		return;
 	} else {
 		searcher.gotoPage(pageCursor);
@@ -134,7 +163,6 @@ function searchComplete(searchControl, searcher) {
 
 function updatePhotoCount() {
 	var numSelectedPhoto = userDataModel.originalURL.length;
-	//console.log(numSelectedPhoto);
 	var photoCount = document.getElementById("photoCount");
 	photoCount.innerHTML = numSelectedPhoto;
 }
