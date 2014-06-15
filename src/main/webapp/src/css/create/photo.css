@@ -202,23 +202,39 @@
 
 #viewport::-webkit-scrollbar {
 	opacity: 0;
+	width: 0px;
 }
 
 #viewport::-webkit-scrollbar-thumb {
-	background-color: white;
-	border-radius: 8px;
-	width: 2px;
+	
 }
 
 #sort-overview {
 	margin: auto;
 	height: 100%;
+	width: auto;
+	overflow: auto;
+	overflow-x: hidden;
+}
+
+#sort-overview::-webkit-scrollbar {
+	opacity: 0;
+}
+
+#sort-overview::-webkit-scrollbar-thumb {
+	background-color: white;
+	border-radius: 8px;
+	width: 2px;
 }
 
 #sort-overview div {
 	display: inline-block;	
 	width: 240px;
 	height: 175px;
+}
+
+.sort-placeholder {
+	background-color: white;
 }
 
 #sort-overview div div {

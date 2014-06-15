@@ -14,6 +14,8 @@
 <script>
 $(function() {
     $( "#sort-overview" ).sortable({
+    	placeholder: "sort-placeholder",
+    	forcePlaceholderSize: true,
 	    connectWith: ".column",
 	    start: function(e, ui){
 	        ui.placeholder.height("auto");
