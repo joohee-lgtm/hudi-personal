@@ -1,3 +1,5 @@
+/* for create desktop web */
+
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -7,10 +9,9 @@ var done = false;
 var resultArr = [];
 var page = 1;
 var selectedBGM = {
-		url : ""
-		// url
-		// start
-		// end
+		url : "",
+		start : 0,
+		end : 0
 };
 
 google.load('search', '1');
@@ -29,8 +30,10 @@ function ytOnLoad(){
 
 function ytSearchComplete(searchControl, videoSearch){
 	for (var i=0 ; i<8 ; i++){
-		var reobj = videoSearch.results[i]
-		resultArr.push(reobj);
+		var reobj = videoSearch.results[i];
+		if (reobj != null){
+			resultArr.push(reobj);
+		}
 	}
 	if (page === 8){
 		setResultTn();
@@ -48,17 +51,17 @@ function ytSearchComplete(searchControl, videoSearch){
 
 function setResultTn(){
 	var msw = document.getElementById("musicSelectWrap");
-	var ul = msw.getElementsByTagName("ul")[0];
-	msw.removeChild(ul);
+	var _ul = msw.getElementsByTagName("ul")[0];
+	msw.removeChild(_ul);
 	var newul = document.createElement("ul");
 	
 	for (var i=0 ; i<resultArr.length ; i++){
 		var li = document.createElement("li");
-		var tnimg = "<img src=\"" +  resultArr[i].tbUrl + "\">";
-		var title = "<span>"+ resultArr[i].title + "</span>"; 
-		var total = tnimg +"<br>"+ title;
-		li.innerHTML = total;
+		var title = "<p>"+ resultArr[i].title + "</p>"; 
+		li.innerHTML = title;
 		newul.appendChild(li);
+		li.style.backgroundImage = "url(\"" + resultArr[i].tbUrl + "\")";
+		li.style.backgroundSize = "cover";
 		addEvent(li, resultArr[i]);
 	}
 	msw.appendChild(newul);
@@ -67,27 +70,48 @@ function setResultTn(){
 var player2;
 function putYt(ytobj){
 	var vId = sortUrl(ytobj.url);
-	var title = "<span>" + ytobj.title +"</span>";
-	var mswrap = document.getElementById("musicSelectWrap");
-	var span = mswrap.getElementsByTagName("span")[0];
-	var div = mswrap.getElementsByTagName("div")[0];
+	var mswrap = document.getElementById("musicSelectWrap");	
+	var article = mswrap.getElementsByTagName("article")[0];
 	var pyt = document.getElementById("player2");
-	div.removeChild(pyt);
+	article.removeChild(pyt);
+	
 	var newyt = document.createElement("div");
+	var secdiv = article.getElementsByTagName("div")[0];
 	newyt.id = "player2";
-	div.insertBefore(newyt, span);
+	article.insertBefore(newyt, secdiv);
 	player2 = new YT.Player('player2', {
 	      height: '180',
 	      width: '300',
 	      videoId: vId,
 	      events: {
+	    	  'onReady': onPlayerReady,
 	      }
 	    });
-	span.innerHTML = title;
+	var span = article.getElementsByTagName("p")[0];
+	span.innerHTML = ytobj.title;
+	selectedBGM.url = vId;
 }
 
-function putBgmAtPreview(ytobj){
-	var vId = sortUrl(ytobj.url);
+function onPlayerReady() {
+	var btn = document.getElementById("sall");
+	var end = player2.getDuration();
+	
+	btn.addEventListener('click', function(){
+		var ct = parseInt(end);
+		selectedBGM.end = ct;
+		var msw = document.getElementById("musicSelectWrap");
+		var op = msw.getElementsByTagName("output")[1];
+		op.innerHTML = "end = " + ct + " sec";
+		
+		op = msw.getElementsByTagName("output")[0];
+		op.innerHTML = "start = 0 sec";
+		selectedBGM.start = 0;
+		
+	}, false);
+	
+}
+
+function putBgmAtPreview(){
 	var pwrap = document.getElementById("previewWrap");
 	var slide = pwrap.getElementsByTagName("div")[0];
 	var pyt = document.getElementById("player");
@@ -96,14 +120,23 @@ function putBgmAtPreview(ytobj){
 	newyt.id = "player";
 	var setting = document.getElementById("setting");
 	slide.insertBefore(newyt, setting);
-	player = new YT.Player('player', {
-	      height: '300',
-	      width: '400',
-	      videoId: vId,
-	      events: {
-	      }
-	    });
-	selectedBGM.url = vId;
+	if (selectedBGM.start < selectedBGM.end){
+		player = new YT.Player('player', {
+		      height: '300',
+		      width: '400',
+		      videoId: selectedBGM.url,
+		      playerVars: { 
+		    	  'controls' : 0,
+		    	  'start': selectedBGM.start,
+		    	  'end' : selectedBGM.end
+		      },
+		      events: {
+		      }
+		    });
+	} else {
+		alert("reset start, end time");
+	}
+	
 }
 
 var urlstorage;
@@ -111,22 +144,52 @@ var urlstorage;
 function addEvent(li, reobj){
 	li.addEventListener('click', function(){
 		putYt(reobj);
-		putBgmAtPreview(reobj);
 	}, false);
 	
 	li.addEventListener('mouseover', function(){
-		li.style.background = "RGBA(35, 35, 34, 0.3)";
+		li.style.background = "none";
+		li.style.border = "1px solid RGBA(140, 255, 207, 1)";
+		li.style.color = "RGBA(81, 81, 81, 1)";
 	}, false);
 	
 	li.addEventListener('mouseout', function(){
-		li.style.background = "none";
+		li.style.backgroundImage = "url(\"" + reobj.tbUrl + "\")";
+		li.style.backgroundSize = "cover";
+		li.style.border = "none";
+		li.style.color = "RGBA(255, 255, 255, 0.5)";
 	}, false);
-
 }
 
 function stopYtInSelectMusic(){
 	player2.stopVideo();
 }
+
+function setYtStart(){
+	var ct = parseInt(player2.getCurrentTime());
+	selectedBGM.start = ct
+	var msw = document.getElementById("musicSelectWrap");
+	var op = msw.getElementsByTagName("output")[0];
+	op.innerHTML = "start = " + ct+ " sec";
+}
+
+function setYtEnd(){
+	var ct = parseInt(player2.getCurrentTime());
+	selectedBGM.end = ct
+	var msw = document.getElementById("musicSelectWrap");
+	var op = msw.getElementsByTagName("output")[1];
+	op.innerHTML = "end = " + ct + " sec";
+}
+
+var p2start = document.getElementById("sbtns");
+p2start.addEventListener("click", function(){
+	setYtStart();
+}, false);
+
+var p2end = document.getElementById("sbtne");
+p2end.addEventListener("click", function(){
+	setYtEnd();
+}, false);
+
 
 function sortUrl(url){
 	var start = url.search(/\?v=/) + 3;
@@ -134,4 +197,11 @@ function sortUrl(url){
 	return subtext;
 }
 
-
+var que = document.getElementById("q");
+que.addEventListener('click', function(){
+	var text = 
+		"1) play youtube \n" +
+		"2) click \'set start\' button\n" +
+		"3) click \'set end\' button";
+	alert(text);
+}, false);

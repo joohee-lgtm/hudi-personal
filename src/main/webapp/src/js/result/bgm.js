@@ -1,3 +1,5 @@
+/* for result desktop web*/
+
 /* youtube api 시작 */
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -16,12 +18,14 @@ function onYouTubeIframeAPIReady() {
     	  'onReady': onPlayerReady,
       },
       playerVars: {
-    	  'autoplay': 0, 
+    	  'start' 	: parseInt(jamjar.bgm_start),
+    	  'end' 	: parseInt(jamjar.bgm_end),
     	  'controls': 0, 
     	  'showinfo' : 0, 
     	  'showsearch' : 0, 
     	  'modestbranding' : 0,
-    	  'disablekb' : 0}
+    	  'disablekb' : 0
+    	  }
     });
     jObjInfo.getBgmInfo();
 }

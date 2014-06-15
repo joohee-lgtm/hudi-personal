@@ -168,7 +168,7 @@ header {
 .jamjar {
 	border: 1px solid #D0D0D0;
 	background-color: #F8F8F8;
-	box-shadow: 0px 3px 3px 0px rgba(201, 201, 201, 1);
+	box-shadow:         0px 3px 3px 0px rgba(201, 201, 201, 1);
 	border-radius: 10px;
 	width: 280px;
 	height: 350px;
@@ -181,7 +181,6 @@ header {
 	height: 80%;
 	background-repeat:no-repeat;
 	background-size: 100%;
-	border-radius: 10px;
 }
 
 .jamjar > .desc {
@@ -204,7 +203,6 @@ header {
 	background-color: rgba(0,0,0,0.4) ;
 	position: absolute;
 	top: 0;
-	diplay: none;
 }
 
 .playmark {
@@ -214,7 +212,6 @@ header {
 	border-bottom: 20px solid transparent;
 	border-left: 20px solid #FFF;
 	left: 50%;
-	diplay: none;
 }
 
 @media all and (orientation:portrait) {

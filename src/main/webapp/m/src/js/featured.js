@@ -1,3 +1,5 @@
+/* for mobile */
+ 
 function featuredGroupManager(data, shownum){
 	this.data = data;
 	this.shownum = shownum;

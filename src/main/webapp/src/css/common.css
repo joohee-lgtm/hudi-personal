@@ -1,4 +1,5 @@
-@CHARSET "utf-8";
+/* for desktop web */
+@charset "UTF-8";
 
 /*set google fonts*/
 @import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);

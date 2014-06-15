@@ -1,3 +1,5 @@
+/* for result mobile */
+
 function jarInfoManager(jamjar){
 	this.user = jamjar.u_id;
 	this.title = jamjar.title;

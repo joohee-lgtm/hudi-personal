@@ -1,7 +1,8 @@
+/* for create desktop web */
 @charset "UTF-8";
 
 #musicSelectWrap{
-	margin-top : 200px;
+	margin-top : 180px;
 	font-family : "Nanum Gothic";
 }
 
@@ -14,77 +15,122 @@
 	height 		: 40px;
 	border 		: 1px solid rgba(213, 221, 228, 1);
 	border-radius : 5px;
-	background 	: none;
+	background 	: RGBA(255, 255, 255, 1);
 }
 
 #musicSelectWrap input[type="text"]{
-	width 		: 300px;
+	width 		: 400px;
 	height 		: 40px;
 }
 
 #musicSelectWrap ul{
 	margin 		: auto;
 	width 		: 900px;
-	padding 	: 0px;
+	padding 	: 20px 0px;
 	text-align	: center;
 	margin-top 	: 30px;
 	margin-bottom : 150px;
  	border 		: 1px solid RGBA(207, 207, 207, 1);
 	border-radius : 5px;
 	box-shadow 	: 0px 0px 2px RGBA(207, 207, 207, 1);
+	background 	: RGBA(255, 255, 255, 1);
+
 }
 
 #musicSelectWrap ul li{
-	display 	: inline-block;
-	width 		: 270px;
-	margin 		: 10px;
-	height 		: 200px;
-	padding 	: 10px;
+	display : inline-flex;
+	width 	: 200px;
+	height 	: 150px;
+	margin 	: 10px;
+	padding : 10px;
+	color 	: RGBA(255, 255, 255, 0.5);
 	border-radius : 10px;
   	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
-#musicSelectWrap ul li img {
-	width 		: 150px;
+#musicSelectWrap ul li p {
+	display : block;
+	margin 	: auto;
+	width 	: 180px;
+	text-overflow:ellipsis;
 }
 
-#musicSelectWrap ul li span {
-	display 	: block;
-	width 		: 270px;
-}
 
-
-#musicSelectWrap > div:nth-child(1){
+#musicSelectWrap > article:nth-child(1){
 	margin 		: auto;
-	margin-bottom : 20px;
 	width 		: 900px;
-	height 		: 250px;
+	height 		: 300px;
 	text-align 	: center;
 	border 		: 1px solid RGBA(207, 207, 207, 1);
-	border-radius : 5px;
 	box-shadow 	: 0px 0px 2px RGBA(207, 207, 207, 1);
+	background 	: RGBA(255, 255, 255, 1);
+	margin-bottom : 20px;
+	border-radius : 5px;
 }
 
-#musicSelectWrap div p{
-	margin-top : 70px;
-	font-size :40px;
+#musicSelectWrap > article:nth-child(1) > div{
+	margin 	: 25px;
+	float 	: left;
+	width 	: 400px;
+	height 	: 250px;
+	border 	: 1px solid RGBA(234, 228, 220, 1);
+    box-sizing 	: border-box;
+  	-webkit-box-sizing 	: border-box;
+    -moz-box-sizing 	: border-box;
 }
 
-#musicSelectWrap div iframe{
-	margin-top : 20px;
-	margin-left : auto;
-	margin-right : auto;
+#musicSelectWrap article iframe{
+	margin 	: 25px;
+	float 	: left;
+	width 	: 400px;
+	height 	: 250px;
+	border 	: 1px solid black;
+    box-sizing 	: border-box;
+  	-webkit-box-sizing 	: border-box;
+    -moz-box-sizing 	: border-box;
+}
+
+#musicSelectWrap > article:nth-child(1) > div > p{
+	margin : 20px 10px;
+}
+
+#musicSelectWrap > article:nth-child(1) > div > input[type="button"]{
+	width : 100px;
+	height : 25px;
+	border : 1px solid RGBA(71, 71, 71, 1);
+	background : none;
+	border-radius : 5px;
 	display : block;
-	box-shadow 	: 0px 0px 5px RGBA(50, 50, 50, 1);
-}
-#musicSelectWrap div span{
-	margin-top : 20px;
-	display : block;
+	margin : auto;
+	
 }
 
-#musicSelectWrap > article{
+#musicSelectWrap > article:nth-child(1) > div > output{
+	display : block;
+	text-align : center;
+	height : 30px;
+	margin : auto;
+	margin-top : 5px;
+	margin-bottom : 5px;
+    box-sizing 	: border-box;
+  	-webkit-box-sizing 	: border-box;
+    -moz-box-sizing 	: border-box;	
+}
+
+#musicSelectWrap > article:nth-child(1) > div > button{
+	width : 20px;
+	border: none;
+	height  : 20px;
+	background : RGBA(140, 255, 207, 1);
+	color : RGBA(71, 71, 71, 1);
+	border-radius : 10px;
+	float : right;
+	margin-right : 8px;
+}
+
+#musicSelectWrap > article:nth-child(2){
 	margin 		: auto;
 	margin-bottom : 20px;
 	width 		: 400px;

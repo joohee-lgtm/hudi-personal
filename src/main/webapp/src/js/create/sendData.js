@@ -1,6 +1,5 @@
-/*
-	send data from client to server
-*/
+/* for create desktop web */
+/* send data from client to server */
 
 function sendUserData(e) {
 	e.preventDefault();
@@ -11,7 +10,9 @@ function sendUserData(e) {
 		desc : "",
 		user : "",
 		bgm : "",
-		thumbnail : ""
+		thumbnail : "",
+		bgmStart : "",
+		bgmEnd : "",
 	};
 	
 	data.aURL 			= getImgURLs();
@@ -97,11 +98,13 @@ function registerEvents() {
 }
 
 function getBgmStart() {
-	return '1m10s';
+	var start = selectedBGM.start;
+	return start.toString();
 }
 
 function getBgmEnd() {
-	return '2m2s';
+	var end = selectedBGM.end;
+	return end.toString();
 }
 
 function getSpi() {

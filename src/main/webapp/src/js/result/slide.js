@@ -1,3 +1,5 @@
+/* for result desktop web*/
+
 var result = {};
 var _o = result;
 result.util = {

@@ -1,3 +1,5 @@
+/* for result mobile */
+
 /* youtube api 시작 */
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
@@ -16,6 +18,8 @@ function onYouTubeIframeAPIReady() {
     	  'onReady': onPlayerReady,
       },
       playerVars: {
+    	  'start' 	: parseInt(jamjar.bgm_start),
+    	  'end' 	: parseInt(jamjar.bgm_end),
     	  'autoplay': 0, 
     	  'controls': 0, 
     	  'showinfo' : 0, 

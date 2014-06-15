@@ -1,3 +1,5 @@
+/* for create desktop web */
+
 var player;
 var work = {
 
@@ -85,6 +87,7 @@ var work = {
 				var urls = userDataModel.originalURL;
 				_o.slide._set(urls);
 				stopYtInSelectMusic();
+				putBgmAtPreview();
 			},
 
 			closebt : function(){

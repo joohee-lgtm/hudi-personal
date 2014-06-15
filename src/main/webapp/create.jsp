@@ -46,11 +46,18 @@ $(function() {
 	</section>
 
 	<section id="musicSelectWrap">
-		<div>
+		<article>
 			<div id="player2"></div>
-		<!-- show youtube preview -->
-			<span>search & select</span>
-		</div>
+			<div>
+				<p>search & select & set time</p>
+				<input type="button" id="sbtns" value="set start" />
+				<output>start = ? sec</output>
+				<input type="button" id="sbtne" value="set end" />
+				<output>end = ? sec</output>
+				<input type="button" id="sall" value="set all time" />
+				<button id="q">?</button>
+			</div>
+		</article>
 		<article id="content"></article>
 		<ul><!-- show search youtube result --></ul>
 	</section>
