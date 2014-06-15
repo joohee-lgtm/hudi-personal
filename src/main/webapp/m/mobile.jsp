@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-        <link rel="stylesheet" type="text/css" href="src/css/main.css">
+        <link rel="stylesheet" type="text/css" href="src/css/mobile.css">
         <title>Mobile</title>
     </head>
     <body>
@@ -51,35 +51,12 @@
                 <img class="toggler" src="img/plus.png">
             </div>
             <div id="jamjar_wrapper" class="wrapper">
-            	<div class="jamjar">
-                	<div class="videoFrame">
-                		<img class="thumbnail">
-                		<div class="videoBtn">
-                			<div class="playmark"></div>
-                		</div>
-                	</div>
-                	<div class="desc"></div>
-                </div>
-                <div class="jamjar">
-                	<img class="thumbnail">
-                	<div class="desc"></div>
-                </div>
-                <div class="jamjar">
-                	<img class="thumbnail">
-                	<div class="desc"></div>
-                </div>
-                <div class="jamjar">
-                	<img class="thumbnail">
-                	<div class="desc"></div>
-                </div>
-                <div class="jamjar">
-                	<img class="thumbnail">
-                	<div class="desc"></div>
-                </div>
-                <div class="jamjar">
-                	<img class="thumbnail">
-                	<div class="desc"></div>
-                </div>
+                <div id="videoFrame" class="jamjar"></div>
+                <div class="jamjar"></div>
+                <div class="jamjar"></div>
+                <div class="jamjar"></div>
+                <div class="jamjar"></div>
+                <div class="jamjar"></div>
             </div>
         </section>
 		<script>
@@ -88,11 +65,11 @@
 			for (var i = 0; i < 6; i++) {
 				jarobjs[i] = data[data.length - i - 1];
 			}
+			console.log(jarobjs);
 		</script>
-        <script type="text/javascript" src="src/js/main/mobile.js" ></script> 
-        <script type="text/javascript" src="src/js/main/main.js" ></script>  
-        <script type="text/javascript" src="src/js/main/flicking.js" ></script>
-        <script type="text/javascript" src="src/js/main/featured.js"></script>
+        <script type="text/javascript" src="src/js/mobile.js" ></script> 
+        <script type="text/javascript" src="src/js/main.js" ></script>  
+        <script type="text/javascript" src="src/js/flicking.js" ></script> 
         <script type="text/javascript" src="lib/_JE.js" ></script> 
     </body>
 </html>
