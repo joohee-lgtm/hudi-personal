@@ -39,10 +39,11 @@ function onPlayerReady() {
 }
 
 
-var rewrap = document.getElementById("btn");
+var btn = document.getElementById("btn");
 var body = document.getElementsByTagName("body")[0];
-var alert = createAlertNode(alertText);
-body.insertBefore(alert,rewrap);
+var alert = createAlertNode();
+body.insertBefore(alert,btn);
+
 function onPlayerStateChange(evt) {
 	// play event = 1 buffer event = 3
 	if (evt.data === 3){
@@ -61,15 +62,12 @@ function onPlayerStateChange(evt) {
 function alertShow(alertText){
 	var alert = document.getElementById("alert");
 	alert.innerHTML = alertText;
-	alert.style.color = "RGBA(255, 255, 255, 0.5)";
-	alert.style.fontFamily = "Exo";
-	alert.style.textAlign = "center";
 }
 
-function createAlertNode(alertText){
+function createAlertNode(){
 	
 	var alert = document.createElement("div");
-	alert.innerHTML = alertText;
+	alert.innerHTML = "...";
 	alert.id = "alert";
 	alert.style.color = "RGBA(255, 255, 255, 0.5)";
 	alert.style.fontFamily = "Exo";
