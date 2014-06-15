@@ -100,7 +100,7 @@ result.img = {
 	}
 };
 
-
+var playingBgm = false;
 result.init = {
 	slide : document.getElementById("slide"),
 
@@ -112,13 +112,27 @@ result.init = {
 
 	setBtn : function(startbtn, stopbtn) {
 		startbtn.addEventListener("click", function(){
-			player.playVideo();
-			_o.play.ready();
-			_o.play._start();
+			if (playingBgm){
+				console.log("already playing");
+			} else {
+				console.log("gogogo");
+				player.playVideo();
+				_o.play.ready();
+				_o.play._start();
+				playingBgm = true;
+			}
 		}, false);
 		stopbtn.addEventListener("click", function(){
-		    player.stopVideo();
-		    _o.play._stop();
+			if (playingBgm){
+				console.log("stop");
+			    player.stopVideo();
+			    _o.play._stop();
+			    playingBgm = false;
+
+			} else {
+				console.log("already stop");
+
+			}
 		}, false);
 	},
 
