@@ -10,9 +10,8 @@
 </head>
 <body>
 	<header>
-		<a href="/collageJam/main"> CollageJam </a> <input type="button"
-			id="addlike" value="like">
-		</button>
+		<a href="/collageJam/main"> CollageJam </a>
+		
 	</header>
 
 	<section id="resultWrap">
@@ -45,6 +44,7 @@
 		<div>
 			<button>PLAY</button>
 			<button>STOP</button>
+			<button id="addlike">LIKE</button>
 		</div>
 	</section>
 	<footer></footer>

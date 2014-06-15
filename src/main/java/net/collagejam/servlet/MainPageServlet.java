@@ -24,11 +24,16 @@ public class MainPageServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		System.out.println("main page servlet connection");
 		
-		MainFeaturedController mfc = new MainFeaturedController();
-		mfc.makeShowVideoList();
-		JSONArray rows = mfc.getRows();
+		MainFeaturedController mfc1 = new MainFeaturedController();
+		mfc1.makeShowVideoList();
+		JSONArray recentData = mfc1.getRows();
 		
-		request.setAttribute("data", rows);
+		MainFeaturedController mfc2 = new MainFeaturedController();
+		mfc2.getTopLikedSlides();
+		JSONArray topRankData = mfc2.getRows();		
+		
+		request.setAttribute("recentData", recentData);
+		request.setAttribute("topRankData", topRankData);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
 		dispatcher.forward(request, response);
 	}

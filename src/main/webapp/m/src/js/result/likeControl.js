@@ -1,5 +1,4 @@
-/* web like controller */
-
+/* mobile like controller */
 function likeController(likebtn) {
 	this.btn = likebtn;
 	this.curlike = jObjInfo.likes;
@@ -23,6 +22,7 @@ likeController.prototype = {
 	},
 
 	updateServerData : function(likes) {
+		
 		var xhr = new XMLHttpRequest();
 		xhr.open("POST", "/collageJam/likeadd", true);
 		xhr.setRequestHeader('Content-Type',
@@ -44,5 +44,7 @@ likeController.prototype = {
 	}
 }
 
+var likebutton = document.getElementById("addlike");
 var like = new likeController(likebutton);
+///like.setBtn();
 like.setBtn();

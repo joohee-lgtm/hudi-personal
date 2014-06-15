@@ -53,10 +53,8 @@
 		</article>
 
 		<article id="aboutApp">
-			<span>Share your story with our creative applications</span>
+			<span>Top Lank : Like</span>
 			<ul>
-				<li></li>
-				<li></li>
 				<li></li>
 				<li></li>
 				<li></li>
@@ -79,12 +77,21 @@
 
 	<footer id="footer"></footer>
 	<script>
-		var data = ${data};
+		var recentData = ${recentData};
 		var jarobjs = [];
 		for ( var i = 0; i < 15; i++) {
-			jarobjs[i] = data[data.length - i - 1];
+			jarobjs[i] = recentData[recentData.length - i - 1];
 		}
+		
+		var topJarObjs = [];
+		var topRankData = ${topRankData};
+		for (var i=0 ; i<15 ; i++){
+			topJarObjs[i] = topRankData[i];
+		}
+		console.log(topJarObjs);
+		
 	</script>
 	<script type="text/javascript" src="./src/js/main.js" /></script>
+	<script type="text/javascript" src="./src/js/topLank.js" /></script>
 </body>
 </html>

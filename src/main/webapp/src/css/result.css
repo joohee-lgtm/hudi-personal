@@ -56,14 +56,13 @@ body {
 }
 	
 #resultWrap > div:nth-child(2) > button {
-	width 		: 130px;
+	width 		: 85px;
 	height 		: 50px;
 	color 		: RGBA(140, 255, 207, 1);
 	font-family : 'Nanum Gothic';
 	font-weight : lighter;
     border		: 1px solid RGBA(140, 255, 207, 1);
     background 	: RGBA(0, 0, 0, 0.7);
-	letter-spacing : 1em;
 }
 
 #info {
