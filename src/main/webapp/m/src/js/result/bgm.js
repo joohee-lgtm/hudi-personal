@@ -16,6 +16,7 @@ function onYouTubeIframeAPIReady() {
       videoId: jamjar.bgm_url,
       events : {
     	  'onReady': onPlayerReady,
+    	  'onStateChange' : onPlayerStateChange,
       },
       playerVars: {
     	  'start' 	: parseInt(jamjar.bgm_start),
@@ -36,10 +37,12 @@ function onPlayerReady() {
 }
 
 function onPlayerStateChange(evt) {
-    if (evt.data == YT.PlayerState.PLAYING && !done) {
-        setTimeout(stopVideo, 6000);
-        done = true;
-    }
+	console.log(evt);
+	// play event = 1 buffer event = 3
+	if(evt.data == 1){
+		_o.play.ready();
+		_o.play._start();
+	}
 }
 
 function stopVideo() {

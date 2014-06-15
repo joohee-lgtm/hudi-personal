@@ -113,8 +113,8 @@ result.init = {
 	setBtn : function(startbtn, stopbtn) {
 		startbtn.addEventListener("click", function(){
 			player.playVideo();
-			_o.play.ready();
-			_o.play._start();
+//			_o.play.ready();
+//			_o.play._start();
 		}, false);
 		stopbtn.addEventListener("click", function(){
 		    player.stopVideo();
@@ -199,7 +199,6 @@ result.play = {
 		var t = this;
 		var setting = document.getElementById("setting");
 		t.speed = jamjar.sec_per_img;
-		console.log(t.speed);
 		if (this.count === 0){
 		} else {
 			t._stop();
