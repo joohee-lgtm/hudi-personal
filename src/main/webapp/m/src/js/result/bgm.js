@@ -40,18 +40,24 @@ function onPlayerReady() {
 
 function onPlayerStateChange(evt) {
 	// play event = 1 buffer event = 3
-	if (evt.data == 3){
+	if (evt.data === 3){
 		alertShow();
 		console.log("buffering");
 		console.log(evt);
 	}
-	if(evt.data == 1){
+	if(evt.data === 1){
 		console.log("start");
 		var body = document.getElementsByTagName("body")[0];
 		var alert = document.getElementById("alert");
 		body.removeChild(alert);
 		_o.play.ready();
 		_o.play._start();
+	}
+	if(evt.data === -1){
+		console.log("start");
+		var body = document.getElementsByTagName("body")[0];
+		var alert = document.getElementById("alert");
+		body.removeChild(alert);
 	}
 }
 
