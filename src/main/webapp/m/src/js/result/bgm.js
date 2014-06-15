@@ -46,19 +46,19 @@ body.insertBefore(alert,btn);
 
 function onPlayerStateChange(evt) {
 	// play event = 1 buffer event = 3
-	if (evt.data === 3){
-		alertShow("loading background music");
-		console.log("buffering");
-		_o.play._stop();
-		console.log(evt);
-	} else if(evt.data === 1){
-		alertShow("playing");
-		_o.play.ready();
-		_o.play._start();
-	} else if(evt.data === -1){
-		alertShow("pause");
-		_o.play._stop();
-	}
+//	if (evt.data === 3){
+//		alertShow("loading background music");
+//		console.log("buffering");
+//		_o.play._stop();
+//		console.log(evt);
+//	} else if(evt.data === 1){
+//		alertShow("playing");
+//		_o.play.ready();
+//		_o.play._start();
+//	} else if(evt.data === -1){
+//		alertShow("pause");
+//		_o.play._stop();
+//	}
 }
 
 function alertShow(alertText){
