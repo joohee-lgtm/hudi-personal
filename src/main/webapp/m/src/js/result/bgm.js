@@ -49,6 +49,7 @@ function onPlayerStateChange(evt) {
 	if (evt.data === 3){
 		alertShow("loading background music");
 		console.log("buffering");
+		_o.play._stop();
 		console.log(evt);
 	} else if(evt.data === 1){
 		alertShow("playing");
@@ -56,6 +57,7 @@ function onPlayerStateChange(evt) {
 		_o.play._start();
 	} else if(evt.data === -1){
 		alertShow("pause");
+		_o.play._stop();
 	}
 }
 
