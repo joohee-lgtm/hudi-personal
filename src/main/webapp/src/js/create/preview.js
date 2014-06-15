@@ -153,7 +153,9 @@ preview.slide = {
 			}, false);
 			iobj._img.addEventListener("error", function(){
 				alert("order [" + i + "] img load error.\nselect other image.");
+				iobj._img.src = "./src/img/nophoto.jpg";
 			}, false);
+			temparea.appendChild(iobj._img);
 		}
 	},
 	// 이미지를 생성하고 스타일을 반영해서 본문에 넣는다! => 이를 수행하는 생성자를호출
