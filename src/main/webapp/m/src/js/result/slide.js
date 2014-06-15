@@ -101,6 +101,7 @@ result.img = {
 };
 
 
+var playingBgm = false;
 result.init = {
 	slide : document.getElementById("slide"),
 
@@ -111,14 +112,27 @@ result.init = {
 	},
 
 	setBtn : function(startbtn, stopbtn) {
-		startbtn.addEventListener("touchstart", function(){
-			player.playVideo();
-			_o.play.ready();
-			_o.play._start();
+		startbtn.addEventListener("touchevent", function(){
+			if (playingBgm){
+				console.log("already playing");
+			} else {
+				console.log("gogogo");
+				player.playVideo();
+				_o.play.ready();
+				_o.play._start();
+				playingBgm = true;
+			}
 		}, false);
-		stopbtn.addEventListener("touchstart", function(){
-		    player.stopVideo();
-		    _o.play._stop();
+		stopbtn.addEventListener("touchevent", function(){
+			if (playingBgm){
+				console.log("stop");
+			    player.stopVideo();
+			    _o.play._stop();
+			    playingBgm = false;
+
+			} else {
+				console.log("already stop");
+			}
 		}, false);
 	},
 
