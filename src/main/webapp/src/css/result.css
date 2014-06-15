@@ -21,6 +21,10 @@ header > a:nth-child(1){
 	line-height	: 50px;
 }
 
+header > input[type="button"]{
+	
+}
+
 body {
 	background 	: url("http://www.nhnnext.org/static/20140425/16/bg.jpg");
     background-size : cover;

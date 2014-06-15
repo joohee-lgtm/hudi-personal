@@ -63,7 +63,8 @@
 
 	<servlet>
 		<servlet-name>MobileMainPageServlet</servlet-name>
-		<servlet-class>net.collagejam.servlet.MobileMainPageServlet</servlet-class>
+		<servlet-class>net.collagejam.servlet.MobileMainPageServlet
+		</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MobileMainPageServlet</servlet-name>
@@ -72,7 +73,8 @@
 
 	<servlet>
 		<servlet-name>MobileFeaturedPageServletMapping</servlet-name>
-		<servlet-class>net.collagejam.servlet.MobileFeaturedPageServlet</servlet-class>
+		<servlet-class>net.collagejam.servlet.MobileFeaturedPageServlet
+		</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>MobileFeaturedPageServletMapping</servlet-name>
@@ -120,7 +122,8 @@
 
 	<servlet>
 		<servlet-name>MobileResultPageServletMapping</servlet-name>
-		<servlet-class>net.collagejam.servlet.MobileResultPageServlet</servlet-class>
+		<servlet-class>net.collagejam.servlet.MobileResultPageServlet
+		</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ResultPageServletMapping</servlet-name>
@@ -154,6 +157,16 @@
 		<servlet-name>logout</servlet-name>
 		<url-pattern>/logout.do</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>likeAddServletMapping</servlet-name>
+		<servlet-class>net.collagejam.servlet.LikeAddServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>likeAddServletMapping</servlet-name>
+		<url-pattern>/likeadd</url-pattern>
+	</servlet-mapping>
+
 
 	<!-- real development servlet end -->
 
