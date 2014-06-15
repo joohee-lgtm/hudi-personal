@@ -36,8 +36,8 @@ function OnLoad() {
 	setUpSortPhoto();
 	//searchControl.setSearchStartingCallback(this, document.prototype.OnSearchStarting);
 }
-//Refactoring
 
+//Refactoring
 function searchComplete(searchControl, searcher) {
 	// Check that we got results
 	if (searcher.results && searcher.results.length > 0) {

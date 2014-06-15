@@ -17,9 +17,9 @@ $(function() {
     	placeholder: "sort-placeholder",
     	forcePlaceholderSize: true,
 	    connectWith: ".column",
-	    start: function(e, ui){
+	    start: function(e, ui) {
 	        ui.placeholder.height("auto");
-    }
+	        }
     });
     $( "#sort-overview" ).disableSelection();
     console.log("Sortable implemented");
