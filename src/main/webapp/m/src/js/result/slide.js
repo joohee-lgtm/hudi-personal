@@ -111,12 +111,12 @@ result.init = {
 	},
 
 	setBtn : function(startbtn, stopbtn) {
-		startbtn.addEventListener("click", function(){
+		startbtn.addEventListener("touchstart", function(){
 			player.playVideo();
 //			_o.play.ready();
 //			_o.play._start();
 		}, false);
-		stopbtn.addEventListener("click", function(){
+		stopbtn.addEventListener("touchstart", function(){
 		    player.stopVideo();
 		    _o.play._stop();
 		}, false);
