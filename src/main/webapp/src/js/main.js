@@ -46,9 +46,10 @@ Featured.jar = {
 			var u_ele = this._User(jarobj.title);
 			var tn_ele = this._Tn(jarobj.tb_url, that);
 			var desc_ele = this._Desc(jarobj.description);
+			console.log(jarobj);
 			li.appendChild(u_ele);
 			li.appendChild(tn_ele);
-			li.appendChild(desc_ele);
+			//li.appendChild(desc_ele);
 			that.li = _o.jar.support.setId(li, jarobj.j_id);
 		},
 
