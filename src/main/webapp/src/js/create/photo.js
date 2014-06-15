@@ -4,6 +4,7 @@ var selectedImages = [];
 var pageCursor = 1;
 var imageURLHolder = [];
 
+
 function userDataModel() {
 	this.originalURL = [];
 	this.tbURL = [];
@@ -34,8 +35,50 @@ function OnLoad() {
 		searchControl.execute("LINE LEONARD");
 	}
 	setUpSortPhoto();
-	//searchControl.setSearchStartingCallback(this, document.prototype.OnSearchStarting);
+	
 }
+
+// jQuery를 이용하여 drag-to-sort 구현
+$(function() {
+	var originalIdx;
+	var prevPagesOrder = [];
+    $( "#sort-overview" ).sortable({
+    	placeholder: "sort-placeholder",
+    	forcePlaceholderSize: true,
+	    connectWith: ".column",
+	    start: function(e, ui) {
+	    	originalIdx = ui.helper[0].id;
+	        ui.placeholder.height("auto");
+	        prevPagesOrder = $("#sort-overview").sortable('toArray');
+	        //prevPagesOrder.splice(" ", 1);
+	        },
+	   update: function(e, ui) {
+	   		var currentOrder = $(this).sortable('toArray');
+            var second = currentOrder[prevPagesOrder.indexOf(originalIdx)];
+            console.log("prev:" + prevPagesOrder);
+            for (var idx = 0; idx < this.childNodes.length; idx++) {
+	            this.childNodes[idx].id = idx;
+            }
+            for (var idx = 0; idx < this.childNodes.length; idx++) {
+	            console.log(getImgSrc(this, idx));
+            }
+            console.log(originalIdx);
+            console.log(second);
+	   }
+    });
+    $( "#sort-overview" ).disableSelection();
+    console.log("Sortable implemented");
+  });
+
+function getImgSrc(theDiv, idx) {
+	return theDiv.childNodes[idx].childNodes[0].childNodes[0].src
+}
+
+function reorderUserDataModel() {
+	
+}
+
+// jQuery End
 
 //Refactoring
 function searchComplete(searchControl, searcher) {
@@ -121,7 +164,7 @@ function emulAcceptCharset(form) {
 
 function setUpSortPhoto() {
 	var openTab = document.getElementsByClassName("open-tab");
-	// getElementsByClassName의 반환형은 배열이다.
+	// getElementsByClassName의 반환형은 배열이므로
 	openTab = openTab[0];
 	openTab.addEventListener('click', setArrangePhotoOpen, false);
 }
@@ -144,6 +187,7 @@ function setArrangePhotoOpen() {
 
 function setArrangeButtonsVisible() {}
 
+var slideIdx = 0;
 function fillOverview(imgSrc) {
 	var overview = document.getElementById("sort-overview");
 	console.log(overview);
@@ -151,39 +195,12 @@ function fillOverview(imgSrc) {
 	var imgFrame = document.createElement('div');
 	var newImg = document.createElement('img');
 	newImg.src = imgSrc;
-	slide.className = "sortable";
 	overview.appendChild(slide);
 	slide.appendChild(imgFrame);
 	imgFrame.appendChild(newImg);
-}
-
-
-/* 추가한 사진 정렬시 필요한 드래그앤드롭 이벤트를 위한 함수들 */
-function handleDragStart(e) {
-	this.style.opacity = '0.0';
-	console.log(this.getBoundingClientRect());
-	
-}
-
-function handleDragLeave(e) {
-	this.style.opacity = '1.0';
-}
-
-function imageClicked(e) {
-	var nextImg = getNextSiblingSrc(this);
-	var thisSrc = this.src;
-	var thatSrc = nextImg.src;
-	this.src = thatSrc;
-	nextImg.src = thisSrc;
-}
-
-function getNextSiblingSrc(theImg) {
-	var nextImg = theImg.parentNode.parentNode.nextSibling;
-	nextImg = nextImg.childNodes;
-	nextImg = nextImg[0];
-	nextImg = nextImg.childNodes;
-	nextImg = nextImg[0];
-	return nextImg;
+	slide.className = "slide";
+	slide.id = slideIdx;
+	slideIdx++;
 }
 
 google.setOnLoadCallback(OnLoad);

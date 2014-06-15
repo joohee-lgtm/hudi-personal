@@ -8,23 +8,9 @@
 	<link rel="stylesheet" type="text/css" href="./src/css/create/photo.css"/>
 	<link rel="stylesheet" type="text/css" href="./src/css/create/bgm.css"/>
 	<link rel="stylesheet" type="text/css" href="./src/css/create/preview.css"/>
-	<script type="text/javascript" src="./src/js/create/jquery-1.10.2.js"/></script>
+	<<script type="text/javascript" src="./src/js/create/jquery-1.10.2.js"/></script>
 	<script type="text/javascript" src="./src/js/create/jquery-ui-1.10.4.custom.js"/></script>
 </head>
-<script>
-$(function() {
-    $( "#sort-overview" ).sortable({
-    	placeholder: "sort-placeholder",
-    	forcePlaceholderSize: true,
-	    connectWith: ".column",
-	    start: function(e, ui) {
-	        ui.placeholder.height("auto");
-	        }
-    });
-    $( "#sort-overview" ).disableSelection();
-    console.log("Sortable implemented");
-  });
-</script>
 
 <body id = "body">
 <div id="wrap">
