@@ -6,6 +6,7 @@ function jarInfoManager(jamjar){
 	this.desc = jamjar.description;
 	this.date = jamjar.date_created;
 	this.speed = jamjar.sec_per_img * 10;
+	this.likes = jamjar.likes;
 	this.m_title = "";
 }
 
@@ -25,6 +26,7 @@ jarInfoManager.prototype = {
 		this.setData(2, this.desc);
 //		this.setData(3, this.m_title);
 		this.setData(4, this.date);
+		this.setData(5, this.likes);
 	},
 
 	setData : function(num, v){

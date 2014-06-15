@@ -57,17 +57,16 @@ header a{
 
 #btn button {
 	height 	: 60px;
-	width 	: 30%;
+	width 	: 20%;
 	color 	: RGBA(140, 255, 207, 1);
     border	: 1px solid RGBA(140, 255, 207, 1);
 	background 	: RGBA(0, 0, 0, 0.7);
 	font-family : 'Nanum Gothic';
 	font-weight : lighter;
-	letter-spacing : 1em;
 }
 
-#btn button:nth-child(1) {
-	margin-right : 3%;
+#btn button:nth-child(3) {
+	width : 10%;
 }
 
 #info {

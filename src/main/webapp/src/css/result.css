@@ -21,6 +21,10 @@ header > a:nth-child(1){
 	line-height	: 50px;
 }
 
+header > input[type="button"]{
+	
+}
+
 body {
 	background 	: url("http://www.nhnnext.org/static/20140425/16/bg.jpg");
     background-size : cover;
@@ -52,14 +56,13 @@ body {
 }
 	
 #resultWrap > div:nth-child(2) > button {
-	width 		: 130px;
+	width 		: 85px;
 	height 		: 50px;
 	color 		: RGBA(140, 255, 207, 1);
 	font-family : 'Nanum Gothic';
 	font-weight : lighter;
     border		: 1px solid RGBA(140, 255, 207, 1);
     background 	: RGBA(0, 0, 0, 0.7);
-	letter-spacing : 1em;
 }
 
 #info {
