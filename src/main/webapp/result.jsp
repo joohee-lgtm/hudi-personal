@@ -7,6 +7,8 @@
 <title>result</title>
 <link rel="stylesheet" type="text/css" href="./src/css/common.css" />
 <link rel="stylesheet" type="text/css" href="./src/css/result.css" />
+<title>Result</title>
+
 </head>
 <body>
 	<header>
