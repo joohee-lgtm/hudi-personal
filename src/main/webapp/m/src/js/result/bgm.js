@@ -38,40 +38,38 @@ function onPlayerReady() {
     jObjInfo.setData(3, jObjInfo.m_title);
 }
 
+
+var rewrap = document.getElementById("btn");
+var body = document.getElementsByTagName("body")[0];
+var alert = createAlertNode(alertText);
+body.insertBefore(alert,rewrap);
 function onPlayerStateChange(evt) {
 	// play event = 1 buffer event = 3
 	if (evt.data === 3){
-		alertShow();
+		alertShow("loading background music");
 		console.log("buffering");
 		console.log(evt);
-	}
-	if(evt.data === 1){
-		console.log("start");
-		var body = document.getElementsByTagName("body")[0];
-		var alert = document.getElementById("alert");
-		body.removeChild(alert);
+	} else if(evt.data === 1){
+		alertShow("playing");
 		_o.play.ready();
 		_o.play._start();
-	}
-	if(evt.data === -1){
-		console.log("start");
-		var body = document.getElementsByTagName("body")[0];
-		var alert = document.getElementById("alert");
-		body.removeChild(alert);
+	} else if(evt.data === -1){
+		alertShow("pause");
 	}
 }
 
-function alertShow(){
-	var rewrap = document.getElementById("btn");
-	var body = document.getElementsByTagName("body")[0];
-	var alert = createAlertNode();
-	body.insertBefore(alert,rewrap);
+function alertShow(alertText){
+	var alert = document.getElementById("alert");
+	alert.innerHTML = alertText;
+	alert.style.color = "RGBA(255, 255, 255, 0.5)";
+	alert.style.fontFamily = "Exo";
+	alert.style.textAlign = "center";
 }
 
-function createAlertNode(){
+function createAlertNode(alertText){
 	
 	var alert = document.createElement("div");
-	alert.innerHTML = "loading..";
+	alert.innerHTML = alertText;
 	alert.id = "alert";
 	alert.style.color = "RGBA(255, 255, 255, 0.5)";
 	alert.style.fontFamily = "Exo";
