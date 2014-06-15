@@ -23,6 +23,7 @@ topRank.prototype = {
 		var i = li.getElementsByTagName("img")[0];
 		i.addEventListener("load", function(){
 			this.style.width = "200px";
+			this.style.height = "200px";
 		}, false);
 		
 		i.addEventListener("error", function(){

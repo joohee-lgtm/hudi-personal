@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="./src/css/main.css" />
 <link rel="stylesheet" type="text/css" href="./src/css/header.css" />
 <meta charset="utf-8">
+<title>Main</title>
 </head>
 <body>
 	<header>
@@ -43,8 +44,8 @@
 		</article>
 
 		<article id="intro">
-			<span>Your moments, your story.</span> <span>Create, explore
-				and share photo & video collections in beautiful and creative ways</span> <a
+			<span>Your idea, your story.</span> <span>Create, explore
+				photo & video collections in beautiful and creative ways</span> <a
 				href="/collageJam/create">
 				<div></div> <span> Start Now </span>
 			</a> <span> or <a href="./signup.jsp"><u>Sign up</u></a> with
@@ -53,7 +54,7 @@
 		</article>
 
 		<article id="aboutApp">
-			<span>Top Lank : Like</span>
+			<span>Top Rank : Like</span>
 			<ul>
 				<li></li>
 				<li></li>

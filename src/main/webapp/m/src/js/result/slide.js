@@ -112,7 +112,7 @@ result.init = {
 	},
 
 	setBtn : function(startbtn, stopbtn) {
-		startbtn.addEventListener("touchevent", function(){
+		startbtn.addEventListener("touchstart", function(){
 			if (playingBgm){
 				console.log("already playing");
 			} else {
@@ -123,7 +123,7 @@ result.init = {
 				playingBgm = true;
 			}
 		}, false);
-		stopbtn.addEventListener("touchevent", function(){
+		stopbtn.addEventListener("touchstart", function(){
 			if (playingBgm){
 				console.log("stop");
 			    player.stopVideo();
