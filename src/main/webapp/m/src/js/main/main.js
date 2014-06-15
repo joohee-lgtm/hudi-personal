@@ -1,104 +1,112 @@
-var mFlicking = (function() {
-	var mFlicking = {};
-	var elFlick 	= _JE.getElById("flickView"),
-		elContainer	= _JE.getElByClass("container")[0],
-		aChildNodes	= _JE.getElByClass("about"),
-		
-		nContainerWidth	= elContainer.offsetWidth,
-		nTouchStartX 	= 0, //on touchstart
-		nTouchStartY 	= 0, //on touchstart
-		nTouchX 		= 0, //on touchmove & touchend
-		nTouchY 		= 0, //on touchmove & touchend
-		nIndex 			= 0, //화면에 보이는 카드의 인덱스 값
-		nTimeout 		= 0; //setTimeout()의 타임 저장 변수
+var JE_Mobile = (function() {
+	var JE_Mobile = {};
 	
-	var _attachTouchStart = function() {
-		elFlick.addEventListener('touchstart', function(e) {
-			var touch 		= e.touches[0];
-			nTouchStartX 	= touch.pageX;
-			nTouchStartY 	= touch.pageY;
-		}, false);
-	};
+	var imgDiameter 	= 0,
+		viewportWidth	= 0;
+	var vFrame 			= {};
+	var IMG_RATIO_TO_VP = 0.8;
 	
-	var _attachTouchMove = function() {
-		elFlick.addEventListener('touchmove', function(e) {
-			var touch 	= e.touches[0];
-			nTouchX		= touch.pageX;
-			nTouchY		= touch.pageY;
-			
-			var nValue 	= nTouchX - nTouchStartX;
-			if(nIndex <= 0 && nValue > 0 || nIndex >= 3 && nValue < 0) {
-				return false;
-			}
-			else {
-				elContainer.style.webkitTransform = "translate(" + nValue + "px)";
-			}
-		}, false);
-	};
-	
-	var _attachTouchEnd = function() {
-		elFlick.addEventListener('touchend', function(e) {
-			var touch 		= e.changedTouches[0];
-			nTouchX 		= touch.pageX;
-			nTouchY			= touch.pageY;
-			var nTmpIndex 	= nIndex;
-			var nTranslate 	= nContainerWidth;
-			
-			if(nTouchStartX - nTouchX > 0) {
-				nIndex++;
-				nTranslate = nContainerWidth * -1;
-			}
-			else {
-				nIndex--;
-			}
-			
-			if(nIndex >= 0 && nIndex <= 3) {
-				nTimeout = setTimeout(function() {
-					_setPosition();
-					elContainer.style.webkitTransform 	= "translate(0)";
-					elContainer.style.webkitTransition 	= null;
-				}, 200);
-				console.log("nTimeout: " + nTimeout);
-				elContainer.style.webkitTransition 	= "all 0.2s ease-out";
-				elContainer.style.webkitTransform	= "translate(" + nTranslate + "px)";
-			}
-			else {
-				nIndex = nTmpIndex;
-			}
-		}, false);
-	};
-	
-	var _setPosition = function() { 
-		var nCenterIndex	= nIndex % 4,
-			nRightIndex		= nCenterIndex + 1,
-			nLeftIndex		= nCenterIndex - 1;
-		
-		if(nCenterIndex - 1 < 0) {
-			nLeftIndex = 3;
-		}
-		if(nCenterIndex + 1 > 3) {
-			nRightIndex = 0;
-		}
-		
-		//not handling 4th card
-		aChildNodes[nLeftIndex].style.left 		= "-100%";
-		aChildNodes[nCenterIndex].style.left 	= "0%";
-		aChildNodes[nRightIndex].style.left 	= "100%";
-		
-	};
-	
-	mFlicking.test = function() {
-		console.log(nContainerWidth);
-	};
-	
-	mFlicking.init = function() {
-		_attachTouchStart();
-		_attachTouchMove();
-		_attachTouchEnd();
+	//private functions
+	function calCircleImgSize() {
+		imgDiameter 	= parseInt(_JE.getElementSize('about').height) * IMG_RATIO_TO_VP;
 	}
-	return mFlicking;
+	
+	function setViewportWidth(classname) {
+		return viewportWidth = _JE.getViewport();
+	}
+	
+	function setImgSize(classname) {
+		calCircleImgSize();
+		var aImg = _JE.getElByClass(classname);
+		for(var i = 0; i < aImg.length; i ++) {
+			_JE.setCSSStyle(aImg[i], {
+				width	: imgDiameter + 'px',
+				height	: imgDiameter + 'px'
+			});
+		}
+	}
+	
+	function putImgCenter(classname) {
+		var marginL		= -1 * (imgDiameter / 2) + 'px';
+		var marginT		= marginL;
+		var aImg = _JE.getElByClass(classname);
+		
+		for(var i = 0; i < aImg.length; i ++) {
+			_JE.setCSSStyle(aImg[i], {
+				left			: '50%',
+				top				: '50%',
+				'margin-left'	: marginL,
+				'margin-top'	: marginT
+			});
+		}
+	}
+	
+	function doImgSetting(classname) {
+		setImgSize(classname);
+		putImgCenter(classname);
+	}
+	
+	function getPossibleNumOfFrameInARow() {
+		return parseInt(viewportWidth / vFrame.frameWidthIncldMargin);
+	}
+
+	function alignVideoFrames(classname) {
+		setViewportWidth();
+		calFrameWidth(classname);
+		setFramesCentered(classname);
+	}
+	
+	function calFrameWidth(classname) {
+		var frame 		= _JE.getElByClass(classname)[0],
+			frameWidth	= frame.offsetWidth,
+			frameML		= parseInt(_JE.getSpecificProperty(frame, "margin-left")),
+			frameMR		= parseInt(_JE.getSpecificProperty(frame, "margin-right"));
+		
+		vFrame.frameWidthIncldMargin = frameWidth + frameML + frameMR;
+	}
+	
+	function setFramesCentered(classname) {
+		var numFrames = getPossibleNumOfFrameInARow();
+		var frameWidth = vFrame.frameWidthIncldMargin;
+		var eleWrapper = _JE.getElByClass(classname)[0].parentNode;
+		var wrapperPaddingLeft = (viewportWidth - numFrames * frameWidth) / 2 + 'px';
+		
+		_JE.setCSSStyle(eleWrapper, {
+			'padding-left' : wrapperPaddingLeft
+		});
+	}
+	
+	function registerEvents() {
+		var aDivJamjar = _JE.getElByClass("jamjar");
+		for(var i = 0; i < aDivJamjar.length; i ++) {
+			aDivJamjar[i].addEventListener('click', function(e) {
+				window.location = "/collageJam/m/result?id=" + this.id;
+			}, false);
+		}
+	}
+	
+	function makeSomeChange() {
+		console.log("make some change");
+	}
+	
+	//public functions
+	JE_Mobile.init = function() {
+		doImgSetting('aboutImg');
+		alignVideoFrames('jamjar');
+		registerEvents();
+	};
+	
+	JE_Mobile.orientChangeInit = function() {
+		alignVideoFrames('jamjar');
+	};
+	
+	return JE_Mobile;
 }());
 
 window.addEventListener('load', function() {
-	mFlicking.init();
+	JE_Mobile.init();
+}, false);
+
+window.addEventListener('orientationchange', function() {
+	JE_Mobile.orientChangeInit();
 }, false);

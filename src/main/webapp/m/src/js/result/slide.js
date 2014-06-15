@@ -21,7 +21,7 @@ result.util = {
 	},
 
 	getDefaultImg : function(){
-		var url = "./src/img/nophoto.jpg";
+		var url = "/img/nophoto.jpg"; // nophoto
 		var defalt_img_obj = new _o.img.model(url);
 		return defalt_img_obj._img;
 	}
@@ -57,7 +57,7 @@ result.img = {
 			}, false);
 
 			obj._img.addEventListener("error", function(){
-				obj._img.src = "./src/img/nophoto.jpg";
+				obj._img.src = "./img/nophoto.jpg";
 				var o = ctr.getSize(obj);
 				obj._img.style.width = px(o._style._width);
 				obj._img.style.height = px(o._style._height);
