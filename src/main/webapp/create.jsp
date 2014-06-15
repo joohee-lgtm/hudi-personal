@@ -45,6 +45,7 @@
 				<output>start = ? sec</output>
 				<input type="button" id="sbtne" value="set end" />
 				<output>end = ? sec</output>
+				<input type="button" id="sall" value="set all time" />
 				<button id="q">?</button>
 			</div>
 		</article>

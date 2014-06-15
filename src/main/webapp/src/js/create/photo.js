@@ -1,3 +1,5 @@
+/* for create desktop web */
+
 //var data;
 //google.load('search', '1');
 //var selectedImages = [];

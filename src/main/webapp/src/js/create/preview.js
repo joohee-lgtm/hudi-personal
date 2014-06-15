@@ -1,3 +1,5 @@
+/* for create desktop web */
+
 var preview = {};
 var _o = preview;
 
@@ -8,7 +10,7 @@ preview.util = {
 
 	base : {
 		_width : 0,
-		_height : 0
+		_height : 0 
 	},
 
 	ckLen : function(len){
@@ -54,9 +56,6 @@ preview.img = {
 				obj._img.style.height = px(o._style._height);
 				obj._img.style.marginTop = px(o._style._marginTop);
 			}, false);
-//			obj._img.addEventListener("error", function(){
-//				obj = null;
-//			},false);
 			return obj._img;
 		},
 

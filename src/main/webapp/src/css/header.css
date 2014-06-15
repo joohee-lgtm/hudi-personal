@@ -1,3 +1,6 @@
+/* for desktop web */
+@charset "UTF-8";
+
 /* header 공통 */
 header{
 	z-index : 10000; /* always highest layer */

@@ -1,3 +1,5 @@
+/* for create desktop web */
+
 var player;
 var work = {
 

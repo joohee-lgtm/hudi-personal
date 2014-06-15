@@ -1,3 +1,5 @@
+/* for result mobile */
+
 var result = {};
 var _o = result;
 result.util = {

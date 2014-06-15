@@ -1,3 +1,5 @@
+/* for result mobile */
+
 /* youtube api 시작 */
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";

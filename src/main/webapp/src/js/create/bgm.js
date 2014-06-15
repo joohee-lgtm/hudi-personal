@@ -1,3 +1,5 @@
+/* for create desktop web */
+
 var tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -91,7 +93,22 @@ function putYt(ytobj){
 }
 
 function onPlayerReady() {
-	console.log(player2.getDuration());
+	var btn = document.getElementById("sall");
+	var end = player2.getDuration();
+	
+	btn.addEventListener('click', function(){
+		var ct = parseInt(end);
+		selectedBGM.end = ct;
+		var msw = document.getElementById("musicSelectWrap");
+		var op = msw.getElementsByTagName("output")[1];
+		op.innerHTML = "end = " + ct + " sec";
+		
+		op = msw.getElementsByTagName("output")[0];
+		op.innerHTML = "start = 0 sec";
+		selectedBGM.start = 0;
+		
+	}, false);
+	
 }
 
 function putBgmAtPreview(){

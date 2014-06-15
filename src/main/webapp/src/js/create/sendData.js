@@ -1,6 +1,5 @@
-/*
-	send data from client to server
-*/
+/* for create desktop web */
+/* send data from client to server */
 
 function sendUserData(e) {
 	e.preventDefault();

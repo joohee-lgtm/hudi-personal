@@ -1,3 +1,5 @@
+/* for main desktop web */
+
 var Featured = {};
 var _o = Featured;
 

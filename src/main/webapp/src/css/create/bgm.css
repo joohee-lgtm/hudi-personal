@@ -1,3 +1,4 @@
+/* for create desktop web */
 @charset "UTF-8";
 
 #musicSelectWrap{
@@ -97,10 +98,13 @@
 
 #musicSelectWrap > article:nth-child(1) > div > input[type="button"]{
 	width : 100px;
-	height : 30px;
+	height : 25px;
 	border : 1px solid RGBA(71, 71, 71, 1);
 	background : none;
 	border-radius : 5px;
+	display : block;
+	margin : auto;
+	
 }
 
 #musicSelectWrap > article:nth-child(1) > div > output{
@@ -109,7 +113,7 @@
 	height : 30px;
 	margin : auto;
 	margin-top : 5px;
-	margin-bottom : 15px;
+	margin-bottom : 5px;
     box-sizing 	: border-box;
   	-webkit-box-sizing 	: border-box;
     -moz-box-sizing 	: border-box;	
