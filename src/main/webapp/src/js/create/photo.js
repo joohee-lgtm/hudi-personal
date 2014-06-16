@@ -24,6 +24,11 @@ function userDataModel() {
 		userDataModel.tbURL.splice(dst, 0, tempTbSrc);
 		userDataModel.originalURL.splice(dst, 0, tempOriSrc);
 	}
+	
+	this.removeElement = function(idx) {
+		userDataModel.tbURL.splice(idx, 1);
+		userDataModel.originalURL.splice(idx, 1);
+	}
 }
 
 function OnLoad() {
@@ -104,7 +109,6 @@ function refreshCarousel() {
 			return;
 		}
 		carousel.childNodes[idx].childNodes[0].src = userDataModel.tbURL[idx];
-		
 	}
 }
 
@@ -229,6 +233,27 @@ function fillOverview(imgSrc) {
 	slide.className = "slide";
 	slide.id = slideIdx;
 	slideIdx++;
+	slide.addEventListener("click", deletePhoto, false);
+}
+
+function deletePhoto(event) {
+	var slide = event.toElement.parentNode.parentNode;
+	var objParent = slide.parentNode;
+	console.log(objParent);
+	var carousel = document.getElementById("carousel");
+	slide.parentNode.removeChild(slide);
+	carousel.removeChild(carousel.childNodes[slide.id]);
+	slideIdx--;
+	userDataModel.removeElement(slide.id);
+	updatePhotoCount();
+	refreshCarousel();
+	for ( idx in objParent.childNodes ) {
+		if ( idx === "length") {
+			return;
+		}
+		objParent.childNodes[idx].id = idx;
+	}
+	console.log(slide.parentNode.childNodes);
 }
 
 google.setOnLoadCallback(OnLoad);
