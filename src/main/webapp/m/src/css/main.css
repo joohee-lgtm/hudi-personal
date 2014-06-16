@@ -203,6 +203,7 @@ header {
 	background-color: rgba(0,0,0,0.4) ;
 	position: absolute;
 	top: 0;
+	diplay: none;
 }
 
 .playmark {
@@ -212,6 +213,7 @@ header {
 	border-bottom: 20px solid transparent;
 	border-left: 20px solid #FFF;
 	left: 50%;
+	diplay: none;
 }
 
 @media all and (orientation:portrait) {
