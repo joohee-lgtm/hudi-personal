@@ -52,12 +52,7 @@
             </div>
             <div id="jamjar_wrapper" class="wrapper">
             	<div class="jamjar">
-                	<div class="videoFrame">
-                		<img class="thumbnail">
-                		<div class="videoBtn">
-                			<div class="playmark"></div>
-                		</div>
-                	</div>
+                	<img class="thumbnail">
                 	<div class="desc"></div>
                 </div>
                 <div class="jamjar">
