@@ -5,7 +5,7 @@ var jarobjs
 			tn : "http://1.bp.blogspot.com/-AlE59EKecfc/UwM3Z2pgVnI/…T-I/s1600/Line%2Bwith%2BLeonard%2Band%2BSally.JPG"},
 		{id : 3, user : "u3", description : "ccc",
 			tn : "http://www.roykooni.com/wp-content/uploads/leonard-line-theme.jpg"},
-		{id : 4, user : "u1", description : "ddd"
+		{id : 4, user : "u1", description : "ddd",
 			tn : "http://www.line.polppolservice.com/getpng/stickers/sticker1775.png"},
 		{id : 4, user : "u2", description : "eee",
 			tn : "http://l.lnwfile.com/85ef0v.png"}];

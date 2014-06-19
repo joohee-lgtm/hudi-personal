@@ -3,8 +3,8 @@ window.mScroll = (function() {
 	var _option = {
 			width : 0,
 			nHeight : 0
-	},
-	var _element = {},
+	}
+	var _element = {}
 	var _setLayer = function(ele) {
 		_element["view"] 	= _JE.getElById(ele);
 		_element["content"] = _element["view"].firstChild;
