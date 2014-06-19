@@ -1,6 +1,38 @@
 /* for desktop web */
 @charset "UTF-8";
 
+@media screen and (max-width : 799px){
+	#gotomobile {
+		top 	: 0px;
+		left 	: 0px;
+		margin 	: 20px 10%;
+		width 	: 80%;
+		height 	: 100px;
+		position 	: fixed;
+		z-index 	: 10001; /* header = 10000 */
+		background 	: RGBA(0, 0, 0, 0.8);
+		border-radius : 10px;
+		text-align : center;
+	}
+	
+	#gotomobile > p{
+		font-size : 20px;
+		font-family : 'Nanum Gothic';
+		color 	: RGBA(255, 255, 255, 1);
+	}
+	
+	#gotomobile > p:nth-child(1){
+		margin-top : 30px;
+	}	
+}
+
+@media screen and (min-width : 800px){
+	#gotomobile {
+		display : none;
+	}
+}
+	
+
 /* ---------- background section start ---------- */
 #bgvideo {
 	z-index 	: -1;
@@ -361,4 +393,3 @@
 }
 
 /* ---------- show video section end ---------- */
-

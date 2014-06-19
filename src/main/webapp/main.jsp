@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0,
+	maximum-scale=1.0, minimum-scale=1.0" />
 <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="./src/css/common.css" />
 <link rel="stylesheet" type="text/css" href="./src/css/main.css" />
@@ -12,6 +14,10 @@
 <title>Main</title>
 </head>
 <body>
+	<div id="gotomobile">
+		<p>Go Mobile Page</p>
+		<p>(click me)</p>
+	</div>
 	<header>
 	<div>
 		<a href="/collageJam/main"> CollageJam </a>
@@ -77,22 +83,22 @@
 	</section>
 
 	<footer id="footer"></footer>
+	<!--
 	<script>
 		var recentData = ${recentData};
 		var jarobjs = [];
 		for ( var i = 0; i < 15; i++) {
 			jarobjs[i] = recentData[recentData.length - i - 1];
 		}
-		
 		var topJarObjs = [];
 		var topRankData = ${topRankData};
 		for (var i=0 ; i<15 ; i++){
 			topJarObjs[i] = topRankData[i];
 		}
 		console.log(topJarObjs);
-		
 	</script>
 	<script type="text/javascript" src="./src/js/main.js" /></script>
 	<script type="text/javascript" src="./src/js/topLank.js" /></script>
+	-->	
 </body>
 </html>

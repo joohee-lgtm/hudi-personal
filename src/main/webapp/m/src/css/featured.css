@@ -1,6 +1,6 @@
 /* for mobile web */
 @charset "UTF-8";
-
+@media all 
 body {
 	width 	: 100%;
 	background 	: url("http://cfile4.uf.tistory.com/image/0364E34D50FFAC481BB9F6");
