@@ -64,4 +64,6 @@
 <script type="text/javascript" src="./src/js/result/slide.js" /></script>
 <script type="text/javascript" src="./src/js/result/info.js" /></script>
 <script type="text/javascript" src="./src/js/result/likeControl.js" /></script>
+<script type="text/javascript" src="./src/lib/qunit-1.14.0.js" /></script>
+<script type="text/javascript" src="./src/js/result/test.js" /></script>
 </html>

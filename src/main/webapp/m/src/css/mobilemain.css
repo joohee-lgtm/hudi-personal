@@ -31,14 +31,27 @@ header > button {
 
 header > p {
 	font-size : 20px;
-	margin-top : 25px;
+	/* margin-top : 25px; */
+}
+
+article {
+	position : relative;
+	top : 0px;
+	left : 0px;		
 }
 
 nav {
-	margin-top : 70px;
-	width : 100%;
+	
+	width : 30%;
 	text-align : center;
-}
+	position : absolute;
+ 	left : -30%;
+ 	z-index : 10;
+ 	transition : left 0.3s ease-out;
+	-webkit-transition : left 0.3s ease-out;
+	-moz-transition : left 0.3s ease-out;
+
+ }
 
 nav > p {
 	font-family : 'Nanum Gothic';
@@ -50,45 +63,10 @@ nav > p > a {
 	color : RGBA(71, 71, 71, 1);
 }
 
-}
-
-@media all and (orientation : landscape){
-
-header {
-	display: -webkit-flex;
-	display: flex;
-	width 	: 70px;
-	height 	: 100%;
-	text-align : center;
-	border-right : 1px solid RGBA(167, 167, 167, 1);
-	position : fixed;
-	top : 0px;
-	left : 0px;
-}
-
-header > button {
-	border : none;
-	width : 60px;
-	height : 60px;
-	position : absolute;
-	border-radius : 10px;
-	top : 5px;
-	left : 5px;
-}
-	
-header > p {
-	font-size : 20px;
-	margin : auto;
-}
-
-}
-
-
-
-
 #flickView {
-	overflow : hidden;
-}
+  	overflow : hidden;
+  	margin-top : 70px;
+  }
 
 .wkit-transition {
 	position : relative;
@@ -98,11 +76,13 @@ header > p {
 
 .flickPanel {
 	width : 100%;
-	height : 200px;
+	height : 50px;
 	position : absolute;
 	text-align : center;
 	background : yellow;
-	border : 1px solid black;
+	transition : left 0.5s ease-out;
+	-webkit-transition : left 0.4s ease-out;
+	-moz-transition : left 0.4s ease-out;
 }
 
 .p1 {
@@ -126,6 +106,123 @@ header > p {
 .p5{
 	left : 400%;
 }
+
+.p6{
+	left : 500%;
+}
+
+
+
+
+}
+
+@media all and (orientation : landscape){
+
+header {
+	display: -webkit-flex;
+	display: flex;
+	width 	: 10%;
+	height 	: 100%;
+	text-align : center;
+	border-right : 1px solid RGBA(167, 167, 167, 1);
+	position : fixed;
+	top : 0px;
+	left : 0px;
+}
+
+header > button {
+	border : none;
+	width : 90%;
+	height : 60px;
+	position : absolute;
+	border-radius : 10px;
+	top : 5px;
+	left : 5%;
+}
+	
+header > p {
+	font-size : 20px;
+	margin : auto;
+}
+
+
+nav {
+	margin-left : 10%;
+	width : 20%;
+	text-align : center;
+}
+
+nav > p {
+	font-family : 'Nanum Gothic';
+	padding : 5px;
+	border-bottom : 1px solid RGBA(200, 200, 200, 1);
+}
+
+nav > p > a {
+	color : RGBA(71, 71, 71, 1);
+}
+
+#flickView {
+  	overflow : hidden;
+  	top : 0px;
+  	left : 30%;
+  	width : 70%;
+  	position : absolute;
+  	background : yellow;
+  }
+
+.wkit-transition {
+	position : relative;
+	width : 100%;
+	height : 100%;
+}
+
+.flickPanel {
+	margin : 25% 25%;
+	width : 50%;
+	height : 50%;
+	position : absolute;
+	text-align : center;
+	background : blue;
+	transition : left 0.5s ease-out;
+	-webkit-transition : left 0.4s ease-out;
+	-moz-transition : left 0.4s ease-out;
+}
+
+.p1 {
+	left : 0%;
+}
+
+.p2{
+	left : 100%;
+}
+
+.p3{
+	left : 200%;
+}
+
+
+.p4{
+	left : 300%;
+}
+
+
+.p5{
+	left : 400%;
+}
+
+
+.p6{
+	left : 500%;
+}
+
+
+
+}
+
+
+
+
 
 
 

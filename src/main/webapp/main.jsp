@@ -16,7 +16,7 @@
 <body>
 	<div id="gotomobile">
 		<p>Go Mobile Page</p>
-		<p>(click me)</p>
+		<p><a href="/collageJam/m/mobilemain.jsp">(click me)</a></p>
 	</div>
 	<header>
 	<div>
@@ -83,7 +83,6 @@
 	</section>
 
 	<footer id="footer"></footer>
-	<!--
 	<script>
 		var recentData = ${recentData};
 		var jarobjs = [];
@@ -99,6 +98,8 @@
 	</script>
 	<script type="text/javascript" src="./src/js/main.js" /></script>
 	<script type="text/javascript" src="./src/js/topLank.js" /></script>
-	-->	
+	<script type="text/javascript" src="./src/lib/qunit-1.14.0.js" /></script>
+	<script type="text/javascript" src="./src/js/maintest.js" /></script>
+	
 </body>
 </html>

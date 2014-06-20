@@ -334,6 +334,11 @@
 	text-align 	: center;
 }
 
+#featured > ul >li{
+/*  	-webkit-transition:top 0.1s ease-out;
+    transition:top 0.s ease-out;
+ */}
+
 @media screen and (max-width : 800px){
 	#featured > ul{
 		width 	: 400px;
@@ -351,7 +356,6 @@
 		width 	: 1160px;
 	}	
 }
-
 
 #featured > ul > li{
 	/* z-index 	: -10; */
