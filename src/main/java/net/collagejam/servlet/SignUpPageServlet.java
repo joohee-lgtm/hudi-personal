@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public class SignUpPageServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		System.out.println("signup page servlet connection");
+
+		System.out.println("In [" + this.getClass().getName() +"]");
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("signup.jsp");
 		dispatcher.forward(request, response);
 	}

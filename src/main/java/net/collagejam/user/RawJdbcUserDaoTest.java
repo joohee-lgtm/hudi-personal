@@ -1,4 +1,4 @@
-package net.aprilchoi.user;
+package net.collagejam.user;
 
 //import static org.junit.Assert.assertEquals;
 //import java.sql.Connection;

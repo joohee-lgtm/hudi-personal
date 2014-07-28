@@ -1,4 +1,4 @@
-package net.aprilchoi.user;
+package net.collagejam.user;
 
 public class User {
 	private int userId;

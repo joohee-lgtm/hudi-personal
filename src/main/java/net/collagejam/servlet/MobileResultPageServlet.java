@@ -12,24 +12,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.aprilchoi.user.JamjarDao;
-import net.aprilchoi.user.PhotoDao;
 import net.collagejam.obj.JamJar;
+import net.collagejam.user.JamjarDao;
+import net.collagejam.user.PhotoDao;
 
 import org.json.JSONArray;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.google.gson.Gson;
 
 public class MobileResultPageServlet extends HttpServlet{
-	private JamjarDao jdao;
-	private PhotoDao pdao;
-	
 	private Connection getConnection() throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 		return DriverManager.getConnection("jdbc:mysql://10.73.45.132:3306/collageJam", "admin", "leonard911");
 	}
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+		System.out.println("In [" + this.getClass().getName() +"]");
+		
+		
 		int jid = Integer.parseInt(request.getParameter("id"));
 
 		Connection conn = null;
@@ -44,8 +46,10 @@ public class MobileResultPageServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		
-		jdao	= new JamjarDao(conn);
-		pdao	= new PhotoDao(conn);
+		ApplicationContext context = WebApplicationContextUtils.getWebApplicationContext(this.getServletContext());
+		
+		JamjarDao jdao = context.getBean("jamjarDao", JamjarDao.class);
+		PhotoDao pdao	= context.getBean("photoDao", PhotoDao.class);
 		
 		try {
 			selected = jdao.selectByJarId(jid);

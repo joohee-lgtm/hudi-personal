@@ -20,7 +20,9 @@ public class LoginPageServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		System.out.println("login page servlet connection");
+		
+		System.out.println("In [" + this.getClass().getName() +"]");
+
 		RequestDispatcher dispatcher = req.getRequestDispatcher("login.jsp");
 		dispatcher.forward(req, resp);
 	}

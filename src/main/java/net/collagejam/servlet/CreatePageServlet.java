@@ -14,7 +14,8 @@ import org.json.JSONArray;
 
 public class CreatePageServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		System.out.println("create page servlet connection");		
+		System.out.println("In [" + this.getClass().getName() +"]");
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("create.jsp");
 		dispatcher.forward(request, response);
 	}

@@ -14,7 +14,9 @@ import net.collagejam.web.SearchJarController;
 
 public class LikeAddServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		System.out.println("likeadd jar servlet connection");
+		
+		System.out.println("In [" + this.getClass().getName() +"]");
+		
 		String data = request.getParameter("data");
 		System.out.println(data);
 		

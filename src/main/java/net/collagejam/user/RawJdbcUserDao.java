@@ -1,4 +1,4 @@
-package net.aprilchoi.user;
+package net.collagejam.user;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

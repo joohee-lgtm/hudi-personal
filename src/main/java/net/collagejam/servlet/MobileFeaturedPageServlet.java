@@ -14,7 +14,7 @@ import org.json.JSONArray;
 
 public class MobileFeaturedPageServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		System.out.println("featured page servlet connection");
+		System.out.println("In [" + this.getClass().getName() +"]");
 		
 		MainFeaturedController mfc = new MainFeaturedController();
 		mfc.makeShowVideoList();

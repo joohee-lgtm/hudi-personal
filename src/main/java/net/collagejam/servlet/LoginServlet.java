@@ -16,21 +16,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class LoginServlet extends HttpServlet{
+public class LoginServlet extends HttpServlet {
 	private Connection conn;
 	private Statement stmt;
 
-	public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
-	{	
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		
+		System.out.println("In [" + this.getClass().getName() +"]");
+		
 		PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		HttpSession session = request.getSession();
 		String url = "jdbc:mysql://10.73.45.132:3306/collageJam";
-		
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			
+
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -41,19 +44,19 @@ public class LoginServlet extends HttpServlet{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		if(conn != null) {
+		if (conn != null) {
 			System.err.println("connected to db");
-		}
-		else {
+		} else {
 			System.err.println("failed to connect to db");
 		}
-		
+
 		try {
 			stmt = conn.createStatement();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		String sql = "select * from user where username='" + username + "' and passwd='" + password + "'";
+		String sql = "select * from user where username='" + username
+				+ "' and passwd='" + password + "'";
 		ResultSet rs = null;
 
 		try {
@@ -61,22 +64,22 @@ public class LoginServlet extends HttpServlet{
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
-		
+
 		try {
-			if(rs.next()) {
+			if (rs.next()) {
 				String id = rs.getString("username");
 				String pw = rs.getString("passwd");
 				session.setAttribute("username", username);
 				System.out.println("Welcome, " + username);
 				request.setAttribute("USERNAME", username);
 			} else {
-		        System.out.println("Invalid password. Try again.");
-		    }
+				System.out.println("Invalid password. Try again.");
+			}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+
 		try {
 			rs.close();
 			stmt.close();
@@ -86,9 +89,10 @@ public class LoginServlet extends HttpServlet{
 			e.printStackTrace();
 		}
 		System.err.println("connection closed");
-		
-//		RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
-//		dispatcher.forward(request, response);
+
+		// RequestDispatcher dispatcher =
+		// request.getRequestDispatcher("main.jsp");
+		// dispatcher.forward(request, response);
 		response.sendRedirect("/collageJam/main");
 	}
 }

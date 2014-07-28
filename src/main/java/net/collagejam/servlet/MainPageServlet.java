@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 public class MainPageServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		System.out.println("main page servlet connection");
+		System.out.println("In [" + this.getClass().getName() +"]");
 		
 		MainFeaturedController mfc1 = new MainFeaturedController();
 		mfc1.makeShowVideoList();

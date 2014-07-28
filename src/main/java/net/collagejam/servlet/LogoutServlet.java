@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 public class LogoutServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws IOException, ServletException{
+		System.out.println("In [" + this.getClass().getName() +"]");
+		
 		HttpSession session = request.getSession();
 		session.invalidate();
 		response.sendRedirect("/collageJam/main");

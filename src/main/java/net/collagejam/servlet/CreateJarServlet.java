@@ -13,7 +13,9 @@ import net.collagejam.web.SearchJarController;
 
 public class CreateJarServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		System.out.println("create jar servlet connection");
+		
+		System.out.println("In [" + this.getClass().getName() +"]");
+		
 		String data = request.getParameter("data");
 		System.out.println(data);
 		HttpSession session = request.getSession();

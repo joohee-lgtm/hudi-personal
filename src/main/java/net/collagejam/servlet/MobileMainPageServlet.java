@@ -14,7 +14,7 @@ import org.json.JSONArray;
 
 public class MobileMainPageServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
-		System.out.println("main page servlet connection");
+		System.out.println("In [" + this.getClass().getName() +"]");
 		
 		MainFeaturedController mfc = new MainFeaturedController();
 		String finalQuery = mfc.getTopLikedSlides();

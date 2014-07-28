@@ -1,6 +1,15 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
 	<display-name>Collage Jam Web Application</display-name>
 
+	<filter>
+		<filter-name>PrintClassNameFilter</filter-name>
+		<filter-class>net.collagejam.filter.PrintClassName</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>PrintClassNameFilter</filter-name>
+		<url-pattern>/</url-pattern>
+	</filter-mapping>
 
 	<!-- test servlet start -->
 
@@ -157,7 +166,7 @@
 		<servlet-name>logout</servlet-name>
 		<url-pattern>/logout.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>likeAddServletMapping</servlet-name>
 		<servlet-class>net.collagejam.servlet.LikeAddServlet</servlet-class>
