@@ -1,4 +1,4 @@
-package net.collagejam.user;
+package net.collagejam.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,14 +8,9 @@ import java.sql.SQLException;
 import net.collagejam.obj.JamJar;
 
 public class JamjarDao {
-	private Connection conn;
 	
-	public JamjarDao(Connection conn) {
-		this.conn = conn;
-	}
-	
-	public JamJar selectByJarId(final int jid) throws SQLException {
-		JdbcTemplate template = new JdbcTemplate(conn) {
+	public JamJar selectByJarId(Connection conn, final int jid) throws SQLException {
+		JdbcTemplate template = new JdbcTemplate() {
 			void setValues(PreparedStatement pstmt) throws SQLException {
 				pstmt.setInt(1, jid);
 			}
@@ -37,6 +32,6 @@ public class JamjarDao {
 			}
 		};
 		String query = "select * from jamjar where j_id=?";
-		return (JamJar)template.selectByJarId(query);
+		return (JamJar)template.selectByJarId(conn, query);
 	}
 }

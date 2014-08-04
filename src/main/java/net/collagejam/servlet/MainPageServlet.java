@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.collagejam.model.DBSetting;
+import net.collagejam.user.DBSetting;
 import net.collagejam.web.MainFeaturedController;
 
 import org.json.JSONArray;

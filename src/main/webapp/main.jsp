@@ -20,16 +20,16 @@
 	</div>
 	<header>
 	<div>
-		<a href="/collageJam/main"> CollageJam </a>
+		<a href="/collageJam/main.page"> CollageJam </a>
 		<c:choose>
 			<c:when test="${sessionScope.username!=null}">
-				<a href="/collageJam/logout.do">logout</a>
-				<a href="/collageJam/create">create</a>
+				<a href="/collageJam/logout.next">logout</a>
+				<a href="/collageJam/create.page">create</a>
 				<span id="userid"> Hello, ${sessionScope.username} </span>
 			</c:when>
 			<c:otherwise>
-				<a href="/collageJam/login">login</a>
-				<a href="/collageJam/create">create</a>
+				<a href="/collageJam/login.page">login</a>
+				<a href="/collageJam/create.page">create</a>
 				<span id="userid"> Hello, Anonymous </span>
 			</c:otherwise>
 		</c:choose>
@@ -52,7 +52,7 @@
 		<article id="intro">
 			<span>Your idea, your story.</span> <span>Create, explore
 				photo & video collections in beautiful and creative ways</span> <a
-				href="/collageJam/create">
+				href="/collageJam/create.page">
 				<div></div> <span> Start Now </span>
 			</a> <span> or <a href="./signup.jsp"><u>Sign up</u></a> with
 				Email

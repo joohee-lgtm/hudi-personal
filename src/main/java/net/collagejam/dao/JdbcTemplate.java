@@ -1,4 +1,4 @@
-package net.collagejam.user;
+package net.collagejam.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,20 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public abstract class JdbcTemplate {
-	private Connection conn;
 	
-	public JdbcTemplate(Connection conn) {
-		this.conn = conn;
-	}
-	
-	public void update(String query) throws SQLException {
+	public void update(Connection conn, String query) throws SQLException {
 		PreparedStatement pstmt = conn.prepareStatement(query);
 		setValues(pstmt);
 		
 		pstmt.executeUpdate();
 	}
 	
-	public Object selectByUsername(String query) throws SQLException {
+	public Object selectByUsername(Connection conn, String query) throws SQLException {
 		PreparedStatement pstmt = conn.prepareStatement(query);
 		setValues(pstmt);
 		
@@ -31,7 +26,7 @@ public abstract class JdbcTemplate {
 		return null;
 	}
 	
-	public Object selectByJarId(String query) throws SQLException {
+	public Object selectByJarId(Connection conn, String query) throws SQLException {
 		PreparedStatement pstmt = conn.prepareStatement(query);
 		setValues(pstmt);
 		ResultSet rs = pstmt.executeQuery();
@@ -41,7 +36,7 @@ public abstract class JdbcTemplate {
 		return null;
 	}
 	
-	public ArrayList<String> selectListOfPhotosByJarId(String query) throws SQLException {
+	public ArrayList<String> selectListOfPhotosByJarId(Connection conn, String query) throws SQLException {
 		PreparedStatement pstmt = conn.prepareStatement(query);
 		setValues(pstmt);
 		ResultSet rs = pstmt.executeQuery();

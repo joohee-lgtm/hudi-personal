@@ -3,7 +3,7 @@ package net.collagejam.web;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import net.collagejam.model.DBSetting;
+import net.collagejam.user.DBSetting;
 
 import org.json.JSONObject;
 

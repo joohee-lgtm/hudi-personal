@@ -1,4 +1,4 @@
-package net.collagejam.user;
+package net.collagejam.model;
 
 public class User {
 	private int userId;

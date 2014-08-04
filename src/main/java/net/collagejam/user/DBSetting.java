@@ -1,4 +1,4 @@
-package net.collagejam.model;
+package net.collagejam.user;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.collagejam.dao.JamjarDao;
+import net.collagejam.dao.PhotoDao;
 import net.collagejam.obj.JamJar;
-import net.collagejam.user.JamjarDao;
-import net.collagejam.user.PhotoDao;
 
 import org.json.JSONArray;
 import org.springframework.context.ApplicationContext;
@@ -52,13 +52,13 @@ public class MobileResultPageServlet extends HttpServlet{
 		PhotoDao pdao	= context.getBean("photoDao", PhotoDao.class);
 		
 		try {
-			selected = jdao.selectByJarId(jid);
+			selected = jdao.selectByJarId(conn, jid);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
 		try {
-			aUrl = pdao.selectListOfPhotosByJarId(jid);
+			aUrl = pdao.selectListOfPhotosByJarId(conn, jid);
 		} catch (SQLException e) {
 			// TODO Auto-generated cat ch block
 			e.printStackTrace();

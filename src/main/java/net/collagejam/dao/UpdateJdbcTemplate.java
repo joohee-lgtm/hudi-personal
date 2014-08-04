@@ -1,17 +1,11 @@
-package net.collagejam.user;
+package net.collagejam.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public abstract class UpdateJdbcTemplate {
-	private Connection conn;
-	
-	public UpdateJdbcTemplate(Connection conn) {
-		this.conn = conn;
-	}
-	
-	public void update(String query) throws SQLException {
+	public void update(Connection conn, String query) throws SQLException {
 		PreparedStatement pstmt = conn.prepareStatement(query);
 		setValues(pstmt);
 		

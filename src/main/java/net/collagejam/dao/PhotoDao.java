@@ -1,4 +1,4 @@
-package net.collagejam.user;
+package net.collagejam.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,14 +9,9 @@ import java.util.ArrayList;
 import net.collagejam.obj.Photo;
 
 public class PhotoDao {
-	private Connection conn;
-	
-	public PhotoDao(Connection conn) {
-		this.conn = conn;
-	}
 
-	public ArrayList<String> selectListOfPhotosByJarId(final int jid) throws SQLException {
-		JdbcTemplate template = new JdbcTemplate(conn) {
+	public ArrayList<String> selectListOfPhotosByJarId(Connection conn, final int jid) throws SQLException {
+		JdbcTemplate template = new JdbcTemplate() {
 			String mapRow(ResultSet rs) throws SQLException {
 				return rs.getString("photo_url");
 			}
@@ -26,6 +21,6 @@ public class PhotoDao {
 		};
 		String query = "select * from photo_list where j_id=?";
 		
-		return template.selectListOfPhotosByJarId(query);
+		return template.selectListOfPhotosByJarId(conn, query);
 	}
 }

@@ -1,19 +1,16 @@
-package net.collagejam.user;
+package net.collagejam.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import net.collagejam.model.User;
+
 public class RawJdbcUserDao {
-	private Connection conn;
 	
-	public RawJdbcUserDao(Connection conn) {
-		this.conn = conn;
-	}
-	
-	public void insert(final User user) throws SQLException {
-		UpdateJdbcTemplate template = new UpdateJdbcTemplate(conn) {
+	public void insert(Connection conn, final User user) throws SQLException {
+		UpdateJdbcTemplate template = new UpdateJdbcTemplate() {
 			void setValues(PreparedStatement pstmt) throws SQLException {
 				pstmt.setString(1, user.getEmail());
 				pstmt.setString(2, user.getUsername());
@@ -21,11 +18,11 @@ public class RawJdbcUserDao {
 			}
 		};
 		String query = "insert into user (email, username, passwd) values (?, ?, ?)";
-	    template.update(query);
+	    template.update(conn, query);
 	}
 	
-	public void update(final User user) throws SQLException {
-		UpdateJdbcTemplate template = new UpdateJdbcTemplate(conn) {
+	public void update(Connection conn, final User user) throws SQLException {
+		UpdateJdbcTemplate template = new UpdateJdbcTemplate() {
 			void setValues(PreparedStatement pstmt) throws SQLException {
 				pstmt.setString(1, user.getEmail());
 				pstmt.setString(2, user.getUsername());
@@ -34,11 +31,11 @@ public class RawJdbcUserDao {
 			
 		};
 		String query = "update user set email=?, username=? where u_id=?";
-		template.update(query);
+		template.update(conn, query);
 	}
 	
-	public User selectByUsername(final String username) throws SQLException {
-		JdbcTemplate template = new JdbcTemplate(conn) {
+	public User selectByUsername(Connection conn, final String username) throws SQLException {
+		JdbcTemplate template = new JdbcTemplate() {
 			Object mapRow(ResultSet rs) throws SQLException {
 				return new User(
 						rs.getInt("u_id"),
@@ -53,6 +50,6 @@ public class RawJdbcUserDao {
 		};
 
 		String query = "select * from user where username=?";
-		return (User)template.selectByUsername(query);
+		return (User)template.selectByUsername(conn, query);
 	}
 }

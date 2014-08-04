@@ -9,7 +9,7 @@
 </head>
 <body>
 	<header id="header">
-		<a href="/collageJam/main"> CollageJam </a>
+		<a href="/collageJam/main.page"> CollageJam </a>
 	</header>
 
 	<form method="post" action="login.do">
