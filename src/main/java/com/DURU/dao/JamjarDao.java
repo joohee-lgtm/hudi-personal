@@ -1,19 +1,23 @@
-package net.collagejam.dao;
+package com.DURU.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-import com.DURU.dao.JdbcTemplate;
+import net.collagejam.user.DBSetting;
 
-import net.collagejam.obj.JamJar;
+import com.DURU.model.JamJar;
 
 public class JamjarDao {
-	
-	public JamJar selectByJarId(Connection conn, final int jid) throws SQLException {
+
+	public JamJar selectByJarId(final int jid) throws SQLException {
+		DBSetting dbc = new DBSetting();
+		dbc.setJDBC();
+		Connection conn = dbc.getConnection();
+
 		JdbcTemplate template = new JdbcTemplate() {
-			
 			void setValues(PreparedStatement pstmt) throws SQLException {
 				pstmt.setInt(1, jid);
 			}

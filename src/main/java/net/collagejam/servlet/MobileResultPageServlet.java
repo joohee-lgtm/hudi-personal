@@ -12,14 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.collagejam.dao.JamjarDao;
-import net.collagejam.dao.PhotoDao;
-import net.collagejam.obj.JamJar;
-
 import org.json.JSONArray;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.DURU.dao.JamjarDao;
+import com.DURU.dao.PhotoDao;
+import com.DURU.model.JamJar;
 import com.google.gson.Gson;
 
 public class MobileResultPageServlet extends HttpServlet{

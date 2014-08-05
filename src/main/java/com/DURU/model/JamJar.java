@@ -1,4 +1,4 @@
-package net.collagejam.obj;
+package com.DURU.model;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;

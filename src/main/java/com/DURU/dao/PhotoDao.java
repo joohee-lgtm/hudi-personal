@@ -1,4 +1,4 @@
-package net.collagejam.dao;
+package com.DURU.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,13 +6,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.DURU.dao.JdbcTemplate;
+import net.collagejam.user.DBSetting;
 
-import net.collagejam.obj.Photo;
+import com.DURU.model.Photo;
 
 public class PhotoDao {
 
-	public ArrayList<String> selectListOfPhotosByJarId(Connection conn, final int jid) throws SQLException {
+	public ArrayList<String> selectListOfPhotosByJarId(final int jid) throws SQLException {
+		DBSetting dbc = new DBSetting();
+		dbc.setJDBC();
+		Connection conn = dbc.getConnection();
+
 		JdbcTemplate template = new JdbcTemplate() {
 			String mapRow(ResultSet rs) throws SQLException {
 				return rs.getString("photo_url");

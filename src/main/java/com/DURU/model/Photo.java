@@ -1,4 +1,4 @@
-package net.collagejam.obj;
+package com.DURU.model;
 
 public class Photo {
 	private int j_id;
