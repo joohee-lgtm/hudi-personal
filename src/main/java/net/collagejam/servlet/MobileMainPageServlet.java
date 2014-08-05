@@ -8,15 +8,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.collagejam.web.MainFeaturedController;
-
 import org.json.JSONArray;
+
+import com.DURU.dao.MainFeaturedDAO;
 
 public class MobileMainPageServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		System.out.println("In [" + this.getClass().getName() +"]");
 		
-		MainFeaturedController mfc = new MainFeaturedController();
+		MainFeaturedDAO mfc = new MainFeaturedDAO();
 		String finalQuery = mfc.getTopLikedSlides();
 		JSONArray rows = mfc.getRows();
 		

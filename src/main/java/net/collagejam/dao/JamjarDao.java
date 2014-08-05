@@ -5,15 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.DURU.dao.JdbcTemplate;
+
 import net.collagejam.obj.JamJar;
 
 public class JamjarDao {
 	
 	public JamJar selectByJarId(Connection conn, final int jid) throws SQLException {
 		JdbcTemplate template = new JdbcTemplate() {
+			
 			void setValues(PreparedStatement pstmt) throws SQLException {
 				pstmt.setInt(1, jid);
 			}
+			
 			Object mapRow(ResultSet rs) throws SQLException {
 				return new JamJar(
 						rs.getInt("j_id"),

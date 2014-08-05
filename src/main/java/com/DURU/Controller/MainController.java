@@ -1,12 +1,12 @@
 package com.DURU.Controller;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 
-import net.collagejam.web.MainFeaturedController;
+import com.DURU.dao.MainFeaturedDAO;
+
 import core.mvc.Controller;
 
 public class MainController implements Controller {
@@ -15,16 +15,14 @@ public class MainController implements Controller {
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		MainFeaturedController mfc1 = new MainFeaturedController();
-		mfc1.makeShowVideoList();
-		JSONArray recentData = mfc1.getRows();
+		MainFeaturedDAO dao = new MainFeaturedDAO();
 		
-		MainFeaturedController mfc2 = new MainFeaturedController();
-		mfc2.getTopLikedSlides();
-		JSONArray topRankData = mfc2.getRows();		
-		
+		JSONArray recentData = dao.makeShowVideoList();
 		request.setAttribute("recentData", recentData);
+		
+		JSONArray topRankData = dao.getTopLikedSlides();
 		request.setAttribute("topRankData", topRankData);
+		
 		return "main.jsp";
 	}
 }

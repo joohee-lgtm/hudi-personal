@@ -14,21 +14,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.collagejam.user.DBSetting;
-import net.collagejam.web.MainFeaturedController;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.DURU.dao.MainFeaturedDAO;
+
 public class MainPageServlet extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
 		System.out.println("In [" + this.getClass().getName() +"]");
 		
-		MainFeaturedController mfc1 = new MainFeaturedController();
+		MainFeaturedDAO mfc1 = new MainFeaturedDAO();
 		mfc1.makeShowVideoList();
 		JSONArray recentData = mfc1.getRows();
 		
-		MainFeaturedController mfc2 = new MainFeaturedController();
+		MainFeaturedDAO mfc2 = new MainFeaturedDAO();
 		mfc2.getTopLikedSlides();
 		JSONArray topRankData = mfc2.getRows();		
 		

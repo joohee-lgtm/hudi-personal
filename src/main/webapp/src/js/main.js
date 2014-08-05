@@ -115,7 +115,7 @@ Featured.init = {
 		for (var i=0; i<ul.children.length ; i++){
 			var targ = ul.children[i];
 			targ.addEventListener("click", function(e){
-				var url = "/collageJam/result?id=" + e.target.parentNode.id;
+				var url = "/collageJam/result.next?id=" + e.target.parentNode.id;
 				window.location = url;
 			}, false);
 		};

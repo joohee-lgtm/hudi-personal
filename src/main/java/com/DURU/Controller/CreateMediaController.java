@@ -11,7 +11,6 @@ public class CreateMediaController implements Controller{
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-		return null;
+		return "result.jsp";
 	}
-
 }

@@ -1,4 +1,4 @@
-package net.collagejam.web;
+package com.DURU.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,12 +9,11 @@ import net.collagejam.user.DBSetting;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class MainFeaturedController {
-	public JSONArray rows;
+public class MainFeaturedDAO {
 	
-	public MainFeaturedController(){}
+	public MainFeaturedDAO(){}
 	
-	public void makeShowVideoList(){
+	public JSONArray makeShowVideoList(){
 		String table = "jamjar";
 		String[] column = {"title", "tb_url", "date_created", "j_id", "u_id"};
 		String sql = selectColumnSql(table, column);
@@ -29,15 +28,15 @@ public class MainFeaturedController {
 			while(rs.next()){
 				JSONObject one_row = rowRemakeJSONObj(rs, column);
 				rows.put(one_row);
-				setRows(rows);
 			}
 			dbc.closeConnection();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
+		return rows;
 	}
 	
-	public String getTopLikedSlides() {
+	public JSONArray getTopLikedSlides() {
 		String table = "jamjar";
 		String[] column = {"title", "tb_url", "date_created", "j_id", "u_id", "likes"};
 		int limit = 6;
@@ -52,14 +51,13 @@ public class MainFeaturedController {
 			while(rs.next()){
 				JSONObject one_row = rowRemakeJSONObj(rs, column);
 				rows.put(one_row);
-			setRows(rows);
 			}
 			dbc.closeConnection();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
 		
-		return sql;
+		return rows;
 	}
 	
 	String selectColumnSql(String table, String[] column){
@@ -105,13 +103,4 @@ public class MainFeaturedController {
 		}
 		return obj;
 	}
-	
-	public void setRows(JSONArray rows){
-		this.rows = rows;
-	}
-	
-	public JSONArray getRows(){
-		return this.rows;
-	}
-	
 }
