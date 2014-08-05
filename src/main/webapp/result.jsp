@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header>
-		<a href="/collageJam/main.page"> CollageJam </a>
+		<a href="/collageJam/main.next"> CollageJam </a>
 		
 	</header>
 

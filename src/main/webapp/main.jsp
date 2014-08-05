@@ -20,16 +20,16 @@
 	</div>
 	<header>
 	<div>
-		<a href="/collageJam/main.page"> CollageJam </a>
+		<a href="/collageJam/main.next"> CollageJam </a>
 		<c:choose>
 			<c:when test="${sessionScope.username!=null}">
 				<a href="/collageJam/logout.next">logout</a>
-				<a href="/collageJam/create.page">create</a>
+				<a href="/collageJam/create.next">create</a>
 				<span id="userid"> Hello, ${sessionScope.username} </span>
 			</c:when>
 			<c:otherwise>
-				<a href="/collageJam/login.page">login</a>
-				<a href="/collageJam/create.page">create</a>
+				<a href="/collageJam/login.next">login</a>
+				<a href="/collageJam/create.next">create</a>
 				<span id="userid"> Hello, Anonymous </span>
 			</c:otherwise>
 		</c:choose>
@@ -38,7 +38,7 @@
 
 	<section id="contents">
 		<article id="bgvideo">
-			<video autoplay loop muted
+			<video autoplay loop
 				poster="https://www.themusicbed.com/video/posters/home-the-music-bed.jpg">
 				<source
 					src="https://www.themusicbed.com/video/home-the-music-bed.mp4"
@@ -50,11 +50,13 @@
 		</article>
 
 		<article id="intro">
-			<span>Your idea, your story.</span> <span>Create, explore
-				photo & video collections in beautiful and creative ways</span> <a
-				href="/collageJam/create.page">
-				<div></div> <span> Start Now </span>
-			</a> <span> or <a href="./signup.jsp"><u>Sign up</u></a> with
+			<span>Your idea, your story.</span>
+			<span>Create, explore photo n video collections in beautiful and creative ways</span>
+			<a href="/collageJam/create.next">
+				<div></div>
+				<span> Start Now </span>
+			</a>
+			<span> or <a href="/collageJam/signup.next"><u>Sign up</u></a> with
 				Email
 			</span>
 		</article>

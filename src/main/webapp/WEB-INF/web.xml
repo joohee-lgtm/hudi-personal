@@ -1,6 +1,30 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
 	<display-name>Collage Jam Web Application</display-name>
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- controller mapping -->
+	<servlet>
+		<servlet-name>ControllerMapping</servlet-name>
+		<servlet-class>core.mvc.FrontController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControllerMapping</servlet-name>
+		<url-pattern>*.next</url-pattern>
+	</servlet-mapping>
 
+
+
+
+
+
+
+<!-- 
 	<filter>
 		<filter-name>PrintClassNameFilter</filter-name>
 		<filter-class>net.collagejam.filter.PrintClassName</filter-class>
@@ -11,7 +35,7 @@
 		<url-pattern>/</url-pattern>
 	</filter-mapping>
 
-	<!-- test servlet start -->
+	test servlet start
 
 	<servlet>
 		<servlet-name>createController</servlet-name>
@@ -57,14 +81,16 @@
 		<servlet-name>js-servlet</servlet-name>
 		<url-pattern>/jstest</url-pattern>
 	</servlet-mapping>
-	<!-- test servlet end -->
+	test servlet end
 
 
-	<!-- real development servlet start -->
+	real development servlet start
 
-	<!-- <servlet> <servlet-name>PageMappingServlet</servlet-name> <servlet-class>net.collagejam.servlet.PageMappingServlet</servlet-class> 
+	<servlet> <servlet-name>PageMappingServlet</servlet-name> <servlet-class>net.collagejam.servlet.PageMappingServlet</servlet-class> 
 		</servlet> <servlet-mapping> <servlet-name>PageServlet</servlet-name> <url-pattern>/*.page</url-pattern> 
-		</servlet-mapping> -->
+		</servlet-mapping>
+
+
 	<servlet>
 		<servlet-name>MainPageServlet</servlet-name>
 		<servlet-class>net.collagejam.servlet.MainPageServlet</servlet-class>
@@ -178,7 +204,7 @@
 		<servlet-name>likeAddServletMapping</servlet-name>
 		<url-pattern>/likeadd</url-pattern>
 	</servlet-mapping>
-
+ -->
 
 	<!-- real development servlet end -->
 

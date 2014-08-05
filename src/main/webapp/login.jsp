@@ -9,14 +9,14 @@
 </head>
 <body>
 	<header id="header">
-		<a href="/collageJam/main.page"> CollageJam </a>
+		<a href="/collageJam/main.next"> CollageJam </a>
 	</header>
 
-	<form method="post" action="login.do">
+	<form method="post" action="login.next">
 		<input type="text" name="username" placeholder="Username"><br>
 		<input type="password" name="password" placeholder="password">
 		<input type="submit" value="submit">
-		<a href="/collageJam/signup">not a member?</button>
+		<a href="/collageJam/signup.next">not a member?</a>
 	</form>
 </body>
 </html>
