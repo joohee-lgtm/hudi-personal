@@ -4,10 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import net.collagejam.user.DBSetting;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import com.DURU.support.ConnectionManager;
 
 public class MainFeaturedDAO {
 	
@@ -19,7 +19,7 @@ public class MainFeaturedDAO {
 		String sql = selectColumnSql(table, column);
 		JSONArray rows = new JSONArray();
 		
-		DBSetting dbc = new DBSetting();
+		ConnectionManager dbc = new ConnectionManager();
 		dbc.setJDBC();
 		Statement stmt = dbc.getStatement();
 		
@@ -42,7 +42,7 @@ public class MainFeaturedDAO {
 		int limit = 6;
 		String sql = getTopLikedJarsSql(table, column, limit);
 		JSONArray rows = new JSONArray();
-		DBSetting dbc = new DBSetting();
+		ConnectionManager dbc = new ConnectionManager();
 		dbc.setJDBC();
 		Statement stmt = dbc.getStatement();
 		

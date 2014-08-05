@@ -1,4 +1,4 @@
-package com.DURU.Controller;
+package com.DURU.controller;
 
 import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;

@@ -17,10 +17,10 @@ public class MobileMainPageServlet extends HttpServlet{
 		System.out.println("In [" + this.getClass().getName() +"]");
 		
 		MainFeaturedDAO mfc = new MainFeaturedDAO();
-		String finalQuery = mfc.getTopLikedSlides();
-		JSONArray rows = mfc.getRows();
+//		String finalQuery = mfc.getTopLikedSlides();
+//		JSONArray rows = mfc.getRows();
 		
-		request.setAttribute("data", rows);
+//		request.setAttribute("data", rows);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/m/main.jsp");
 		dispatcher.forward(request, response);
 	}

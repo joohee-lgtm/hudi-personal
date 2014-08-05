@@ -1,11 +1,11 @@
-package net.collagejam.user;
+package com.DURU.support;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DBSetting {
+public class ConnectionManager {
 	Connection conn;
 	Statement stmt;
 

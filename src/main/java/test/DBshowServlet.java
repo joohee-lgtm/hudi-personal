@@ -19,10 +19,10 @@ public class DBshowServlet extends HttpServlet {
 		
 		MainFeaturedDAO mfc = new MainFeaturedDAO();
 		mfc.makeShowVideoList();
-		JSONArray rows = mfc.getRows();
-		
-		request.setAttribute("data", rows);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("dbshow.jsp");
-		dispatcher.forward(request, response);
+//		JSONArray rows = mfc.getRows();
+//		
+//		request.setAttribute("data", rows);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("dbshow.jsp");
+//		dispatcher.forward(request, response);
 	}
 }

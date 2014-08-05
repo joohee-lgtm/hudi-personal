@@ -6,14 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import net.collagejam.user.DBSetting;
-
 import com.DURU.model.JamJar;
+import com.DURU.support.ConnectionManager;
 
 public class JamjarDao {
 
 	public JamJar selectByJarId(final int jid) throws SQLException {
-		DBSetting dbc = new DBSetting();
+		ConnectionManager dbc = new ConnectionManager();
 		dbc.setJDBC();
 		Connection conn = dbc.getConnection();
 

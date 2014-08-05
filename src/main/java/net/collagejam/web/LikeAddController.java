@@ -3,9 +3,9 @@ package net.collagejam.web;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import net.collagejam.user.DBSetting;
-
 import org.json.JSONObject;
+
+import com.DURU.support.ConnectionManager;
 
 public class LikeAddController {
 	JSONObject like_obj;
@@ -15,7 +15,7 @@ public class LikeAddController {
 	}
 
 	public void updateDB() {
-		DBSetting dbc = new DBSetting();
+		ConnectionManager dbc = new ConnectionManager();
 		dbc.setJDBC();
 		Statement stmt = dbc.getStatement();		
 		String sql = updateLikeSQL();

@@ -52,26 +52,26 @@ public class ResultPageServlet extends HttpServlet {
 		JamjarDao jdao = context.getBean("jamjarDao", JamjarDao.class);
 		PhotoDao pdao = context.getBean("photoDao", PhotoDao.class);
 		
-		try {
-			selected = jdao.selectByJarId(conn, jid);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		try {
-			aUrl = pdao.selectListOfPhotosByJarId(conn, jid);
-		} catch (SQLException e) {
-			// TODO Auto-generated cat ch block
-			e.printStackTrace();
-		}
-		selected.setPhotolist(aUrl);
-		String jarJson = gson.toJson(selected);
-		request.setAttribute("jamjar", jarJson);
-
-		response.setContentType("text/html; charset=euc-kr");
-		RequestDispatcher dispatcher = request
-				.getRequestDispatcher("result.jsp");
-		dispatcher.forward(request, response);
+//		try {
+//			selected = jdao.selectByJarId(conn, jid);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//
+//		try {
+//			aUrl = pdao.selectListOfPhotosByJarId(conn, jid);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated cat ch block
+//			e.printStackTrace();
+//		}
+//		selected.setPhotolist(aUrl);
+//		String jarJson = gson.toJson(selected);
+//		request.setAttribute("jamjar", jarJson);
+//
+//		response.setContentType("text/html; charset=euc-kr");
+//		RequestDispatcher dispatcher = request
+//				.getRequestDispatcher("result.jsp");
+//		dispatcher.forward(request, response);
 	}
 	
 //	private JSONArray getJsonArray(ArrayList<String> aUrl) {

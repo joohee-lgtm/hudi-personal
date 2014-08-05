@@ -1,4 +1,4 @@
-package net.collagejam.dao;
+package com.DURU.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

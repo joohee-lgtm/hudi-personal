@@ -3,7 +3,7 @@ package core.mvc;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.DURU.Controller.*;
+import com.DURU.controller.*;
 
 public class RequestMapping {
 	private Map<String, Controller> mappings = new HashMap<String, Controller>();
@@ -14,8 +14,8 @@ public class RequestMapping {
 		mappings.put("/result.next", new ResultController());
 		mappings.put("/likeAdd.next", new LikeAddController());
 		mappings.put("/register.next", new RegisterUserController());
-		//mappings.put("/login.next", new LoginController());
-		//mappings.put("/logout.next", new LogoutController());
+		mappings.put("/login.next", new SessionController());
+		mappings.put("/logout.next", new SessionController());
 		
 		mappings.put("/signup.next", new MovePageController("/signup.jsp"));
 		mappings.put("/create.next", new MovePageController("/create.jsp"));

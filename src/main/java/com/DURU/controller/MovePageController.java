@@ -1,17 +1,22 @@
-package com.DURU.Controller;
+package com.DURU.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import core.mvc.Controller;
 
-public class LikeAddController implements Controller{
+public class MovePageController implements Controller{
+	
+	private String page;
+
+	public MovePageController(String page) {
+		this.page = page;
+	}
 
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return page;
 	}
 
 }

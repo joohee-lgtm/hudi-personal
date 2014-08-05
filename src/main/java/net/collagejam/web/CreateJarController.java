@@ -4,11 +4,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import net.collagejam.user.DBSetting;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.DURU.support.ConnectionManager;
 
 public class CreateJarController {
 	JSONObject jar_obj;
@@ -33,7 +33,7 @@ public class CreateJarController {
 		String bgmEnd 		= jar_obj.getString("bgmEnd");
 		String spi			= jar_obj.getString("secPerImg");
 		
-		DBSetting dbc = new DBSetting();
+		ConnectionManager dbc = new ConnectionManager();
 		dbc.setJDBC();
 		Statement stmt = dbc.getStatement();
 		

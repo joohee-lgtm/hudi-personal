@@ -6,14 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import net.collagejam.user.DBSetting;
-
 import com.DURU.model.Photo;
+import com.DURU.support.ConnectionManager;
 
 public class PhotoDao {
 
 	public ArrayList<String> selectListOfPhotosByJarId(final int jid) throws SQLException {
-		DBSetting dbc = new DBSetting();
+		ConnectionManager dbc = new ConnectionManager();
 		dbc.setJDBC();
 		Connection conn = dbc.getConnection();
 

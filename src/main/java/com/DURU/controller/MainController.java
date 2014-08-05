@@ -1,4 +1,4 @@
-package com.DURU.Controller;
+package com.DURU.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,10 +16,8 @@ public class MainController implements Controller {
 			HttpServletResponse response) throws Exception {
 		
 		MainFeaturedDAO dao = new MainFeaturedDAO();
-		
 		JSONArray recentData = dao.makeShowVideoList();
 		request.setAttribute("recentData", recentData);
-		
 		JSONArray topRankData = dao.getTopLikedSlides();
 		request.setAttribute("topRankData", topRankData);
 		

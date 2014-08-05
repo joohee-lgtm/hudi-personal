@@ -1,11 +1,11 @@
-package com.DURU.Controller;
+package com.DURU.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import core.mvc.Controller;
 
-public class RegisterUserController implements Controller{
+public class LikeAddController implements Controller{
 
 	@Override
 	public String execute(HttpServletRequest request,

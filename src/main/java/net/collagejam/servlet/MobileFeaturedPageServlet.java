@@ -18,9 +18,9 @@ public class MobileFeaturedPageServlet extends HttpServlet{
 		
 		MainFeaturedDAO mfc = new MainFeaturedDAO();
 		mfc.makeShowVideoList();
-		JSONArray rows = mfc.getRows();
-		
-		request.setAttribute("data", rows);
+//		JSONArray rows = mfc.getRows();
+//		
+//		request.setAttribute("data", rows);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/m/featured.jsp");
 		dispatcher.forward(request, response);
 	}

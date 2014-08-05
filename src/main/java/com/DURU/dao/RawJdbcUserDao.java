@@ -1,13 +1,11 @@
-package net.collagejam.dao;
+package com.DURU.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.DURU.dao.JdbcTemplate;
-
-import net.collagejam.model.User;
+import com.DURU.model.User;
 
 public class RawJdbcUserDao {
 	
